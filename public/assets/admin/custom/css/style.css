@@ -1,0 +1,83 @@
+/* Admin */
+
+.fs-2 {
+    font-size: 40px !important;
+}
+.fs-5 {
+    font-size: 24px !important;
+}
+.fs-6 {
+    font-size: 20px !important;
+}
+.fs-7 {
+    font-size: 16px !important;
+}
+.fs-8 {
+    font-size: 14px !important;
+}
+.fs-9 {
+    font-size: 12px !important;
+}
+
+.admin-header {
+    background-color: #1e1e2d;
+}
+.text-white {
+    color: white !important;
+}
+
+.tb-color-white {
+    background-color: #ffffff;
+}
+.tb-color-light-blue {
+    background-color: #d9e1f2;
+}
+.tb-color-blue {
+    background-color: #8ea9db;
+}
+.tb-color-dark-blue {
+    background-color: #305496;
+}
+.tb-color-pink {
+    background-color: #ff9999;
+}
+.tb-color-red {
+    background-color: #ff5050;
+}
+.tb-color-gray {
+    background-color: #bfbfbf;
+}
+
+
+/* Promotion Blade CSS */
+
+.qr-code-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 100%;
+}
+#storeTable td, #modelTable td {
+    color: black !important;
+}
+#store_table_length, #store_table_filter, #store_table_info, #store_table_paginate {
+    display: none !important;
+}
+#storeTable th, #modelTable th {
+    font-size: 8px;
+    padding: 7px 0;
+    text-align: center;
+    font-weight: 600 !important;
+    color: black !important;
+}
+#storeTable td, #modelTable td {
+    font-size: 9px;
+    padding: 7px 0;
+    text-align: center;
+}
+
+
+#model_table_length, #model_table_filter, #model_table_info, #model_table_paginate {
+    display: none !important;
+}
