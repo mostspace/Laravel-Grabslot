@@ -103,8 +103,16 @@ Route::get('/waiting', function () { return view('waiting'); });
 
 // =========================================== ADMIN =================================================
 
-Route::get('/admin', [AdminController::class, 'index'])->middleware('checkRole');
-Route::get('/access-analyze', [AccessAnalyzeController::class, 'index']);
-Route::get('/promotion-printing', [PromotionPrintingController::class, 'index']);
-Route::get('/user-management', [UserManagementController::class, 'index']);
-Route::post('/users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
+// Route::get('/admin', [AdminController::class, 'index'])->middleware('checkRole');
+// Route::get('/access-analyze', [AccessAnalyzeController::class, 'index']);
+// Route::get('/promotion-printing', [PromotionPrintingController::class, 'index']);
+// Route::get('/user-management', [UserManagementController::class, 'index']);
+// Route::post('/users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
+
+Route::group(['prefix' => 'hall-data', 'middleware' => 'checkRole'], function() {
+    Route::get('/', [AdminController::class, 'index'])->middleware('checkRole');
+    Route::get('/access-analyze', [AccessAnalyzeController::class, 'index']);
+    Route::get('/promotion-printing', [PromotionPrintingController::class, 'index']);
+    Route::get('/user-management', [UserManagementController::class, 'index']);
+    Route::post('/users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
+});

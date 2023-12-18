@@ -123,7 +123,7 @@
 									</a>
 								</li> -->
 								<li class="menu-item" aria-haspopup="true">
-									<a href="/access-analyze" class="menu-link menu-toggle">
+									<a href="/admin/access-analyze" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
@@ -140,7 +140,7 @@
 									</a>
 								</li>
 								<li class="menu-item" aria-haspopup="true">
-									<a href="/promotion-printing" class="menu-link menu-toggle">
+									<a href="/admin/promotion-printing" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/PenAndRuller.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
@@ -156,7 +156,7 @@
 									</a>
 								</li>
 								<li class="menu-item" aria-haspopup="true">
-									<a href="/user-management" class="menu-link menu-toggle">
+									<a href="/admin/user-management" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
                                             <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
 											<span class="svg-icon svg-icon-2">

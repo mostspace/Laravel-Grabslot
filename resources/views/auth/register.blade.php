@@ -9,10 +9,10 @@
         </div>
         <form class="form text-center" method="POST" action="{{ route('register') }}">
             @csrf
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <input class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 p-form-control" id="name" type="text" placeholder="名前" name="name" required autofocus autocomplete="name"/>
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
-            </div>
+            </div> -->
             <div class="form-group">
                 <input class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 p-form-control" id="email" type="email" placeholder="メールアドレス" name="email" autocomplete="email" required/>
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
