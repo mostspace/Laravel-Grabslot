@@ -3,8 +3,14 @@
 return [
     'custom' => [
         'password' => [
-            'required' => 'sThe password field is required.',
+            'required' => 'パスワードフィールドは必須です。',
             'min' => 'パスワードは、８文字以上でご入力をお願いいたします。',
+            'confirmed' => 'パスワードフィールドの確認が一致しません。',
+        ],
+        'email' => [
+            'required' => 'メールアドレスは必須項目です。',
+            'email' => '正しいメールアドレスの形式ではありません。',
+            'credential' => 'パスワードフィールドの確認が一致しません。',
         ],
     ],
 ];

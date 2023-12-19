@@ -10,7 +10,7 @@
         <form class="form text-center" method="POST" action="{{ route('login') }}">
             @csrf
             <div class="form-group">
-                <input class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 p-form-control" id="email" type="email" placeholder="メールアドレス" name="email" required autofocus autocomplete="email" />
+                <input class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 p-form-control" id="email" type="text" placeholder="メールアドレス" name="email" required autofocus autocomplete="email" />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
             <div class="form-group">

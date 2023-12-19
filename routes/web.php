@@ -71,13 +71,13 @@ Route::get('/home', [RegionController::class, 'getRegionList'])->middleware(['au
 Route::get('/hall-data', [HallDataController::class, 'index']);
 Route::get('/hall-data/{region_id}', [HallDataController::class, 'region']);
 Route::post('/hall-data/{region_id}', [HallDataController::class, 'getHallDataList']);
-Route::get('/hall-data/{region_id}/{store_id}', [HallDataController::class, 'store']);
-Route::post('/store-list/{store_id}', [HallDataController::class, 'getStoreList']);
-Route::get('/hall-data/{region_id}/{store_id}/{store_data_id}', [HallDataController::class, 'storeData']);
-Route::post('/store-data-list/{store_data_id}', [HallDataController::class, 'getStoreDataList']);
+Route::get('/hall-data/{region_id}/{store_id}', [HallDataController::class, 'model']);
+Route::post('/model-list/{store_id}', [HallDataController::class, 'getModelList']);
+Route::get('/model-detail-data', [HallDataController::class, 'modelDetailData'])->name('model.detail');
+Route::post('/store-data-list/{store_data_id}', [HallDataController::class, 'getModelDetailDataList']);
 
 // Search Region
-Route::get('/search-region', [RegionController::class, 'regionFilter'])->name('search.region');
+Route::post('/search-region', [RegionController::class, 'regionFilter'])->name('search.region');
 
 
 // Store
@@ -109,7 +109,7 @@ Route::get('/waiting', function () { return view('waiting'); });
 // Route::get('/user-management', [UserManagementController::class, 'index']);
 // Route::post('/users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
 
-Route::group(['prefix' => 'hall-data', 'middleware' => 'checkRole'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function() {
     Route::get('/', [AdminController::class, 'index'])->middleware('checkRole');
     Route::get('/access-analyze', [AccessAnalyzeController::class, 'index']);
     Route::get('/promotion-printing', [PromotionPrintingController::class, 'index']);

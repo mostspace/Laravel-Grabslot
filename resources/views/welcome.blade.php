@@ -374,7 +374,7 @@
             function searchRegion($searchTerm) {
                 $.ajax({
                     url: "{{ route('search.region') }}",
-                    type: "GET",
+                    type: "POST",
                     data: {
                         region: $searchTerm,
                     },

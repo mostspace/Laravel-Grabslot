@@ -36,30 +36,49 @@ class HallDataController extends Controller
     }
 
     // Get Store
-    public function store(Request $request, $region_id, $store_id) {
-        $store = StoreList::where('id', $store_id)->first();
+    public function model(Request $request, $region_id, $store_id) {
         $region = Region::where('id', $region_id)->first();
+        $store = StoreList::where('id', $store_id)->first();
+        $storeDataByDate = StoreDataByDate::where('store_id', $store_id)->get();
+        $storeDataIds = $storeDataByDate->pluck('id')->toArray();
+        $modelsData = ModelData::whereIn('store_data_id', $storeDataIds)->get();
 
-        return view('hall-data/data-list', compact('region', 'store'));
+        return view('hall-data/data-list', compact('region', 'store', 'storeDataByDate', 'modelsData'));
     }
 
-    public function getStoreList(Request $request, $store_id) {
+    public function getModelList(Request $request, $store_id) {
         $list = StoreDataByDate::where('store_id', $store_id)->get();
 
-        $dataTable = new ServerSideTable($list);
-        $dataTable->getAjaxTable();
+        if ($list->isNotEmpty()) {
+            $storeDataIds = $list->pluck('id')->toArray();
+            $models = ModelData::select('model_name')
+                    ->whereIn('store_data_id', $storeDataIds)
+                    ->distinct()
+                    ->get();
+
+            $dataTable = new ServerSideTable($models);
+            $dataTable->getAjaxTable();
+        } else {
+            dd('No records found in StoreDataByDate for store_id: ' . $store_id);
+        }
     }
 
     // Get Store Data
-    public function storeData(Request $request, $region_id, $store_id, $store_data_id) {
-        $region = Region::where('id', $region_id)->first();
-        $store = StoreList::where('id', $store_id)->first();
-        $store_data_by_date = StoreDataByDate::where('store_id', $store_id)->first();
+    public function modelDetailData(Request $request) {
 
-        return view('hall-data/store-data', compact('region', 'store', 'store_data_by_date'));
+        $region = $request->input('region');
+        $store = $request->input('store');
+        $storeDataByDate = $request->input('storeDataByDate');
+        $modelsData = $request->input('modelsData');
+        $modelName = $request->input('modelName');
+
+        // dd($region);
+
+        return view('hall-data/model-detail-data', compact('region', 'store', 'storeDataByDate', 'modelName', 'modelsData'));
+        
     }
 
-    public function getStoreDataList(Request $request, $store_data_id) {
+    public function getModelDetailDataList(Request $request, $store_data_id) {
         $list = ModelData::where('store_data_id', $store_data_id)->get();
 
         $dataTable = new ServerSideTable($list);

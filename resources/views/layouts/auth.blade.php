@@ -62,7 +62,20 @@
 		<!--end::Global Theme Bundle-->
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="{{ asset('assets/js/pages/custom/login/login-general.js') }}"></script>
+
+		@yield('add_js')
 		<!--end::Page Scripts-->
+
+		<script>
+			// Override Bootstrap validation messages in Japanese
+			(function ($) {
+				$.extend($.fn.validator.Constructor.DEFAULTS.messages, {
+					required: 'このフィールドは必須です。',
+					// Add more messages for other rules as needed
+				});
+			}(jQuery));
+		</script>
+		
 	</body>
 	<!--end::Body-->
 </html>

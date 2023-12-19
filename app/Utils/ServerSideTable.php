@@ -83,7 +83,7 @@ class ServerSideTable {
     
         $columnsDefault = [
             'id'     => true,
-            // 'name'      => true,
+            'name'      => true,
             // 'email'      => true,
             // 'created_at'      => true,
         ];

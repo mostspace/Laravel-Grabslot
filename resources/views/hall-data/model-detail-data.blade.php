@@ -10,7 +10,7 @@
         <i class="fa-solid fa-angle-right color-white fs-9 mx-3"></i>
         <a href="/hall-data/{{ $region->id }}/{{ $store->id }}" class="color-white font-weight-bolder p-link">{{ $store->name }}</a>
         <i class="fa-solid fa-angle-right color-white fs-9 mx-3"></i>
-        {{ $store_data_by_date->date }} 
+        {{ $modelName }} 
     </p>
 </div>
 @endsection
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-sm-12 col-md-9 col-lg-9 pr-10">
                     <div>
-                        <h1 class="color-white fs-5">{{ $store_data_by_date->date }} {{ $store->name }} データまとめ</h1>
+                        <h1 class="color-white fs-5">{{ modelName }} データまとめ</h1>
                         <div class="divider w-100px mb-15"></div>
                     </div>
 
