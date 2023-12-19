@@ -71,23 +71,8 @@
 <script>
     $(document).ready(function() {
         $("#modelTable").on("click", ".store-model", function() {
-            $.ajax({
-                url: "{{ route('model.detail') }}",
-                type: "GET",
-                data: {
-                    region: region,
-                    store: store, 
-                    storeDataByDate: storeDataByDate,
-                    modelsData: modelsData,
-                    modelName: $(this).text()
-                },
-                success: function(response) {
-                    window.location.href = response.redirect_url;
-                },
-                error: function(error) {
-                    console.error('Ajax request failed: ', error);
-                }
-            });
+            window.location.href = '/model-detail-data/' + region.id + '/' + store.id + '/' + $(this).text();
+            
         });
     });
 

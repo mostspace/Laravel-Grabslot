@@ -220,6 +220,14 @@ div.dataTables_wrapper div.dataTables_filter input {
     border: none;
 }
 
+#modelTable th {
+    text-align: center;
+}
+#modelTable td {
+    border: 1px solid #ffffff;
+    text-align: right;
+}
+
 
 
 #kt_header_menu_wrapper {

@@ -73,7 +73,7 @@ Route::get('/hall-data/{region_id}', [HallDataController::class, 'region']);
 Route::post('/hall-data/{region_id}', [HallDataController::class, 'getHallDataList']);
 Route::get('/hall-data/{region_id}/{store_id}', [HallDataController::class, 'model']);
 Route::post('/model-list/{store_id}', [HallDataController::class, 'getModelList']);
-Route::get('/model-detail-data', [HallDataController::class, 'modelDetailData'])->name('model.detail');
+Route::get('/model-detail-data/{region_id}/{store_id}/{model_name}', [HallDataController::class, 'modelDetailData'])->name('model.detail.data');
 Route::post('/store-data-list/{store_data_id}', [HallDataController::class, 'getModelDetailDataList']);
 
 // Search Region

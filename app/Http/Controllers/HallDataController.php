@@ -12,6 +12,8 @@ use App\Utils\ServerSideTable;
 
 class HallDataController extends Controller
 {
+    private $tempData = [];
+
     public function index() {
         return view('hall-data/index');
     }
@@ -63,20 +65,34 @@ class HallDataController extends Controller
         }
     }
 
-    // Get Store Data
-    public function modelDetailData(Request $request) {
+    public function modelDetailData(Request $request, $region_id, $store_id, $model_name)
+    {
+        $modelMonthData = [];
 
-        $region = $request->input('region');
-        $store = $request->input('store');
-        $storeDataByDate = $request->input('storeDataByDate');
-        $modelsData = $request->input('modelsData');
-        $modelName = $request->input('modelName');
+        $region = Region::where('id', $region_id)->first();
+        $store = StoreList::where('id', $store_id)->first();
 
-        // dd($region);
+        $storeDataByDate = StoreDataByDate::where('store_id', $store_id)->get();
+        $storeDataIds = $storeDataByDate->pluck('id')->toArray();
 
-        return view('hall-data/model-detail-data', compact('region', 'store', 'storeDataByDate', 'modelName', 'modelsData'));
-        
+        $modelsData = ModelData::where('model_name', $model_name)->whereIn('store_data_id', $storeDataIds)->get();
+
+        foreach ($storeDataByDate as $store_key => $store_value) {
+            $temp_store_obj = [];
+            foreach ($modelsData as $model_key => $model_value) {
+                if ($store_value['id'] == $model_value['store_data_id']) {
+                    $temp_store_obj[] = [
+                        'machine_number' => $model_value['machine_number'],
+                        'extra_sheet' => $model_value['extra_sheet'],
+                    ];
+                }
+            }
+            $modelMonthData[$store_value['date']] = $temp_store_obj;
+        }
+
+        return view('hall-data/model-detail-data', compact('modelMonthData', 'region', 'store', 'model_name'));
     }
+
 
     public function getModelDetailDataList(Request $request, $store_data_id) {
         $list = ModelData::where('store_data_id', $store_data_id)->get();
