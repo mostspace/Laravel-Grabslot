@@ -246,10 +246,10 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: #ffffff !important;
 }
 .td-light-blue {
-    background-color: #d9e1f2 !important;
+    background-color: #8acaef  !important;
 }
 .td-blue {
-    background-color: #8ea9db !important;
+    background-color: rgb(65, 103, 173) !important;
 }
 .td-dark-blue {
     background-color: #305496 !important;
