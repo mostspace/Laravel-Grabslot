@@ -106,8 +106,6 @@
                                     </tr>
                                 @endfor
                             </tbody>
-
-
                         </table>
                         <!--end: Datatable-->
                     </div>
@@ -163,14 +161,11 @@
 
 @section('add_js')
 
-<script>
-    "use strict";
-    
-    $(document).ready(function() {
 
-        $("#modelDetailTable").on("click", ".td-sheet", function() {
-            getModelData($(this).data('id'));
-        });
+<script>
+
+    // Class definition
+    var modelDetailDataWidget = function () {
 
         function getModelData($model_id) {
             $.ajax({
@@ -207,14 +202,6 @@
             // Open the modal
             $('#dataModal').modal('show');
         }
-    });
-</script>
-
-<script>
-    "use strict";
-
-    // Class definition
-    var AccessAnalyzeWidget = function () {
 
         // Charts widgets
         var modelChart = function () {
@@ -353,22 +340,29 @@
             chart.render();
         }
 
+        var modelDetailModal = function () {
+            $("#modelDetailTable").on("click", ".td-sheet", function() {
+                getModelData($(this).data('id'));
+            });
+        }
+
         // Public methods
         return {
             init: function () {
                 // Charts Widgets
                 modelChart();
+                modelDetailModal();
             }
         }
     }();
 
     // Webpack support
     if (typeof module !== 'undefined') {
-        module.exports = AccessAnalyzeWidget;
+        module.exports = modelDetailDataWidget;
     }
 
     jQuery(document).ready(function () {
-        AccessAnalyzeWidget.init();
+        modelDetailDataWidget.init();
     });
 
 </script>
