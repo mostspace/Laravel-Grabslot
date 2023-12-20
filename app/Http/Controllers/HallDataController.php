@@ -78,6 +78,7 @@ class HallDataController extends Controller
             foreach ($modelsData as $model_key => $model_value) {
                 if ($store_value['id'] == $model_value['store_data_id']) {
                     $temp_store_obj[] = [
+                        'id' => $model_value['id'],
                         'machine_number' => $model_value['machine_number'],
                         'extra_sheet' => intval(str_replace(',', '', $model_value['extra_sheet'])),
                     ];
@@ -90,12 +91,11 @@ class HallDataController extends Controller
     }
 
 
-    // public function getModelDetailDataList(Request $request, $store_data_id) {
-    //     $list = ModelData::where('store_data_id', $store_data_id)->get();
-
-    //     $dataTable = new ServerSideTable($list);
-    //     $dataTable->getAjaxTable();
-    // }
+    public function getModelData(Request $request) {
+        $model = ModelData::where('id', $request->input('model_id'))->get();
+        
+        return response()->json(['model' => $model]);
+    }
 
     
 }

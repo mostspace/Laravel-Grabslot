@@ -240,6 +240,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 #modelDetailTable .td-sheet {
     color: black !important;
+    cursor: pointer;
 }
 .td-white {
     background-color: #ffffff !important;
@@ -264,6 +265,13 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 /* End::Model One Month Table */
 
-
+/* Begin::Modal Table */
+#modalTable td, th {
+    text-align: center;
+}
+#modalTable td {
+    border: 1px solid white;;
+}
+/* End::Modal Table */
 
 

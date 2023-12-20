@@ -69,6 +69,8 @@
                                             return "td-dark-blue";
                                         } elseif ($value == 0) {
                                             return "td-gray";
+                                        } else {
+                                            return "td-white";
                                         }
                                     }
                                 @endphp
@@ -77,7 +79,7 @@
                                     <tr>
                                         <td class="text-center">{{ $modelId[$i] }}</td>
                                         @foreach ($modelMonthData as $date => $items)
-                                            <td class="{{ makeTdColor($items[$i]['extra_sheet']) }} td-sheet">{{ $items[$i]['extra_sheet'] ?? '' }}</td>
+                                            <td class="{{ makeTdColor($items[$i]['extra_sheet']) }} td-sheet" data-id="{{ $items[$i]['id'] }}" data-toggle="modal" data-target="#dataModal">{{ $items[$i]['extra_sheet'] ?? '' }}</td>
                                         @endforeach
                                     </tr>
                                 @endfor
@@ -93,9 +95,93 @@
     <!--end::Entry-->
 </div>
 <!--end::Content-->
+
+<!--begin::Modal-->
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ $model_name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="p-panel">
+                    <table class="table table-checkable table-bordered" id="modalTable">
+                        <thead>
+                            <tr>
+                                <th>台番号</th>
+                                <th>G数</th>
+                                <th>差枚</th>
+                                <th>BB</th>
+                                <th>RB</th>
+                                <th>合成確率</th>
+                                <th>BB確率</th>
+                                <th>RB確率</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modalTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary font-weight-bold" data-dismiss="modal">クローズ</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+
 @endsection
 
 @section('add_js')
 
+<script>
+    $(document).ready(function() {
+
+        $("#modelDetailTable").on("click", ".td-sheet", function() {
+            getModelData($(this).data('id'));
+        });
+
+        function getModelData($model_id) {
+            $.ajax({
+                url: "{{ route('model.data') }}",
+                type: "POST",
+                data: {
+                    model_id: $model_id,
+                },
+                success: function(response) {
+                    // console.log(response['model'][0].model_name);
+                    $modelData = response['model'][0];
+                    updateTable($modelData);
+                },
+                error: function(error) {
+                    console.error('Ajax request failed: ', error);
+                }
+            });
+        }
+
+        function updateTable(modelData) {
+            console.log(modelData);
+            var tbody = $("#modalTableBody");
+
+            tbody.empty();
+            tbody.append("<tr>" +
+                "<td>" + modelData.machine_number + "</td>" +
+                "<td>" + modelData.g_number + "</td>" +
+                "<td>" + modelData.extra_sheet + "</td>" +
+                "<td>" + modelData.bb + "</td>" +
+                "<td>" + modelData.rb + "</td>" +
+                "<td>" + modelData.composite_probability + "</td>" +
+                "<td>" + modelData.bb_probability + "</td>" +
+                "<td>" + modelData.rb_probability + "</td>" +
+                "</tr>");
+
+            // Open the modal
+            $('#dataModal').modal('show');
+        }
+    });
+</script>
 
 @endsection
