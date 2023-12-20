@@ -9,7 +9,6 @@ use App\Models\StoreDataByDate;
 use App\Models\ModelData;
 use App\Utils\ServerSideTable;
 
-
 class HallDataController extends Controller
 {
     private $tempData = [];
@@ -41,11 +40,8 @@ class HallDataController extends Controller
     public function model(Request $request, $region_id, $store_id) {
         $region = Region::where('id', $region_id)->first();
         $store = StoreList::where('id', $store_id)->first();
-        $storeDataByDate = StoreDataByDate::where('store_id', $store_id)->get();
-        $storeDataIds = $storeDataByDate->pluck('id')->toArray();
-        $modelsData = ModelData::whereIn('store_data_id', $storeDataIds)->get();
 
-        return view('hall-data/data-list', compact('region', 'store', 'storeDataByDate', 'modelsData'));
+        return view('hall-data/data-list', compact('region', 'store'));
     }
 
     public function getModelList(Request $request, $store_id) {
@@ -83,7 +79,7 @@ class HallDataController extends Controller
                 if ($store_value['id'] == $model_value['store_data_id']) {
                     $temp_store_obj[] = [
                         'machine_number' => $model_value['machine_number'],
-                        'extra_sheet' => $model_value['extra_sheet'],
+                        'extra_sheet' => intval(str_replace(',', '', $model_value['extra_sheet'])),
                     ];
                 }
             }
@@ -94,11 +90,12 @@ class HallDataController extends Controller
     }
 
 
-    public function getModelDetailDataList(Request $request, $store_data_id) {
-        $list = ModelData::where('store_data_id', $store_data_id)->get();
+    // public function getModelDetailDataList(Request $request, $store_data_id) {
+    //     $list = ModelData::where('store_data_id', $store_data_id)->get();
 
-        $dataTable = new ServerSideTable($list);
-        $dataTable->getAjaxTable();
-    }
+    //     $dataTable = new ServerSideTable($list);
+    //     $dataTable->getAjaxTable();
+    // }
+
     
 }

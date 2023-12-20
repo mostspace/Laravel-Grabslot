@@ -28,7 +28,7 @@
                         <div class="divider w-100px mb-15"></div>
                     </div>
 
-                    <div class="p-panel mt-10" id="modelTable">
+                    <div class="p-panel mt-10" id="modelDetailTable">
                         <!--begin: Datatable-->
                         <table class="table table-checkable table-bordered" id="kt_datatable">
                             <thead>
@@ -48,18 +48,36 @@
 
                                     $modelId = [];
                                     foreach ($modelMonthData as $date => $items) {
-                                        for($i = 0; $i < $maxItemCount; $i++) {
+                                        for ($i = 0; $i < $maxItemCount; $i++) {
                                             $modelId[$i] = $items[$i]['machine_number'];
                                         }
-                                        break;                    
+                                        break;
+                                    }
+
+                                    function makeTdColor($value) {
+                                        if ($value < -3000) {
+                                            return "td-red";
+                                        } elseif ($value >= -3000 && $value < 0) {
+                                            return "td-pink";
+                                        } elseif ($value > 0 && $value < 1000) {
+                                            return "td-white";
+                                        } elseif ($value >= 1000 && $value < 3000) {
+                                            return "td-light-blue";
+                                        } elseif ($value >= 3000 && $value < 5000) {
+                                            return "td-blue";
+                                        } elseif ($value >= 5000) {
+                                            return "td-dark-blue";
+                                        } elseif ($value == 0) {
+                                            return "td-gray";
+                                        }
                                     }
                                 @endphp
 
                                 @for ($i = 0; $i < $maxItemCount; $i++)
                                     <tr>
-                                        <td>{{ $modelId[$i] }}</td>
+                                        <td class="text-center">{{ $modelId[$i] }}</td>
                                         @foreach ($modelMonthData as $date => $items)
-                                            <td>{{ $items[$i]['extra_sheet'] ?? '' }}</td>
+                                            <td class="{{ makeTdColor($items[$i]['extra_sheet']) }} td-sheet">{{ $items[$i]['extra_sheet'] ?? '' }}</td>
                                         @endforeach
                                     </tr>
                                 @endfor

@@ -219,20 +219,50 @@ div.dataTables_wrapper div.dataTables_filter input {
 #kt_datatable_next a:hover, #kt_datatable_previous a:hover  {
     border: none;
 }
-
-#modelTable th {
-    text-align: center;
-}
-#modelTable td {
-    border: 1px solid #ffffff;
-    text-align: right;
-}
-
-
-
 #kt_header_menu_wrapper {
     visibility: hidden;
 }
+.text-dark {
+    color: black !important;
+}
+
+/* Begin::Model One Month Table */
+#modelDetailTable th {
+    text-align: center;
+    /* color: black !important; */
+    /* background-color: #fff; */
+}
+#modelDetailTable td {
+    border: 1px solid #ffffff;
+    text-align: right;
+    /* color: black !important; */
+    /* background-color: #fff; */
+}
+#modelDetailTable .td-sheet {
+    color: black !important;
+}
+.td-white {
+    background-color: #ffffff !important;
+}
+.td-light-blue {
+    background-color: #d9e1f2 !important;
+}
+.td-blue {
+    background-color: #8ea9db !important;
+}
+.td-dark-blue {
+    background-color: #305496 !important;
+}
+.td-pink {
+    background-color: #ff9999 !important;
+}
+.td-red {
+    background-color: #ff5050 !important;
+}
+.td-gray {
+    background-color: #bfbfbf !important;
+}
+/* End::Model One Month Table */
 
 
 

@@ -27,7 +27,6 @@ var KTDatatablesDataSourceAjaxServer = function() {
 					data: "model_name",
 					render: function(data, type, row, meta) {
 						if(type === 'display') {
-							// return '<a href="/hall-data/' + region_id + '/' + store_id + '?' + model + '" class="p-link store-model">' + row.model_name + '</a>';
 							return '<a class="p-link store-model">' + row.model_name + '</a>';
 						} else if (type === 'sort' || type === 'type') {
 							return row.model_name;
@@ -44,7 +43,6 @@ var KTDatatablesDataSourceAjaxServer = function() {
 			initTable1();
 		},
 	};
-
 }();
 
 jQuery(document).ready(function() {

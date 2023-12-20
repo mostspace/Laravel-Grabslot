@@ -55,13 +55,9 @@
 @endsection
 
 @section('add_js')
-
-
 <script>
     var region = @json($region);
     var store = @json($store);
-    var storeDataByDate = @json($storeDataByDate);
-    var modelsData = @json($modelsData);
 </script>
 
 <!--begin::Page Scripts(used by this page)-->
@@ -72,23 +68,7 @@
     $(document).ready(function() {
         $("#modelTable").on("click", ".store-model", function() {
             window.location.href = '/model-detail-data/' + region.id + '/' + store.id + '/' + $(this).text();
-            
-        });
-    });
-
-</script>
-
-
-
-
-
-
-<script>
-    $(document).ready(function() {
-        $(".date-data").click(function() {
-            window.location.href = "/date-data/" + $(this).text();
         });
     });
 </script>
-
 @endsection
