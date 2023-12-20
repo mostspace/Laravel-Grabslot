@@ -229,14 +229,14 @@ div.dataTables_wrapper div.dataTables_filter input {
 /* Begin::Model One Month Table */
 #modelDetailTable th {
     text-align: center;
-    /* color: black !important; */
-    /* background-color: #fff; */
+    color: black !important;
+    background-color: #fff;
 }
 #modelDetailTable td {
     border: 1px solid #ffffff;
     text-align: right;
-    /* color: black !important; */
-    /* background-color: #fff; */
+    color: black !important;
+    background-color: #fff;
 }
 #modelDetailTable .td-sheet {
     color: black !important;
@@ -281,15 +281,28 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: #ffffff;
     color: red;
 }
-.row_red_cnt {
-    background-color: #f1abab;
-    color: #000000;
-    border-right: 1px solid #3c3939;
-}
 .row_blue_cnt {
     background-color: #8acaef;
-    color: black;
+    color: black !important;
 }
 /* End::Modal Table */
-
-
+#dataModal .modal-content {
+    color: white;
+    background: #15161c;
+    box-shadow: 2px 2px 33px 3px rgb(19 160 204);
+}
+#dataModal .modal-title {
+    color: #fff !important;
+}
+#dataModal .modal-content button > i {
+    color: #fff;
+}
+#dataModal .modal-header {
+    border-color: #27282e !important;
+}
+#dataModal .modal-footer {
+    border-color: #27282e !important;
+}
+#model-chart svg {
+    background-color: transparent !important;
+}

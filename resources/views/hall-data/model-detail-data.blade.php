@@ -33,7 +33,6 @@
                         <table class="table table-checkable table-bordered" id="kt_datatable">
                             <thead>
                                 <tr>
-                                    <!-- <th></th> -->
                                     <th></th>
                                     <th>台番号</th>
                                     @foreach($modelMonthData as $date => $items)
@@ -46,10 +45,6 @@
                                     $maxItemCount = 0; 
                                     $mainItemCount = 0; 
                                     $blueCnt = 0; 
-                                    $redCnt = 0; 
-                                    $tempRedCnt = 0; 
-                                    $tempBlueCnt = 0; 
-                                    $lastValues = ['red' => 0, 'blue' => 0];
 
                                     foreach ($modelMonthData as $items) {
                                         $maxItemCount = max($maxItemCount, count($items));
@@ -65,36 +60,29 @@
                                         break;
                                     }
                                 @endphp
-
         
-
                                 @for ($i = 0; $i < $maxItemCount; $i++)
                                     <tr>
                                         @foreach ($modelMonthData as $date => $items)
                                             @if ($i < $mainItemCount)
                                                 @php
-                                                    $redCnt += $items[$i]['item_color']['red'];
                                                     $blueCnt += $items[$i]['item_color']['blue'];
                                                 @endphp
                                             @endif
                                         @endforeach
 
                                         <td class="p-0" style="line-height: 48px;">
+                                            @if ($i < $mainItemCount)
                                             <div class="d-flex">
-                                                <div class="col text-center row_red_cnt">
-                                                    @if($i < $mainItemCount) {{ $redCnt }} @endif
-                                                </div>
                                                 <div class="col text-center row_blue_cnt">
                                                     @if($i < $mainItemCount) {{ $blueCnt }} @endif
                                                 </div>
                                             </div>
+                                            @endif
                                         </td>
 
-                                        <!-- <td class="redCnt">@if($i < $mainItemCount) {{ $redCnt }} @endif</td>
-                                        <td class="blueCnt">@if($i < $mainItemCount) {{ $blueCnt }} @endif</td> -->
-
                                         @php
-                                            $blueCnt = 0; $redCnt = 0;
+                                            $blueCnt = 0;
                                         @endphp
 
                                         <td class="text-center">@if($i < $mainItemCount) {{ $modelId[$i] }} @endif</td>
@@ -157,7 +145,9 @@
                                 <th>RB確率</th>
                             </tr>
                         </thead>
-                        <tbody id="modalTableBody"></tbody>
+                        <tbody id="modalTableBody">
+                            <div id="model-chart"></div>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -199,7 +189,6 @@
         }
 
         function updateTable(modelData) {
-            console.log(modelData);
             var tbody = $("#modalTableBody");
 
             tbody.empty();
@@ -218,6 +207,169 @@
             $('#dataModal').modal('show');
         }
     });
+</script>
+
+<script>
+    "use strict";
+
+    // Class definition
+    var AccessAnalyzeWidget = function () {
+
+        // Charts widgets
+        var modelChart = function () {
+            var element = document.getElementById("model-chart");
+
+            if (!element) {
+                return;
+            }
+
+            var options = {
+                series: [{
+                    name: '新しい利用者',
+                    data: [-5000, -2500, -1500, -1000, -500, -250, 0, 250, 500, 1000, 2500, 5000]
+                }],
+                theme: {
+                    mode: 'dark',
+                },
+                chart: {
+                    type: 'area',
+                    height: 350,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+
+                },
+                legend: {
+                    show: false
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                fill: {
+                    type: 'solid',
+                    opacity: 1
+                },
+                stroke: {
+                    curve: 'smooth',
+                    show: true,
+                    width: 3,
+                    colors: [KTApp.getSettings()['colors']['theme']['base']['primary']]
+                },
+                xaxis: {
+                    categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    axisBorder: {
+                        show: false,
+                    },
+                    axisTicks: {
+                        show: false
+                    },
+                    labels: {
+                        style: {
+                            colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+                            fontSize: '12px',
+                            fontFamily: KTApp.getSettings()['font-family']
+                        }
+                    },
+                    crosshairs: {
+                        position: 'front',
+                        stroke: {
+                            color: KTApp.getSettings()['colors']['theme']['base']['primary'],
+                            width: 1,
+                            dashArray: 3
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        formatter: undefined,
+                        offsetY: 0,
+                        style: {
+                            fontSize: '12px',
+                            fontFamily: KTApp.getSettings()['font-family']
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        style: {
+                            colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+                            fontSize: '12px',
+                            fontFamily: KTApp.getSettings()['font-family']
+                        }
+                    }
+                },
+                states: {
+                    normal: {
+                        filter: {
+                            type: 'none',
+                            value: 0
+                        }
+                    },
+                    hover: {
+                        filter: {
+                            type: 'none',
+                            value: 0
+                        }
+                    },
+                    active: {
+                        allowMultipleDataPointsSelection: false,
+                        filter: {
+                            type: 'none',
+                            value: 0
+                        }
+                    }
+                },
+                tooltip: {
+                    style: {
+                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+                        fontSize: '12px',
+                        fontFamily: KTApp.getSettings()['font-family'],
+                    },
+                    y: {
+                        formatter: function (val) {
+                            return val + " 人"
+                        }
+                    }
+                },
+                colors: [KTApp.getSettings()['colors']['theme']['light']['primary']],
+                grid: {
+                    borderColor: KTApp.getSettings()['colors']['gray']['gray-200'],
+                    strokeDashArray: 4,
+                    yaxis: {
+                        lines: {
+                            show: true
+                        }
+                    }
+                },
+                markers: {
+                    strokeColor: KTApp.getSettings()['colors']['theme']['base']['primary'],
+                    strokeWidth: 3
+                }
+            };
+
+            var chart = new ApexCharts(element, options);
+            chart.render();
+        }
+
+        // Public methods
+        return {
+            init: function () {
+                // Charts Widgets
+                modelChart();
+            }
+        }
+    }();
+
+    // Webpack support
+    if (typeof module !== 'undefined') {
+        module.exports = AccessAnalyzeWidget;
+    }
+
+    jQuery(document).ready(function () {
+        AccessAnalyzeWidget.init();
+    });
+
 </script>
 
 @endsection
