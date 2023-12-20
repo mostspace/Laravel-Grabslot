@@ -164,6 +164,8 @@
 @section('add_js')
 
 <script>
+    "use strict";
+    
     $(document).ready(function() {
 
         $("#modelDetailTable").on("click", ".td-sheet", function() {
@@ -178,7 +180,6 @@
                     model_id: $model_id,
                 },
                 success: function(response) {
-                    // console.log(response['model'][0].model_name);
                     $modelData = response['model'][0];
                     updateTable($modelData);
                 },
