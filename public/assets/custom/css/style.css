@@ -255,7 +255,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: #305496 !important;
 }
 .td-pink {
-    background-color: #ff9999 !important;
+    background-color: #f1abab !important;
 }
 .td-red {
     background-color: #ff5050 !important;
@@ -271,6 +271,24 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 #modalTable td {
     border: 1px solid white;;
+}
+.dailyModelBlue {
+    border-right: 1px solid #3c3939;
+    background-color: #8acaef;
+    color: black;
+}
+.dailyModelRed {
+    background-color: #ffffff;
+    color: red;
+}
+.row_red_cnt {
+    background-color: #f1abab;
+    color: #000000;
+    border-right: 1px solid #3c3939;
+}
+.row_blue_cnt {
+    background-color: #8acaef;
+    color: black;
 }
 /* End::Modal Table */
 

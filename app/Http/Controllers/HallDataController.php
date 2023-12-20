@@ -73,19 +73,53 @@ class HallDataController extends Controller
 
         $modelsData = ModelData::where('model_name', $model_name)->whereIn('store_data_id', $storeDataIds)->get();
 
+        function itemColor($value) {
+            $result = [];
+
+            if ($value < -3000) {
+                $result = ["color" => "td-red", "red" => 1, "blue" => 0];
+            } elseif ($value >= -3000 && $value < 0) {
+                $result = ["color" => "td-pink", "red" => 1, "blue" => 0];
+            } elseif ($value > 0 && $value < 1000) {
+                $result = ["color" => "td-white", "red" => 0, "blue" => 0];
+            } elseif ($value >= 1000 && $value < 3000) {
+                $result = ["color" => "td-light-blue", "red" => 0, "blue" => 1];
+            } elseif ($value >= 3000 && $value < 5000) {
+                $result = ["color" => "td-blue", "red" => 0, "blue" => 1];
+            } elseif ($value >= 5000) {
+                $result = ["color" => "td-dark-blue", "red" => 0, "blue" => 1];
+            } elseif ($value == 0) {
+                $result = ["color" => "td-gray", "red" => 0, "blue" => 0];
+            } else {
+                $result = ["color" => "td-white", "red" => 0, "blue" => 0];
+            }
+            return $result;
+        }
+
+        $modelMonthData = []; // Initialize $modelMonthData
+
         foreach ($storeDataByDate as $store_key => $store_value) {
             $temp_store_obj = [];
+            $colorCnts = ['red' => 0, 'blue' => 0];
+
             foreach ($modelsData as $model_key => $model_value) {
                 if ($store_value['id'] == $model_value['store_data_id']) {
                     $temp_store_obj[] = [
                         'id' => $model_value['id'],
                         'machine_number' => $model_value['machine_number'],
                         'extra_sheet' => intval(str_replace(',', '', $model_value['extra_sheet'])),
+                        'item_color' => itemColor(intval(str_replace(',', '', $model_value['extra_sheet']))),
                     ];
+
+                    $colorCnts['red'] += $temp_store_obj[count($temp_store_obj) - 1]['item_color']['red'];
+                    $colorCnts['blue'] += $temp_store_obj[count($temp_store_obj) - 1]['item_color']['blue'];
                 }
             }
+            $temp_store_obj[] = $colorCnts;
             $modelMonthData[$store_value['date']] = $temp_store_obj;
         }
+
+        // dd($modelMonthData);
 
         return view('hall-data/model-detail-data', compact('modelMonthData', 'region', 'store', 'model_name'));
     }

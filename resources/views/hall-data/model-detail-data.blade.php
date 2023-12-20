@@ -33,7 +33,7 @@
                         <table class="table table-checkable table-bordered" id="kt_datatable">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <!-- <th></th> -->
                                     <th></th>
                                     <th>台番号</th>
                                     @foreach($modelMonthData as $date => $items)
@@ -43,60 +43,82 @@
                             </thead>
                             <tbody>
                                 @php
-                                    $maxItemCount = 0; $blueCnt = 0; $redCnt = 0;
+                                    $maxItemCount = 0; 
+                                    $mainItemCount = 0; 
+                                    $blueCnt = 0; 
+                                    $redCnt = 0; 
+                                    $tempRedCnt = 0; 
+                                    $tempBlueCnt = 0; 
+                                    $lastValues = ['red' => 0, 'blue' => 0];
+
                                     foreach ($modelMonthData as $items) {
                                         $maxItemCount = max($maxItemCount, count($items));
                                     }
 
+                                    $mainItemCount = $maxItemCount - 1;
+
                                     $modelId = [];
                                     foreach ($modelMonthData as $date => $items) {
-                                        for ($i = 0; $i < $maxItemCount; $i++) {
+                                        for ($i = 0; $i < $mainItemCount; $i++) {
                                             $modelId[$i] = $items[$i]['machine_number'];
                                         }
                                         break;
                                     }
-
-                                    function makeTdColor($value) {
-                                        $result = [];
-                                        if ($value < -3000) {
-                                            $result = ["color" => "td-red", "red" => 1, "blue" => 0];
-                                        } elseif ($value >= -3000 && $value < 0) {
-                                            $result = ["color" => "td-pink", "red" => 1, "blue" => 0];
-                                        } elseif ($value > 0 && $value < 1000) {
-                                            $result = ["color" => "td-white", "red" => 0, "blue" => 0];
-                                        } elseif ($value >= 1000 && $value < 3000) {
-                                            $result = ["color" => "td-light-blue", "red" => 0, "blue" => 1];
-                                        } elseif ($value >= 3000 && $value < 5000) {
-                                            $result = ["color" => "td-blue", "red" => 0, "blue" => 1];
-                                        } elseif ($value >= 5000) {
-                                            $result = ["color" => "td-dark-blue", "red" => 0, "blue" => 1];
-                                        } elseif ($value == 0) {
-                                            $result = ["color" => "td-gray", "red" => 0, "blue" => 0];
-                                        } else {
-                                            $result = ["color" => "td-white", "red" => 0, "blue" => 0];
-                                        }
-                                        return $result;
-                                    }
                                 @endphp
 
+        
+
                                 @for ($i = 0; $i < $maxItemCount; $i++)
-                                    @php
-                                        $blueCnt = 0; $redCnt = 0;
-                                    @endphp
-                                    
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="text-center">{{ $modelId[$i] }}</td>
                                         @foreach ($modelMonthData as $date => $items)
-                                            @php
-                                                $tdColor = makeTdColor($items[$i]['extra_sheet']);
-                                            @endphp
-                                            <td class="{{ $tdColor['color'] }} td-sheet" data-id="{{ $items[$i]['id'] }}" data-toggle="modal" data-target="#dataModal">{{ $items[$i]['extra_sheet'] ?? '' }}</td>
+                                            @if ($i < $mainItemCount)
+                                                @php
+                                                    $redCnt += $items[$i]['item_color']['red'];
+                                                    $blueCnt += $items[$i]['item_color']['blue'];
+                                                @endphp
+                                            @endif
+                                        @endforeach
+
+                                        <td class="p-0" style="line-height: 48px;">
+                                            <div class="d-flex">
+                                                <div class="col text-center row_red_cnt">
+                                                    @if($i < $mainItemCount) {{ $redCnt }} @endif
+                                                </div>
+                                                <div class="col text-center row_blue_cnt">
+                                                    @if($i < $mainItemCount) {{ $blueCnt }} @endif
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <!-- <td class="redCnt">@if($i < $mainItemCount) {{ $redCnt }} @endif</td>
+                                        <td class="blueCnt">@if($i < $mainItemCount) {{ $blueCnt }} @endif</td> -->
+
+                                        @php
+                                            $blueCnt = 0; $redCnt = 0;
+                                        @endphp
+
+                                        <td class="text-center">@if($i < $mainItemCount) {{ $modelId[$i] }} @endif</td>
+
+                                        @foreach ($modelMonthData as $date => $items)
+                                            @if ($i < $mainItemCount)
+                                                <td class="{{ $items[$i]['item_color']['color'] }} td-sheet" data-id="{{ $items[$i]['id'] }}" data-toggle="modal" data-target="#dataModal">{{ $items[$i]['extra_sheet'] ?? '' }}</td>
+                                            @else
+                                                <td class="p-0" style="line-height: 30px;">
+                                                    <div class="d-flex">
+                                                        <div class="col text-center dailyModelBlue">
+                                                            {{ $items[$i]['blue'] }}
+                                                        </div>
+                                                        <div class="col text-center dailyModelRed">
+                                                            {{ $items[$i]['red'] }}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            @endif
                                         @endforeach
                                     </tr>
                                 @endfor
                             </tbody>
+
 
                         </table>
                         <!--end: Datatable-->
