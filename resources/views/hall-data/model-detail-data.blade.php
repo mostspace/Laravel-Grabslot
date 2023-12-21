@@ -161,9 +161,12 @@
 
 @section('add_js')
 
+<script>
+    var modelMonthData = @json($modelMonthData);
+</script>
 
 <script>
-
+    console.log(modelMonthData);
     // Class definition
     var modelDetailDataWidget = function () {
 
