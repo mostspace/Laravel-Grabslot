@@ -8,6 +8,7 @@ use App\Models\StoreList;
 use App\Models\StoreDataByDate;
 use App\Models\ModelData;
 use App\Utils\ServerSideTable;
+use Carbon\Carbon;
 
 class HallDataController extends Controller
 {
@@ -68,10 +69,17 @@ class HallDataController extends Controller
         $region = Region::where('id', $region_id)->first();
         $store = StoreList::where('id', $store_id)->first();
 
-        $storeDataByDate = StoreDataByDate::where('store_id', $store_id)->get();
+        // Get Store Data By Date
+        $storeDataByDate = StoreDataByDate::where('store_id', $store_id)
+                                            ->orderBy('date', 'desc')
+                                            ->limit(30)
+                                            ->get(["id", "date"]);
+                                        
         $storeDataIds = $storeDataByDate->pluck('id')->toArray();
 
-        $modelsData = ModelData::where('model_name', $model_name)->whereIn('store_data_id', $storeDataIds)->get();
+        $modelsData = ModelData::whereIn('store_data_id', $storeDataIds)->where('model_name', $model_name)->get();
+
+        dd($model_name);
 
         function itemColor($value) {
             $result = [];
@@ -96,8 +104,6 @@ class HallDataController extends Controller
             return $result;
         }
 
-        $modelMonthData = []; // Initialize $modelMonthData
-
         foreach ($storeDataByDate as $store_key => $store_value) {
             $temp_store_obj = [];
             $colorCnts = ['red' => 0, 'blue' => 0];
@@ -115,11 +121,13 @@ class HallDataController extends Controller
                     $colorCnts['blue'] += $temp_store_obj[count($temp_store_obj) - 1]['item_color']['blue'];
                 }
             }
+            // dd($temp_store_obj);
+
             $temp_store_obj[] = $colorCnts;
             $modelMonthData[$store_value['date']] = $temp_store_obj;
         }
 
-        // dd($modelMonthData);
+        dd($modelMonthData);
 
         return view('hall-data/model-detail-data', compact('modelMonthData', 'region', 'store', 'model_name'));
     }
