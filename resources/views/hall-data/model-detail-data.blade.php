@@ -89,9 +89,13 @@
 
                                     @foreach ($modelMonthData as $date => $items)
                                         @if ($i < $mainItemCount)
-                                            <td class="{{ isset($items[$i]['item_color']['color']) ? $items[$i]['item_color']['color'] : '' }} td-sheet" data-id="{{ isset($items[$i]['id']) ? $items[$i]['id'] : '' }}" data-machine_number="{{ isset($items[$i]['machine_number']) ? $items[$i]['machine_number'] : '' }}" data-toggle="modal" data-target="#dataModal">
-                                                {{ $items[$i]['extra_sheet'] ?? '' }}
-                                            </td>
+                                            @if ( isset($items[$i]['extra_sheet']) )
+                                                <td class="{{ isset($items[$i]['item_color']['color']) ? $items[$i]['item_color']['color'] : '' }} td-sheet" data-id="{{ isset($items[$i]['id']) ? $items[$i]['id'] : '' }}" data-machine_number="{{ isset($items[$i]['machine_number']) ? $items[$i]['machine_number'] : '' }}" data-toggle="modal" data-target="#dataModal">
+                                                    {{ $items[$i]['extra_sheet'] ?? '' }}
+                                                </td>
+                                            @else
+                                                <td></td>
+                                            @endif
                                         @else
                                             <td class="p-0">
                                                 <div class="d-flex">
@@ -384,6 +388,7 @@
             };
 
             var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
+            console.log(model_data);
 
             for (var i = 0; i < model_data.length; i++) {
                 options.series[0].data.push({

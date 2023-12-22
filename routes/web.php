@@ -81,22 +81,22 @@ Route::post('/model-data', [HallDataController::class, 'getModelData'])->name('m
 Route::post('/search-region', [RegionController::class, 'regionFilter'])->name('search.region');
 
 // Store
-Route::get('/store', [StoreController::class, 'index']);
-Route::get('/store/{prefecture}', [StoreController::class, 'prefecture']);
+// Route::get('/store', [StoreController::class, 'index']);
+// Route::get('/store/{prefecture}', [StoreController::class, 'prefecture']);
 
 // All Systems
-Route::get('/all-systems', [AllSystemsController::class, 'index']);
-Route::get('/all-systems/{prefecture}', [AllSystemsController::class, 'prefecture']);
+// Route::get('/all-systems', [AllSystemsController::class, 'index']);
+// Route::get('/all-systems/{prefecture}', [AllSystemsController::class, 'prefecture']);
 
 // Old Event
-Route::get('/old-event-date', [OldEventDateController::class, 'index']);
-Route::get('/old-event-date/{prefecture}', [OldEventDateController::class, 'prefecture']);
-Route::get('/old-event-date/{prefecture}/{eventDate}', [OldEventDateController::class, 'eventDate']);
+// Route::get('/old-event-date', [OldEventDateController::class, 'index']);
+// Route::get('/old-event-date/{prefecture}', [OldEventDateController::class, 'prefecture']);
+// Route::get('/old-event-date/{prefecture}/{eventDate}', [OldEventDateController::class, 'eventDate']);
 
 // Anniversary
-Route::get('/anniversary', [AnniversaryController::class, 'index']);
-Route::get('/anniversary/{prefecture}', [AnniversaryController::class, 'prefecture'])->name('anniversary.prefecture');
-Route::get('/anniversary/{prefecture}/{month}', [AnniversaryController::class, 'monthList']);
+// Route::get('/anniversary', [AnniversaryController::class, 'index']);
+// Route::get('/anniversary/{prefecture}', [AnniversaryController::class, 'prefecture'])->name('anniversary.prefecture');
+// Route::get('/anniversary/{prefecture}/{month}', [AnniversaryController::class, 'monthList']);
 
 // 404
 Route::get('/waiting', function () { return view('waiting'); });
@@ -110,7 +110,7 @@ Route::get('/waiting', function () { return view('waiting'); });
 // Route::post('/users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
 
 // Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function() {
-    Route::get('/', [AdminController::class, 'index'])->middleware('checkRole');
+    Route::get('/admin', [AdminController::class, 'index'])->middleware('checkRole');
     Route::get('/access-analyze', [AccessAnalyzeController::class, 'index']);
     Route::get('/promotion-printing', [PromotionPrintingController::class, 'index']);
     Route::get('/user-management', [UserManagementController::class, 'index']);
