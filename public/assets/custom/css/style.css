@@ -273,7 +273,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 .dailyModelBlue {
     border-right: 1px solid #3c3939;
-    background-color: #8acaef;
+    background-color: #bfe2ff;
     color: black;
     width: 50%;
     line-height: 30px;
@@ -289,10 +289,10 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: #ffffff !important;
 }
 .td-light-blue {
-    background-color: #8acaef  !important;
+    background-color: #bfe2ff  !important;
 }
 .td-blue {
-    background-color: rgb(65, 103, 173) !important;
+    background-color: #469cf5 !important;
 }
 .td-dark-blue {
     background-color: #305496 !important;

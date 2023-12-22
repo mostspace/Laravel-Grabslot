@@ -98,10 +98,10 @@
                                             <td class="p-0">
                                                 <div class="d-flex">
                                                     <div class="text-center dailyModelBlue">
-                                                        {{ $items[$i]['blue'] ?? '' }}
+                                                        {{ end($items)['blue'] ?? '' }}
                                                     </div>
                                                     <div class="text-center dailyModelRed">
-                                                        {{ $items[$i]['red'] ?? '' }}
+                                                        {{ end($items)['red'] ?? '' }}
                                                     </div>
                                                 </div>
                                             </td>

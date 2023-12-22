@@ -118,10 +118,9 @@ class HallDataController extends Controller
         ->where('A.model_name', $model_name)
         ->whereRaw('STR_TO_DATE(B.date, "%Y/%m/%d") > (SELECT DATE_SUB(MAX(STR_TO_DATE(B.date, "%Y/%m/%d")), INTERVAL 1 MONTH) FROM tbl_model_data as A LEFT JOIN tbl_store_data_by_date as B ON A.store_data_id = B.id WHERE A.store_data_id IN (SELECT id FROM tbl_store_data_by_date WHERE store_id = ?) AND A.model_name = ?)', [$store_id, $model_name])
         ->orderBy('B.date')
+        ->orderBy('A.machine_number')
         ->get();
     
-    
-
         // dd($modelsData);
 
       
@@ -129,9 +128,9 @@ class HallDataController extends Controller
         function itemColor($value) {
             $result = [];
 
-            if ($value < -3000) {
+            if ($value <= -3000) {
                 $result = ["color" => "td-red", "red" => 1, "blue" => 0];
-            } elseif ($value >= -3000 && $value < 0) {
+            } elseif ($value > -3000 && $value < 0) {
                 $result = ["color" => "td-pink", "red" => 1, "blue" => 0];
             } elseif ($value > 0 && $value < 1000) {
                 $result = ["color" => "td-white", "red" => 0, "blue" => 0];
