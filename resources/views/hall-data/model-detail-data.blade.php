@@ -170,28 +170,19 @@
 </script>
 
 <script>
-    console.log(modelMonthData);
+    
     // Class definition
     var modelDetailDataWidget = function () {
 
-        function getModelData($model_id) {
-            $.ajax({
-                url: "{{ route('model.data') }}",
-                type: "POST",
-                data: {
-                    model_id: $model_id,
-                },
-                success: function(response) {
-                    $modelData = response['model'][0];
-                    updateTable($modelData);
-                },
-                error: function(error) {
-                    console.error('Ajax request failed: ', error);
-                }
+        var modelDetailModal = function () {
+            $("#modelDetailTable").on("click", ".td-sheet", function() {
+                var model_id = $(this).data('id');
+                getModelData(model_id);
+                modelChart(model_id);
             });
         }
 
-        function updateTable(modelData) {
+        var updateTable = function(modelData) {
             var tbody = $("#modalTableBody");
 
             tbody.empty();
@@ -210,10 +201,27 @@
             $('#dataModal').modal('show');
         }
 
-        // Charts widgets
-        var modelChart = function () {
-            var element = document.getElementById("model-chart");
+        var getModelData = function(model_id) {
+            $.ajax({
+                url: "{{ route('model.data') }}",
+                type: "POST",
+                data: {
+                    model_id: model_id,
+                },
+                success: function(response) {
+                    var modelData = response['model'][0];
+                    updateTable(modelData);
+                },
+                error: function(error) {
+                    console.error('Ajax request failed: ', error);
+                }
+            });
+        }
 
+        // Charts widgets
+        var modelChart = function (model_id) {
+            console.log(model_id);
+            var element = document.getElementById("model-chart");
 
             if (!element) {
                 return;
@@ -348,18 +356,9 @@
             chart.render();
         }
 
-        var modelDetailModal = function () {
-            $("#modelDetailTable").on("click", ".td-sheet", function() {
-                var model_id = $(this).data('id');
-                getModelData(model_id);
-            });
-        }
-
         // Public methods
         return {
             init: function () {
-                // Charts Widgets
-                modelChart();
                 modelDetailModal();
             }
         }
