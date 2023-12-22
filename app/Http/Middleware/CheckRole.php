@@ -15,8 +15,8 @@ class CheckRole
         if (Auth::check()) {
             $user = Auth::user();
             $role = Role::where('user_id', $user->id)->first();
-
             if ($this->userHasAdminRole($role)) {
+                
                 return $next($request);
             } else {
                 // Redirect non-admin users to the home page with an error message

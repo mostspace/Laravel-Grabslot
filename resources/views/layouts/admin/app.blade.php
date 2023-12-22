@@ -303,6 +303,8 @@
         <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
         <!--end::Page Vendors-->
 
+		@yield('add_js')
+		
         <script>
 			const url = window.location.href;
 			const pathSegments = url.split('/');
@@ -330,7 +332,7 @@
 
 		</script>
 
-        @yield('add_js')
+        
 	</body>
 	<!--end::Body-->
 </html>

@@ -84,7 +84,7 @@ class UserManagementController extends Controller
         
         $columnsDefault = [
             'id'     => true,
-            'name'      => true,
+            // 'name'      => true,
             'email'      => true,
             'created_at'      => true,
         ];

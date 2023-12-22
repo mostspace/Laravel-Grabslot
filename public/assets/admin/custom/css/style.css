@@ -81,3 +81,7 @@
 #model_table_length, #model_table_filter, #model_table_info, #model_table_paginate {
     display: none !important;
 }
+/* Logo */
+.brand-logo img {
+    width: 90px;
+}

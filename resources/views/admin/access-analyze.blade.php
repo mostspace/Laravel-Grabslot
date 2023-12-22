@@ -100,7 +100,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>名前</th>
+                                            <!-- <th>名前</th> -->
                                             <th>メール</th>
                                             <th>登録日</th>
                                         </tr>
@@ -117,7 +117,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>名前</th>
+                                            <!-- <th>名前</th> -->
                                             <th>メール</th>
                                             <th>登録日</th>
                                         </tr>
@@ -141,7 +141,7 @@
 @endsection
 
 @section('add_js')
-<script src="assets/js/ajax-tables/access-analyze-table.js"></script>
+<script src="{{ asset('assets/js/ajax-tables/access-analyze-table.js') }}"></script>
 
 <script>
     "use strict";

@@ -32,7 +32,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>名前</th>
+                                <!-- <th>名前</th> -->
                                 <th>メール</th>
                                 <th>登録日</th>
                             </tr>
@@ -51,10 +51,7 @@
 @endsection
 
 @section('add_js')
-<!--begin::Page Vendors(used by this page)-->
-<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
-<!--end::Page Vendors-->
 <!--begin::Page Scripts(used by this page)-->
-<script src="assets/js/pages/crud/datatables/data-sources/ajax-server-side.js"></script>
+<script src="{{ asset('assets/js/ajax-tables/admin-users-list.js') }}"></script>
 <!--end::Page Scripts-->
 @endsection
