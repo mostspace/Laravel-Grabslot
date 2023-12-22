@@ -37,7 +37,7 @@
 
 .btn.btn-primary {
     background: #18C8FF !important;
-    border-color: #167592 !important;
+    border-color: #18c8ff !important;
 }
 
 .btn.btn-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-primary:focus:not(.btn-text), .btn.btn-primary.focus:not(.btn-text) {
@@ -308,10 +308,6 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 /* End::Model One Month Table */
 
-
-
-
-
 /* Begin::Modal Table */
 #modalTable td {
     border: 1px solid #27282e;
@@ -337,3 +333,8 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: transparent !important;
 }
 /* End::Modal Table */
+
+/* Footer */
+.footer .logo img {
+    width: 145px;
+}

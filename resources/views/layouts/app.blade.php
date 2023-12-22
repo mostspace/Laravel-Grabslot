@@ -134,7 +134,7 @@
 			                        <form method="POST" action="{{ route('logout') }}">
 			                            @csrf
 
-			                            <x-dropdown-link :href="route('logout')" class="btn btn-primary font-weight-bold px-5 py-3 m-2 rounded-10"
+			                            <x-dropdown-link :href="route('logout')" class="btn btn-primary font-weight-bold px-5 py-3 m-2 rounded-10 w-115px"
 			                                    onclick="event.preventDefault();
 			                                                this.closest('form').submit();">
 			                                {{ __('ログアウト') }}
