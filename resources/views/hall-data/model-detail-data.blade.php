@@ -165,7 +165,6 @@
     "use strict"
 
     var modelMonthData = @json($modelMonthData);
-    console.log(modelMonthData);
 
     // Class definition
     var modelDetailDataWidget = function () {
