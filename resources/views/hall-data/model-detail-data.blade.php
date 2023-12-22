@@ -89,7 +89,7 @@
 
                                     @foreach ($modelMonthData as $date => $items)
                                         @if ($i < $mainItemCount)
-                                            <td class="{{ isset($items[$i]['item_color']['color']) ? $items[$i]['item_color']['color'] : '' }} td-sheet" data-id="{{ isset($items[$i]['id']) ? $items[$i]['id'] : '' }}" data-toggle="modal" data-target="#dataModal">
+                                            <td class="{{ isset($items[$i]['item_color']['color']) ? $items[$i]['item_color']['color'] : '' }} td-sheet" data-id="{{ isset($items[$i]['id']) ? $items[$i]['id'] : '' }}" data-machine_number="{{ isset($items[$i]['machine_number']) ? $items[$i]['machine_number'] : '' }}" data-toggle="modal" data-target="#dataModal">
                                                 {{ $items[$i]['extra_sheet'] ?? '' }}
                                             </td>
                                         @else
@@ -171,8 +171,10 @@
         var modelDetailModal = function () {
             $("#modelDetailTable").on("click", ".td-sheet", function() {
                 var model_id = $(this).data('id');
+                var model_machine_number = $(this).data('machine_number');
+
                 getModelData(model_id);
-                modelChart(model_id);
+                modelChart(model_id, model_machine_number);
             });
         }
 
@@ -213,33 +215,28 @@
         }
 
         // Function to find data by model_id
-        function findDataByModelId(model_id, data) {
-            for (var date in data) {
-                var items = data[date];
-                for (var i = 0; i < items.length; i++) {
-                    if (items[i].id === model_id) {
-                        return items[i];
-                    }
-                }
-            }
-            return null;  // Return null if model_id is not found
-        }
+        function getCurrentModelData(model_id, model_machine_number, data) {
+            var temp_obj = [];
 
-        // Function to find data by model_id
-        function extraSheetByModel(model_id, data) {
             for (var date in data) {
                 var items = data[date];
+
                 for (var i = 0; i < items.length; i++) {
-                    if (items[i].id === model_id) {
-                        return items[i];
+                    if (items[i].machine_number == model_machine_number) {
+                        temp_obj.push(items[i]);
+
+                        if (items[i].id == model_id) {
+                            // Break out of both loops if the id is found
+                            return temp_obj;
+                        }
                     }
                 }
             }
-            return null;  // Return null if model_id is not found
+            return temp_obj;
         }
 
         // Charts widgets
-        var modelChart = function (model_id) {
+        var modelChart = function (model_id, model_machine_number) {
             var element = document.getElementById("model-chart");
 
             if (!element) {
@@ -248,8 +245,8 @@
 
             var options = {
                 series: [{
-                    name: '新しい利用者',
-                    data: [-5000, -2500, -1500, -1000, -500, -250, 0, 250, 500, 1000, 2500, 5000]
+                    name: '差枚',
+                    data: []
                 }],
                 theme: {
                     mode: 'dark',
@@ -351,8 +348,23 @@
                     },
                     y: {
                         formatter: function (val) {
-                            return val + " 人"
+                            return val
                         }
+                    },
+                    custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                        var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
+                        var date = model_data[dataPointIndex].date;
+                        var extraSheet = model_data[dataPointIndex].extra_sheet;
+
+                        // Custom title for the tooltip
+                        var title = "<div class='apexcharts-tooltip-title fs-7'>" + date + "</div>";
+
+                        // Custom content for the tooltip
+                        var content = "<div class='apexcharts-tooltip-content fs-7 pl-3 pb-3'>" +
+                                        "<span>差枚: " + extraSheet + "</span>" +
+                                    "</div>";
+
+                        return title + content;
                     }
                 },
                 colors: [KTApp.getSettings()['colors']['theme']['light']['primary']],
@@ -371,20 +383,17 @@
                 }
             };
 
-            var dateArray = findDataByModelId(model_id, modelMonthData);
-            console.log(dateArray);
-            // var extraSheetArray = extraSheetByModel(model_id, modelMonthData);
+            var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
 
-            var model_date_obj = [];
-            for (var date in modelMonthData) {
-                model_date_obj.push(date.replace(/^\d{4}\//, '')); 
-                if (date === dateArray['date']) {
-                    break;
-                }
+            for (var i = 0; i < model_data.length; i++) {
+                options.series[0].data.push({
+                    x: (model_data[i].date).replace(/^.*\/(\d{1,2})\(.*\)$/, '$1'),
+                    y: model_data[i].extra_sheet
+                });
             }
 
             // Update the xaxis categories with model_date_obj
-            options.xaxis.categories = model_date_obj;
+            options.xaxis.categories = model_data.map(item => item.date);
 
             var chart = new ApexCharts(element, options);
             chart.render();
