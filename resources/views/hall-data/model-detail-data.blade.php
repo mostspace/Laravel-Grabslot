@@ -165,6 +165,8 @@
 
 @section('add_js')
 <script>
+    "use strict"
+
     var modelMonthData = @json($modelMonthData);
     console.log(modelMonthData);
 
@@ -202,7 +204,7 @@
 
         var getModelData = function(model_id) {
             $.ajax({
-                url: "{{ route('model.data') }}",
+                url: "/model-data",
                 type: "POST",
                 data: {
                     model_id: model_id,
