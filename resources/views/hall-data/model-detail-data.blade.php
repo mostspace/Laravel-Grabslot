@@ -62,7 +62,6 @@
                                     }
                                     break;  // If you only want to process the first date, the break statement is okay
                                 }
-
                             @endphp
     
                             @for ($i = 0; $i < $maxItemCount; $i++)
@@ -75,7 +74,6 @@
                                             @endphp
                                         @endif
                                     @endforeach
-
 
                                     <td class="td-light-blue">
                                         @if ($i < $mainItemCount)
@@ -160,17 +158,13 @@
     </div>
 </div>
 <!--end::Modal-->
-
 @endsection
 
 @section('add_js')
-
 <script>
     var modelMonthData = @json($modelMonthData);
-</script>
+    console.log(modelMonthData);
 
-<script>
-    
     // Class definition
     var modelDetailDataWidget = function () {
 
@@ -218,9 +212,34 @@
             });
         }
 
+        // Function to find data by model_id
+        function findDataByModelId(model_id, data) {
+            for (var date in data) {
+                var items = data[date];
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].id === model_id) {
+                        return items[i];
+                    }
+                }
+            }
+            return null;  // Return null if model_id is not found
+        }
+
+        // Function to find data by model_id
+        function extraSheetByModel(model_id, data) {
+            for (var date in data) {
+                var items = data[date];
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].id === model_id) {
+                        return items[i];
+                    }
+                }
+            }
+            return null;  // Return null if model_id is not found
+        }
+
         // Charts widgets
         var modelChart = function (model_id) {
-            console.log(model_id);
             var element = document.getElementById("model-chart");
 
             if (!element) {
@@ -262,7 +281,7 @@
                     colors: [KTApp.getSettings()['colors']['theme']['base']['primary']]
                 },
                 xaxis: {
-                    categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    categories: [],
                     axisBorder: {
                         show: false,
                     },
@@ -351,6 +370,21 @@
                     strokeWidth: 3
                 }
             };
+
+            var dateArray = findDataByModelId(model_id, modelMonthData);
+            console.log(dateArray);
+            // var extraSheetArray = extraSheetByModel(model_id, modelMonthData);
+
+            var model_date_obj = [];
+            for (var date in modelMonthData) {
+                model_date_obj.push(date.replace(/^\d{4}\//, '')); 
+                if (date === dateArray['date']) {
+                    break;
+                }
+            }
+
+            // Update the xaxis categories with model_date_obj
+            options.xaxis.categories = model_date_obj;
 
             var chart = new ApexCharts(element, options);
             chart.render();
