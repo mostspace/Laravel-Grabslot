@@ -227,21 +227,64 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 
 /* Begin::Model One Month Table */
+#modelDetailTable {
+    display: block;
+    border: none;
+}
+#modelDetailTable thead {
+    width: 100%;
+    display: flex;
+}
+#modelDetailTable tbody {
+    width: 100%;
+    display: block;
+}
+#modelDetailTable tr {
+    display: inline-flex;
+    width: 100%;
+}
 #modelDetailTable th {
     text-align: center;
     color: black !important;
     background-color: #fff;
+    font-size: 8px;
+    padding: 7px 0;
+    width: 100%;
+    line-height: 15px;
+    border: none;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
 #modelDetailTable td {
-    border: 1px solid #ffffff;
-    text-align: right;
+    border: none;
+    text-align: center;
     color: black !important;
     background-color: #fff;
+    font-size: 11px;
+    padding: 7px 0;
+    width: 100%;
+    line-height: 17px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
 }
 #modelDetailTable .td-sheet {
     color: black !important;
     cursor: pointer;
 }
+.dailyModelBlue {
+    border-right: 1px solid #3c3939;
+    background-color: #8acaef;
+    color: black;
+    width: 50%;
+    line-height: 30px;
+}
+.dailyModelRed {
+    background-color: #ffffff;
+    color: red;
+    width: 50%;
+    line-height: 30px;
+}
+
 .td-white {
     background-color: #ffffff !important;
 }
@@ -255,7 +298,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: #305496 !important;
 }
 .td-pink {
-    background-color: #f1abab !important;
+    background-color: #ff9999!important;
 }
 .td-red {
     background-color: #ff5050 !important;
@@ -265,27 +308,14 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 /* End::Model One Month Table */
 
+
+
+
+
 /* Begin::Modal Table */
-#modalTable td, th {
-    text-align: center;
-}
 #modalTable td {
-    border: 1px solid white;;
+    border: 1px solid #27282e;
 }
-.dailyModelBlue {
-    border-right: 1px solid #3c3939;
-    background-color: #8acaef;
-    color: black;
-}
-.dailyModelRed {
-    background-color: #ffffff;
-    color: red;
-}
-.row_blue_cnt {
-    background-color: #8acaef;
-    color: black !important;
-}
-/* End::Modal Table */
 #dataModal .modal-content {
     color: white;
     background: #15161c;
@@ -306,3 +336,4 @@ div.dataTables_wrapper div.dataTables_filter input {
 #model-chart svg {
     background-color: transparent !important;
 }
+/* End::Modal Table */

@@ -9,4 +9,6 @@ class StoreDataByDate extends Model
 {
     use HasFactory;
     protected $table='tbl_store_data_by_date';
+
+    
 }

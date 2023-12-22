@@ -80,7 +80,6 @@ Route::post('/model-data', [HallDataController::class, 'getModelData'])->name('m
 // Search Region
 Route::post('/search-region', [RegionController::class, 'regionFilter'])->name('search.region');
 
-
 // Store
 Route::get('/store', [StoreController::class, 'index']);
 Route::get('/store/{prefecture}', [StoreController::class, 'prefecture']);
@@ -110,10 +109,10 @@ Route::get('/waiting', function () { return view('waiting'); });
 // Route::get('/user-management', [UserManagementController::class, 'index']);
 // Route::post('/users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function() {
+// Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function() {
     Route::get('/', [AdminController::class, 'index'])->middleware('checkRole');
     Route::get('/access-analyze', [AccessAnalyzeController::class, 'index']);
     Route::get('/promotion-printing', [PromotionPrintingController::class, 'index']);
     Route::get('/user-management', [UserManagementController::class, 'index']);
     Route::post('/users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
-});
+// });

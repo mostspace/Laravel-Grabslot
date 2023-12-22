@@ -28,87 +28,91 @@
                         <div class="divider w-100px mb-15"></div>
                     </div>
 
-                    <div class="p-panel mt-10" id="modelDetailTable">
-                        <!--begin: Datatable-->
-                        <table class="table table-checkable table-bordered" id="kt_datatable">
-                            <thead>
+                    <!--begin: Datatable-->
+                    <table class="table table-checkable table-bordered" id="modelDetailTable">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>台番号</th>
+                                @foreach($modelMonthData as $date => $items)
+                                <th>
+                                    {{ substr($date, 5) }}
+                                </th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                $maxItemCount = 0; 
+                                $mainItemCount = 0; 
+                                $blueCnt = 0; 
+
+                                foreach ($modelMonthData as $items) {
+                                    $maxItemCount = max($maxItemCount, count($items));
+                                }
+
+                                $mainItemCount = $maxItemCount - 1;
+
+                                $modelId = [];
+
+                                foreach ($modelMonthData as $date => $items) {
+                                    for ($i = 0; $i < $mainItemCount; $i++) {
+                                        // Use the index $i to set each element separately
+                                        $modelId[$i] = isset($items[$i]['machine_number']) ? $items[$i]['machine_number'] : '';
+                                    }
+                                    break;  // If you only want to process the first date, the break statement is okay
+                                }
+
+                            @endphp
+    
+                            @for ($i = 0; $i < $maxItemCount; $i++)
                                 <tr>
-                                    <th></th>
-                                    <th>台番号</th>
-                                    @foreach($modelMonthData as $date => $items)
-                                        <th>{{ $date }}</th>
+                                    @foreach ($modelMonthData as $date => $items)
+                                        @if ($i < $mainItemCount)
+                                            @php
+                                                // Check if 'item_color' key and 'blue' key exist
+                                                $blueCnt += isset($items[$i]['item_color']['blue']) ? $items[$i]['item_color']['blue'] : 0;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+
+
+                                    <td class="td-light-blue">
+                                        @if ($i < $mainItemCount)
+                                            @if($i < $mainItemCount) {{ $blueCnt }} @endif
+                                        @endif
+                                    </td>
+
+                                    @php
+                                        $blueCnt = 0;
+                                    @endphp
+
+                                    <td class="text-center">@if($i < $mainItemCount) {{ $modelId[$i] }} @endif</td>
+
+                                    @foreach ($modelMonthData as $date => $items)
+                                        @if ($i < $mainItemCount)
+                                            <td class="{{ isset($items[$i]['item_color']['color']) ? $items[$i]['item_color']['color'] : '' }} td-sheet" data-id="{{ isset($items[$i]['id']) ? $items[$i]['id'] : '' }}" data-toggle="modal" data-target="#dataModal">
+                                                {{ $items[$i]['extra_sheet'] ?? '' }}
+                                            </td>
+                                        @else
+                                            <td class="p-0">
+                                                <div class="d-flex">
+                                                    <div class="text-center dailyModelBlue">
+                                                        {{ $items[$i]['blue'] ?? '' }}
+                                                    </div>
+                                                    <div class="text-center dailyModelRed">
+                                                        {{ $items[$i]['red'] ?? '' }}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        @endif
                                     @endforeach
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $maxItemCount = 0; 
-                                    $mainItemCount = 0; 
-                                    $blueCnt = 0; 
+                            @endfor
+                        </tbody>
+                    </table>
+                    <!--end: Datatable-->
 
-                                    foreach ($modelMonthData as $items) {
-                                        $maxItemCount = max($maxItemCount, count($items));
-                                    }
-
-                                    $mainItemCount = $maxItemCount - 1;
-
-                                    $modelId = [];
-                                    foreach ($modelMonthData as $date => $items) {
-                                        for ($i = 0; $i < $mainItemCount; $i++) {
-                                            $modelId[$i] = $items[$i]['machine_number'];
-                                        }
-                                        break;
-                                    }
-                                @endphp
-        
-                                @for ($i = 0; $i < $maxItemCount; $i++)
-                                    <tr>
-                                        @foreach ($modelMonthData as $date => $items)
-                                            @if ($i < $mainItemCount)
-                                                @php
-                                                    $blueCnt += $items[$i]['item_color']['blue'];
-                                                @endphp
-                                            @endif
-                                        @endforeach
-
-                                        <td class="p-0" style="line-height: 48px;">
-                                            @if ($i < $mainItemCount)
-                                            <div class="d-flex">
-                                                <div class="col text-center row_blue_cnt">
-                                                    @if($i < $mainItemCount) {{ $blueCnt }} @endif
-                                                </div>
-                                            </div>
-                                            @endif
-                                        </td>
-
-                                        @php
-                                            $blueCnt = 0;
-                                        @endphp
-
-                                        <td class="text-center">@if($i < $mainItemCount) {{ $modelId[$i] }} @endif</td>
-
-                                        @foreach ($modelMonthData as $date => $items)
-                                            @if ($i < $mainItemCount)
-                                                <td class="{{ $items[$i]['item_color']['color'] }} td-sheet" data-id="{{ $items[$i]['id'] }}" data-toggle="modal" data-target="#dataModal">{{ $items[$i]['extra_sheet'] ?? '' }}</td>
-                                            @else
-                                                <td class="p-0" style="line-height: 30px;">
-                                                    <div class="d-flex">
-                                                        <div class="col text-center dailyModelBlue">
-                                                            {{ $items[$i]['blue'] }}
-                                                        </div>
-                                                        <div class="col text-center dailyModelRed">
-                                                            {{ $items[$i]['red'] }}
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            @endif
-                                        @endforeach
-                                    </tr>
-                                @endfor
-                            </tbody>
-                        </table>
-                        <!--end: Datatable-->
-                    </div>
                 </div>              
             </div>
         </div>

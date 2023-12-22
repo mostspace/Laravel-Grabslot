@@ -8,6 +8,7 @@ use App\Models\StoreList;
 use App\Models\StoreDataByDate;
 use App\Models\ModelData;
 use App\Utils\ServerSideTable;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class HallDataController extends Controller
@@ -48,8 +49,11 @@ class HallDataController extends Controller
     public function getModelList(Request $request, $store_id) {
         $list = StoreDataByDate::where('store_id', $store_id)->get();
 
+        
+
         if ($list->isNotEmpty()) {
             $storeDataIds = $list->pluck('id')->toArray();
+            
             $models = ModelData::select('model_name')
                     ->whereIn('store_data_id', $storeDataIds)
                     ->distinct()
@@ -69,18 +73,59 @@ class HallDataController extends Controller
         $region = Region::where('id', $region_id)->first();
         $store = StoreList::where('id', $store_id)->first();
 
-        // Get Store Data By Date
-        $storeDataByDate = StoreDataByDate::where('store_id', $store_id)
-                                            ->orderBy('date', 'desc')
-                                            ->limit(30)
-                                            ->get(["id", "date"]);
-                                        
-        $storeDataIds = $storeDataByDate->pluck('id')->toArray();
+        // Get One month date of the model
+        $modelDate = ModelData::select(
+            'B.id',
+            'B.date'
+        )
+        ->from('tbl_model_data as A')
+        ->leftJoin('tbl_store_data_by_date as B', 'A.store_data_id', '=', 'B.id')
+        ->whereIn('A.store_data_id', function ($query) use ($store_id) {
+            $query->select('id')
+                ->from('tbl_store_data_by_date')
+                ->where('store_id', $store_id);
+        })
+        ->where('A.model_name', $model_name)
+        ->whereRaw('STR_TO_DATE(B.date, "%Y/%m/%d") > (SELECT DATE_SUB(MAX(STR_TO_DATE(B.date, "%Y/%m/%d")), INTERVAL 1 MONTH) FROM tbl_model_data as A LEFT JOIN tbl_store_data_by_date as B ON A.store_data_id = B.id WHERE A.store_data_id IN (SELECT id FROM tbl_store_data_by_date WHERE store_id = ?) AND A.model_name = ?)', [$store_id, $model_name])
+        ->orderBy('B.date')
+        ->distinct()
+        ->get();
 
-        $modelsData = ModelData::whereIn('store_data_id', $storeDataIds)->where('model_name', $model_name)->get();
+        // dd($modelDate);
+       
+        // Get One month datas of the model
+        $modelsData = ModelData::select(
+            'A.id',
+            'A.store_data_id',
+            'A.model_name',
+            'B.date',
+            'A.machine_number',
+            'A.g_number',
+            'A.extra_sheet',
+            'A.bb',
+            'A.rb',
+            'A.composite_probability',
+            'A.bb_probability',
+            'A.rb_probability'
+        )
+        ->from('tbl_model_data as A')
+        ->leftJoin('tbl_store_data_by_date as B', 'A.store_data_id', '=', 'B.id')
+        ->whereIn('A.store_data_id', function ($query) use ($store_id) {
+            $query->select('id')
+                ->from('tbl_store_data_by_date')
+                ->where('store_id', $store_id);
+        })
+        ->where('A.model_name', $model_name)
+        ->whereRaw('STR_TO_DATE(B.date, "%Y/%m/%d") > (SELECT DATE_SUB(MAX(STR_TO_DATE(B.date, "%Y/%m/%d")), INTERVAL 1 MONTH) FROM tbl_model_data as A LEFT JOIN tbl_store_data_by_date as B ON A.store_data_id = B.id WHERE A.store_data_id IN (SELECT id FROM tbl_store_data_by_date WHERE store_id = ?) AND A.model_name = ?)', [$store_id, $model_name])
+        ->orderBy('B.date')
+        ->get();
+    
+    
 
-        dd($model_name);
+        // dd($modelsData);
 
+      
+        // Add Number attribute Color 
         function itemColor($value) {
             $result = [];
 
@@ -104,15 +149,19 @@ class HallDataController extends Controller
             return $result;
         }
 
-        foreach ($storeDataByDate as $store_key => $store_value) {
+        foreach ($modelDate as $date_key => $date_value) {
             $temp_store_obj = [];
             $colorCnts = ['red' => 0, 'blue' => 0];
-
+            
             foreach ($modelsData as $model_key => $model_value) {
-                if ($store_value['id'] == $model_value['store_data_id']) {
+                
+                // dd($date_value);
+                if ($date_value['id'] == $model_value['store_data_id']) {
+                    // dd($model_value['store_data_id']);
                     $temp_store_obj[] = [
                         'id' => $model_value['id'],
                         'machine_number' => $model_value['machine_number'],
+                        'date' => $model_value['date'],
                         'extra_sheet' => intval(str_replace(',', '', $model_value['extra_sheet'])),
                         'item_color' => itemColor(intval(str_replace(',', '', $model_value['extra_sheet']))),
                     ];
@@ -121,17 +170,15 @@ class HallDataController extends Controller
                     $colorCnts['blue'] += $temp_store_obj[count($temp_store_obj) - 1]['item_color']['blue'];
                 }
             }
-            // dd($temp_store_obj);
-
+            
             $temp_store_obj[] = $colorCnts;
-            $modelMonthData[$store_value['date']] = $temp_store_obj;
+            $modelMonthData[$date_value['date']] = $temp_store_obj;
         }
 
-        dd($modelMonthData);
+        // dd($modelMonthData);
 
         return view('hall-data/model-detail-data', compact('modelMonthData', 'region', 'store', 'model_name'));
     }
-
 
     public function getModelData(Request $request) {
         $model = ModelData::where('id', $request->input('model_id'))->get();
@@ -139,5 +186,4 @@ class HallDataController extends Controller
         return response()->json(['model' => $model]);
     }
 
-    
 }
