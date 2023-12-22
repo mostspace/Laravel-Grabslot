@@ -227,47 +227,36 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 
 /* Begin::Model One Month Table */
-#modelDetailTable {
-    display: block;
-    border: none;
-}
-#modelDetailTable thead {
+.model-table {
+    display: grid;
+    grid-template-columns: auto;
     width: 100%;
+}
+.model-table .model-table-row {
     display: flex;
+    flex-wrap: nowrap;
 }
-#modelDetailTable tbody {
+.model-table .td-block {
+    background-color: #ffffff;
+    flex: 1;
+    min-width: 30px; /* Allow blocks to shrink if needed */
+    border-right: 1px solid #27282e;
+    border-bottom: 1px solid #27282e;
+    box-sizing: border-box;
+    height: 32px;
     width: 100%;
-    display: block;
-}
-#modelDetailTable tr {
-    display: inline-flex;
-    width: 100%;
-}
-#modelDetailTable th {
-    text-align: center;
-    color: black !important;
-    background-color: #fff;
-    font-size: 8px;
-    padding: 7px 0;
-    width: 100%;
-    line-height: 15px;
-    border: none;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-}
-#modelDetailTable td {
-    border: none;
-    text-align: center;
-    color: black !important;
-    background-color: #fff;
     font-size: 11px;
-    padding: 7px 0;
-    width: 100%;
-    line-height: 17px;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
 }
-#modelDetailTable .td-sheet {
+.model-table .td-block.td-header {
+    color: black;
+    font-size: 8px;
+    font-weight: 600;
+}
+.model-table .td-block.td-sheet {
     color: black !important;
     cursor: pointer;
 }
@@ -276,13 +265,13 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: #bfe2ff;
     color: black;
     width: 50%;
-    line-height: 30px;
+    line-height: 31px;
 }
 .dailyModelRed {
     background-color: #ffffff;
     color: red;
     width: 50%;
-    line-height: 30px;
+    line-height: 31px;
 }
 
 .td-white {
@@ -338,3 +327,4 @@ div.dataTables_wrapper div.dataTables_filter input {
 .footer .logo img {
     width: 145px;
 }
+

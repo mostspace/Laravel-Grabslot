@@ -28,20 +28,18 @@
                         <div class="divider w-100px mb-15"></div>
                     </div>
 
-                    <!--begin: Datatable-->
-                    <table class="table table-checkable table-bordered" id="modelDetailTable">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>台番号</th>
-                                @foreach($modelMonthData as $date => $items)
-                                <th>
-                                    {{ substr($date, 5) }}
-                                </th>
-                                @endforeach
-                            </tr>
-                        </thead>
-                        <tbody>
+
+                    <div class="model-table my-20" id="modelDetailTable">
+                        <div class="model-table-row">
+                            <div class="td-block td-header"></div>
+                            <div class="td-block td-header">台番号</div>
+                            @foreach($modelMonthData as $date => $items)
+                            <div class="td-block td-header">
+                                {{ substr($date, 5) }}
+                            </div>
+                            @endforeach
+                        </div>
+                        <div class="model-table">
                             @php
                                 $maxItemCount = 0; 
                                 $mainItemCount = 0; 
@@ -63,9 +61,9 @@
                                     break;  // If you only want to process the first date, the break statement is okay
                                 }
                             @endphp
-    
+
                             @for ($i = 0; $i < $maxItemCount; $i++)
-                                <tr>
+                                <div class="model-table-row">
                                     @foreach ($modelMonthData as $date => $items)
                                         @if ($i < $mainItemCount)
                                             @php
@@ -75,45 +73,42 @@
                                         @endif
                                     @endforeach
 
-                                    <td class="td-light-blue">
+                                    <div class="td-block td-light-blue">
                                         @if ($i < $mainItemCount)
                                             @if($i < $mainItemCount) {{ $blueCnt }} @endif
                                         @endif
-                                    </td>
+                                    </div>
 
                                     @php
                                         $blueCnt = 0;
                                     @endphp
 
-                                    <td class="text-center">@if($i < $mainItemCount) {{ $modelId[$i] }} @endif</td>
+                                    <div class="td-block">@if($i < $mainItemCount) {{ $modelId[$i] }} @endif</div>
 
                                     @foreach ($modelMonthData as $date => $items)
                                         @if ($i < $mainItemCount)
                                             @if ( isset($items[$i]['extra_sheet']) )
-                                                <td class="{{ isset($items[$i]['item_color']['color']) ? $items[$i]['item_color']['color'] : '' }} td-sheet" data-id="{{ isset($items[$i]['id']) ? $items[$i]['id'] : '' }}" data-machine_number="{{ isset($items[$i]['machine_number']) ? $items[$i]['machine_number'] : '' }}" data-toggle="modal" data-target="#dataModal">
+                                                <div class="td-block {{ isset($items[$i]['item_color']['color']) ? $items[$i]['item_color']['color'] : '' }} td-sheet" data-id="{{ isset($items[$i]['id']) ? $items[$i]['id'] : '' }}" data-machine_number="{{ isset($items[$i]['machine_number']) ? $items[$i]['machine_number'] : '' }}" data-toggle="modal" data-target="#dataModal">
                                                     {{ $items[$i]['extra_sheet'] ?? '' }}
-                                                </td>
+                                                </div>
                                             @else
-                                                <td></td>
+                                                <div class="td-block"></div>
                                             @endif
                                         @else
-                                            <td class="p-0">
-                                                <div class="d-flex">
-                                                    <div class="text-center dailyModelBlue">
-                                                        {{ end($items)['blue'] ?? '' }}
-                                                    </div>
-                                                    <div class="text-center dailyModelRed">
-                                                        {{ end($items)['red'] ?? '' }}
-                                                    </div>
+                                            <div class="td-block">
+                                                <div class="text-center dailyModelBlue">
+                                                    {{ end($items)['blue'] ?? '' }}
                                                 </div>
-                                            </td>
+                                                <div class="text-center dailyModelRed">
+                                                    {{ end($items)['red'] ?? '' }}
+                                                </div>
+                                            </div>
                                         @endif
                                     @endforeach
-                                </tr>
+                                </div>
                             @endfor
-                        </tbody>
-                    </table>
-                    <!--end: Datatable-->
+                        </div>
+                    </div>
                 </div>              
             </div>
         </div>
