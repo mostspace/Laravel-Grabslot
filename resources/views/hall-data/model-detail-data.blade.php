@@ -73,11 +73,13 @@
                                         @endif
                                     @endforeach
 
-                                    <div class="td-block td-light-blue">
-                                        @if ($i < $mainItemCount)
+                                    @if ($i < $mainItemCount)
+                                        <div class="td-block td-light-blue">
                                             @if($i < $mainItemCount) {{ $blueCnt }} @endif
-                                        @endif
-                                    </div>
+                                        </div>
+                                    @else
+                                        <div class="td-block"></div>
+                                    @endif
 
                                     @php
                                         $blueCnt = 0;
