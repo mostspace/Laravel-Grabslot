@@ -49,8 +49,6 @@ class HallDataController extends Controller
     public function getModelList(Request $request, $store_id) {
         $list = StoreDataByDate::where('store_id', $store_id)->get();
 
-        
-
         if ($list->isNotEmpty()) {
             $storeDataIds = $list->pluck('id')->toArray();
             
@@ -90,8 +88,6 @@ class HallDataController extends Controller
         ->orderBy('B.date')
         ->distinct()
         ->get();
-
-        // dd($modelDate);
        
         // Get One month datas of the model
         $modelsData = ModelData::select(
@@ -121,9 +117,6 @@ class HallDataController extends Controller
         ->orderBy('A.machine_number')
         ->get();
     
-        // dd($modelsData);
-
-      
         // Add Number attribute Color 
         function itemColor($value) {
             $result = [];
@@ -153,10 +146,7 @@ class HallDataController extends Controller
             $colorCnts = ['red' => 0, 'blue' => 0];
             
             foreach ($modelsData as $model_key => $model_value) {
-                
-                // dd($date_value);
                 if ($date_value['id'] == $model_value['store_data_id']) {
-                    // dd($model_value['store_data_id']);
                     $temp_store_obj[] = [
                         'id' => $model_value['id'],
                         'machine_number' => $model_value['machine_number'],
