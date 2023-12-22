@@ -4,8 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse; // Import RedirectResponse class
-
+use Illuminate\Http\RedirectResponse;
 use App\Models\Role;
 use Auth;
 
@@ -19,10 +18,14 @@ class CheckRole
 
             if ($this->userHasAdminRole($role)) {
                 return $next($request);
+            } else {
+                // Redirect non-admin users to the home page with an error message
+                return redirect('/')->with('error', 'You do not have the required permissions.');
             }
         }
 
-        return redirect('/');
+        // Redirect unauthenticated users to the login page
+        return redirect('/login');
     }
 
     protected function userHasAdminRole($role): bool

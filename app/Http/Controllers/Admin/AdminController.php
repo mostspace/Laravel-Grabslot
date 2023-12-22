@@ -10,6 +10,6 @@ class AdminController extends Controller
 
     public function index() {
         // return view('admin/dashboard');
-        return redirect('/access-analyze');
+        return redirect('/admin/access-analyze');
     }
 }
