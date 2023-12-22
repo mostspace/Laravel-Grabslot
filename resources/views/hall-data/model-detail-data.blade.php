@@ -214,6 +214,7 @@
         var modelChart = function () {
             var element = document.getElementById("model-chart");
 
+
             if (!element) {
                 return;
             }
