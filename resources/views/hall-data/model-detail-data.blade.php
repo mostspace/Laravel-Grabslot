@@ -350,7 +350,8 @@
 
         var modelDetailModal = function () {
             $("#modelDetailTable").on("click", ".td-sheet", function() {
-                getModelData($(this).data('id'));
+                var model_id = $(this).data('id');
+                getModelData(model_id);
             });
         }
 
