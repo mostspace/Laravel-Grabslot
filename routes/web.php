@@ -66,7 +66,6 @@ Route::get('/home', [RegionController::class, 'getRegionList'])->middleware(['au
 // Route::get('/date-pickup', [DatePickupController::class, 'index']);
 // Route::get('/category', [CategoryController::class, 'index']);
 
-
 // Hall
 Route::get('/hall-data', [HallDataController::class, 'index']);
 Route::get('/hall-data/{region_id}', [HallDataController::class, 'region']);

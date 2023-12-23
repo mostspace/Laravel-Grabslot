@@ -23,7 +23,7 @@ class CheckRole
                 return redirect('/')->with('error', 'You do not have the required permissions.');
             }
         }
-
+        
         // Redirect unauthenticated users to the login page
         return redirect('/login');
     }
