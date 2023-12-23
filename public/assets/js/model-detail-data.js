@@ -8,9 +8,34 @@ var modelDetailDataWidget = function () {
             var model_id = $(this).data('id');
             var model_machine_number = $(this).data('machine_number');
 
+            var selected_model =  getSelectedModel(model_id, model_machine_number, modelMonthData);
+
             getModelData(model_id);
-            modelChart(model_id, model_machine_number);
+            modelChart(model_id, model_machine_number, selected_model);
         });
+    }
+
+    var getSelectedModel = function(model_id, model_machine_number, data) {
+        var temp_obj = {};
+        var cnt = 0;
+
+        for (var date in data) {
+            var items = data[date];
+
+            for (var i = 0; i < items.length; i++) {
+                if(items[i].machine_number == model_machine_number) {
+                    cnt++;
+                    if (items[i].id == model_id) {
+                        temp_obj['extra_sheet'] = items[i].extra_sheet;
+                        temp_obj['model_order'] = cnt;
+
+                        return temp_obj;
+                    }
+                }
+            }
+        }
+
+        return temp_obj;
     }
 
     var updateTable = function(modelData) {
@@ -50,7 +75,7 @@ var modelDetailDataWidget = function () {
     }
 
     // Function to find data by model_id
-    function getCurrentModelData(model_id, model_machine_number, data) {
+    var getCurrentModelData = function(model_id, model_machine_number, data) {
         var temp_obj = [];
 
         for (var date in data) {
@@ -59,19 +84,15 @@ var modelDetailDataWidget = function () {
             for (var i = 0; i < items.length; i++) {
                 if (items[i].machine_number == model_machine_number) {
                     temp_obj.push(items[i]);
-
-                    if (items[i].id == model_id) {
-                        // Break out of both loops if the id is found
-                        return temp_obj;
-                    }
                 }
             }
         }
+        
         return temp_obj;
     }
 
     // Charts widgets
-    var modelChart = function (model_id, model_machine_number) {
+    var modelChart = function (model_id, model_machine_number, selected_model) {
         var element = document.getElementById("model-chart");
 
         if (!element) {
@@ -215,11 +236,26 @@ var modelDetailDataWidget = function () {
             markers: {
                 strokeColor: KTApp.getSettings()['colors']['theme']['base']['primary'],
                 strokeWidth: 3
-            }
+            },
+            annotations: {
+                points: [
+                    {
+                        x: selected_model.model_order,
+                        y: selected_model.extra_sheet,
+                        marker: {
+                            size: 9,
+                            fillColor: '#ff0000',
+                            strokeColor: '#ffffff',
+                            radius: 2,
+                            cssClass: 'apexcharts-custom-hover',
+                        }
+                    },
+                ],
+            },
         };
 
         var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
-        console.log(model_data);
+        // console.log(model_data);
 
         for (var i = 0; i < model_data.length; i++) {
             options.series[0].data.push({
