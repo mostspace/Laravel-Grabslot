@@ -38,6 +38,14 @@ class HallDataController extends Controller
         $dataTable->getAjaxTable();
     }
 
+    // Search Hall Data
+    public function searchHallDataList(Request $request, $hall_name) {
+        $stores = StoreList::where('name', $hall_name)->get();
+
+        $dataTable = new ServerSideTable($stores);
+        $dataTable->getAjaxTable();
+    }
+
     // Get Store
     public function model(Request $request, $region_id, $store_id) {
         $region = Region::where('id', $region_id)->first();

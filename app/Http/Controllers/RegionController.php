@@ -12,7 +12,7 @@ class RegionController extends Controller
         $areas = RegionArea::all();
         $regions = Region::all();
 
-        return view('welcome', compact('areas', 'regions'));
+        return view('home', compact('areas', 'regions'));
     }
 
     public function regionFilter(Request $request) {

@@ -70,6 +70,7 @@ Route::get('/home', [RegionController::class, 'getRegionList'])->middleware(['au
 Route::get('/hall-data', [HallDataController::class, 'index']);
 Route::get('/hall-data/{region_id}', [HallDataController::class, 'region']);
 Route::post('/hall-data/{region_id}', [HallDataController::class, 'getHallDataList']);
+Route::post('/hall-data/{region_id}', [HallDataController::class, 'getHallDataList']);
 Route::get('/hall-data/{region_id}/{store_id}', [HallDataController::class, 'model']);
 Route::post('/model-list/{store_id}', [HallDataController::class, 'getModelList']);
 Route::get('/model-detail-data/{region_id}/{store_id}/{model_name}', [HallDataController::class, 'modelDetailData'])->name('model.detail.data');
@@ -78,6 +79,8 @@ Route::post('/model-data', [HallDataController::class, 'getModelData'])->name('m
 
 // Search Region
 Route::post('/search-region', [RegionController::class, 'regionFilter'])->name('search.region');
+
+Route::post('/search-hall/{hall_name}', [HallDataController::class, 'searchHallDataList']);
 
 // Store
 // Route::get('/store', [StoreController::class, 'index']);

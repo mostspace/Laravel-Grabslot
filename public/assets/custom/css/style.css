@@ -328,3 +328,22 @@ div.dataTables_wrapper div.dataTables_filter input {
     width: 145px;
 }
 
+
+/* Search Hall Modal Table */
+#searchModal .modal-content {
+    /* color: white; */
+    background: #15161c;
+    box-shadow: 2px 2px 33px 3px rgb(19 160 204);
+}
+#searchModal .modal-title {
+    color: #fff !important;
+}
+#searchModal .modal-content button > i {
+    color: #fff;
+}
+#searchModal .modal-header {
+    border-color: #27282e !important;
+}
+#searchModal .modal-footer {
+    border-color: #27282e !important;
+}

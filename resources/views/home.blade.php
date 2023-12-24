@@ -287,6 +287,38 @@
     </div>
     <!--end::Scrolltop-->
 
+    <!--begin::Modal-->
+    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">店舗検索リスト</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="search-hall-table w-100">
+                        <!--begin: Datatable-->
+                        <table class="table table-checkable" id="kt_datatable">
+                            <thead>
+                                <tr>
+                                    <th>店舗</th>
+                                    <th>市区郡</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <!--end: Datatable-->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">クローズ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Modal-->
+
     <!--begin::Global Config(global config for global JS scripts)-->
     <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#6993FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#E1E9FF", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };</script>
     <!--end::Global Config-->
@@ -304,6 +336,8 @@
     <!--begin::Page Vendors(used by this page)-->
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <!--end::Page Vendors-->
+    
+    <script src="{{ asset('assets/js/ajax-tables/search-hall-table.js') }}"></script>
 
     @yield('add_js')
 
@@ -342,55 +376,6 @@
             $("#regionList").on("click", ".region-btn", function() {
                 window.location.href = "/hall-data/" + $(this).data('region_id');
             });
-
-            // Search Region
-            $("#searchRegion").val('');
-
-            $("#searchRegion").keydown(function(event) {
-                if(event.which == 13) {
-                    $keyword = $("#searchRegion").val();
-                    if($keyword) {
-                        searchRegion($keyword);
-                    }
-                }
-            });
-
-            $("#searchRegionBtn").click(function() {
-                $keyword = $("#searchRegion").val();
-                if($keyword) {
-                    searchRegion($keyword);
-                }
-            });
-
-            $("#searchRegion").on('keyup', function(event) {
-                if(event.key === 'Delete' || event.key === 'Backspace') {
-                    if($(this).val().trim() === '') {
-                        $("#filteredRegion").html('');
-                        $("#allRegionList").show();
-                    }
-                }
-            });
-
-            function searchRegion($searchTerm) {
-                $.ajax({
-                    url: "/search-region",
-                    type: "POST",
-                    data: {
-                        region: $searchTerm,
-                    },
-                    success: function(response) {
-                        $("#allRegionList").hide();
-                        if(response) {
-                            $("#filteredRegion").html('<div class="col-3"><button class="btn btn-outline-white region-btn font-weight-bold py-3 w-100 mb-5 rounded-10" data-region_id="' + response.id + '">' + response.name + '</button></div>');
-                        } else {
-                            $("#filteredRegion").html('<p class="fs-7 text-white w-100 text-center">検索した地域はありません。</p>');
-                        }
-                    },
-                    error: function(error) {
-                        console.error('Ajax request failed: ', error);
-                    }
-                });
-            }
         });
 
     </script>
