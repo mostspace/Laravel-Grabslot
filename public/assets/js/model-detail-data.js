@@ -21,7 +21,6 @@ var modelDetailDataWidget = function () {
 
         for (var date in data) {
             var items = data[date];
-
             for (var i = 0; i < items.length; i++) {
                 if(items[i].machine_number == model_machine_number) {
                     cnt++;
@@ -255,7 +254,6 @@ var modelDetailDataWidget = function () {
         };
 
         var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
-        // console.log(model_data);
 
         for (var i = 0; i < model_data.length; i++) {
             options.series[0].data.push({
