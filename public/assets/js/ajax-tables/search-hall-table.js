@@ -34,11 +34,23 @@ var searchModalWidget = function() {
 			}
 		});
 
+		$('#searchModal').on('hidden.bs.modal', function (e) {
+			// Do something when the modal is closed
+			$('#kt_datatable tbody').empty();
+		});
+
     }
 
 	var modalTable = function(hall_name) {
 
 		var table = $('#kt_datatable');
+
+		// Check if DataTable is already initialized
+		if ($.fn.DataTable.isDataTable('#kt_datatable')) {
+			// If DataTable is already initialized, destroy it
+			table.DataTable().destroy();
+			table.empty(); //Optional: Clear the table content
+		}
 
 		// begin first table
 		table.DataTable({
@@ -78,7 +90,6 @@ var searchModalWidget = function() {
 		//main function to initiate the module
 		init: function() {
 			searchedHallModal();
-			// modalTable();
 		},
 	};
 
