@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <div class="model-table my-20" id="modelDetailTable">
+                        <div class="model-table mb-15" id="modelDetailTable">
                             <div class="model-table-row">
                                 <div class="td-block td-header"></div>
                                 <div class="td-block td-header">台番号</div>
@@ -184,8 +184,6 @@
             $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
         });
     });
-
-
 </script>
 
 <script src="{{ asset('assets/js/model-detail-data.js') }}"></script>
