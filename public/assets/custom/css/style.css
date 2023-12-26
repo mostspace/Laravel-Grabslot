@@ -266,6 +266,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     color: black;
     width: 50%;
     line-height: 31px;
+    cursor: pointer;
 }
 .dailyModelRed {
     background-color: #ffffff;
@@ -294,6 +295,10 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 .td-gray {
     background-color: #bfbfbf !important;
+}
+.active_blink{
+    box-shadow: 0 0.6em 0.6em -0.2em #39393c;
+    transform: translateY(-0.3em);
 }
 /* End::Model One Month Table */
 
@@ -328,7 +333,6 @@ div.dataTables_wrapper div.dataTables_filter input {
     width: 145px;
 }
 
-
 /* Search Hall Modal Table */
 #searchModal .modal-content {
     /* color: white; */
@@ -346,4 +350,25 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 #searchModal .modal-footer {
     border-color: #27282e !important;
+}
+
+
+
+@media screen and (max-width: 505px) {
+    .apexcharts-xaxis {
+      display: none;
+    }
+    #kt_login_forgot {
+        margin-top: 25px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .dataTables_length {
+      text-align: left !important;
+    }
+    .dataTables_filter label {
+        width: 100% !important;
+        margin-top: 20px;
+    }
+    
 }

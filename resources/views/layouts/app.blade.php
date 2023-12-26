@@ -25,6 +25,7 @@
         <!--end::Fontawseome Stylesheets-->
 	</head>
 	<!--end::Head-->
+
 	<!--begin::Body-->
 	<body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
 		<!--begin::Main-->
@@ -37,9 +38,9 @@
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
 			<div class="d-flex align-items-center">
-				<button class="btn p-0 burger-icon burger-icon-left ml-4" id="kt_header_mobile_toggle">
+				<!-- <button class="btn p-0 burger-icon burger-icon-left ml-4" id="kt_header_mobile_toggle">
 					<span></span>
-				</button>
+				</button> -->
 				<button class="btn btn-icon btn-hover-transparent-white p-0 ml-3" id="kt_header_mobile_topbar_toggle">
 					<span class="svg-icon svg-icon-xl">
 						<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
@@ -79,10 +80,8 @@
 							<!--end::Left-->
 
                             <!--begin::Header Menu Wrapper-->
-                            <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
-                                <!--begin::Header Menu-->
+                            <!-- <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
                                 <div id="kt_header_menu" class="header-menu header-menu-left header-menu-mobile header-menu-layout-default">
-                                    <!--begin::Header Nav-->
                                     <ul class="menu-nav" id="PHeader">
                                         <li class="menu-item menu-item-open" data-menu-toggle="click" aria-haspopup="true">
                                             <a href="/" class="menu-link">
@@ -120,10 +119,8 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <!--end::Header Nav-->
                                 </div>
-                                <!--end::Header Menu-->
-                            </div>
+                            </div> -->
                             <!--end::Header Menu Wrapper-->
 
 							<!--begin::Logout-->
@@ -191,7 +188,7 @@
 						<div class="container">
                             <!--begin::Copyright-->
                             <div class="text-dark order-2 order-md-1 text-center mt-20">
-                                <span class="text-muted me-1">Copyright&copy Pachislot. </span>
+                                <span class="text-muted me-1">Copyright&copy Grab. </span>
                                 <span class="text-muted me-1">2023 All Rights Reserved.</span>
                             </div>
                             <!--end::Copyright-->
@@ -242,7 +239,7 @@
 
 		@yield('add_js')
 
-		<script>
+		<!-- <script>
 			// Sample URL
 			const url = window.location.href;
 			const pathSegments = url.split('/');
@@ -274,7 +271,7 @@
 				}
 			});
 
-		</script>
+		</script> -->
 	</body>
 	<!--end::Body-->
 </html>

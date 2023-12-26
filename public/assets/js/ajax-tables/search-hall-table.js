@@ -33,12 +33,6 @@ var searchModalWidget = function() {
 				}
 			}
 		});
-
-		$('#searchModal').on('hidden.bs.modal', function (e) {
-			// Do something when the modal is closed
-			$('#kt_datatable tbody').empty();
-		});
-
     }
 
 	var modalTable = function(hall_name) {

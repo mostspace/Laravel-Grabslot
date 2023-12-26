@@ -2,15 +2,17 @@
 
 @section('breadcrumb')
 <div class="my-25">
-    <h1 class="color-white fs-2 text-center font-weight-bolder">店舗一覧</h1>
-    <p class="fs-7 color-white text-center mt-7">
-        <a href="/" class="color-white font-weight-bolder p-link">都道府県</a>
-        <i class="fa-solid fa-angle-right color-white fs-9 mx-3"></i>
-        <a href="/hall-data/{{ $region->id }}" class="color-white font-weight-bolder p-link">{{ $region->name }}</a>
-        <i class="fa-solid fa-angle-right color-white fs-9 mx-3"></i>
-        <a href="/hall-data/{{ $region->id }}/{{ $store->id }}" class="color-white font-weight-bolder p-link">{{ $store->name }}</a>
-        <i class="fa-solid fa-angle-right color-white fs-9 mx-3"></i>{{ $model_name }}
-    </p>
+    <div class="container">
+        <h1 class="color-white fs-2 text-center font-weight-bolder">店舗一覧</h1>
+        <p class="fs-7 color-white text-center mt-7">
+            <a href="/" class="color-white font-weight-bolder p-link">都道府県</a>
+            <i class="fa-solid fa-angle-right color-white fs-9 mx-3"></i>
+            <a href="/hall-data/{{ $region->id }}" class="color-white font-weight-bolder p-link">{{ $region->name }}</a>
+            <i class="fa-solid fa-angle-right color-white fs-9 mx-3"></i>
+            <a href="/hall-data/{{ $region->id }}/{{ $store->id }}" class="color-white font-weight-bolder p-link">{{ $store->name }}</a>
+            <i class="fa-solid fa-angle-right color-white fs-9 mx-3"></i>{{ $model_name }}
+        </p>
+    </div>
 </div>
 @endsection
 
@@ -28,87 +30,89 @@
                         <div class="divider w-100px mb-15"></div>
                     </div>
 
-
-                    <div class="model-table my-20" id="modelDetailTable">
-                        <div class="model-table-row">
-                            <div class="td-block td-header"></div>
-                            <div class="td-block td-header">台番号</div>
-                            @foreach($modelMonthData as $date => $items)
-                            <div class="td-block td-header">
-                                {{ substr($date, 5) }}
-                            </div>
-                            @endforeach
-                        </div>
-                        <div class="model-table">
-                            @php
-                                $maxItemCount = 0; 
-                                $mainItemCount = 0; 
-                                $blueCnt = 0; 
-
-                                foreach ($modelMonthData as $items) {
-                                    $maxItemCount = max($maxItemCount, count($items));
-                                }
-
-                                $mainItemCount = $maxItemCount - 1;
-
-                                $modelId = [];
-
-                                foreach ($modelMonthData as $date => $items) {
-                                    for ($i = 0; $i < $mainItemCount; $i++) {
-                                        $modelId[$i] = isset($items[$i]['machine_number']) ? $items[$i]['machine_number'] : '';
-                                    }
-                                    break;
-                                }
-                            @endphp
-
-                            @for ($i = 0; $i < $maxItemCount; $i++)
-                                <div class="model-table-row">
-                                    @foreach ($modelMonthData as $date => $items)
-                                        @if ($i < $mainItemCount)
-                                            @php
-                                                $blueCnt += isset($items[$i]['item_color']['blue']) ? $items[$i]['item_color']['blue'] : 0;
-                                            @endphp
-                                        @endif
-                                    @endforeach
-
-                                    @if ($i < $mainItemCount)
-                                        <div class="td-block td-light-blue">
-                                            @if($i < $mainItemCount) {{ $blueCnt }} @endif
-                                        </div>
-                                    @else
-                                        <div class="td-block"></div>
-                                    @endif
-
-                                    @php
-                                        $blueCnt = 0;
-                                    @endphp
-
-                                    <div class="td-block">@if($i < $mainItemCount) {{ $modelId[$i] }} @endif</div>
-
-                                    @foreach ($modelMonthData as $date => $items)
-                                        @if ($i < $mainItemCount)
-                                            @if ( isset($items[$i]['extra_sheet']) )
-                                                <div class="td-block {{ isset($items[$i]['item_color']['color']) ? $items[$i]['item_color']['color'] : '' }} td-sheet" data-id="{{ isset($items[$i]['id']) ? $items[$i]['id'] : '' }}" data-machine_number="{{ isset($items[$i]['machine_number']) ? $items[$i]['machine_number'] : '' }}" data-toggle="modal" data-target="#dataModal">
-                                                    {{ $items[$i]['extra_sheet'] ?? '' }}
-                                                </div>
-                                            @else
-                                                <div class="td-block"></div>
-                                            @endif
-                                        @else
-                                            <div class="td-block">
-                                                <div class="text-center dailyModelBlue">
-                                                    {{ end($items)['blue'] ?? '' }}
-                                                </div>
-                                                <div class="text-center dailyModelRed">
-                                                    {{ end($items)['red'] ?? '' }}
-                                                </div>
-                                            </div>
-                                        @endif
-                                    @endforeach
+                    <div class="table-responsive">
+                        <div class="model-table my-20" id="modelDetailTable">
+                            <div class="model-table-row">
+                                <div class="td-block td-header"></div>
+                                <div class="td-block td-header">台番号</div>
+                                @foreach($modelMonthData as $date => $items)
+                                <div class="td-block td-header">
+                                    {{ substr($date, 5) }}
                                 </div>
-                            @endfor
+                                @endforeach
+                            </div>
+                            <div class="model-table">
+                                @php
+                                    $maxItemCount = 0; 
+                                    $mainItemCount = 0; 
+                                    $blueCnt = 0; 
+
+                                    foreach ($modelMonthData as $items) {
+                                        $maxItemCount = max($maxItemCount, count($items));
+                                    }
+
+                                    $mainItemCount = $maxItemCount - 1;
+
+                                    $modelId = [];
+
+                                    foreach ($modelMonthData as $date => $items) {
+                                        for ($i = 0; $i < $mainItemCount; $i++) {
+                                            $modelId[$i] = isset($items[$i]['machine_number']) ? $items[$i]['machine_number'] : '';
+                                        }
+                                        break;
+                                    }
+                                @endphp
+
+                                @for ($i = 0; $i < $maxItemCount; $i++)
+                                    <div class="model-table-row">
+                                        @foreach ($modelMonthData as $date => $items)
+                                            @if ($i < $mainItemCount)
+                                                @php
+                                                    $blueCnt += isset($items[$i]['item_color']['blue']) ? $items[$i]['item_color']['blue'] : 0;
+                                                @endphp
+                                            @endif
+                                        @endforeach
+
+                                        @if ($i < $mainItemCount)
+                                            <div class="td-block td-light-blue">
+                                                @if($i < $mainItemCount) {{ $blueCnt }} @endif
+                                            </div>
+                                        @else
+                                            <div class="td-block"></div>
+                                        @endif
+
+                                        @php
+                                            $blueCnt = 0;
+                                        @endphp
+
+                                        <div class="td-block">@if($i < $mainItemCount) {{ $modelId[$i] }} @endif</div>
+
+                                        @foreach ($modelMonthData as $date => $items)
+                                            @if ($i < $mainItemCount)
+                                                @if ( isset($items[$i]['extra_sheet']) )
+                                                    <div class="td-block {{ isset($items[$i]['item_color']['color']) ? $items[$i]['item_color']['color'] : '' }} td-sheet" data-id="{{ isset($items[$i]['id']) ? $items[$i]['id'] : '' }}" data-machine_number="{{ isset($items[$i]['machine_number']) ? $items[$i]['machine_number'] : '' }}" data-toggle="modal" data-target="#dataModal">
+                                                        {{ $items[$i]['extra_sheet'] ?? '' }}
+                                                    </div>
+                                                @else
+                                                    <div class="td-block"></div>
+                                                @endif
+                                            @else
+                                                <div class="td-block">
+                                                    <div class="text-center dailyModelBlue">
+                                                        {{ end($items)['blue'] ?? '' }}
+                                                    </div>
+                                                    <div class="text-center dailyModelRed">
+                                                        {{ end($items)['red'] ?? '' }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                @endfor
+                            </div>
                         </div>
                     </div>
+                    
                 </div>              
             </div>
         </div>
@@ -130,23 +134,24 @@
             </div>
             <div class="modal-body">
                 <div class="p-panel">
-                    <table class="table table-checkable table-bordered" id="modalTable">
-                        <thead>
-                            <tr>
-                                <th>台番号</th>
-                                <th>G数</th>
-                                <th>差枚</th>
-                                <th>BB</th>
-                                <th>RB</th>
-                                <th>合成確率</th>
-                                <th>BB確率</th>
-                                <th>RB確率</th>
-                            </tr>
-                        </thead>
-                        <tbody id="modalTableBody">
-                            <div id="model-chart"></div>
-                        </tbody>
-                    </table>
+                    <div id="model-chart"></div>
+                    <div class="table-responsive">
+                        <table class="table table-checkable table-bordered" id="modalTable">
+                            <thead>
+                                <tr>
+                                    <th>台番号</th>
+                                    <th>G数</th>
+                                    <th>差枚</th>
+                                    <th>BB</th>
+                                    <th>RB</th>
+                                    <th>合成確率</th>
+                                    <th>BB確率</th>
+                                    <th>RB確率</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modalTableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -161,6 +166,26 @@
 @section('add_js')
 <script>
     var modelMonthData = @json($modelMonthData);
+
+    $(document).ready(function() {
+        $('#modelDetailTable').on('click', '.model-table-row .td-block .dailyModelBlue', function() {
+            $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
+            // Get the column number (index) of the clicked element within its row
+            var columnNumber = $(this).parent('.td-block').index() + 1;
+
+            // Select all cells in the second column of the table based on multiple conditions
+            $('#modelDetailTable .model-table-row .td-block.td-light-blue:nth-child(' + columnNumber + '), #modelDetailTable .model-table-row .td-blue:nth-child(' + columnNumber + '), #modelDetailTable .model-table-row .td-dark-blue:nth-child(' + columnNumber + ')').each(function() {
+                // Add the 'active_blink' class to each cell in the second column
+                $(this).addClass('active_blink');
+            });
+        });
+
+        $('#modelDetailTable').on('click', '.td-block.td-sheet', function() {
+            $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
+        });
+    });
+
+
 </script>
 
 <script src="{{ asset('assets/js/model-detail-data.js') }}"></script>
