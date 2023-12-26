@@ -172,8 +172,6 @@ class HallDataController extends Controller
             $modelMonthData[$date_value['date']] = $temp_store_obj;
         }
 
-        // dd($modelMonthData);
-
         return view('hall-data/model-detail-data', compact('modelMonthData', 'region', 'store', 'model_name'));
     }
 
