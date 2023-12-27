@@ -257,7 +257,7 @@ var modelDetailDataWidget = function () {
 
         for (var i = 0; i < model_data.length; i++) {
             options.series[0].data.push({
-                x: (model_data[i].date).replace(/^.*\/(\d{1,2})\(.*\)$/, '$1'),
+                x: (model_data[i].date).replace(/^.*\/0?(\d{1,2})\(.*\)$/, '$1'),
                 y: model_data[i].extra_sheet
             });
         }

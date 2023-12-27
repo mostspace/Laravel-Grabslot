@@ -11,7 +11,6 @@
     border: 1px solid var(--white, #FFF) !important;
 }
 .p-primary-btn {
-    /* border-radius: 50px; */
     border: 1px solid var(--gradient-light, rgba(255, 255, 255, 0.47)) !important;
     background: #18C8FF !important;
     font-weight: bold !important;
@@ -27,7 +26,6 @@
 }
 .p-bg-content {
     background-color: #1A1B23 !important;   
-    /* background-image: url("../media/bg/bg-2.jpg"); */
 }
 
 /* Landing Page */
@@ -59,7 +57,6 @@
     color: white !important;
     font-size: 12px;
     border-color: #3C3939 !important;
-    /* text-align: center; */
 }
 .table td {
     border: none;
@@ -269,10 +266,11 @@ div.dataTables_wrapper div.dataTables_filter input {
     cursor: pointer;
 }
 .dailyModelRed {
-    background-color: #ffffff;
-    color: red;
+    background-color: #ff9999;
+    color: black;
     width: 50%;
     line-height: 31px;
+    cursor: pointer;
 }
 
 .td-white {
@@ -335,7 +333,6 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 /* Search Hall Modal Table */
 #searchModal .modal-content {
-    /* color: white; */
     background: #15161c;
     box-shadow: 2px 2px 33px 3px rgb(19 160 204);
 }
@@ -351,7 +348,6 @@ div.dataTables_wrapper div.dataTables_filter input {
 #searchModal .modal-footer {
     border-color: #27282e !important;
 }
-
 
 
 @media screen and (max-width: 505px) {
@@ -370,5 +366,4 @@ div.dataTables_wrapper div.dataTables_filter input {
         width: 100% !important;
         margin-top: 20px;
     }
-    
 }

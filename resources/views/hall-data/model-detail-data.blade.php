@@ -30,8 +30,47 @@
                         <div class="divider w-100px mb-15"></div>
                     </div>
 
+                    <div class="my-10 row px-4">
+                        <div class="d-flex align-items-center mr-5 my-2">
+                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-red text-dark font-weight-bolder">赤セル </div>
+                            <p class="fs-9 text-white pl-2 mb-0">-3000以上</p>
+                        </div>
+                        <div class="d-flex align-items-center mr-5 my-2">
+                            <div class="w-75px rounded-5 py-2 px-2 fs-9 td-pink text-dark font-weight-bolder"> ピンクセル</div>
+                            <p class="fs-9 text-white pl-2 mb-0">-100 ~ -2900</p>
+                        </div>
+                        <div class="d-flex align-items-center mr-5 my-2">
+                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-white text-dark font-weight-bolder">白セル</div>
+                            <p class="fs-9 text-white pl-2 mb-0">0 ~ 900</p>
+                        </div>
+                        <div class="d-flex align-items-center mr-5 my-2">
+                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-light-blue text-dark font-weight-bolder">水色セル</div>
+                            <p class="fs-9 text-white pl-2 mb-0">100 ~ 2900</p>
+                        </div>
+                        <div class="d-flex align-items-center mr-5 my-2">
+                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-blue text-dark font-weight-bolder">青セル</div>
+                            <p class="fs-9 text-white pl-2 mb-0">3000 ~ 4900</p>
+                        </div>
+                        <div class="d-flex align-items-center mr-5 my-2">
+                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-dark-blue text-dark font-weight-bolder">紺セル</div>
+                            <p class="fs-9 text-white pl-2 mb-0">5000以上</p>
+                        </div>
+                        <div class="d-flex align-items-center mr-5 my-2">
+                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-gray text-dark font-weight-bolder">灰色セル</div>
+                            <p class="fs-9 text-white pl-2 mb-0">2000回転未満</p>
+                        </div>
+                        <div class="d-flex align-items-center mr-5 my-2">
+                            <p class="fs-9 text-danger mb-0">赤字</p>
+                            <p class="fs-9 text-white pl-2 mb-0">推定設定4 </p>
+                        </div>
+                        <div class="d-flex align-items-center mr-5 my-2">
+                            <p class="fs-9 text-danger mb-0">太字 </p>
+                            <p class="fs-9 text-white pl-2 mb-0">推定設定5.6</p>
+                        </div>
+                    </div>
+
                     <div class="table-responsive">
-                        <div class="model-table my-20" id="modelDetailTable">
+                        <div class="model-table mb-15" id="modelDetailTable">
                             <div class="model-table-row">
                                 <div class="td-block td-header"></div>
                                 <div class="td-block td-header">台番号</div>
@@ -180,12 +219,10 @@
             });
         });
 
-        $('#modelDetailTable').on('click', '.td-block.td-sheet', function() {
+        $('#modelDetailTable').on('click', '.td-block.td-sheet, .dailyModelRed', function() {
             $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
         });
     });
-
-
 </script>
 
 <script src="{{ asset('assets/js/model-detail-data.js') }}"></script>

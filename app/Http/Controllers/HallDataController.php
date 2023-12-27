@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Region;
 use App\Models\StoreList;
+use App\Models\RegionArea;
 use App\Models\StoreDataByDate;
 use App\Models\ModelData;
 use App\Utils\ServerSideTable;
@@ -17,6 +18,14 @@ class HallDataController extends Controller
 
     public function index() {
         return view('hall-data/index');
+    }
+
+    // Get Region List
+    public function getRegionList() {
+        $areas = RegionArea::all();
+        $regions = Region::all();
+
+        return view('home', compact('areas', 'regions'));
     }
 
     // Get Hall
@@ -40,7 +49,8 @@ class HallDataController extends Controller
 
     // Search Hall Data
     public function searchHallDataList(Request $request, $hall_name) {
-        $stores = StoreList::where('name', $hall_name)->get();
+
+        $stores = StoreList::where('name', 'like', '%' . $hall_name . '%')->get();
 
         $dataTable = new ServerSideTable($stores);
         $dataTable->getAjaxTable();

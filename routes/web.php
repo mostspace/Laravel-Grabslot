@@ -3,7 +3,6 @@ use Illuminate\Support\Facades\Route;
 
 // User Controller
 use App\Http\Controllers\HallDataController;
-use App\Http\Controllers\RegionController;
 
 // Admin Controller
 use App\Http\Controllers\Admin\AdminController;
@@ -30,7 +29,7 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::get('/home', [RegionController::class, 'getRegionList'])->middleware(['auth', 'verified']);
+Route::get('/home', [HallDataController::class, 'getRegionList'])->middleware(['auth', 'verified']);
 
 // Hall
 Route::get('/hall-data', [HallDataController::class, 'index']);
@@ -42,8 +41,7 @@ Route::post('/model-list/{store_id}', [HallDataController::class, 'getModelList'
 Route::get('/model-detail-data/{region_id}/{store_id}/{model_name}', [HallDataController::class, 'modelDetailData'])->name('model.detail.data');
 Route::post('/model-data', [HallDataController::class, 'getModelData'])->name('model.data');
 
-// Search Region
-Route::post('/search-region', [RegionController::class, 'regionFilter'])->name('search.region');
+// Search Store
 Route::post('/search-hall/{hall_name}', [HallDataController::class, 'searchHallDataList']);
 
 // Waiting
