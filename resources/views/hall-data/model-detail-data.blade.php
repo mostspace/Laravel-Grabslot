@@ -31,47 +31,48 @@
                     </div>
 
                     <div class="my-10 row px-4">
-                        <div class="d-flex align-items-center mr-5 my-2">
+                        <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-65px rounded-5 py-2 px-2 fs-9 td-red text-dark font-weight-bolder">赤セル </div>
                             <p class="fs-9 text-white pl-2 mb-0">-3000以上</p>
                         </div>
-                        <div class="d-flex align-items-center mr-5 my-2">
+                        <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-75px rounded-5 py-2 px-2 fs-9 td-pink text-dark font-weight-bolder"> ピンクセル</div>
                             <p class="fs-9 text-white pl-2 mb-0">-100 ~ -2900</p>
                         </div>
-                        <div class="d-flex align-items-center mr-5 my-2">
+                        <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-65px rounded-5 py-2 px-2 fs-9 td-white text-dark font-weight-bolder">白セル</div>
                             <p class="fs-9 text-white pl-2 mb-0">0 ~ 900</p>
                         </div>
-                        <div class="d-flex align-items-center mr-5 my-2">
+                        <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-65px rounded-5 py-2 px-2 fs-9 td-light-blue text-dark font-weight-bolder">水色セル</div>
                             <p class="fs-9 text-white pl-2 mb-0">100 ~ 2900</p>
                         </div>
-                        <div class="d-flex align-items-center mr-5 my-2">
+                        <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-65px rounded-5 py-2 px-2 fs-9 td-blue text-dark font-weight-bolder">青セル</div>
                             <p class="fs-9 text-white pl-2 mb-0">3000 ~ 4900</p>
                         </div>
-                        <div class="d-flex align-items-center mr-5 my-2">
+                        <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-65px rounded-5 py-2 px-2 fs-9 td-dark-blue text-dark font-weight-bolder">紺セル</div>
                             <p class="fs-9 text-white pl-2 mb-0">5000以上</p>
                         </div>
-                        <div class="d-flex align-items-center mr-5 my-2">
+                        <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-65px rounded-5 py-2 px-2 fs-9 td-gray text-dark font-weight-bolder">灰色セル</div>
                             <p class="fs-9 text-white pl-2 mb-0">2000回転未満</p>
                         </div>
-                        <div class="d-flex align-items-center mr-5 my-2">
+                        <!-- <div class="d-flex align-items-center mr-5 my-2">
                             <p class="fs-9 text-danger mb-0">赤字</p>
                             <p class="fs-9 text-white pl-2 mb-0">推定設定4 </p>
                         </div>
                         <div class="d-flex align-items-center mr-5 my-2">
                             <p class="fs-9 text-danger mb-0">太字 </p>
                             <p class="fs-9 text-white pl-2 mb-0">推定設定5.6</p>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="table-responsive">
                         <div class="model-table mb-15" id="modelDetailTable">
                             <div class="model-table-row">
+                                <div class="td-block td-header"></div>
                                 <div class="td-block td-header"></div>
                                 <div class="td-block td-header">台番号</div>
                                 @foreach($modelMonthData as $date => $items)
@@ -85,6 +86,7 @@
                                     $maxItemCount = 0; 
                                     $mainItemCount = 0; 
                                     $blueCnt = 0; 
+                                    $redCnt = 0; 
 
                                     foreach ($modelMonthData as $items) {
                                         $maxItemCount = max($maxItemCount, count($items));
@@ -107,10 +109,19 @@
                                         @foreach ($modelMonthData as $date => $items)
                                             @if ($i < $mainItemCount)
                                                 @php
+                                                    $redCnt += isset($items[$i]['item_color']['red']) ? $items[$i]['item_color']['red'] : 0;
                                                     $blueCnt += isset($items[$i]['item_color']['blue']) ? $items[$i]['item_color']['blue'] : 0;
                                                 @endphp
                                             @endif
                                         @endforeach
+
+                                        @if ($i < $mainItemCount)
+                                            <div class="td-block td-pink">
+                                                @if($i < $mainItemCount) {{ $redCnt }} @endif
+                                            </div>
+                                        @else
+                                            <div class="td-block"></div>
+                                        @endif
 
                                         @if ($i < $mainItemCount)
                                             <div class="td-block td-light-blue">
@@ -118,9 +129,10 @@
                                             </div>
                                         @else
                                             <div class="td-block"></div>
-                                        @endif
+                                        @endif                                       
 
                                         @php
+                                            $redCnt = 0;
                                             $blueCnt = 0;
                                         @endphp
 
