@@ -37,6 +37,7 @@
                         </div>
                         <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-75px rounded-5 py-2 px-2 fs-9 td-pink text-dark font-weight-bolder"> ピンクセル</div>
+<<<<<<< HEAD
                             <p class="fs-9 text-white pl-2 mb-0">-1000 ~ -2999</p>
                         </div>
                         <div class="d-flex align-items-center mr-8 my-2">
@@ -50,6 +51,21 @@
                         <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-65px rounded-5 py-2 px-2 fs-9 td-blue text-dark font-weight-bolder">青セル</div>
                             <p class="fs-9 text-white pl-2 mb-0">3000 ~ 4999</p>
+=======
+                            <p class="fs-9 text-white pl-2 mb-0">-100 ~ -2900</p>
+                        </div>
+                        <div class="d-flex align-items-center mr-8 my-2">
+                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-white text-dark font-weight-bolder">白セル</div>
+                            <p class="fs-9 text-white pl-2 mb-0">0 ~ 900</p>
+                        </div>
+                        <div class="d-flex align-items-center mr-8 my-2">
+                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-light-blue text-dark font-weight-bolder">水色セル</div>
+                            <p class="fs-9 text-white pl-2 mb-0">100 ~ 2900</p>
+                        </div>
+                        <div class="d-flex align-items-center mr-8 my-2">
+                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-blue text-dark font-weight-bolder">青セル</div>
+                            <p class="fs-9 text-white pl-2 mb-0">3000 ~ 4900</p>
+>>>>>>> f94717abaa96b7397b39c3493526c62c1ac20666
                         </div>
                         <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-65px rounded-5 py-2 px-2 fs-9 td-dark-blue text-dark font-weight-bolder">紺セル</div>
