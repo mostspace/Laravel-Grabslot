@@ -341,5 +341,4 @@
 </script>
 
 <script src="{{ asset('assets/js/model-detail-data.js') }}"></script>
-
 @endsection
