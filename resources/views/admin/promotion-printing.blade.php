@@ -32,757 +32,35 @@
                     </div>
 
                     <div class="mt-15">
-                        <div class="col-md-6 col-lg-6">
-                            <div class="form-group row">
-                                <label class="col-form-label fs-7 font-weight-bold">店舗:</label>
-                                <div class="col-10">
-                                    <input id="store" class="form-control" type="text" value="" />
+                        <div class="row mx-1">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group row">
+                                    <label class="col-form-label">店舗:</label>
+                                    <div class="ml-5 w-75">
+                                        <input id="store" type="text" class="form-control" placeholder="" value="" />
+                                        <span class="form-text text-danger" id="store_warning"></span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="form-group row" id="modelInput">
-                                <label class="col-form-label fs-7 font-weight-bold">機種:</label>
-                                <div class="col-10">
-                                    <input id="model" class="form-control" type="text" value="" />
+                            <div class="col-md-6 col-lg-6" id="modelInput">
+                                <div class="form-group row">
+                                    <label class="col-form-label">機種:</label>
+                                    <div class="ml-5 w-75">
+                                        <input id="model" type="text" class="form-control" placeholder="" value="" />
+                                        <span class="form-text text-danger" id="model_warning"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-5">
-                        <div id="storeTable">
-                            <table class="table table-separate table-bordered table-checkable" id="store_table">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>11/1(水)</th>
-                                        <th>11/2(木)</th>
-                                        <th>11/3(金)</th>
-                                        <th>11/4(土)</th>
-                                        <th>11/5(日)</th>
-                                        <th>11/6(月)</th>
-                                        <th>11/7(火)</th>
-                                        <th>11/8(水)</th>
-                                        <th>11/9(木)</th>
-                                        <th>11/10(金)</th>
-                                        <th>11/11(土)</th>
-                                        <th>11/12(日)</th>
-                                        <th>11/13(月)</th>
-                                        <th>11/14(火)</th>
-                                        <th>11/15(水)</th>
-                                        <th>11/16(木)</th>
-                                        <th>11/17(金)</th>
-                                        <th>11/18(日)</th>
-                                        <th>11/20(月)</th>
-                                        <th>11/21(月)</th>
-                                        <th>11/22(月)</th>
-                                        <th>11/23(月)</th>
-                                        <th>11/24(月)</th>
-                                        <th>11/25(月)</th>
-                                        <th>11/26(月)</th>
-                                        <th>11/27(月)</th>
-                                        <th>11/28(月)</th>
-                                        <th>11/29(月)</th>
-                                        <th>11/30(月)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="">1</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">-600</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">2</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">-600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">3</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">-600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">4</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">5</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">6</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">7</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">8</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">9</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">10</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">100</td>
-                                    </tr>
-                                    
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="d-flex justify-content-center">
+                        <div id="loadingSpinner" class="spinner spinner-primary spinner-lg mt-10"></div>
+                    </div>
 
-                        <div class="col-md-6 col-lg-6 mt-10">
-                            <div class="form-group row" id="modelInput">
-                                <label class="col-form-label fs-7 font-weight-bold">機種:</label>
-                                <div class="col-10">
-                                    <input id="model" class="form-control" type="text" value="" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="modelTable" class="">
-                            <table class="table table-separate table-bordered table-checkable" id="model_table">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>11/1(水)</th>
-                                        <th>11/2(木)</th>
-                                        <th>11/3(金)</th>
-                                        <th>11/4(土)</th>
-                                        <th>11/5(日)</th>
-                                        <th>11/6(月)</th>
-                                        <th>11/7(火)</th>
-                                        <th>11/8(水)</th>
-                                        <th>11/9(木)</th>
-                                        <th>11/10(金)</th>
-                                        <th>11/11(土)</th>
-                                        <th>11/12(日)</th>
-                                        <th>11/13(月)</th>
-                                        <th>11/14(火)</th>
-                                        <th>11/15(水)</th>
-                                        <th>11/16(木)</th>
-                                        <th>11/17(金)</th>
-                                        <th>11/18(日)</th>
-                                        <th>11/20(月)</th>
-                                        <th>11/21(月)</th>
-                                        <th>11/22(月)</th>
-                                        <th>11/23(月)</th>
-                                        <th>11/24(月)</th>
-                                        <th>11/25(月)</th>
-                                        <th>11/26(月)</th>
-                                        <th>11/27(月)</th>
-                                        <th>11/28(月)</th>
-                                        <th>11/29(月)</th>
-                                        <th>11/30(月)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="">1</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">-600</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">2</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">-600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">3</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">-600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">4</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">5</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">6</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">7</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">8</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">9</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">100</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="">10</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-white">-600</td>
-                                        <td class="tb-color-blue">2900</td>
-                                        <td class="tb-color-dark-blue">3100</td>
-                                        <td class="tb-color-pink">-100</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-dark-blue">4000</td>
-                                        <td class="tb-color-pink">-1100</td>
-                                        <td class="tb-color-pink">-1400</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-blue">2000</td>
-                                        <td class="tb-color-pink">-1200</td>
-                                        <td class="tb-color-dark-blue">3400</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-white">600</td>
-                                        <td class="tb-color-red">-5700</td>
-                                        <td class="tb-color-pink">-500</td>
-                                        <td class="tb-color-pink">-1300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-white">300</td>
-                                        <td class="tb-color-blue">1200</td>
-                                        <td class="tb-color-pink">100</td>
-                                    </tr>
-                                    
-                                </tbody>
-                            </table>
-                        </div>
-                        
+                    <div class="table-responsive">
+                        <div class="model-table" id="modelDetailTable"></div>
                     </div>
 
                     <div class="mt-15">
@@ -795,7 +73,6 @@
                             </div>
                             <h6 class="mt-3">● 出玉状況を点ではなく面でみる！</h6>
                         </div>
-                        
                     </div>
 
                     <div class="mt-15">
@@ -810,31 +87,31 @@
                                 
                                 <div class="mt-7">
                                     <div class="d-flex align-items-center">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-8 tb-color-white border">白</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-8 td-white border">白</div>
                                         <p class="fs-7 mb-0 ml-3">・・0～900枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-light-blue">水色</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-light-blue">水色</div>
                                         <p class="fs-7 mb-0 ml-3">・・1000～2900枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-blue">青</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-blue">青</div>
                                         <p class="fs-7 mb-0 ml-3">・・3000～4900枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-dark-blue text-white">紺</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-dark-blue text-white">紺</div>
                                         <p class="fs-7 mb-0 ml-3">・・5000枚以上</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-pink">ピンク</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-pink">ピンク</div>
                                         <p class="fs-7 mb-0 ml-3">・・100～2900枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-red">赤</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-red">赤</div>
                                         <p class="fs-7 mb-0 ml-3">・・-3000枚以上</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-gray">グレー</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-gray">グレー</div>
                                         <p class="fs-7 mb-0 ml-3">・・回転数2000回転未満台</p>
                                     </div>
                                 </div>
@@ -856,6 +133,45 @@
 </div>
 <!--end::Content-->
 
+<!--begin::Modal-->
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modelName">Model Name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="p-panel">
+                    <div id="model-chart"></div>
+                    <div class="table-responsive">
+                        <table class="table table-checkable table-bordered" id="modalTable">
+                            <thead>
+                                <tr>
+                                    <th>台番号</th>
+                                    <th>G数</th>
+                                    <th>差枚</th>
+                                    <th>BB</th>
+                                    <th>RB</th>
+                                    <th>合成確率</th>
+                                    <th>BB確率</th>
+                                    <th>RB確率</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modalTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">クローズ</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
 
 <!--begin::Modal-->
 <div class="modal fade" id="printModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeSm" aria-hidden="true">
@@ -868,7 +184,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input type="number" class="form-control" placeholder="印刷部数を入力してください">
+                <input type="number" class="form-control" placeholder="印刷部数を入力してください" value="1">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">クローズ</button>
@@ -885,6 +201,8 @@
 <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 
 <script>
+    var modelMonthData = {};
+    
     $(document).ready(function() {
 
         // Your data to be encoded in the QR code
@@ -897,73 +215,131 @@
             height: 158
         });
 
-        // Store & Model table
-
-        // Search Store
+        // Store & Model table        
+        var store_name, model_name;
         // $("#modelInput").hide();
 
-        // $("#store").keydown(function(event) {
-        //     if(event.which == 13) {
-        //         if($(this).val()) {
-        //             $("#modelInput").show();
-        //         }
-        //     }
-        // });
+        // Search Store
+        $("#store").keydown(function(event) {
+            if(event.which == 13) {
+                if($(this).val()) {
+                    store_name = $(this).val();
+                    validationModel('store', store_name);
+                }
+            }
+        });
 
-        // $("#store").on('keyup', function(event) {
-        //     if(event.key === 'Delete' || event.key === 'Backspace') {
-        //         if($(this).val().trim() === '') {
-        //             $("#modelInput").hide();
-        //         }
-        //     }
-        // });
+        $("#store").on('keyup', function(event) {
+            if(event.key === 'Delete' || event.key === 'Backspace') {
+                if($(this).val().trim() === '') {
+                    $("#modelInput").hide();
+                }
+            }
+        });
 
+        // Search Model
+        $("#model").keydown(function(event) {
+            if(event.which == 13) {
+                if($(this).val()) {
+                    model_name = $(this).val();
+                    validationModel('model', model_name);
+                }
+            }
+        });
+
+        $("#model").on('keyup', function(event) {
+            if(event.key === 'Delete' || event.key === 'Backspace') {
+                if($(this).val().trim() === '') {
+                    $('#modelDetailTable').empty();
+                }
+            }
+        });
+
+        function showModelTable(store_name, model_name) {
+            // Show spinner before making the AJAX request
+            $('#loadingSpinner').show();
+
+            $.ajax({
+                url: '/admin/promotion-printing/model',
+                type: 'POST',
+                data: {
+                    store_name: store_name,
+                    model_name: model_name,
+                },
+                // Add other AJAX configurations here
+                success: function (response) {
+                    // Hide the spinner after the AJAX request is successful
+                    $('#loadingSpinner').hide();
+
+                    // Update the table with the new data
+                    $('#modelDetailTable').html(response.tableData);
+
+                    // Set model name of the modal
+                    $("#modelName").text(model_name);
+                    
+                    modelMonthData = response.modelMonthData;
+                },
+                error: function (error) {
+                    // Hide the spinner in case of an error
+                    $('#loadingSpinner').hide();
+
+                    // Handle error here
+                    console.error('Ajax request failed:', error);
+                }
+            });
+        }
+
+        function validationModel(type, value) {
+            $.ajax({
+                url: '/admin/promotion-printing/model-validation',
+                type: 'POST',
+                data: {
+                    type: type,
+                    value: value,
+                },
+                // Add other AJAX configurations here
+                success: function (response) {
+                    if (response.type == "store") {
+                        if (response.value == 1) {
+                            $("#store_warning").text('');
+                            $("#modelInput").show();
+                        } else {
+                            $("#store_warning").text('該当する店舗がありません。');
+                        }
+                    } else {
+                        if (response.value == 1) {
+                            $("#model_warning").text('');
+                            showModelTable(store_name, model_name);
+                        } else {
+                            $("#model_warning").text('対応するモデルはありません。');
+                        }
+                    }
+                },
+                error: function (error) {
+                    // Handle error here
+                    console.error('Ajax request failed:', error);
+                }
+            });
+        }
+
+        $('#modelDetailTable').on('click', '.model-table-row .td-block .dailyModelBlue', function() {
+            $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
+            // Get the column number (index) of the clicked element within its row
+            var columnNumber = $(this).parent('.td-block').index() + 1;
+
+            // Select all cells in the second column of the table based on multiple conditions
+            $('#modelDetailTable .model-table-row .td-block.td-light-blue:nth-child(' + columnNumber + '), #modelDetailTable .model-table-row .td-blue:nth-child(' + columnNumber + '), #modelDetailTable .model-table-row .td-dark-blue:nth-child(' + columnNumber + ')').each(function() {
+                // Add the 'active_blink' class to each cell in the second column
+                $(this).addClass('active_blink');
+            });
+        });
+
+        $('#modelDetailTable').on('click', '.td-block.td-sheet, .dailyModelRed', function() {
+            $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
+        });
     });
-
-
 </script>
 
-<!-- <script>
-    "use strict";
-    var KTDatatablesBasicScrollable = function() {
-
-        var initTable1 = function() {
-            var table = $('#store_table');
-
-            // begin second table
-            table.DataTable({
-                scrollY: '50vh',
-                scrollX: true,
-                scrollCollapse: true,
-            });
-        };
-
-        var initTable2 = function() {
-            var table = $('#model_table');
-
-            // begin second table
-            table.DataTable({
-                scrollY: '50vh',
-                scrollX: true,
-                scrollCollapse: true,
-            });
-        };
-
-        return {
-
-            //main function to initiate the module
-            init: function() {
-                initTable1();
-                initTable2();
-            },
-
-        };
-
-    }();
-
-    jQuery(document).ready(function() {
-        KTDatatablesBasicScrollable.init();
-    });
-</script> -->
+<script src="{{ asset('assets/js/model-detail-data.js') }}"></script>
 
 @endsection

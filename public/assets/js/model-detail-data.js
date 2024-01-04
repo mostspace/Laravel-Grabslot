@@ -7,7 +7,6 @@ var modelDetailDataWidget = function () {
         $("#modelDetailTable").on("click", ".td-sheet", function() {
             var model_id = $(this).data('id');
             var model_machine_number = $(this).data('machine_number');
-
             var selected_model =  getSelectedModel(model_id, model_machine_number, modelMonthData);
 
             getModelData(model_id);

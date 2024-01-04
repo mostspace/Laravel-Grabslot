@@ -3,7 +3,6 @@ use Illuminate\Support\Facades\Route;
 
 // User Controller
 use App\Http\Controllers\HallDataController;
-use App\Http\Controllers\RegionController;
 
 // Admin Controller
 use App\Http\Controllers\Admin\AdminController;
@@ -30,7 +29,7 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::get('/home', [RegionController::class, 'getRegionList'])->middleware(['auth', 'verified']);
+Route::get('/home', [HallDataController::class, 'getRegionList'])->middleware(['auth', 'verified']);
 
 // Hall
 Route::get('/hall-data', [HallDataController::class, 'index']);
@@ -42,8 +41,7 @@ Route::post('/model-list/{store_id}', [HallDataController::class, 'getModelList'
 Route::get('/model-detail-data/{region_id}/{store_id}/{model_name}', [HallDataController::class, 'modelDetailData'])->name('model.detail.data');
 Route::post('/model-data', [HallDataController::class, 'getModelData'])->name('model.data');
 
-// Search Region
-Route::post('/search-region', [RegionController::class, 'regionFilter'])->name('search.region');
+// Search Store
 Route::post('/search-hall/{hall_name}', [HallDataController::class, 'searchHallDataList']);
 
 // Waiting
@@ -55,6 +53,10 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index')->middleware('checkRole');
     Route::get('/access-analyze', [AccessAnalyzeController::class, 'index'])->name('admin.access_analyze');
     Route::get('/promotion-printing', [PromotionPrintingController::class, 'index'])->name('admin.promotion_printing');
+    // Route::get('/promotion-printing/model', [PromotionPrintingController::class, 'showModelData']);
+    Route::post('/promotion-printing/model', [PromotionPrintingController::class, 'updateTable']);
+    Route::post('/promotion-printing/model-validation', [PromotionPrintingController::class, 'validateModel']);
+
     Route::get('/user-management', [UserManagementController::class, 'index'])->name('admin.user_management');
     Route::post('/users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
 });

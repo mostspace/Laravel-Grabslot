@@ -1,5 +1,4 @@
 /* Admin */
-
 .fs-2 {
     font-size: 40px !important;
 }
@@ -25,29 +24,6 @@
 .text-white {
     color: white !important;
 }
-
-.tb-color-white {
-    background-color: #ffffff;
-}
-.tb-color-light-blue {
-    background-color: #d9e1f2;
-}
-.tb-color-blue {
-    background-color: #8ea9db;
-}
-.tb-color-dark-blue {
-    background-color: #305496;
-}
-.tb-color-pink {
-    background-color: #ff9999;
-}
-.tb-color-red {
-    background-color: #ff5050;
-}
-.tb-color-gray {
-    background-color: #bfbfbf;
-}
-
 
 /* Promotion Blade CSS */
 
@@ -84,4 +60,129 @@
 /* Logo */
 .brand-logo img {
     width: 90px;
+}
+
+/* Begin::Dynamic Model Table */
+#store, #model {
+    border: none;
+    border-bottom: 1px solid #E4E6EF;
+    border-radius: unset;
+}
+#modelInput {
+    display: none;
+}
+.model-table {
+    display: grid;
+    grid-template-columns: auto;
+    width: 100%;
+}
+.model-table .model-table-row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+#modelDetailTable > .model-table-row:first-child {
+    border-top: 1px solid #27282e;
+}
+.model-table > .model-table-row > .td-block:first-child {
+    border-left: 1px solid #27282e;
+}
+.model-table .td-block {
+    background-color: #ffffff;
+    flex: 1;
+    min-width: 30px; /* Allow blocks to shrink if needed */
+    border-right: 1px solid #27282e;
+    border-bottom: 1px solid #27282e;
+    box-sizing: border-box;
+    height: 32px;
+    width: 100%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+.model-table .td-block.td-header {
+    color: black;
+    font-size: 8px;
+    font-weight: 600;
+}
+.model-table .td-block.td-sheet {
+    color: black !important;
+    cursor: pointer;
+}
+.dailyModelBlue {
+    border-right: 1px solid #3c3939;
+    background-color: #bfe2ff;
+    color: black;
+    width: 50%;
+    line-height: 31px;
+    cursor: pointer;
+}
+.dailyModelRed {
+    background-color: #ff9999;
+    color: black;
+    width: 50%;
+    line-height: 31px;
+    cursor: pointer;
+}
+
+.td-white {
+    background-color: #ffffff !important;
+}
+.td-light-blue {
+    background-color: #bfe2ff  !important;
+}
+.td-blue {
+    background-color: #469cf5 !important;
+}
+.td-dark-blue {
+    background-color: #305496 !important;
+}
+.td-pink {
+    background-color: #ff9999!important;
+}
+.td-red {
+    background-color: #ff5050 !important;
+}
+.td-gray {
+    background-color: #bfbfbf !important;
+}
+.active_blink{
+    box-shadow: 0 0.6em 0.6em -0.2em #39393c;
+    transform: translateY(-0.3em);
+}
+
+/* Begin::Modal Table */
+#modalTable td, #modalTable th {
+    border: 1px solid #27282e;
+}
+#dataModal .modal-content {
+    color: white;
+    background: #15161c;
+    box-shadow: 2px 2px 33px 3px rgb(19 160 204);
+}
+#dataModal table th, #dataModal table td {
+    color: #ffffff;
+}
+#dataModal .modal-title {
+    color: #fff !important;
+}
+#dataModal .modal-content button > i {
+    color: #fff;
+}
+#dataModal .modal-header {
+    border-color: #27282e !important;
+}
+#dataModal .modal-footer {
+    border-color: #27282e !important;
+}
+#model-chart svg {
+    background-color: transparent !important;
+}
+/* End::Dynamic Model Table */
+
+
+/* Spinner */
+#loadingSpinner {
+    display: none;
 }

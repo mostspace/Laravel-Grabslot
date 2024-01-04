@@ -39,7 +39,7 @@
 		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 			<!--begin::Logo-->
 			<a href="/">
-				<img alt="Logo" src="{{ asset('assets/media/logos/logo.png') }}" />
+				<img class="w-50" alt="Logo" src="{{ asset('assets/media/logos/logo.png') }}" />
 			</a>
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
@@ -217,7 +217,7 @@
 									<!--begin::Dropdown-->
 									<div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
 										<!--begin:Header-->
-										<div class="d-flex flex-column flex-center py-10 bgi-size-cover bgi-no-repeat rounded" style="background-image: url(assets/media/misc/bg-1.jpg)">
+										<div class="d-flex flex-column flex-center py-10 bgi-size-cover bgi-no-repeat rounded">
 											<h4 class="text-white font-weight-bold">{{ Auth::user()->name }}</h4>
 											<!-- <span class="btn btn-success btn-md font-weight-bold font-size-md mt-2">ログアウト</span> -->
 											<div class="">
