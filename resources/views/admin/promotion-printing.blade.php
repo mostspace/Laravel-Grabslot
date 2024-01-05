@@ -87,31 +87,31 @@
                                 
                                 <div class="mt-7">
                                     <div class="d-flex align-items-center">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-8 tb-color-white border">白</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-8 td-white border">白</div>
                                         <p class="fs-7 mb-0 ml-3">・・0～900枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-light-blue">水色</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-light-blue">水色</div>
                                         <p class="fs-7 mb-0 ml-3">・・1000～2900枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-blue">青</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-blue">青</div>
                                         <p class="fs-7 mb-0 ml-3">・・3000～4900枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-dark-blue text-white">紺</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-dark-blue text-white">紺</div>
                                         <p class="fs-7 mb-0 ml-3">・・5000枚以上</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-pink">ピンク</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-pink">ピンク</div>
                                         <p class="fs-7 mb-0 ml-3">・・100～2900枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-red">赤</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-red">赤</div>
                                         <p class="fs-7 mb-0 ml-3">・・-3000枚以上</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 tb-color-gray">グレー</div>
+                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-gray">グレー</div>
                                         <p class="fs-7 mb-0 ml-3">・・回転数2000回転未満台</p>
                                     </div>
                                 </div>

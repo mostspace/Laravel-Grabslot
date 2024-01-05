@@ -25,29 +25,6 @@
     color: white !important;
 }
 
-.tb-color-white {
-    background-color: #ffffff;
-}
-.tb-color-light-blue {
-    background-color: #d9e1f2;
-}
-.tb-color-blue {
-    background-color: #8ea9db;
-}
-.tb-color-dark-blue {
-    background-color: #305496;
-}
-.tb-color-pink {
-    background-color: #ff9999;
-}
-.tb-color-red {
-    background-color: #ff5050;
-}
-.tb-color-gray {
-    background-color: #bfbfbf;
-}
-
-
 /* Promotion Blade CSS */
 
 .qr-code-container {
@@ -206,7 +183,6 @@
 
 
 /* Spinner */
-
 #loadingSpinner {
     display: none;
 }
