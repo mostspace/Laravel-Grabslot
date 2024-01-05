@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Region;
 use App\Models\StoreList;
+use App\Models\RegionArea;
 use App\Models\StoreDataByDate;
 use App\Models\ModelData;
 use App\Utils\ServerSideTable;
@@ -17,6 +18,14 @@ class HallDataController extends Controller
 
     public function index() {
         return view('hall-data/index');
+    }
+
+    // Get Region List
+    public function getRegionList() {
+        $areas = RegionArea::all();
+        $regions = Region::all();
+
+        return view('home', compact('areas', 'regions'));
     }
 
     // Get Hall
@@ -40,7 +49,8 @@ class HallDataController extends Controller
 
     // Search Hall Data
     public function searchHallDataList(Request $request, $hall_name) {
-        $stores = StoreList::where('name', $hall_name)->get();
+
+        $stores = StoreList::where('name', 'like', '%' . $hall_name . '%')->get();
 
         $dataTable = new ServerSideTable($stores);
         $dataTable->getAjaxTable();
@@ -133,7 +143,7 @@ class HallDataController extends Controller
                 $result = ["color" => "td-red", "red" => 1, "blue" => 0];
             } elseif ($value > -3000 && $value < 0) {
                 $result = ["color" => "td-pink", "red" => 1, "blue" => 0];
-            } elseif ($value > 0 && $value < 1000) {
+            } elseif ($value >= 0 && $value < 1000) {
                 $result = ["color" => "td-white", "red" => 0, "blue" => 0];
             } elseif ($value >= 1000 && $value < 3000) {
                 $result = ["color" => "td-light-blue", "red" => 0, "blue" => 1];
@@ -141,8 +151,8 @@ class HallDataController extends Controller
                 $result = ["color" => "td-blue", "red" => 0, "blue" => 1];
             } elseif ($value >= 5000) {
                 $result = ["color" => "td-dark-blue", "red" => 0, "blue" => 1];
-            } elseif ($value == 0) {
-                $result = ["color" => "td-gray", "red" => 0, "blue" => 0];
+            // } elseif ($value == 2000) {
+            //     $result = ["color" => "td-gray", "red" => 0, "blue" => 0];
             } else {
                 $result = ["color" => "td-white", "red" => 0, "blue" => 0];
             }
@@ -171,6 +181,8 @@ class HallDataController extends Controller
             $temp_store_obj[] = $colorCnts;
             $modelMonthData[$date_value['date']] = $temp_store_obj;
         }
+
+        // dd($modelMonthData);
 
         return view('hall-data/model-detail-data', compact('modelMonthData', 'region', 'store', 'model_name'));
     }
