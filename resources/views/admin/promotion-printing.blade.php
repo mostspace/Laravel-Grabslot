@@ -88,7 +88,6 @@
                                 <div class="mt-7">
                                     <div class="d-flex align-items-center">
                                         <div class="w-65px py-2 rounded-10 px-2 fs-8 td-white border">白</div>
-<<<<<<< HEAD
                                         <p class="fs-7 mb-0 ml-3">・・0～999枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
@@ -98,17 +97,6 @@
                                     <div class="d-flex align-items-center my-2">
                                         <div class="w-65px py-2 rounded-10 px-2 fs-7 td-blue">青</div>
                                         <p class="fs-7 mb-0 ml-3">・・3000～4999枚</p>
-=======
-                                        <p class="fs-7 mb-0 ml-3">・・0～900枚</p>
-                                    </div>
-                                    <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-light-blue">水色</div>
-                                        <p class="fs-7 mb-0 ml-3">・・1000～2900枚</p>
-                                    </div>
-                                    <div class="d-flex align-items-center my-2">
-                                        <div class="w-65px py-2 rounded-10 px-2 fs-7 td-blue">青</div>
-                                        <p class="fs-7 mb-0 ml-3">・・3000～4900枚</p>
->>>>>>> e1d62346941595ec0274905a172f512f56778b6d
                                     </div>
                                     <div class="d-flex align-items-center my-2">
                                         <div class="w-65px py-2 rounded-10 px-2 fs-7 td-dark-blue text-white">紺</div>
@@ -116,11 +104,7 @@
                                     </div>
                                     <div class="d-flex align-items-center my-2">
                                         <div class="w-65px py-2 rounded-10 px-2 fs-7 td-pink">ピンク</div>
-<<<<<<< HEAD
                                         <p class="fs-7 mb-0 ml-3">・・-1 ～ -2999枚</p>
-=======
-                                        <p class="fs-7 mb-0 ml-3">・・100～2900枚</p>
->>>>>>> e1d62346941595ec0274905a172f512f56778b6d
                                     </div>
                                     <div class="d-flex align-items-center my-2">
                                         <div class="w-65px py-2 rounded-10 px-2 fs-7 td-red">赤</div>
@@ -182,11 +166,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-<<<<<<< HEAD
                 <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">閉じる</button>
-=======
-                <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">クローズ</button>
->>>>>>> e1d62346941595ec0274905a172f512f56778b6d
             </div>
         </div>
     </div>
@@ -361,8 +341,4 @@
 </script>
 
 <script src="{{ asset('assets/js/model-detail-data.js') }}"></script>
-<<<<<<< HEAD
-
-=======
->>>>>>> e1d62346941595ec0274905a172f512f56778b6d
 @endsection

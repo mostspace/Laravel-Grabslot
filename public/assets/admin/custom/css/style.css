@@ -63,15 +63,6 @@
 }
 
 /* Begin::Dynamic Model Table */
-<<<<<<< HEAD
-
-=======
-#store, #model {
-    border: none;
-    border-bottom: 1px solid #E4E6EF;
-    border-radius: unset;
-}
->>>>>>> e1d62346941595ec0274905a172f512f56778b6d
 #modelInput {
     display: none;
 }
