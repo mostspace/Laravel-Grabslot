@@ -211,7 +211,7 @@ var modelDetailDataWidget = function () {
                     var extraSheet = model_data[dataPointIndex].extra_sheet;
 
                     // Custom title for the tooltip
-                    var title = "<div class='apexcharts-tooltip-title fs-7'>" + date + "</div>";
+                    var title = "<div class='apexcharts-tooltip-title fs-7'>" + date.replace(/\/(\d{1})\//, '/$1/').replace(/\/0(\d{1})/, '/$1') + "</div>";
 
                     // Custom content for the tooltip
                     var content = "<div class='apexcharts-tooltip-content fs-7 pl-3 pb-3'>" +
@@ -256,7 +256,7 @@ var modelDetailDataWidget = function () {
 
         for (var i = 0; i < model_data.length; i++) {
             options.series[0].data.push({
-                x: (model_data[i].date).replace(/^.*\/(\d{1,2})\(.*\)$/, '$1'),
+                x: (model_data[i].date).replace(/^.*\/(\d{1,2})\(.*\)$/, '$1').replace(/^0/, ''),
                 y: model_data[i].extra_sheet
             });
         }

@@ -88,15 +88,15 @@
                                 <div class="mt-7">
                                     <div class="d-flex align-items-center">
                                         <div class="w-65px py-2 rounded-10 px-2 fs-8 td-white border">白</div>
-                                        <p class="fs-7 mb-0 ml-3">・・0～900枚</p>
+                                        <p class="fs-7 mb-0 ml-3">・・0～999枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
                                         <div class="w-65px py-2 rounded-10 px-2 fs-7 td-light-blue">水色</div>
-                                        <p class="fs-7 mb-0 ml-3">・・1000～2900枚</p>
+                                        <p class="fs-7 mb-0 ml-3">・・1000～2999枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
                                         <div class="w-65px py-2 rounded-10 px-2 fs-7 td-blue">青</div>
-                                        <p class="fs-7 mb-0 ml-3">・・3000～4900枚</p>
+                                        <p class="fs-7 mb-0 ml-3">・・3000～4999枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
                                         <div class="w-65px py-2 rounded-10 px-2 fs-7 td-dark-blue text-white">紺</div>
@@ -104,7 +104,7 @@
                                     </div>
                                     <div class="d-flex align-items-center my-2">
                                         <div class="w-65px py-2 rounded-10 px-2 fs-7 td-pink">ピンク</div>
-                                        <p class="fs-7 mb-0 ml-3">・・100～2900枚</p>
+                                        <p class="fs-7 mb-0 ml-3">・・-1 ～ -2999枚</p>
                                     </div>
                                     <div class="d-flex align-items-center my-2">
                                         <div class="w-65px py-2 rounded-10 px-2 fs-7 td-red">赤</div>
@@ -166,7 +166,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">クローズ</button>
+                <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">閉じる</button>
             </div>
         </div>
     </div>
@@ -187,7 +187,7 @@
                 <input type="number" class="form-control" placeholder="印刷部数を入力してください" value="1">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">クローズ</button>
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">閉じる</button>
             </div>
         </div>
     </div>

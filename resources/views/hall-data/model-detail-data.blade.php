@@ -37,7 +37,7 @@
                         </div>
                         <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-75px rounded-5 py-2 px-2 fs-9 td-pink text-dark font-weight-bolder"> ピンクセル</div>
-                            <p class="fs-9 text-white pl-2 mb-0">-1000 ~ -2999</p>
+                            <p class="fs-9 text-white pl-2 mb-0">-1 ~ -2999</p>
                         </div>
                         <div class="d-flex align-items-center mr-8 my-2">
                             <div class="w-65px rounded-5 py-2 px-2 fs-9 td-white text-dark font-weight-bolder">白セル</div>
@@ -59,14 +59,6 @@
                             <div class="w-65px rounded-5 py-2 px-2 fs-9 td-gray text-dark font-weight-bolder">灰色セル</div>
                             <p class="fs-9 text-white pl-2 mb-0">2000回転未満</p>
                         </div>
-                        <!-- <div class="d-flex align-items-center mr-5 my-2">
-                            <p class="fs-9 text-danger mb-0">赤字</p>
-                            <p class="fs-9 text-white pl-2 mb-0">推定設定4 </p>
-                        </div>
-                        <div class="d-flex align-items-center mr-5 my-2">
-                            <p class="fs-9 text-danger mb-0">太字 </p>
-                            <p class="fs-9 text-white pl-2 mb-0">推定設定5.6</p>
-                        </div> -->
                     </div>
 
                     <div class="table-responsive">
@@ -77,7 +69,22 @@
                                 <div class="td-block td-header">台番号</div>
                                 @foreach($modelMonthData as $date => $items)
                                 <div class="td-block td-header">
-                                    {{ substr($date, 5) }}
+                                    <!-- {{ substr($date, 5) }} -->
+
+                                    @php
+                                        $dateString = $date;
+
+                                        // Extract components from the original date string
+                                        list($year, $month, $dayWithWeek) = explode('/', $dateString);
+
+                                        // Remove leading zero from the day if present
+                                        $day = ltrim($dayWithWeek, '0');
+
+                                        // Create the new formatted date string
+                                        $newDateString = "$month/$day($dayWithWeek)";
+                                    @endphp
+
+                                    {{ $newDateString }}
                                 </div>
                                 @endforeach
                             </div>
@@ -206,7 +213,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">クローズ</button>
+                <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">閉じる</button>
             </div>
         </div>
     </div>

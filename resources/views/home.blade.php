@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">クローズ</button>
+                    <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">閉じる</button>
                 </div>
             </div>
         </div>
