@@ -141,14 +141,27 @@ class PromotionPrintingController extends Controller
         $data_type = $request->input('type');
         $data_value = $request->input('value');
         $exists = false;
-
+    
         if ($data_type == 'store') {
-            $exists = StoreList::where('name', $data_value)->exists();
+            $store_list = [];
+            // Use % wildcard with like condition
+            $stores = StoreList::where('name', 'like', '%' . $data_value . '%')->get();
+    
+            if ($stores->isNotEmpty()) {
+                for ($i = 0; $i < count($stores); $i++) {
+                    $store_list[$i] = $stores[$i]->name;
+                }
+    
+                return response()->json(['type' => $data_type, 'value' => 1, 'data' => $store_list]);
+            } else {
+                return response()->json(['type' => $data_type, 'value' => 0]);
+            }
         } else {
             $exists = ModelData::where('model_name', $data_value)->exists();
         }
-
+    
         return response()->json(['type' => $data_type, 'value' => $exists ? 1 : 0]);
     }
-
+    
+    
 }

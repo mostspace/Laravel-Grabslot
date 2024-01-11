@@ -59,6 +59,8 @@
                         <div id="loadingSpinner" class="spinner spinner-primary spinner-lg mt-10"></div>
                     </div>
 
+                    <ul id="storeList"></ul>
+
                     <div class="table-responsive">
                         <div class="model-table" id="modelDetailTable"></div>
                     </div>
@@ -222,6 +224,10 @@
         // Search Store
         $("#store").keydown(function(event) {
             if(event.which == 13) {
+                $("#storeList").empty();
+                $("#model").val('');
+                $("#modelInput").hide();
+                $("#modelDetailTable").empty();
                 if($(this).val()) {
                     store_name = $(this).val();
                     validationModel('store', store_name);
@@ -235,6 +241,15 @@
                     $("#modelInput").hide();
                 }
             }
+        });
+
+        $("#storeList").on("click", ".p-link", function() {
+            $("#storeList").empty();
+            // var selectedElement = $(this).clone();
+            // $("#storeList").append(selectedElement);
+
+            store_name = $(this).text();
+            $("#modelInput").show();
         });
 
         // Search Model
@@ -256,6 +271,7 @@
         });
 
         function showModelTable(store_name, model_name) {
+            console.log(store_name, model_name);
             // Show spinner before making the AJAX request
             $('#loadingSpinner').show();
 
@@ -301,8 +317,13 @@
                 success: function (response) {
                     if (response.type == "store") {
                         if (response.value == 1) {
+                            console.log(response);
                             $("#store_warning").text('');
-                            $("#modelInput").show();
+                            for(var i = 0; i < (response.data).length; i++) {
+                                $("#storeList").append('<li class="p-link">' + response.data[i] + '</li>');
+                            }
+                            
+                            // $("#modelInput").show();
                         } else {
                             $("#store_warning").text('該当する店舗がありません。');
                         }
@@ -312,6 +333,7 @@
                             showModelTable(store_name, model_name);
                         } else {
                             $("#model_warning").text('対応するモデルはありません。');
+                            $("#modelDetailTable").empty();
                         }
                     }
                 },

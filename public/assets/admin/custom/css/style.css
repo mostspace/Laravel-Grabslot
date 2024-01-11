@@ -181,3 +181,13 @@
 #loadingSpinner {
     display: none;
 }
+
+.p-link {   
+    cursor: pointer;
+    list-style: none;
+    font-size: 16px;
+}
+.p-link:hover {
+    color: #18C8FF !important;
+    text-decoration: underline;
+}
