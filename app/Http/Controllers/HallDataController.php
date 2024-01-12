@@ -65,6 +65,7 @@ class HallDataController extends Controller
     }
 
     public function getModelList(Request $request, $store_id) {
+        $models = [];
         $list = StoreDataByDate::where('store_id', $store_id)->get();
 
         if ($list->isNotEmpty()) {
@@ -78,7 +79,8 @@ class HallDataController extends Controller
             $dataTable = new ServerSideTable($models);
             $dataTable->getAjaxTable();
         } else {
-            dd('No records found in StoreDataByDate for store_id: ' . $store_id);
+            $dataTable = new ServerSideTable($models);
+            $dataTable->getAjaxTable();
         }
     }
 
@@ -136,29 +138,32 @@ class HallDataController extends Controller
         ->get();
     
         // Add Number attribute Color 
-        function itemColor($value) {
+        function itemColor($extra_sheet, $g_number) {
             $result = [];
-
-            if ($value <= -3000) {
-                $result = ["color" => "td-red", "red" => 1, "blue" => 0];
-            } elseif ($value > -3000 && $value < 0) {
-                $result = ["color" => "td-pink", "red" => 1, "blue" => 0];
-            } elseif ($value >= 0 && $value < 1000) {
-                $result = ["color" => "td-white", "red" => 0, "blue" => 0];
-            } elseif ($value >= 1000 && $value < 3000) {
-                $result = ["color" => "td-light-blue", "red" => 0, "blue" => 1];
-            } elseif ($value >= 3000 && $value < 5000) {
-                $result = ["color" => "td-blue", "red" => 0, "blue" => 1];
-            } elseif ($value >= 5000) {
-                $result = ["color" => "td-dark-blue", "red" => 0, "blue" => 1];
-            // } elseif ($value == 2000) {
-            //     $result = ["color" => "td-gray", "red" => 0, "blue" => 0];
+            
+            if ($g_number <= 2000) {
+                $result = ["color" => "td-gray", "red" => 0, "blue" => 0];
             } else {
-                $result = ["color" => "td-white", "red" => 0, "blue" => 0];
+                if ($extra_sheet <= -3000) {
+                    $result = ["color" => "td-red", "red" => 1, "blue" => 0];
+                } elseif ($extra_sheet > -3000 && $extra_sheet < 0) {
+                    $result = ["color" => "td-pink", "red" => 1, "blue" => 0];
+                } elseif ($extra_sheet >= 0 && $extra_sheet < 1000) {
+                    $result = ["color" => "td-white", "red" => 0, "blue" => 0];
+                } elseif ($extra_sheet >= 1000 && $extra_sheet < 3000) {
+                    $result = ["color" => "td-light-blue", "red" => 0, "blue" => 1];
+                } elseif ($extra_sheet >= 3000 && $extra_sheet < 5000) {
+                    $result = ["color" => "td-blue", "red" => 0, "blue" => 1];
+                } elseif ($extra_sheet >= 5000) {
+                    $result = ["color" => "td-dark-blue", "red" => 0, "blue" => 1];
+                } else {
+                    $result = ["color" => "td-white", "red" => 0, "blue" => 0];
+                }
             }
+
             return $result;
         }
-
+        
         foreach ($modelDate as $date_key => $date_value) {
             $temp_store_obj = [];
             $colorCnts = ['red' => 0, 'blue' => 0];
@@ -170,7 +175,7 @@ class HallDataController extends Controller
                         'machine_number' => $model_value['machine_number'],
                         'date' => $model_value['date'],
                         'extra_sheet' => intval(str_replace(',', '', $model_value['extra_sheet'])),
-                        'item_color' => itemColor(intval(str_replace(',', '', $model_value['extra_sheet']))),
+                        'item_color' => itemColor(intval(str_replace(',', '', $model_value['extra_sheet'])), intval(str_replace(',', '', $model_value['g_number']))),
                     ];
 
                     $colorCnts['red'] += $temp_store_obj[count($temp_store_obj) - 1]['item_color']['red'];

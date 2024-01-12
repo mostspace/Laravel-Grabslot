@@ -59,7 +59,14 @@
                         <div id="loadingSpinner" class="spinner spinner-primary spinner-lg mt-10"></div>
                     </div>
 
-                    <ul id="storeList"></ul>
+                    <div class="">
+                        <div class="col-6">
+                            <ul id="storeList"></ul>
+                        </div>
+                        <div class="col-6">
+                            <ul id="modelList"></ul>
+                        </div>
+                    </div>
 
                     <div class="table-responsive">
                         <div class="model-table" id="modelDetailTable"></div>
@@ -218,19 +225,20 @@
         });
 
         // Store & Model table        
-        var store_name, model_name;
+        var store_name="", store_id="", model_name="";
         // $("#modelInput").hide();
 
         // Search Store
         $("#store").keydown(function(event) {
             if(event.which == 13) {
                 $("#storeList").empty();
+                $("#modelList").empty();
                 $("#model").val('');
                 $("#modelInput").hide();
                 $("#modelDetailTable").empty();
                 if($(this).val()) {
                     store_name = $(this).val();
-                    validationModel('store', store_name);
+                    validationPromotionTable('store', store_id, store_name);
                 }
             }
         });
@@ -239,25 +247,38 @@
             if(event.key === 'Delete' || event.key === 'Backspace') {
                 if($(this).val().trim() === '') {
                     $("#modelInput").hide();
+                    $('#modelDetailTable').empty();
                 }
             }
         });
 
         $("#storeList").on("click", ".p-link", function() {
             $("#storeList").empty();
-            // var selectedElement = $(this).clone();
-            // $("#storeList").append(selectedElement);
-
             store_name = $(this).text();
+            store_id = $(this).data('id');
+            
+            $("#store").val(store_name);
+            
             $("#modelInput").show();
+        });
+
+        $("#modelList").on("click", ".p-link", function() {
+            $("#modelList").empty();
+            model_name = $(this).text();
+            
+            $("#model").val(model_name);
+            
+            showModelTable(store_name, model_name);
         });
 
         // Search Model
         $("#model").keydown(function(event) {
             if(event.which == 13) {
+                $("#modelList").empty();
+                $('#modelDetailTable').empty();
                 if($(this).val()) {
                     model_name = $(this).val();
-                    validationModel('model', model_name);
+                    validationPromotionTable('model', store_id, model_name);
                 }
             }
         });
@@ -266,6 +287,7 @@
             if(event.key === 'Delete' || event.key === 'Backspace') {
                 if($(this).val().trim() === '') {
                     $('#modelDetailTable').empty();
+                    $('#modelList').empty();
                 }
             }
         });
@@ -305,32 +327,35 @@
             });
         }
 
-        function validationModel(type, value) {
+        function validationPromotionTable(type, store_id, value) {
             $.ajax({
-                url: '/admin/promotion-printing/model-validation',
+                url: '/admin/promotion-printing/promotion-table-validation',
                 type: 'POST',
                 data: {
                     type: type,
+                    store_id: store_id,
                     value: value,
                 },
                 // Add other AJAX configurations here
                 success: function (response) {
                     if (response.type == "store") {
                         if (response.value == 1) {
-                            console.log(response);
                             $("#store_warning").text('');
                             for(var i = 0; i < (response.data).length; i++) {
-                                $("#storeList").append('<li class="p-link">' + response.data[i] + '</li>');
+                                $("#storeList").append('<li class="p-link" data-id="' + response.data[i].id + '">' + response.data[i].name + '</li>');
                             }
-                            
-                            // $("#modelInput").show();
                         } else {
                             $("#store_warning").text('該当する店舗がありません。');
                         }
                     } else {
                         if (response.value == 1) {
                             $("#model_warning").text('');
-                            showModelTable(store_name, model_name);
+
+                            for(var i = 0; i < (response.data).length; i++) {
+                                $("#modelList").append('<li class="p-link">' + response.data[i] + '</li>');
+                            }
+
+                            // showModelTable(store_name, model_name);
                         } else {
                             $("#model_warning").text('対応するモデルはありません。');
                             $("#modelDetailTable").empty();
@@ -343,6 +368,7 @@
                 }
             });
         }
+
 
         $('#modelDetailTable').on('click', '.model-table-row .td-block .dailyModelBlue', function() {
             $("#modelDetailTable").find(".active_blink").removeClass('active_blink');

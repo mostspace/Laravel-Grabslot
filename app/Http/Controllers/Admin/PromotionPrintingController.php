@@ -32,7 +32,7 @@ class PromotionPrintingController extends Controller
     // echo $writer->write($qrCode);
 
     public function updateTable(Request $request) {
-        $model_name = $request->input('model_name');
+        $data_value = $request->input('model_name');
         $modelMonthData = [];
 
         $store = StoreList::where('name', $request->input('store_name'))->first();
@@ -50,8 +50,8 @@ class PromotionPrintingController extends Controller
                 ->from('tbl_store_data_by_date')
                 ->where('store_id', $store_id);
         })
-        ->where('A.model_name', $model_name)
-        ->whereRaw('STR_TO_DATE(B.date, "%Y/%m/%d") > (SELECT DATE_SUB(MAX(STR_TO_DATE(B.date, "%Y/%m/%d")), INTERVAL 1 MONTH) FROM tbl_model_data as A LEFT JOIN tbl_store_data_by_date as B ON A.store_data_id = B.id WHERE A.store_data_id IN (SELECT id FROM tbl_store_data_by_date WHERE store_id = ?) AND A.model_name = ?)', [$store_id, $model_name])
+        ->where('A.model_name', $data_value)
+        ->whereRaw('STR_TO_DATE(B.date, "%Y/%m/%d") > (SELECT DATE_SUB(MAX(STR_TO_DATE(B.date, "%Y/%m/%d")), INTERVAL 1 MONTH) FROM tbl_model_data as A LEFT JOIN tbl_store_data_by_date as B ON A.store_data_id = B.id WHERE A.store_data_id IN (SELECT id FROM tbl_store_data_by_date WHERE store_id = ?) AND A.model_name = ?)', [$store_id, $data_value])
         ->orderBy('B.date')
         ->distinct()
         ->get();
@@ -78,36 +78,39 @@ class PromotionPrintingController extends Controller
                 ->from('tbl_store_data_by_date')
                 ->where('store_id', $store_id);
         })
-        ->where('A.model_name', $model_name)
-        ->whereRaw('STR_TO_DATE(B.date, "%Y/%m/%d") > (SELECT DATE_SUB(MAX(STR_TO_DATE(B.date, "%Y/%m/%d")), INTERVAL 1 MONTH) FROM tbl_model_data as A LEFT JOIN tbl_store_data_by_date as B ON A.store_data_id = B.id WHERE A.store_data_id IN (SELECT id FROM tbl_store_data_by_date WHERE store_id = ?) AND A.model_name = ?)', [$store_id, $model_name])
+        ->where('A.model_name', $data_value)
+        ->whereRaw('STR_TO_DATE(B.date, "%Y/%m/%d") > (SELECT DATE_SUB(MAX(STR_TO_DATE(B.date, "%Y/%m/%d")), INTERVAL 1 MONTH) FROM tbl_model_data as A LEFT JOIN tbl_store_data_by_date as B ON A.store_data_id = B.id WHERE A.store_data_id IN (SELECT id FROM tbl_store_data_by_date WHERE store_id = ?) AND A.model_name = ?)', [$store_id, $data_value])
         ->orderBy('B.date')
         ->orderBy('A.machine_number')
         ->get();
     
         // Add Number attribute Color 
-        function itemColor($value) {
+        function itemColor($extra_sheet, $g_number) {
             $result = [];
-
-            if ($value <= -3000) {
-                $result = ["color" => "td-red", "red" => 1, "blue" => 0];
-            } elseif ($value > -3000 && $value < 0) {
-                $result = ["color" => "td-pink", "red" => 1, "blue" => 0];
-            } elseif ($value >= 0 && $value < 1000) {
-                $result = ["color" => "td-white", "red" => 0, "blue" => 0];
-            } elseif ($value >= 1000 && $value < 3000) {
-                $result = ["color" => "td-light-blue", "red" => 0, "blue" => 1];
-            } elseif ($value >= 3000 && $value < 5000) {
-                $result = ["color" => "td-blue", "red" => 0, "blue" => 1];
-            } elseif ($value >= 5000) {
-                $result = ["color" => "td-dark-blue", "red" => 0, "blue" => 1];
-            // } elseif ($value == 2000) {
-            //     $result = ["color" => "td-gray", "red" => 0, "blue" => 0];
+            
+            if ($g_number <= 2000) {
+                $result = ["color" => "td-gray", "red" => 0, "blue" => 0];
             } else {
-                $result = ["color" => "td-white", "red" => 0, "blue" => 0];
+                if ($extra_sheet <= -3000) {
+                    $result = ["color" => "td-red", "red" => 1, "blue" => 0];
+                } elseif ($extra_sheet > -3000 && $extra_sheet < 0) {
+                    $result = ["color" => "td-pink", "red" => 1, "blue" => 0];
+                } elseif ($extra_sheet >= 0 && $extra_sheet < 1000) {
+                    $result = ["color" => "td-white", "red" => 0, "blue" => 0];
+                } elseif ($extra_sheet >= 1000 && $extra_sheet < 3000) {
+                    $result = ["color" => "td-light-blue", "red" => 0, "blue" => 1];
+                } elseif ($extra_sheet >= 3000 && $extra_sheet < 5000) {
+                    $result = ["color" => "td-blue", "red" => 0, "blue" => 1];
+                } elseif ($extra_sheet >= 5000) {
+                    $result = ["color" => "td-dark-blue", "red" => 0, "blue" => 1];
+                } else {
+                    $result = ["color" => "td-white", "red" => 0, "blue" => 0];
+                }
             }
+
             return $result;
         }
-
+        
         foreach ($modelDate as $date_key => $date_value) {
             $temp_store_obj = [];
             $colorCnts = ['red' => 0, 'blue' => 0];
@@ -119,7 +122,7 @@ class PromotionPrintingController extends Controller
                         'machine_number' => $model_value['machine_number'],
                         'date' => $model_value['date'],
                         'extra_sheet' => intval(str_replace(',', '', $model_value['extra_sheet'])),
-                        'item_color' => itemColor(intval(str_replace(',', '', $model_value['extra_sheet']))),
+                        'item_color' => itemColor(intval(str_replace(',', '', $model_value['extra_sheet'])), intval(str_replace(',', '', $model_value['g_number']))),
                     ];
 
                     $colorCnts['red'] += $temp_store_obj[count($temp_store_obj) - 1]['item_color']['red'];
@@ -137,31 +140,100 @@ class PromotionPrintingController extends Controller
         return response()->json(['tableData' => $tableData, 'modelMonthData' => $modelMonthData]);
     }
 
-    public function validateModel(Request $request) {
+    // public function validateStore(Request $request) {
+    //     $data_type = $request->input('type');
+    //     $data_value = $request->input('value');
+    
+    //     $store_list = [];
+
+    //     $stores = StoreList::where('name', 'like', '%' . $data_value . '%')->get();
+
+    //     if ($stores->isNotEmpty()) {
+    //         for ($i = 0; $i < count($stores); $i++) {
+    //             $store_list[$i]['name'] = $stores[$i]->name;
+    //             $store_list[$i]['id'] = $stores[$i]->id;
+    //         }
+
+    //         return response()->json(['type' => $data_type, 'value' => 1, 'data' => $store_list]);
+    //     } else {
+    //         return response()->json(['type' => $data_type, 'value' => 0]);
+    //     }
+    // }
+
+    // public function validateModel(Request $request) {
+    //     $model_list = [];
+    //     $data_type = $request->input('type');
+    //     $store_id = $request->input('store_id');
+    //     $data_value = $request->input('model_name');
+
+    //     $list = StoreDataByDate::where('store_id', $store_id)->get();
+
+    //     if ($list->isNotEmpty()) {
+    //         $storeDataIds = $list->pluck('id')->toArray();
+            
+    //         $models = ModelData::select('model_name')
+    //                 ->whereIn('store_data_id', $storeDataIds)
+    //                 ->where('model_name', 'like', '%' . $data_value . '%')
+    //                 ->distinct()
+    //                 ->get();
+
+    //         if ($models->isNotEmpty()) {
+    //             for ($i = 0; $i < count($models); $i++) {
+    //                 $model_list[$i] = $models[$i]->model_name;
+    //             }
+
+    //             return response()->json(['type' => $data_type, 'value' => 1, 'data' => $model_list]);
+    //         } else {
+    //             return response()->json(['type' => $data_type, 'value' => 0]);
+    //         }
+
+    //     }
+    // }
+
+    public function validatePromotionTable(Request $request) {
+        $data_list= [];
         $data_type = $request->input('type');
+        $store_id = $request->input('store_id');
         $data_value = $request->input('value');
-        $exists = false;
-    
-        if ($data_type == 'store') {
-            $store_list = [];
-            // Use % wildcard with like condition
-            $stores = StoreList::where('name', 'like', '%' . $data_value . '%')->get();
-    
-            if ($stores->isNotEmpty()) {
-                for ($i = 0; $i < count($stores); $i++) {
-                    $store_list[$i] = $stores[$i]->name;
+
+        if ($data_type == "store") {
+            $list = StoreList::where('name', 'like', '%' . $data_value . '%')->get();
+
+            if ($list->isNotEmpty()) {
+                for ($i = 0; $i < count($list); $i++) {
+                    $data_list[$i]['name'] = $list[$i]->name;
+                    $data_list[$i]['id'] = $list[$i]->id;
                 }
     
-                return response()->json(['type' => $data_type, 'value' => 1, 'data' => $store_list]);
+                return response()->json(['type' => $data_type, 'value' => 1, 'data' => $data_list]);
             } else {
                 return response()->json(['type' => $data_type, 'value' => 0]);
             }
         } else {
-            $exists = ModelData::where('model_name', $data_value)->exists();
+            $list = StoreDataByDate::where('store_id', $store_id)->get();
+
+            if ($list->isNotEmpty()) {
+                $storeDataIds = $list->pluck('id')->toArray();
+                
+                $models = ModelData::select('model_name')
+                        ->whereIn('store_data_id', $storeDataIds)
+                        ->where('model_name', 'like', '%' . $data_value . '%')
+                        ->distinct()
+                        ->get();
+    
+                if ($models->isNotEmpty()) {
+                    for ($i = 0; $i < count($models); $i++) {
+                        $data_list[$i] = $models[$i]->model_name;
+                    }
+    
+                    return response()->json(['type' => $data_type, 'value' => 1, 'data' => $data_list]);
+                } else {
+                    return response()->json(['type' => $data_type, 'value' => 0]);
+                }
+            }
         }
-    
-        return response()->json(['type' => $data_type, 'value' => $exists ? 1 : 0]);
+
+        
     }
-    
     
 }

@@ -367,3 +367,79 @@ div.dataTables_wrapper div.dataTables_filter input {
         margin-top: 20px;
     }
 }
+
+.divide-cell {
+    /* padding: 0; */
+    /* border: 2px solid black; */
+    position: relative;
+    background-color: #ffffff;
+    flex: 1;
+    min-width: 30px;
+    border-right: 1px solid #27282e;
+    border-bottom: 1px solid #27282e;
+    box-sizing: border-box;
+    height: 32px;
+    width: 100%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    color: black;
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.divide-cell::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: -webkit-gradient(
+      linear,
+      right top,
+      left bottom,
+      color-stop(49%, white),
+      color-stop(50%, black),
+      color-stop(51%, white)
+    );
+    background: -webkit-linear-gradient(
+      top right,
+      white 49%,
+      black 50%,
+      white 51%
+    );
+    background: -o-linear-gradient(
+      top right,
+      white 49%,
+      black 50%,
+      white 51%
+    );
+    background: linear-gradient(
+      to bottom left,
+      white 49%,
+      black 50%,
+      white 51%
+    );
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.divide-cell .c1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 2px;
+    margin-top: 2px;
+}
+
+.divide-cell .c2 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 1px;
+    margin-left: 1px;
+}
