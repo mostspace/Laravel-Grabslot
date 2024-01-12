@@ -140,56 +140,6 @@ class PromotionPrintingController extends Controller
         return response()->json(['tableData' => $tableData, 'modelMonthData' => $modelMonthData]);
     }
 
-    // public function validateStore(Request $request) {
-    //     $data_type = $request->input('type');
-    //     $data_value = $request->input('value');
-    
-    //     $store_list = [];
-
-    //     $stores = StoreList::where('name', 'like', '%' . $data_value . '%')->get();
-
-    //     if ($stores->isNotEmpty()) {
-    //         for ($i = 0; $i < count($stores); $i++) {
-    //             $store_list[$i]['name'] = $stores[$i]->name;
-    //             $store_list[$i]['id'] = $stores[$i]->id;
-    //         }
-
-    //         return response()->json(['type' => $data_type, 'value' => 1, 'data' => $store_list]);
-    //     } else {
-    //         return response()->json(['type' => $data_type, 'value' => 0]);
-    //     }
-    // }
-
-    // public function validateModel(Request $request) {
-    //     $model_list = [];
-    //     $data_type = $request->input('type');
-    //     $store_id = $request->input('store_id');
-    //     $data_value = $request->input('model_name');
-
-    //     $list = StoreDataByDate::where('store_id', $store_id)->get();
-
-    //     if ($list->isNotEmpty()) {
-    //         $storeDataIds = $list->pluck('id')->toArray();
-            
-    //         $models = ModelData::select('model_name')
-    //                 ->whereIn('store_data_id', $storeDataIds)
-    //                 ->where('model_name', 'like', '%' . $data_value . '%')
-    //                 ->distinct()
-    //                 ->get();
-
-    //         if ($models->isNotEmpty()) {
-    //             for ($i = 0; $i < count($models); $i++) {
-    //                 $model_list[$i] = $models[$i]->model_name;
-    //             }
-
-    //             return response()->json(['type' => $data_type, 'value' => 1, 'data' => $model_list]);
-    //         } else {
-    //             return response()->json(['type' => $data_type, 'value' => 0]);
-    //         }
-
-    //     }
-    // }
-
     public function validatePromotionTable(Request $request) {
         $data_list= [];
         $data_type = $request->input('type');
