@@ -1,10 +1,21 @@
 <div class="model-table-row mt-7">
     <div class="td-block td-header"></div>
     <div class="td-block td-header"></div>
-    <div class="td-block td-header">台番号</div>
+    <div class="divide-cell">
+        <div class="c1">日付</div>
+        <div class="c2">台番号</div>
+    </div>
     @foreach($modelMonthData as $date => $items)
     <div class="td-block td-header">
-        {{ substr($date, 5) }}
+        @php
+            $dateString = substr($date, 5);
+
+            if (isset($dateString[3]) && $dateString[3] === '0') {
+                $dateString = substr_replace($dateString, '', 3, 1);
+            }
+        @endphp
+
+        {{ $dateString }}
     </div>
     @endforeach
 </div>

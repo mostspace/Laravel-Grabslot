@@ -66,7 +66,6 @@
                             <div class="model-table-row">
                                 <div class="td-block td-header"></div>
                                 <div class="td-block td-header"></div>
-                                <!-- <div class="td-block td-header">台番号</div> -->
                                 <div class="divide-cell">
                                     <div class="c1">日付</div>
                                     <div class="c2">台番号</div>
