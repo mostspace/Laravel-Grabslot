@@ -56,7 +56,6 @@ Route::group(['prefix' => 'admin'], function() {
     // Route::get('/promotion-printing/model', [PromotionPrintingController::class, 'showModelData']);
     Route::post('/promotion-printing/model', [PromotionPrintingController::class, 'updateTable']);
     Route::post('/promotion-printing/promotion-table-validation', [PromotionPrintingController::class, 'validatePromotionTable']);
-    // Route::post('/promotion-printing/model-validation', [PromotionPrintingController::class, 'validateModel']);
 
     Route::get('/user-management', [UserManagementController::class, 'index'])->name('admin.user_management');
     Route::post('/users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
