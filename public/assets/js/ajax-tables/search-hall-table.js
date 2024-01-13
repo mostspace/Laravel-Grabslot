@@ -52,6 +52,8 @@ var searchModalWidget = function() {
 			searchDelay: 500,
 			processing: true,
 			serverSide: true,
+			paging: false,
+			info: false,
 			ajax: {
 				url: '/search-hall/' + hall_name,
 				type: 'POST',

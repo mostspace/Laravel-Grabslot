@@ -10,6 +10,8 @@ var KTDatatablesDataSourceAjaxServer = function() {
 			searchDelay: 500,
 			processing: true,
 			serverSide: true,
+			paging: false,
+			info: false,
 			ajax: {
 				url: '/store-data-list/' + store_data_id,
 				type: 'POST',

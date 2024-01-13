@@ -7,9 +7,11 @@ var KTDatatablesDataSourceAjaxServer = function() {
 		// begin first table
 		table.DataTable({
 			responsive: true,
-			searchDelay: 500,
+			searchDelay: 200,
 			processing: true,
 			serverSide: true,
+			paging: false,
+			info: false,
 			ajax: {
 				url: '/model-list/' + store.id,
 				type: 'POST',
