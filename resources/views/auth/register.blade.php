@@ -4,7 +4,7 @@
     <!--begin::Login Sign in form-->
     <div class="login-signin">
         <div class="mb-20">
-            <h3>ユーザー登録</h3>
+            <h3>新規登録</h3>
             <!-- <p class="opacity-60">詳細を入力してアカウントを作成してください:</p> -->
         </div>
         <form class="form text-center" method="POST" action="{{ route('register') }}" id="registerForm">

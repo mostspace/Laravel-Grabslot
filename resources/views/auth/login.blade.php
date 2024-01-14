@@ -31,7 +31,7 @@
         </form>
         <div class="mt-10">
             <span class="opacity-70 mr-4 ">アカウントをお持ちでない場合は、</span>
-            <a href="/register" id="kt_login_signup" class="text-white font-weight-bold">ユーザー登録</a>
+            <a href="/register" id="kt_login_signup" class="text-white font-weight-bold">新規登録</a>
         </div>
     </div>
     <!--end::Login Sign in form-->

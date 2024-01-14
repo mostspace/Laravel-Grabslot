@@ -31,7 +31,24 @@
                         <p class="fs-7 font-weight-bold">このサイトを活用して高設定を、勝利を掴み取って下さい！</p>
                     </div>
 
-                    <div class="mt-15">
+                    <div class="form-group row mt-15">
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="image-input image-input-outline w-100" id="kt_image_1">
+                                <div class="image-input-wrapper w-100 h-500px"></div>
+                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="画像の変更">
+                                    <i class="fa fa-pen icon-sm text-muted"></i>
+                                    <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
+                                    <input type="hidden" name="profile_avatar_remove" />
+                                </label>
+                                <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="画像をキャンセル">
+                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                </span>
+                            </div>
+                            <span class="form-text text-muted">許可されるファイルの種類: png、jpg、jpeg。</span>
+                        </div>
+                    </div>
+
+                    <!-- <div class="mt-15">
                         <div class="row mx-1">
                             <div class="col-md-6 col-lg-6">
                                 <div class="form-group row">
@@ -70,7 +87,7 @@
 
                     <div class="table-responsive">
                         <div class="model-table" id="modelDetailTable"></div>
-                    </div>
+                    </div> -->
 
                     <div class="mt-15">
                         <h3 class="font-weight-bolder">狙い台が明確になる！</h3>
@@ -389,4 +406,5 @@
 </script>
 
 <script src="{{ asset('assets/js/model-detail-data.js') }}"></script>
+<script src="{{ asset('assets/admin/js/image-input.js') }}"></script>
 @endsection

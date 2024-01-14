@@ -1228,7 +1228,7 @@
 						_fnSortingClasses( oSettings );
 					}
 				}, 'sc' );
-			
+
 			
 				/*
 				 * Final init

@@ -54,6 +54,7 @@ var searchModalWidget = function() {
 			serverSide: true,
 			paging: false,
 			info: false,
+			scrollY: true,
 			ajax: {
 				url: '/search-hall/' + hall_name,
 				type: 'POST',
@@ -93,5 +94,4 @@ var searchModalWidget = function() {
 
 jQuery(document).ready(function() {
 	searchModalWidget.init();
-	
 });
