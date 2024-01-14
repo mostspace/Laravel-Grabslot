@@ -10,8 +10,6 @@ var KTDatatablesDataSourceAjaxServer = function() {
 			searchDelay: 500,
 			processing: true,
 			serverSide: true,
-			paging: false,
-			info: false,
 			ajax: {
 				url: '/admin/users-list',
 				type: 'POST',

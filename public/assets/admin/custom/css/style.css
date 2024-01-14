@@ -273,3 +273,7 @@
     background: url('../../../media/img/printing-table.png');
     background-position: center !important;
 }
+.logout-dropdown {
+    background: #1f1e2fa3;
+    border-radius: 0 0 5px 5px !important;
+}

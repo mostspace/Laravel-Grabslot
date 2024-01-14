@@ -205,8 +205,8 @@
                                 <div class="dropdown">
 									<!--begin::Toggle-->
 		                            <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
-                                        <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2 btn-dropdown">
-                                            <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ Auth::user()->name }}</span>
+                                        <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-3 btn-dropdown">
+                                            <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline">{{ Auth::user()->name }}</span>
                                             <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                                                 <i class="flaticon-user"></i>
                                             </span>
@@ -215,7 +215,7 @@
 									<!--end::Toggle-->
 
 									<!--begin::Dropdown-->
-									<div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
+									<div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg logout-dropdown">
 										<!--begin:Header-->
 										<div class="d-flex flex-column flex-center py-10 bgi-size-cover bgi-no-repeat rounded">
 											<h4 class="text-white font-weight-bold">{{ Auth::user()->name }}</h4>
