@@ -38,9 +38,17 @@
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
 			<div class="d-flex align-items-center">
-				<!-- <button class="btn p-0 burger-icon burger-icon-left ml-4" id="kt_header_mobile_toggle">
+				<!--begin::Aside Mobile Toggle-->
+				<button class="btn p-0 burger-icon burger-icon-left ml-4" id="kt_header_mobile_toggle">
 					<span></span>
-				</button> -->
+				</button>
+				<!--end::Aside Mobile Toggle-->
+				<!--begin::Header Menu Mobile Toggle-->
+				<button class="btn p-0 burger-icon ml-4" id="kt_header_mobile_toggle">
+					<span></span>
+				</button>
+				<!--end::Header Menu Mobile Toggle-->
+				<!--begin::Topbar Mobile Toggle-->
 				<button class="btn btn-icon btn-hover-transparent-white p-0 ml-3" id="kt_header_mobile_topbar_toggle">
 					<span class="svg-icon svg-icon-xl">
 						<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
@@ -54,6 +62,7 @@
 						<!--end::Svg Icon-->
 					</span>
 				</button>
+				<!--end::Topbar Mobile Toggle-->
 			</div>
 			<!--end::Toolbar-->
 		</div>
@@ -123,31 +132,67 @@
                             </div> -->
                             <!--end::Header Menu Wrapper-->
 
-							<!--begin::Logout-->
-							<div class="topbar align-items-center">
-								@auth
-									@if(Auth::user()->roles->contains('slug', 'admin'))
-										<a href="/admin" class="btn btn-success font-weight-bold px-5 py-3 m-2 rounded-10 w-115px">管理者ページ</a>
-									@endif
-								@endauth
-
-                                <div class="">
-                                    <!-- Authentication -->
-			                        <form method="POST" action="{{ route('logout') }}">
-			                            @csrf
-
-			                            <x-dropdown-link :href="route('logout')" class="btn btn-primary font-weight-bold px-5 py-3 m-2 rounded-10 w-115px"
-			                                    onclick="event.preventDefault();
-			                                                this.closest('form').submit();">
-			                                {{ __('ログアウト') }}
-			                            </x-dropdown-link>
-			                        </form>
-                                </div>
+							<!--begin::Topbar-->
+							<div class="topbar">
+								<!--begin::Languages-->
+								<div class="dropdown">
+									<!--begin::Toggle-->
+									<div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
+										<div class="btn btn-icon btn-hover-transparent-white p-0 ml-3" data-toggle="modal" data-target="#kt_chat_modal">
+											<span class="svg-icon svg-icon-xl">
+												<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<polygon points="0 0 24 0 24 24 0 24" />
+														<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+														<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+													</g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>
+										</div>
+									</div>
+									<!--end::Toggle-->
+									<!--begin::Dropdown-->
+									<div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
+										<!--begin::Nav-->
+										<ul class="navi navi-hover py-4">
+											@auth
+												@if(Auth::user()->roles->contains('slug', 'admin'))
+												<!--begin::Item-->
+												<li class="navi-item">
+													<a href="/admin" class="navi-link">
+														<span class="navi-text text-white">管理者ページ</span>
+													</a>
+												</li>
+												<!--end::Item-->
+												@endif
+											@endauth
+											<!--begin::Item-->
+											<li class="navi-item">
+												<a href="#" class="navi-link">
+													<span class="navi-text text-white">マイページ</span>
+												</a>
+											</li>
+											<!--end::Item-->
+											<!--begin::Item-->
+											<li class="navi-item">
+												<form method="POST" action="{{ route('logout') }}" class="navi-text text-white">
+													@csrf
+													<a href="route('logout')" class="navi-link" onclick="event.preventDefault(); this.closest('form').submit();">
+														<span class="navi-text text-white">ログアウト</span>
+													</a>
+												</form>
+											</li>
+											<!--end::Item-->
+										</ul>
+										<!--end::Nav-->
+									</div>
+									<!--end::Dropdown-->
+								</div>
+								<!--end::Languages-->
 							</div>
-							<!--end::Logout-->
-
-							
-							
+							<!--end::Topbar-->
 						</div>
 						<!--end::Container-->
 					</div>

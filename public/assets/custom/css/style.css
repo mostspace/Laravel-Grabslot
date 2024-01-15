@@ -217,7 +217,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     border: none;
 }
 #kt_header_menu_wrapper {
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 .text-dark {
     color: black !important;
@@ -461,4 +461,6 @@ div.dataTables_wrapper div.dataTables_filter input {
     margin-bottom: 1px;
     margin-left: 1px;
 }
-
+.navi.navi-hover .navi-item .navi-link:hover {
+    background-color: #32363b !important;
+}
