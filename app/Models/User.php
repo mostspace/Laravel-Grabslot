@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany; // Import BelongsToMany here
 
 class User extends Authenticatable
 {
@@ -43,11 +43,16 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function roles() {
-        return $this->belongsToMany('App\Models\Role');
+    /**
+     * The roles that belong to the user.
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class);
     }
 
-    public function hasRole($role) {
+    public function hasRole($role)
+    {
         return $this->roles->contains('slug', $role);
     }
 }

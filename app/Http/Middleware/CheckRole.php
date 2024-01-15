@@ -10,26 +10,12 @@ use Auth;
 
 class CheckRole
 {
-    public function handle(Request $request, Closure $next): RedirectResponse
+    public function handle(Request $request, Closure $next, ...$roles): RedirectResponse
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $role = Role::where('user_id', $user->id)->first();
-            if ($this->userHasAdminRole($role)) {
-                
-                return $next($request);
-            } else {
-                // Redirect non-admin users to the home page with an error message
-                return redirect('/')->with('error', 'You do not have the required permissions.');
-            }
+        if (Auth::check() && Auth::user()->roles->contains('slug', 'admin')) {
+            return $next($request);
         }
-        
-        // Redirect unauthenticated users to the login page
-        return redirect('/login');
-    }
 
-    protected function userHasAdminRole($role): bool
-    {
-        return $role && $role->slug === "admin";
+        return redirect('/login');
     }
 }

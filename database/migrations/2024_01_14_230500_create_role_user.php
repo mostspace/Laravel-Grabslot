@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_scraping_history', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->id();
-            $table->date('date'); // Replace 'your_date_column' with the actual name you want for the date column.
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('role_id');
         });
     }
 
@@ -22,7 +23,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_scraping_history');
+        Schema::dropIfExists('role_user');
     }
 };
 

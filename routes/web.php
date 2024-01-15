@@ -50,7 +50,7 @@ Route::get('/waiting', function () { return view('waiting'); });
 // =========================================== ADMIN =================================================
 
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('/', [AdminController::class, 'index'])->name('admin.index')->middleware('checkRole');
+    Route::get('/', [AdminController::class, 'index'])->middleware('checkRole');
     Route::get('/access-analyze', [AccessAnalyzeController::class, 'index'])->name('admin.access_analyze');
     Route::get('/promotion-printing', [PromotionPrintingController::class, 'index'])->name('admin.promotion_printing');
     // Route::get('/promotion-printing/model', [PromotionPrintingController::class, 'showModelData']);

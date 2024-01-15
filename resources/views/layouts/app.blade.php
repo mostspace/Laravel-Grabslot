@@ -125,8 +125,13 @@
 
 							<!--begin::Logout-->
 							<div class="topbar align-items-center">
+								@auth
+									@if(Auth::user()->roles->contains('slug', 'admin'))
+										<a href="/admin" class="btn btn-success font-weight-bold px-5 py-3 m-2 rounded-10 w-115px">管理者ページ</a>
+									@endif
+								@endauth
+
                                 <div class="">
-                                    <!-- <a href="/logout" class="btn btn-primary font-weight-bold px-5 py-3 m-2 rounded-10">ログアウト</a> -->
                                     <!-- Authentication -->
 			                        <form method="POST" action="{{ route('logout') }}">
 			                            @csrf
@@ -140,6 +145,9 @@
                                 </div>
 							</div>
 							<!--end::Logout-->
+
+							
+							
 						</div>
 						<!--end::Container-->
 					</div>

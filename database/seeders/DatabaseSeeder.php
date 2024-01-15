@@ -4,14 +4,49 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Role;
+use App\Models\Region;
+use App\Models\RegionArea;
 
-class RegionTableSeeder extends Seeder
+class DatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
+        // Seed roles
+        $adminRole = Role::factory()->create(['slug' => 'admin']);
+        $userRole = Role::factory()->create(['slug' => 'user']);
+
+        // Seed admins and attach roles
+        User::factory(1)->create([
+            'email' => 'admin@admin.com',
+        ])->each(function ($user) use ($adminRole) {
+            $user->roles()->attach($adminRole);
+        });
+
+        // Seed users and attach roles
+        User::factory(50)->create()->each(function ($user) use ($userRole) {
+            $user->roles()->attach($userRole);
+        });
+
+        // Seed region areas
+        $regions = [
+            '北海道・東北',
+            '関東',
+            '中部',
+            '近畿',
+            '中国・四国',
+            '九州・沖縄',
+        ];
+
+        foreach($regions as $name) {
+            RegionArea::factory()->create(['name' => $name]);
+        }
+
+        // Seed regions 
         $cities = [
             '北海道' => ['url' => 'https://ana-slo.com/', 'area_id' => 1],
             '青森県' => ['url' => 'https://ana-slo.com/', 'area_id' => 1],
@@ -63,7 +98,7 @@ class RegionTableSeeder extends Seeder
         ];
 
         foreach($cities as $name => $data) {
-            \App\Models\Region::factory()->create([
+            Region::factory()->create([
                 'name' => $name, 
                 'area_id' =>$data['area_id'],
                 'url' =>$data['url'],
