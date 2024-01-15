@@ -30,9 +30,8 @@
                     </div>
 
                     <div class="mt-10">
-                        <p class="fs-7 color-white">日付をクリックすると詳細データが閲覧出来ます。</p>
-                        <p class="fs-7 color-white">※通信状況やシステムの影響により実際の数値とは異なる場合があります。</p>
-                        <p class="fs-7 color-white">※サイトの動作を安定させる都合上、詳細データの保持期間は1年1カ月となります。</p>
+                        <p class="fs-7 color-white">通信状況やシステムの影響により実際の数値とは異なる場合があります。</p>
+                        <p class="fs-7 color-white">サイトの動作を安定させる都合上、詳細データの保持期間は1年となります。</p>
                     </div>
 
                     <div class="p-panel mt-10" id="modelTable">
