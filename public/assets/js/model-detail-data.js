@@ -249,6 +249,21 @@ var modelDetailDataWidget = function () {
                         }
                     },
                 ],
+                custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                    var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
+                    var date = model_data[dataPointIndex].date;
+                    var extraSheet = model_data[dataPointIndex].extra_sheet;
+            
+                    // Custom title for the tooltip
+                    var title = "<div class='apexcharts-tooltip-title fs-7'>" + date.replace(/\/(\d{1})\//, '/$1/').replace(/\/0(\d{1})/, '/$1') + "</div>";
+            
+                    // Custom content for the tooltip
+                    var content = "<div class='apexcharts-tooltip-content fs-7 pl-3 pb-3'>" +
+                                    "<span>差枚: " + extraSheet + "</span>" +
+                                "</div>";
+            
+                    return title + content;
+                }
             },
         };
 

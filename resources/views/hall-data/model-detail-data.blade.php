@@ -177,7 +177,7 @@
 <!--end::Content-->
 
 <!--begin::Modal-->
-<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeSm" aria-hidden="true">
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -187,30 +187,28 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="p-panel">
-                    <div id="model-chart"></div>
-                    <div class="table-responsive">
-                        <table class="table table-checkable table-bordered" id="modalTable">
-                            <thead>
-                                <tr>
-                                    <th>台番号</th>
-                                    <th>G数</th>
-                                    <th>差枚</th>
-                                    <th>BB</th>
-                                    <th>RB</th>
-                                    <th>合成確率</th>
-                                    <th>BB確率</th>
-                                    <th>RB確率</th>
-                                </tr>
-                            </thead>
-                            <tbody id="modalTableBody"></tbody>
-                        </table>
-                    </div>
+                <div id="model-chart"></div>
+                <div class="table-responsive">
+                    <table class="table table-checkable table-bordered" id="modalTable">
+                        <thead>
+                            <tr>
+                                <th>台番号</th>
+                                <th>G数</th>
+                                <th>差枚</th>
+                                <th>BB</th>
+                                <th>RB</th>
+                                <th>合成確率</th>
+                                <th>BB確率</th>
+                                <th>RB確率</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modalTableBody"></tbody>
+                    </table>
                 </div>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">閉じる</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
