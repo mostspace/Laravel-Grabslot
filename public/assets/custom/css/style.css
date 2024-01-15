@@ -355,7 +355,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     border-color: #27282e !important;
 }
 
-
+/* Model Detail modal */
 @media screen and (max-width: 505px) {
     .apexcharts-xaxis {
       display: none;
@@ -373,10 +373,28 @@ div.dataTables_wrapper div.dataTables_filter input {
         margin-top: 20px;
     }
 }
+@media screen and (max-width: 576px) {
+    #dataModal .modal-dialog {
+        justify-content: center;
+    }
+    #dataModal .modal-content {
+        width: 70%;
+    }
+    #dataModal .modal-header {
+        display: none;
+    }
+    #dataModal .modal-footer {
+        display: none;
+    }
+    #dataModal .modal-body {
+        padding: unset;
+    }
+    #dataModal .modal-body .p-panel {
+        padding: 5px;
+    }
+}
 
 .divide-cell {
-    /* padding: 0; */
-    /* border: 2px solid black; */
     position: relative;
     background-color: #ffffff;
     flex: 1;
@@ -450,23 +468,3 @@ div.dataTables_wrapper div.dataTables_filter input {
     margin-left: 1px;
 }
 
-@media screen and (max-width: 576px) {
-    #dataModal .modal-dialog {
-        justify-content: center;
-    }
-    #dataModal .modal-content {
-        width: 75%;
-    }
-    #dataModal .modal-header {
-        display: none;
-    }
-    #dataModal .modal-footer {
-        display: none;
-    }
-    #dataModal .modal-body {
-        padding: unset;
-    }
-    #dataModal .modal-body .p-panel {
-        padding: 5px;
-    }
-}
