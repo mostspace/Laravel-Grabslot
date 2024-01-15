@@ -170,7 +170,7 @@
 											@endauth
 											<!--begin::Item-->
 											<li class="navi-item">
-												<a href="#" class="navi-link">
+												<a href="/user-profile" class="navi-link">
 													<span class="navi-text text-white">マイページ</span>
 												</a>
 											</li>

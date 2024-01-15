@@ -110,6 +110,10 @@
     border-radius: 10px;
     border: none;
 }
+.g_input, .g_input:focus {
+    background-color: #1a1b23 !important;
+    color: #fff !important;
+}
 #kt_footer {
     background: #1A1B23 !important;
     border-top: 1px solid #31323D;
@@ -461,6 +465,16 @@ div.dataTables_wrapper div.dataTables_filter input {
     margin-bottom: 1px;
     margin-left: 1px;
 }
+/* Header User Button */
 .navi.navi-hover .navi-item .navi-link:hover {
     background-color: #32363b !important;
+}
+
+/* Profile Page */
+.form-group label {
+    color: white;
+}
+.p-panel .card-footer {
+    background: unset;
+    border-top: unset;
 }

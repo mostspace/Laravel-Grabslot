@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 
 // User Controller
 use App\Http\Controllers\HallDataController;
+use App\Http\Controllers\UserController;
 
 // Admin Controller
 use App\Http\Controllers\Admin\AdminController;
@@ -45,6 +46,13 @@ Route::post('/search-hall/{hall_name}', [HallDataController::class, 'searchHallD
 
 // Waiting
 Route::get('/waiting', function () { return view('waiting'); });
+
+// User Profile
+Route::get('/user-profile', [UserController::class, 'index']);
+
+// Pricing
+Route::get('/pricing', [PricingController::class, 'index']);
+
 
 // =========================================== ADMIN =================================================
 
