@@ -51,7 +51,7 @@ Route::get('/waiting', function () { return view('waiting'); });
 Route::get('/user-profile', [UserController::class, 'index']);
 
 // Pricing
-Route::get('/pricing', [PricingController::class, 'index']);
+Route::get('/pricing', [UserController::class, 'getPricingPage']);
 
 
 // =========================================== ADMIN =================================================

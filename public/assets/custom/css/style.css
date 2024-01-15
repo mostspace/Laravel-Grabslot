@@ -162,6 +162,9 @@
 .p-bg-primary {
     background-color: #18C8FF !important;
 }
+.p-bg-dark {
+    background-color: #1a1b23;
+}
 .nav-link:hover {
     color: #18C8FF !important;
 }
@@ -477,4 +480,10 @@ div.dataTables_wrapper div.dataTables_filter input {
 .p-panel .card-footer {
     background: unset;
     border-top: unset;
+}
+.p-panel .card-header {
+    border-color: #515361;
+}
+.bg-primary {
+    background-color: #3699ff !important;
 }
