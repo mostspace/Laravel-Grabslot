@@ -25,6 +25,7 @@ var modelDetailDataWidget = function () {
                     cnt++;
                     if (items[i].id == model_id) {
                         temp_obj['extra_sheet'] = items[i].extra_sheet;
+                        temp_obj['date'] = items[i].date;
                         temp_obj['model_order'] = cnt;
 
                         return temp_obj;
@@ -91,6 +92,7 @@ var modelDetailDataWidget = function () {
 
     // Charts widgets
     var modelChart = function (model_id, model_machine_number, selected_model) {
+        
         var element = document.getElementById("model-chart");
 
         if (!element) {
@@ -155,7 +157,7 @@ var modelDetailDataWidget = function () {
                     }
                 },
                 tooltip: {
-                    enabled: true,
+                    enabled: false,
                     formatter: undefined,
                     offsetY: 0,
                     style: {
@@ -195,16 +197,17 @@ var modelDetailDataWidget = function () {
                 }
             },
             tooltip: {
+                enabled: true,
                 style: {
                     colors: KTApp.getSettings()['colors']['gray']['gray-500'],
                     fontSize: '12px',
                     fontFamily: KTApp.getSettings()['font-family'],
                 },
-                // y: {
-                //     formatter: function (val) {
-                //         return val
-                //     }
-                // },
+                y: {
+                    formatter: function (val) {
+                        return val
+                    }
+                },
                 custom: function({ series, seriesIndex, dataPointIndex, w }) {
                     var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
                     var date = model_data[dataPointIndex].date;
@@ -219,7 +222,7 @@ var modelDetailDataWidget = function () {
                                 "</div>";
 
                     return title + content;
-                }
+                },
             },
             colors: [KTApp.getSettings()['colors']['theme']['light']['primary']],
             grid: {
@@ -246,25 +249,22 @@ var modelDetailDataWidget = function () {
                             strokeColor: '#ffffff',
                             radius: 2,
                             cssClass: 'apexcharts-custom-hover',
-                        }
+                        },
+                        // label: {
+                        //     text: selected_model.date + " :  " + selected_model.extra_sheet, // The label text here is just a placeholder. You can customize it as needed.
+                        //     borderColor: '#000',
+                        //     style: {
+                        //         background: '#000',
+                        //         color: '#fff',
+                        //         fontSize: 15,
+                        //     },
+                        //     offsetY: -3,
+                        //     offsetX: 20,
+                        // }
                     },
                 ],
-                custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                    var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
-                    var date = model_data[dataPointIndex].date;
-                    var extraSheet = model_data[dataPointIndex].extra_sheet;
-            
-                    // Custom title for the tooltip
-                    var title = "<div class='apexcharts-tooltip-title fs-7'>" + date.replace(/\/(\d{1})\//, '/$1/').replace(/\/0(\d{1})/, '/$1') + "</div>";
-            
-                    // Custom content for the tooltip
-                    var content = "<div class='apexcharts-tooltip-content fs-7 pl-3 pb-3'>" +
-                                    "<span>差枚: " + extraSheet + "</span>" +
-                                "</div>";
-            
-                    return title + content;
-                }
             },
+            
         };
 
         var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
@@ -282,7 +282,6 @@ var modelDetailDataWidget = function () {
         var chart = new ApexCharts(element, options);
         chart.render();
 
-        
         
     }
 
