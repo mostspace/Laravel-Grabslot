@@ -32,7 +32,6 @@ Route::get('/', function () {
 Route::get('/home', [HallDataController::class, 'getRegionList'])->middleware(['auth', 'verified']);
 
 // Hall
-Route::get('/hall-data', [HallDataController::class, 'index']);
 Route::get('/hall-data/{region_id}', [HallDataController::class, 'region']);
 Route::post('/hall-data/{region_id}', [HallDataController::class, 'getHallDataList']);
 Route::post('/hall-data/{region_id}', [HallDataController::class, 'getHallDataList']);
@@ -53,10 +52,8 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/', [AdminController::class, 'index'])->middleware('checkRole');
     Route::get('/access-analyze', [AccessAnalyzeController::class, 'index'])->name('admin.access_analyze');
     Route::get('/promotion-printing', [PromotionPrintingController::class, 'index'])->name('admin.promotion_printing');
-    // Route::get('/promotion-printing/model', [PromotionPrintingController::class, 'showModelData']);
     Route::post('/promotion-printing/model', [PromotionPrintingController::class, 'updateTable']);
     Route::post('/promotion-printing/promotion-table-validation', [PromotionPrintingController::class, 'validatePromotionTable']);
-
     Route::get('/user-management', [UserManagementController::class, 'index'])->name('admin.user_management');
     Route::post('/users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
 });

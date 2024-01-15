@@ -17,40 +17,11 @@ use Auth;
 class HallDataController extends Controller
 {
     private $tempData = [];
-    // private $role = "user";
-
-    public function index() {
-        return view('hall-data/index');
-    }
 
     // Get Region List
     public function getRegionList() {
         $areas = RegionArea::all();
-        $regions = Region::all();
-
-        // if (Auth::check()) {
-        //     $user = Auth::user();
-
-        //     dd($user->roles()->pluck('slug'));
-        
-        //     // Check if the user has any roles
-        //     if ($user->roles->isNotEmpty()) {
-        //         // Assuming a user can have multiple roles, you may want to handle them accordingly
-        //         $userRoles = $user->roles->pluck('slug')->toArray();
-                
-        //         // If you want to get the first role (assuming the user has only one role)
-        //         $userRole = $userRoles[0];
-        
-        //         // Now, you can use $userRole as the authenticated user's role
-        //         dd($userRole);
-        //     } else {
-        //         // User doesn't have any roles
-        //         dd('User has no roles');
-        //     }
-        // } else {
-        //     // User is not authenticated
-        //     dd('User is not authenticated');
-        // }     
+        $regions = Region::all();  
 
         return view('home', compact('areas', 'regions'));
     }
