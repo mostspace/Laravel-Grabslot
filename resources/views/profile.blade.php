@@ -82,7 +82,7 @@
                                             <div class="form-group row">
                                                 <label class="col-form-label col-3 text-lg-right text-left">メールアドレス</label>
                                                 <div class="col-9">
-                                                    <input class="g_input form-control form-control-lg form-control-solid" type="text" value="" />
+                                                    <input class="g_input form-control form-control-lg form-control-solid" type="text" value="{{ Auth::user()->email }}" />
                                                     <!-- <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span> -->
                                                 </div>
                                             </div>
@@ -90,6 +90,20 @@
                                         </div>
                                     </div>
                                     <!--end::Row-->
+                                    <!--begin::Footer-->
+                                    <div class="row">
+                                        <div class="col-xl-2"></div>
+                                        <div class="col-xl-7">
+                                            <div class="row">
+                                                <div class="col-3"></div>
+                                                <div class="col-9">
+                                                    <a href="#" class="btn btn-primary font-weight-bold">変更内容を保存</a>
+                                                    <a href="#" class="btn btn-clean font-weight-bold">キャンセル</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Footer-->
                                 </div>
                                 <!--end::Tab-->
                                 <!--begin::Tab-->
