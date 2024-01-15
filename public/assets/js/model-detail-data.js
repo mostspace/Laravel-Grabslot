@@ -107,7 +107,7 @@ var modelDetailDataWidget = function () {
             },
             chart: {
                 type: 'area',
-                height: 350,
+                height: 275,
                 toolbar: {
                     show: false
                 }
@@ -200,11 +200,11 @@ var modelDetailDataWidget = function () {
                     fontSize: '12px',
                     fontFamily: KTApp.getSettings()['font-family'],
                 },
-                y: {
-                    formatter: function (val) {
-                        return val
-                    }
-                },
+                // y: {
+                //     formatter: function (val) {
+                //         return val
+                //     }
+                // },
                 custom: function({ series, seriesIndex, dataPointIndex, w }) {
                     var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
                     var date = model_data[dataPointIndex].date;
@@ -266,6 +266,9 @@ var modelDetailDataWidget = function () {
 
         var chart = new ApexCharts(element, options);
         chart.render();
+
+        
+        
     }
 
     // Public methods

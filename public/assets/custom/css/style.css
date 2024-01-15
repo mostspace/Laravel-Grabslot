@@ -327,6 +327,9 @@ div.dataTables_wrapper div.dataTables_filter input {
 #model-chart svg {
     background-color: transparent !important;
 }
+#model-chart {
+    min-height: 175px !important;
+}
 /* End::Modal Table */
 
 /* Footer */
@@ -445,4 +448,25 @@ div.dataTables_wrapper div.dataTables_filter input {
     bottom: 0;
     margin-bottom: 1px;
     margin-left: 1px;
+}
+
+@media screen and (max-width: 576px) {
+    #dataModal .modal-dialog {
+        justify-content: center;
+    }
+    #dataModal .modal-content {
+        width: 75%;
+    }
+    #dataModal .modal-header {
+        display: none;
+    }
+    #dataModal .modal-footer {
+        display: none;
+    }
+    #dataModal .modal-body {
+        padding: unset;
+    }
+    #dataModal .modal-body .p-panel {
+        padding: 5px;
+    }
 }
