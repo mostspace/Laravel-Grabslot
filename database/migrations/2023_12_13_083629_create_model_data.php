@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('bb_probability');
             $table->string('rb_probability');
             $table->string('art_probability');
+            $table->timestamps();
         });
     }
 

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('avg_diff');
             $table->string('avg_g_number');
             $table->string('winning_rate');
+            $table->timestamps();
         });
     }
 
