@@ -292,7 +292,7 @@
 		<script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
 		<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 		<!--end::Global Theme Bundle-->
-        <script src="{{ asset('assets/custom/js/global.js') }}"></script>
+        <script src="{{ asset('assets/js/global.js') }}"></script>
 		<!--begin::Page Vendors(used by this page)-->
 		<script src="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
 		<!--end::Page Vendors-->

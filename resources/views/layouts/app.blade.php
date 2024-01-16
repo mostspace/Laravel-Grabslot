@@ -19,7 +19,7 @@
 		<link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/custom/css/style.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/css/grabslot.css') }}" rel="stylesheet" type="text/css" />
         <!--begin::Fontawseome Styleseehts-->
         <link href="{{ asset('assets/fontawesome/css/all.min.css') }}" rel="stylesheet">
         <!--end::Fontawseome Stylesheets-->
@@ -289,7 +289,7 @@
 		<!--begin::Page Vendors(used by this page)-->
 		<script src="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
 		<!--end::Page Vendors-->
-		<script src="{{ asset('assets/custom/js/global.js') }}"></script>
+		<script src="{{ asset('assets/js/global.js') }}"></script>
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="{{ asset('assets/js/pages/widgets.js') }}"></script>
         <!--begin::Page Vendors(used by this page)-->
