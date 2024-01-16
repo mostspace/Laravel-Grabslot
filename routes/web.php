@@ -56,8 +56,8 @@ Route::get('/pricing', [UserController::class, 'getPricingPage']);
 
 // =========================================== ADMIN =================================================
 
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('/', [AdminController::class, 'index'])->middleware('checkRole');
+Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function () {
+    Route::get('/', [AdminController::class, 'index']);
     Route::get('/access-analyze', [AccessAnalyzeController::class, 'index'])->name('admin.access_analyze');
     Route::get('/promotion-printing', [PromotionPrintingController::class, 'index'])->name('admin.promotion_printing');
     Route::post('/promotion-printing/model', [PromotionPrintingController::class, 'updateTable']);
@@ -65,3 +65,4 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/user-management', [UserManagementController::class, 'index'])->name('admin.user_management');
     Route::post('/users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
 });
+
