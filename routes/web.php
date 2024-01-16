@@ -35,12 +35,19 @@ Route::get('/home', [HallDataController::class, 'getRegionList'])->middleware(['
 
 // Hall
 Route::group(['prefix' => 'hall-data'], function() {
+    // Store List
     Route::get('{region_id}', [HallDataController::class, 'store']);
     Route::post('{region_id}', [HallDataController::class, 'getStoreList']);
+
+    // Model List
     Route::get('{region_id}/{store_id}', [HallDataController::class, 'model']);
     Route::post('model-list/{store_id}', [HallDataController::class, 'getModelList']);
+
+    // Model Detail
     Route::get('{region_id}/{store_id}/{model_name}', [HallDataController::class, 'modelDetail'])->name('model.detail');
 });
+
+// Get one model detail
 Route::post('/model-data', [HallDataController::class, 'getModelData'])->name('model.data');
 
 // Search Store
@@ -55,15 +62,18 @@ Route::get('/user-profile', [UserController::class, 'index']);
 // Pricing
 Route::get('/pricing', [UserController::class, 'getPricingPage']);
 
-
 // =========================================== ADMIN =================================================
 
 // Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function () {
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/', [AdminController::class, 'index']);
+    
+    // Promotion Printing
     Route::get('promotion-printing', [PromotionPrintingController::class, 'index'])->name('admin.promotion_printing');
     Route::post('promotion-printing/model', [PromotionPrintingController::class, 'updateTable']);
     Route::post('promotion-printing/promotion-table-validation', [PromotionPrintingController::class, 'validatePromotionTable']);
+
+    // User Management
     Route::get('user-management', [UserManagementController::class, 'index'])->name('admin.user_management');
     Route::post('users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
 });
