@@ -1,8 +1,8 @@
-@extends('layouts.admin.app')
+@extends('layouts.admin.default')
 
 @section('add_css')
 <!--begin::Page Vendors Styles(used by this page)-->
-<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
 <!--end::Page Vendors Styles-->
 @endsection
 

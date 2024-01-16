@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-
     public function index() {
-        return redirect('/admin/access-analyze');
+        $modelMonthData = [];
+
+        return view('admin/index');
     }
 }
