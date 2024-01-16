@@ -59,7 +59,6 @@ Route::get('/pricing', [UserController::class, 'getPricingPage']);
 // Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function () {
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index']);
-    // Route::get('/access-analyze', [AccessAnalyzeController::class, 'index'])->name('admin.access_analyze');
     Route::get('/promotion-printing', [PromotionPrintingController::class, 'index'])->name('admin.promotion_printing');
     Route::post('/promotion-printing/model', [PromotionPrintingController::class, 'updateTable']);
     Route::post('/promotion-printing/promotion-table-validation', [PromotionPrintingController::class, 'validatePromotionTable']);

@@ -26,7 +26,7 @@
 		<!--end::Layout Themes-->
         <!--begin::Page Vendors Styles(used by this page)-->
         <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/admin/custom/css/style.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet" type="text/css" />
 
         @yield('add_css')
 		

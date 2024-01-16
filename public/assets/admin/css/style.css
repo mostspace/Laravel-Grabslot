@@ -270,7 +270,7 @@
     margin-left: 1px;
 }
 .image-input-wrapper {
-    background: url('../../../media/img/printing-table.png');
+    background: url('../../media/img/printing-table.png');
     background-position: center !important;
 }
 .logout-dropdown {
