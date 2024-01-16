@@ -176,11 +176,11 @@
 											</li>
 											<!--end::Item-->
 											<!--begin::Item-->
-											<li class="navi-item">
+											<!-- <li class="navi-item">
 												<a href="/pricing" class="navi-link">
 													<span class="navi-text text-white">私のコース</span>
 												</a>
-											</li>
+											</li> -->
 											<!--end::Item-->
 											<!--begin::Item-->
 											<li class="navi-item">
