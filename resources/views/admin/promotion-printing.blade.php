@@ -232,7 +232,7 @@
     $(document).ready(function() {
 
         // Your data to be encoded in the QR code
-        var data = 'https://grab-slot.co.jp';
+        var data = 'https://grab-slot.co.jp/register';
 
         // Generate QR code
         var qrcode = new QRCode(document.getElementById('qrcode'), {
