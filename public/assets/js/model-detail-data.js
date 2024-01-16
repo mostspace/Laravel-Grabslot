@@ -197,7 +197,7 @@ var modelDetailDataWidget = function () {
                 }
             },
             tooltip: {
-                enabled: true,
+                enabled: false,
                 style: {
                     colors: KTApp.getSettings()['colors']['gray']['gray-500'],
                     fontSize: '12px',
