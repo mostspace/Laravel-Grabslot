@@ -27,7 +27,7 @@ class HallDataController extends Controller
     }
 
     // Get Hall
-    public function region(Request $request, $region_id) {
+    public function store(Request $request, $region_id) {
         $region = Region::where('id', $region_id)->first();
         $ctn_data = StoreList::where('region_id', $region_id)->count();
 
@@ -38,7 +38,7 @@ class HallDataController extends Controller
         }
     }
 
-    public function getHallDataList(Request $request, $region_id) {
+    public function getStoreList(Request $request, $region_id) {
         $stores = StoreList::where('region_id', $region_id)->get();
 
         $dataTable = new ServerSideTable($stores);
@@ -82,7 +82,7 @@ class HallDataController extends Controller
         }
     }
 
-    public function modelDetailData(Request $request, $region_id, $store_id, $model_name)
+    public function modelDetail(Request $request, $region_id, $store_id, $model_name)
     {
         $modelMonthData = [];
 

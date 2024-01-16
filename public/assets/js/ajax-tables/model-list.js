@@ -13,7 +13,7 @@ var KTDatatablesDataSourceAjaxServer = function() {
 			paging: false,
 			info: false,
 			ajax: {
-				url: '/model-list/' + store.id,
+				url: '/hall-data/model-list/' + store.id,
 				type: 'POST',
 				data: {
 					// parameters for custom backend script demo
