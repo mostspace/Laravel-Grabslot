@@ -119,7 +119,7 @@
                                         @endforeach
 
                                         @if ($i < $mainItemCount)
-                                            <div class="td-block td-pink">
+                                            <div class="td-block dailyModelRed">
                                                 @if($i < $mainItemCount) {{ $redCnt }} @endif
                                             </div>
                                         @else
@@ -127,7 +127,7 @@
                                         @endif
 
                                         @if ($i < $mainItemCount)
-                                            <div class="td-block td-light-blue">
+                                            <div class="td-block dailyModelBlue">
                                                 @if($i < $mainItemCount) {{ $blueCnt }} @endif
                                             </div>
                                         @else
@@ -206,9 +206,6 @@
                     </table>
                 </div>
             </div>
-            <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-primary font-weight-bold border-0" data-dismiss="modal">閉じる</button>
-            </div> -->
         </div>
     </div>
 </div>
@@ -234,6 +231,12 @@
 
         $('#modelDetailTable').on('click', '.td-block.td-sheet, .dailyModelRed', function() {
             $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
+        });
+
+        $('#modelDetailTable').on('click', '.model-table-row .td-block.dailyModelBlue', function() {
+            $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
+
+            $(this).parent('.model-table-row').find(".td-light-blue, .td-blue, .td-dark-blue").addClass('active_blink');
         });
     });
 </script>
