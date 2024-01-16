@@ -181,7 +181,7 @@
                                                     <div class="col-3"></div>
                                                     <div class="col-9">
                                                         <a href="#" class="btn btn-primary font-weight-bold">変更内容を保存</a>
-                                                        <a href="#" class="btn btn-clean font-weight-bold">キャンセル</a>
+                                                        <a href="/user-profile" class="btn btn-clean font-weight-bold">キャンセル</a>
                                                     </div>
                                                 </div>
                                             </div>
