@@ -97,7 +97,7 @@
                                 <p class="fs-7">並びで入りやすいのか・・角が強いのか・・</p>
                                 <p class="fs-7">据え置きをしてくるのか・・大きく凹んだ翌日は・・</p>
                             </div>
-                            
+
                             <h4 class="font-weight-bold mt-3">● 出玉状況を点ではなく面でみる！</h4>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
                 <input type="number" class="form-control" placeholder="印刷部数を入力してください" value="1">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">閉じる</button>
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">印刷する</button>
             </div>
         </div>
     </div>
