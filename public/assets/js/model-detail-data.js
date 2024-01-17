@@ -211,8 +211,6 @@ var modelDetailDataWidget = function () {
                     var date = model_data[dataPointIndex].date;
                     var extraSheet = model_data[dataPointIndex].extra_sheet;
 
-
-
                     if (selected_model.extra_sheet == extraSheet && selected_model.date == date) {
                         $('.apexcharts-tooltip').removeClass('opacity-disable');
                         $('.apexcharts-tooltip').addClass('opacity-active');
@@ -289,18 +287,16 @@ var modelDetailDataWidget = function () {
         // Update the xaxis categories with model_date_obj
         options.xaxis.categories = model_data.map(item => item.date);
 
-
-
         var chart = new ApexCharts(element, options);
         chart.render();
+
+
         setTimeout(() => {
             var links = document.getElementsByClassName('apexcharts-grid');
             var mouseoverEvent = new Event('mouseover');
-            console.log(links[0]);
+
             links[0].dispatchEvent(mouseoverEvent);
         }, 1000);
-        
-        
     }
 
     // Public methods
