@@ -138,7 +138,7 @@
                                                 <div class="row">
                                                     <label class="col-3"></label>
                                                     <div class="col-9">
-                                                        <h6 class="text-white font-weight-bold mb-10">パスワードを変更または回復する:</h6>
+                                                        <h6 class="text-white font-weight-bold mb-10">パスワードを変更する:</h6>
                                                     </div>
                                                 </div>
                                                 <!--end::Row-->
@@ -153,9 +153,9 @@
                                                 <!--end::Group-->
                                                 <!--begin::Group-->
                                                 <div class="form-group row">
-                                                    <label class="col-form-label col-3 text-lg-right text-left">パスワード (８文字以上で入力)</label>
+                                                    <label class="col-form-label col-3 text-lg-right text-left">パスワード</label>
                                                     <div class="col-9">
-                                                        <input class="g_input form-control form-control-lg form-control-solid" type="text" value="" />
+                                                        <input class="g_input form-control form-control-lg form-control-solid" type="text" value="" placeholder="８文字以上で入力"/>
                                                     </div>
                                                 </div>
                                                 <!--end::Group-->
