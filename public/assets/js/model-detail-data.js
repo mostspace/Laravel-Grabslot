@@ -297,6 +297,9 @@ var modelDetailDataWidget = function () {
 
             links[0].dispatchEvent(mouseoverEvent);
         }, 1000);
+        
+        // document.getElementById("SvgjsRect9629").dispatchEvent(new Event('mouseover'))
+
     }
 
     // Public methods
