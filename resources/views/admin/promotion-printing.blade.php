@@ -92,12 +92,13 @@
                     <div class="mt-15">
                         <h3 class="font-weight-bolder">狙い台が明確になる！</h3>
                         <div class="mt-7">
-                            <h4 class="font-weight-bold">● ホールの癖が丸わかり</h6>
+                            <h4 class="font-weight-bold">● ホールの癖が丸わかり</h4>
                             <div class="pl-15">
                                 <p class="fs-7">並びで入りやすいのか・・角が強いのか・・</p>
                                 <p class="fs-7">据え置きをしてくるのか・・大きく凹んだ翌日は・・</p>
                             </div>
-                            <h6 class="mt-3">● 出玉状況を点ではなく面でみる！</h6>
+                            
+                            <h4 class="font-weight-bold mt-3">● 出玉状況を点ではなく面でみる！</h4>
                         </div>
                     </div>
 
