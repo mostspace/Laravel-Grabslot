@@ -272,6 +272,7 @@
 .image-input-wrapper {
     background: url('../../media/img/printing-table.png');
     background-position: center !important;
+    background-size: contain !important;
 }
 .logout-dropdown {
     background: #1f1e2fa3;

@@ -54,6 +54,8 @@ var modelDetailDataWidget = function () {
 
         // Open the modal
         $('#dataModal').modal('show');
+        
+
     }
 
     var getModelData = function(model_id) {
@@ -197,21 +199,29 @@ var modelDetailDataWidget = function () {
                 }
             },
             tooltip: {
-                enabled: false,
+                enabled: true,
                 style: {
                     colors: KTApp.getSettings()['colors']['gray']['gray-500'],
                     fontSize: '12px',
                     fontFamily: KTApp.getSettings()['font-family'],
                 },
-                y: {
-                    formatter: function (val) {
-                        return val
-                    }
-                },
                 custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                    console.log(dataPointIndex, selected_model.model_order)
                     var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
                     var date = model_data[dataPointIndex].date;
                     var extraSheet = model_data[dataPointIndex].extra_sheet;
+
+
+
+                    if (selected_model.extra_sheet == extraSheet && selected_model.date == date) {
+                        $('.apexcharts-tooltip').removeClass('opacity-disable');
+                        $('.apexcharts-tooltip').addClass('opacity-active');
+                        console.log("red spot1")
+                    } else {
+                        $('.apexcharts-tooltip').removeClass('opacity-active');
+                        $('.apexcharts-tooltip').addClass('opacity-disable');
+                        console.log("red spot2")
+                    }
 
                     // Custom title for the tooltip
                     var title = "<div class='apexcharts-tooltip-title fs-7'>" + date.replace(/\/(\d{1})\//, '/$1/').replace(/\/0(\d{1})/, '/$1') + "</div>";
@@ -279,9 +289,17 @@ var modelDetailDataWidget = function () {
         // Update the xaxis categories with model_date_obj
         options.xaxis.categories = model_data.map(item => item.date);
 
+
+
         var chart = new ApexCharts(element, options);
         chart.render();
-
+        setTimeout(() => {
+            var links = document.getElementsByClassName('apexcharts-grid');
+            var mouseoverEvent = new Event('mouseover');
+            console.log(links[0]);
+            links[0].dispatchEvent(mouseoverEvent);
+        }, 1000);
+        
         
     }
 
