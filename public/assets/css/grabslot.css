@@ -277,7 +277,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     color: black;
     width: 50%;
     line-height: 31px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .td-white {
