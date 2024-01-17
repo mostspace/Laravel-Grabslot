@@ -30,51 +30,47 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-// Home
-Route::get('/home', [HallDataController::class, 'getRegionList'])->middleware(['auth', 'verified']);
+Route::group([], function () {
+    // Home
+    Route::get('/home', [HallDataController::class, 'getRegionList']);
+    // Hall
+    Route::group(['prefix' => 'hall-data'], function () {
+        // Store List
+        Route::get('{region_id}', [HallDataController::class, 'store']);
+        Route::post('{region_id}', [HallDataController::class, 'getStoreList']);
+        // Model List
+        Route::get('{region_id}/{store_id}', [HallDataController::class, 'model']);
+        Route::post('model-list/{store_id}', [HallDataController::class, 'getModelList']);
+        // Model Detail
+        Route::get('{region_id}/{store_id}/{model_name}', [HallDataController::class, 'modelDetail'])->name('model.detail');
+    })->middleware('auth');
+    // Get one model detail
+    Route::post('/model-data', [HallDataController::class, 'getModelData'])->name('model.data');
 
-// Hall
-Route::group(['prefix' => 'hall-data'], function() {
-    // Store List
-    Route::get('{region_id}', [HallDataController::class, 'store']);
-    Route::post('{region_id}', [HallDataController::class, 'getStoreList']);
+    // Search Store
+    Route::post('/search-hall/{hall_name}', [HallDataController::class, 'searchHallDataList']);
+    // Waiting
+    Route::get('/waiting', function () {
+        return view('waiting');
+    });
 
-    // Model List
-    Route::get('{region_id}/{store_id}', [HallDataController::class, 'model']);
-    Route::post('model-list/{store_id}', [HallDataController::class, 'getModelList']);
-
-    // Model Detail
-    Route::get('{region_id}/{store_id}/{model_name}', [HallDataController::class, 'modelDetail'])->name('model.detail');
-});
-
-// Get one model detail
-Route::post('/model-data', [HallDataController::class, 'getModelData'])->name('model.data');
-
-// Search Store
-Route::post('/search-hall/{hall_name}', [HallDataController::class, 'searchHallDataList']);
-
-// Waiting
-Route::get('/waiting', function () { return view('waiting'); });
-
-// User Profile
-Route::get('/user-profile', [UserController::class, 'index']);
-
-// Pricing
-Route::get('/pricing', [UserController::class, 'getPricingPage']);
+    // User Profile
+    Route::get('/user-profile', [UserController::class, 'index'])->middleware('auth');
+    // Pricing
+    Route::get('/pricing', [UserController::class, 'getPricingPage']);
+})->middleware(['auth', 'verified']);
 
 // =========================================== ADMIN =================================================
 
 // Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function () {
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/', [AdminController::class, 'index']);
-    
     // Promotion Printing
     Route::get('promotion-printing', [PromotionPrintingController::class, 'index'])->name('admin.promotion_printing');
     Route::post('promotion-printing/model', [PromotionPrintingController::class, 'updateTable']);
     Route::post('promotion-printing/promotion-table-validation', [PromotionPrintingController::class, 'validatePromotionTable']);
-
     // User Management
     Route::get('user-management', [UserManagementController::class, 'index'])->name('admin.user_management');
     Route::post('users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
-});
+})->middleware(['auth', 'verified']);
 

@@ -206,7 +206,6 @@ var modelDetailDataWidget = function () {
                     fontFamily: KTApp.getSettings()['font-family'],
                 },
                 custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                    console.log(dataPointIndex, selected_model.model_order)
                     var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
                     var date = model_data[dataPointIndex].date;
                     var extraSheet = model_data[dataPointIndex].extra_sheet;
@@ -214,11 +213,9 @@ var modelDetailDataWidget = function () {
                     if (selected_model.extra_sheet == extraSheet && selected_model.date == date) {
                         $('.apexcharts-tooltip').removeClass('opacity-disable');
                         $('.apexcharts-tooltip').addClass('opacity-active');
-                        console.log("red spot1")
                     } else {
                         $('.apexcharts-tooltip').removeClass('opacity-active');
                         $('.apexcharts-tooltip').addClass('opacity-disable');
-                        console.log("red spot2")
                     }
 
                     // Custom title for the tooltip
@@ -290,6 +287,12 @@ var modelDetailDataWidget = function () {
         var chart = new ApexCharts(element, options);
         chart.render();
 
+        // Get the series data
+        var seriesData = chart.getSeries();
+
+        // seriesData will contain an array of data points for each series in your chart
+        console.log(seriesData);
+
 
         setTimeout(() => {
             var links = document.getElementsByClassName('apexcharts-grid');
@@ -297,7 +300,7 @@ var modelDetailDataWidget = function () {
 
             links[0].dispatchEvent(mouseoverEvent);
         }, 1000);
-        
+
         // document.getElementById("SvgjsRect9629").dispatchEvent(new Event('mouseover'))
 
     }
