@@ -247,7 +247,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     border-right: 1px solid #27282e;
     border-bottom: 1px solid #27282e;
     box-sizing: border-box;
-    height: 32px;
+    height: 29px;
     width: 100%;
     font-size: 11px;
     display: flex;
@@ -269,15 +269,23 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: #bfe2ff !important;
     color: black;
     width: 50%;
-    line-height: 31px;
+    height: 100%;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .dailyModelRed {
     background-color: #ff9999 !important;
     color: black;
     width: 50%;
-    line-height: 31px;
-    /* cursor: pointer; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.model-table-row > .td-block:nth-child(2), .divide-cell {
+    flex: 1.5;
 }
 
 .td-white {
@@ -413,6 +421,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     color: black;
     font-size: 8px;
     font-weight: 600;
+    height: 100%;
 }
 
 .divide-cell::before {
@@ -465,8 +474,6 @@ div.dataTables_wrapper div.dataTables_filter input {
     position: absolute;
     left: 0;
     bottom: 0;
-    margin-bottom: 1px;
-    margin-left: 1px;
 }
 /* Header User Button */
 .navi.navi-hover .navi-item .navi-link:hover {
@@ -493,3 +500,4 @@ div.dataTables_wrapper div.dataTables_filter input {
 .opacity-active {
     opacity: 1 !important;
 }
+

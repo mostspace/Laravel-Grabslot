@@ -129,7 +129,7 @@
                                         @else
                                             <div class="td-block"></div>
                                         @endif                                  
-                                        
+
                                         @php
                                             $redCnt = 0;
                                             $blueCnt = 0;
@@ -234,6 +234,9 @@
 
             $(this).closest('.model-table-row').find(".td-light-blue, .td-blue, .td-dark-blue").addClass('active_blink');
         });
+
+        // Get second columns
+        // $('#modelDetailTable .model-table-row .td-block:nth-child(2), .divide-cell').addClass('secondColumn');
     });
 </script>
 
