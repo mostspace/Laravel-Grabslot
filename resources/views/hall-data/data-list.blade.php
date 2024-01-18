@@ -68,7 +68,8 @@
 <script>
     $(document).ready(function() {
         $("#modelTable").on("click", ".store-model", function() {
-            window.location.href = '/hall-data/' + region.id + '/' + store.id + '/' + $(this).text();
+            console.log($(this).text());
+            window.location.href = '/hall-data/' + region.id + '/' + store.id + '/' + encodeURIComponent($(this).text());
         });
     });
 </script>

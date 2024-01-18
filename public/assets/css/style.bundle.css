@@ -19,7 +19,7 @@
   --white: #ffffff;
   --gray: #7E8299;
   --gray-dark: #3F4254;
-  --primary: #6993FF;
+  --primary: #18C8FF;
   --secondary: #E4E6EF;
   --success: #1BC5BD;
   --info: #8950FC;
@@ -37874,9 +37874,10 @@ button {
       color: #FFFFFF; }
 
 .btn.btn-outline-primary {
-  color: #6993FF;
+  color: #18C8FF;
   background-color: transparent;
-  border-color: #6993FF; }
+  border-color: #18C8FF;
+  }
   .btn.btn-outline-primary i {
     color: #6993FF; }
   .btn.btn-outline-primary .svg-icon svg g [fill] {
@@ -37890,8 +37891,9 @@ button {
     color: #6993FF; }
   .btn.btn-outline-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-outline-primary:focus:not(.btn-text), .btn.btn-outline-primary.focus:not(.btn-text) {
     color: #FFFFFF;
-    background-color: #6993FF;
-    border-color: #6993FF; }
+    background-color: #18C8FF;
+    border-color: #18C8FF;
+    }
     .btn.btn-outline-primary:hover:not(.btn-text):not(:disabled):not(.disabled) i, .btn.btn-outline-primary:focus:not(.btn-text) i, .btn.btn-outline-primary.focus:not(.btn-text) i {
       color: #FFFFFF; }
     .btn.btn-outline-primary:hover:not(.btn-text):not(:disabled):not(.disabled) .svg-icon svg g [fill], .btn.btn-outline-primary:focus:not(.btn-text) .svg-icon svg g [fill], .btn.btn-outline-primary.focus:not(.btn-text) .svg-icon svg g [fill] {
@@ -37922,8 +37924,9 @@ button {
   .show > .btn.btn-outline-primary.dropdown-toggle,
   .show .btn.btn-outline-primary.btn-dropdown {
     color: #FFFFFF;
-    background-color: #6993FF;
-    border-color: #6993FF; }
+    background-color: #18C8FF;
+    border-color: #18C8FF;
+    }
     .btn.btn-outline-primary:not(:disabled):not(.disabled):active:not(.btn-text) i, .btn.btn-outline-primary:not(:disabled):not(.disabled).active i,
     .show > .btn.btn-outline-primary.dropdown-toggle i,
     .show .btn.btn-outline-primary.btn-dropdown i {
@@ -53484,8 +53487,9 @@ code {
     -webkit-animation: animation-spinner .5s linear infinite;
     animation: animation-spinner .5s linear infinite; }
   .spinner.spinner-primary:before {
-    border: 2px solid #6993FF;
-    border-right: 2px solid transparent; }
+    border: 2px solid #18C8FF;
+    border-right: 2px solid transparent;
+    }
   .spinner.spinner-darker-primary:before {
     border: 2px solid #4579ff;
     border-right: 2px solid transparent; }

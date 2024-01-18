@@ -72,6 +72,7 @@ class HallDataController extends Controller
             $models = ModelData::select('model_name')
                     ->whereIn('store_data_id', $storeDataIds)
                     ->distinct()
+                    ->where('extra_sheet', '!=', '')
                     ->get();
 
             $dataTable = new ServerSideTable($models);
@@ -134,6 +135,8 @@ class HallDataController extends Controller
         ->orderBy('B.date')
         ->orderBy('A.machine_number')
         ->get();
+
+        // dd(count($modelsData));
     
         // Add Number attribute Color 
         function itemColor($extra_sheet, $g_number) {
@@ -184,6 +187,7 @@ class HallDataController extends Controller
             $temp_store_obj[] = $colorCnts;
             $modelMonthData[$date_value['date']] = $temp_store_obj;
         }
+        
 
         return view('hall-data/model-detail-data', compact('modelMonthData', 'region', 'store', 'model_name'));
     }

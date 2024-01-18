@@ -154,7 +154,7 @@
     border-color: #18C8FF !important;
 }
 .bg-main {
-    background-color: #1A1B23;
+    background-color: #1A1B23 !important;
 }
 .p-bg-danger {
     background-color: #F10057 !important;
@@ -292,10 +292,10 @@ div.dataTables_wrapper div.dataTables_filter input {
     border-right: 2px solid #27282e !important;
 }
 #modelDetailTable > .model-table-row:first-child {
-    border-bottom: 2px solid #27282e;
+    border-bottom: 1px solid #27282e;
 }
 .model-table .model-table-row:last-child {
-    border-top: 2px solid #27282e;
+    border-top: 1px solid #27282e;
 }
 /* End::model detail table */
 
