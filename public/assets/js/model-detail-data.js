@@ -287,13 +287,6 @@ var modelDetailDataWidget = function () {
         var chart = new ApexCharts(element, options);
         chart.render();
 
-        // Get the series data
-        var seriesData = chart.getSeries();
-
-        // seriesData will contain an array of data points for each series in your chart
-        console.log(seriesData);
-
-
         setTimeout(() => {
             var links = document.getElementsByClassName('apexcharts-grid');
             var mouseoverEvent = new Event('mouseover');

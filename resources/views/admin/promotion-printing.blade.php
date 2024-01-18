@@ -281,7 +281,7 @@
             // Remove the iframe after printing
             setTimeout(function() {
                 printWindow.remove();
-            }, 1500);
+            }, 2000);
         });
 
 
