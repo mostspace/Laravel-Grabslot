@@ -244,8 +244,8 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: #ffffff;
     flex: 1;
     min-width: 30px; /* Allow blocks to shrink if needed */
-    border-right: 1px solid #27282e;
-    border-bottom: 1px solid #27282e;
+    border-right: 2px solid #27282e;
+    border-bottom: 2px solid #27282e;
     box-sizing: border-box;
     height: 29px;
     width: 100%;
@@ -285,17 +285,17 @@ div.dataTables_wrapper div.dataTables_filter input {
     justify-content: center;
 }
 .model-table-row > .td-block:nth-child(1), .divide-cell {
-    border-right: 2px solid #27282e;
+    border-right: 3px solid #27282e;
 }
 .model-table-row > .td-block:nth-child(2), .divide-cell {
     flex: 1.5 !important;
-    border-right: 2px solid #27282e !important;
+    border-right: 3px solid #27282e !important;
 }
 #modelDetailTable > .model-table-row:first-child {
-    border-bottom: 2px solid #27282e;
+    border-bottom: 3px solid #27282e;
 }
 .model-table .model-table-row:last-child {
-    border-top: 2px solid #27282e;
+    border-top: 3px solid #27282e;
 }
 /* End::model detail table */
 
