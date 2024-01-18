@@ -20,10 +20,10 @@
                         <h3 class="card-label">宣伝ちらし印刷</h3>
                     </div>
                     <div class="card-toolbar">
-                        <button type="reset" class="btn btn-success mr-2" data-toggle="modal" data-target="#printModal">印刷する</button>
+                        <button id="pagePrint" type="reset" class="btn btn-success mr-2" data-toggle="modal" data-target="#printModal">印刷する</button>
                     </div>
                 </div>
-                <div class="card-body px-10">
+                <div id="printSection" class="card-body px-10">
                     <div class="text-center mt-15">
                         <h1 class="font-weight-bolder fs-2">パチスロ高設定予測サイト ~GRAB~</h1>
                         <h3 class="my-10 fs-5">【明日からあなたの台選びが変わる！】</h3>
@@ -34,7 +34,7 @@
                     <div class="form-group row mt-15">
                         <div class="col-lg-12 col-xl-12">
                             <div class="image-input image-input-outline w-100" id="kt_image_1">
-                                <div class="image-input-wrapper w-100 h-500px"></div>
+                                <div class="image-input-wrapper w-100 h-475px"></div>
                                 <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="画像の変更">
                                     <i class="fa fa-pen icon-sm text-muted"></i>
                                     <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
@@ -44,7 +44,7 @@
                                     <i class="ki ki-bold-close icon-xs text-muted"></i>
                                 </span>
                             </div>
-                            <span class="form-text text-muted">許可されるファイルの種類: png、jpg、jpeg。</span>
+                            <span class="form-text text-muted img-desc">許可されるファイルの種類: png、jpg、jpeg。</span>
                         </div>
                     </div>
 
@@ -104,7 +104,7 @@
 
                     <div class="mt-15">
                         <div class="row">
-                            <div class="col-md-9 col-lg-9">
+                            <div class="col-9 col-9">
                                 <h3 class="font-weight-bolder">＜表の見方＞</h6>
                                 <div class="mt-7">
                                     <p class="font-weight-bold fs-7">数字はその日のトータル差枚数です</p>
@@ -144,7 +144,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3 col-lg-3 align-items-end">
+                            <div class="col-3 col-3 align-items-end">
                                 <!-- Add this to the body of your HTML file -->
                                 <div id="qrcode"  class="qr-code-container"></div>
                             </div>
@@ -201,7 +201,7 @@
 <!--end::Modal-->
 
 <!--begin::Modal-->
-<div class="modal fade" id="printModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeSm" aria-hidden="true">
+<!-- <div class="modal fade" id="printModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeSm" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -214,11 +214,11 @@
                 <input type="number" class="form-control" placeholder="印刷部数を入力してください" value="1">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">印刷する</button>
+                <button id="pagePrint" type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">印刷する</button>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!--end::Modal-->
 
 @endsection
@@ -240,6 +240,41 @@
             text: data,
             width: 158,
             height: 158
+        });
+
+        // Print
+        $("#pagePrint").click(function() {
+            var printSection = $("#printSection").clone(); // Use jQuery to clone the content
+
+            // Remove unnecessary elements or modify content as needed
+            printSection.find('.btn-circle').hide();
+            printSection.find('.img-desc').hide();
+
+            var printWindow = $('<iframe>', {
+                name: 'printWindow',
+                id: 'printWindow',
+                style: 'display:none;'
+            });
+
+            // Append the cloned content to the iframe
+            printWindow.appendTo('body').contents().find('body').css('background-color', '#fff').append(printSection.html());
+
+            // Include stylesheets
+            $('link[rel="stylesheet"]').each(function() {
+                printWindow.contents().find('head').append('<link rel="stylesheet" type="text/css" href="' + $(this).attr('href') + '">');
+            });
+
+            // Include inline styles
+            $('style').each(function() {
+                printWindow.contents().find('head').append('<style type="text/css">' + $(this).html() + '</style>');
+            });
+
+            setTimeout(function() {
+                // Call the print function on the iframe
+                printWindow[0].contentWindow.print();
+                printWindow.remove(); // Remove the iframe after printing
+            }, 1000);
+
         });
 
         // Store & Model table        
