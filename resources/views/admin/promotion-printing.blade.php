@@ -20,10 +20,7 @@
                         <h3 class="card-label">宣伝ちらし印刷</h3>
                     </div>
                     <div class="card-toolbar">
-                        <button id="pagePrint" type="reset" class="btn btn-success mr-2" data-toggle="modal" data-target="#printModal">印刷する</button>
-                        <div class="d-flex justify-content-center">
-                            <div id="loadingSpinner" class="spinner spinner-primary spinner-lg mt-10"></div>
-                        </div>
+                        <button id="pagePrint" type="reset" class="btn btn-success mr-2 spinner-white spinner-right" data-toggle="modal" data-target="#printModal">印刷する</button>
                     </div>
                 </div>
                 <div id="printSection" class="card-body px-10">
@@ -247,7 +244,7 @@
 
         // Print
         $("#pagePrint").click(function() {
-            $('#loadingSpinner').show();
+            $(this).addClass('spinner');
             var printSection = $("#printSection").clone(); // Use jQuery to clone the content
 
             // Remove unnecessary elements or modify content as needed
@@ -275,7 +272,7 @@
 
             // Hide the spinner after the print function is called
             printWindow.on('load', function() {
-                $('#loadingSpinner').hide();
+                $("#pagePrint").removeClass('spinner');
             });
 
             // Call the print function on the iframe

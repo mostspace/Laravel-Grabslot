@@ -65,7 +65,6 @@
                         <div class="model-table mb-15" id="modelDetailTable">
                             <div class="model-table-row">
                                 <div class="td-block td-header"></div>
-                                <div class="td-block td-header"></div>
                                 <div class="divide-cell">
                                     <div class="c1">日付</div>
                                     <div class="c2">台番号</div>
@@ -119,21 +118,18 @@
                                         @endforeach
 
                                         @if ($i < $mainItemCount)
-                                            <div class="td-block dailyModelRed">
-                                                @if($i < $mainItemCount) {{ $redCnt }} @endif
+                                            <div class="td-block left-cnt-block">
+                                                <div class="text-center dailyModelBlue">
+                                                    {{ $blueCnt }}
+                                                </div>
+                                                <div class="text-center dailyModelRed">
+                                                    {{ $redCnt }}  
+                                                </div>
                                             </div>
                                         @else
                                             <div class="td-block"></div>
-                                        @endif
-
-                                        @if ($i < $mainItemCount)
-                                            <div class="td-block dailyModelBlue">
-                                                @if($i < $mainItemCount) {{ $blueCnt }} @endif
-                                            </div>
-                                        @else
-                                            <div class="td-block"></div>
-                                        @endif                                       
-
+                                        @endif                                  
+                                        
                                         @php
                                             $redCnt = 0;
                                             $blueCnt = 0;
@@ -233,10 +229,10 @@
             $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
         });
 
-        $('#modelDetailTable').on('click', '.model-table-row .td-block.dailyModelBlue', function() {
+        $('#modelDetailTable').on('click', '.left-cnt-block .dailyModelBlue', function() {
             $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
 
-            $(this).parent('.model-table-row').find(".td-light-blue, .td-blue, .td-dark-blue").addClass('active_blink');
+            $(this).closest('.model-table-row').find(".td-light-blue, .td-blue, .td-dark-blue").addClass('active_blink');
         });
     });
 </script>
