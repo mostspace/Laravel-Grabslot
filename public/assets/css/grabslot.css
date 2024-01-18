@@ -230,7 +230,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     color: black !important;
 }
 
-/* Begin::Model One Month Table */
+/* Begin::model detail table */
 .model-table {
     display: grid;
     grid-template-columns: auto;
@@ -284,9 +284,20 @@ div.dataTables_wrapper div.dataTables_filter input {
     align-items: center;
     justify-content: center;
 }
-.model-table-row > .td-block:nth-child(2), .divide-cell {
-    flex: 1.5;
+.model-table-row > .td-block:nth-child(1), .divide-cell {
+    border-right: 2px solid #27282e;
 }
+.model-table-row > .td-block:nth-child(2), .divide-cell {
+    flex: 1.5 !important;
+    border-right: 2px solid #27282e !important;
+}
+#modelDetailTable > .model-table-row:first-child {
+    border-bottom: 2px solid #27282e;
+}
+.model-table .model-table-row:last-child {
+    border-top: 2px solid #27282e;
+}
+/* End::model detail table */
 
 .td-white {
     background-color: #ffffff !important;
