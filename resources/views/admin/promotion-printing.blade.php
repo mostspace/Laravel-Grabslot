@@ -21,6 +21,9 @@
                     </div>
                     <div class="card-toolbar">
                         <button id="pagePrint" type="reset" class="btn btn-success mr-2" data-toggle="modal" data-target="#printModal">印刷する</button>
+                        <div class="d-flex justify-content-center">
+                            <div id="loadingSpinner" class="spinner spinner-primary spinner-lg mt-10"></div>
+                        </div>
                     </div>
                 </div>
                 <div id="printSection" class="card-body px-10">
@@ -244,6 +247,7 @@
 
         // Print
         $("#pagePrint").click(function() {
+            $('#loadingSpinner').show();
             var printSection = $("#printSection").clone(); // Use jQuery to clone the content
 
             // Remove unnecessary elements or modify content as needed
@@ -269,13 +273,20 @@
                 printWindow.contents().find('head').append('<style type="text/css">' + $(this).html() + '</style>');
             });
 
-            setTimeout(function() {
-                // Call the print function on the iframe
-                printWindow[0].contentWindow.print();
-                printWindow.remove(); // Remove the iframe after printing
-            }, 2000);
+            // Hide the spinner after the print function is called
+            printWindow.on('load', function() {
+                $('#loadingSpinner').hide();
+            });
 
+            // Call the print function on the iframe
+            printWindow[0].contentWindow.print();
+
+            // Remove the iframe after printing
+            setTimeout(function() {
+                printWindow.remove();
+            }, 1500);
         });
+
 
         // Store & Model table        
         var store_name="", store_id="", model_name="";
