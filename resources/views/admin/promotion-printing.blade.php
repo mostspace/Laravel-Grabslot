@@ -273,7 +273,7 @@
                 // Call the print function on the iframe
                 printWindow[0].contentWindow.print();
                 printWindow.remove(); // Remove the iframe after printing
-            }, 1000);
+            }, 2000);
 
         });
 
