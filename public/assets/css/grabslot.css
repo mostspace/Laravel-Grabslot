@@ -300,6 +300,9 @@ div.dataTables_wrapper div.dataTables_filter input {
 .td-date {
     background-color: #FFFFF0 !important;
 }
+.td-date-sat {
+    background-color: #0000FF !important;
+}
 .td-model-name {
     background-color: #F0FFF0 !important;
 }

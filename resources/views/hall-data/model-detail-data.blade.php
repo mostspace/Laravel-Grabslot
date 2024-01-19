@@ -243,7 +243,7 @@
             // Check if the text contains '土' or '日'
             if (dateText.includes('土')) {
                 // Add a class to the element itself
-                $(this).addClass('td-blue');
+                $(this).addClass('td-date-sat');
             } else if (dateText.includes('日')) {
                 $(this).addClass('td-red');
             }
