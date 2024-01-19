@@ -138,7 +138,7 @@
 								<div class="dropdown">
 									<!--begin::Toggle-->
 									<div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
-										<div class="btn btn-icon btn-hover-transparent-white p-0 ml-3" data-toggle="modal" data-target="#kt_chat_modal">
+										<div class="btn btn-icon btn-hover-transparent-white p-0 ml-3 shineBtn" data-toggle="modal" data-target="#kt_chat_modal">
 											<span class="svg-icon svg-icon-xl">
 												<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
 												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -150,9 +150,11 @@
 												</svg>
 												<!--end::Svg Icon-->
 											</span>
+											<span class="shimmer"></span>
 										</div>
 									</div>
 									<!--end::Toggle-->
+
 									<!--begin::Dropdown-->
 									<div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
 										<!--begin::Nav-->

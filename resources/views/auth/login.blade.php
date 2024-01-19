@@ -25,8 +25,11 @@
                 </div>
                 <a href="/forgot-password" id="kt_login_forgot" class="text-white font-weight-bold">パスワードを忘れましたか?</a>
             </div>
-            <div class="form-group text-center mt-10">
-                <button class="btn btn-pill btn-outline-white font-weight-bold opacity-90 px-15 py-3 p-primary-btn">ログイン</button>
+            <div class="form-group text-center mt-10 d-flex justify-content-center">
+                <button class="fluid-btn w-200px">
+                    <span class="fluid-btn-inner py-3 font-weight-bolder">ログイン</span>
+                </button>
+                <!-- <button class="btn btn-pill btn-outline-white font-weight-bold opacity-90 px-15 py-3 p-primary-btn">ログイン</button> -->
             </div>
         </form>
         <div class="mt-10">

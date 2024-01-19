@@ -55,7 +55,7 @@ Route::group([], function () {
     });
 
     // User Profile
-    Route::get('/user-profile', [UserController::class, 'index'])->middleware('auth');
+    Route::get('/user-profile', [UserController::class, 'index']);
     // Pricing
     Route::get('/pricing', [UserController::class, 'getPricingPage']);
 })->middleware(['auth', 'verified']);

@@ -72,7 +72,7 @@ class HallDataController extends Controller
             $models = ModelData::select('model_name')
                     ->whereIn('store_data_id', $storeDataIds)
                     ->distinct()
-                    ->where('extra_sheet', '!=', '')
+                    // ->where('extra_sheet', '!=', '')
                     ->get();
 
             $dataTable = new ServerSideTable($models);

@@ -48,11 +48,11 @@
                             <p class="fs-9 text-white pl-2 mb-0">1000 ~ 2999</p>
                         </div>
                         <div class="d-flex align-items-center mr-8 my-2">
-                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-blue text-dark font-weight-bolder">青セル</div>
+                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-blue text-white font-weight-bolder">青セル</div>
                             <p class="fs-9 text-white pl-2 mb-0">3000 ~ 4999</p>
                         </div>
                         <div class="d-flex align-items-center mr-8 my-2">
-                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-dark-blue text-dark font-weight-bolder">紺セル</div>
+                            <div class="w-65px rounded-5 py-2 px-2 fs-9 td-dark-blue font-weight-bolder text-white">紺セル</div>
                             <p class="fs-9 text-white pl-2 mb-0">5000以上</p>
                         </div>
                         <div class="d-flex align-items-center mr-8 my-2">
@@ -70,7 +70,7 @@
                                     <div class="c2">台番号</div>
                                 </div>
                                 @foreach($modelMonthData as $date => $items)
-                                <div class="td-block td-header">
+                                <div class="td-block td-header td-date">
                                     @php
                                         $dateString = substr($date, 5);
 
@@ -135,7 +135,7 @@
                                             $blueCnt = 0;
                                         @endphp
 
-                                        <div class="td-block">@if($i < $mainItemCount) {{ $modelId[$i] }} @endif</div>
+                                        <div class="td-block td-model-name">@if($i < $mainItemCount) {{ $modelId[$i] }} @endif</div>
 
                                         @foreach ($modelMonthData as $date => $items)
                                             @if ($i < $mainItemCount)
@@ -235,8 +235,19 @@
             $(this).closest('.model-table-row').find(".td-light-blue, .td-blue, .td-dark-blue").addClass('active_blink');
         });
 
-        // Get second columns
-        // $('#modelDetailTable .model-table-row .td-block:nth-child(2), .divide-cell').addClass('secondColumn');
+        // Set color to sat and sunday date
+        $('.td-date').each(function() {
+            // Get the text content of the element
+            var dateText = $(this).text();
+
+            // Check if the text contains '土' or '日'
+            if (dateText.includes('土')) {
+                // Add a class to the element itself
+                $(this).addClass('td-blue');
+            } else if (dateText.includes('日')) {
+                $(this).addClass('td-red');
+            }
+        }) ;
     });
 </script>
 
