@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 // User Controller
 use App\Http\Controllers\HallDataController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
 
 // Admin Controller
 use App\Http\Controllers\Admin\AdminController;
