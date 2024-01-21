@@ -54,7 +54,7 @@ Route::group([], function () {
         Route::post('model-list/{store_id}', [HallDataController::class, 'getModelList'])->name('model.list');
         // Model Detail
         Route::get('{region_id}/{store_id}/{model_name}', [HallDataController::class, 'modelDetail'])->name('model.detail');
-    })->middleware('auth');
+    });
     // Get one model detail
     Route::post('/model-data', [HallDataController::class, 'getModelData'])->name('model.data');
 
@@ -69,7 +69,15 @@ Route::group([], function () {
     Route::get('/user-profile', [UserController::class, 'index']);
     // Pricing
     Route::get('/pricing', [UserController::class, 'getPricingPage']);
-})->middleware(['auth', 'verified']);
+    // Payment
+    // Route::get('/payment', [PaymentController::class, 'index']);
+
+})->middleware('auth');
+// ->middleware(['auth', 'verified']);
+
+// Payment
+Route::get('/billing', [PaymentController::class, 'index']);
+Route::post('/payment', [PaymentController::class, 'payment']);
 
 // =========================================== ADMIN =================================================
 
