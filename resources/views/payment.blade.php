@@ -10,9 +10,9 @@
                  <!--begin::Card-->
                  <div class="p-panel card card-custom">
                     <!--begin::Card header-->
-                    <div class="card-header card-header-tabs-line nav-tabs-line-3x">
+                    <div class="card-header">
                         <!--begin::Toolbar-->
-                        <h1 class="text-white">Payment</h1>
+                        <h1 class="text-white py-2 mb-0">Payment</h1>
                         <!--end::Toolbar-->
                     </div>
                     <!--end::Card header-->
@@ -22,7 +22,7 @@
                         @endif
                     @endforeach
                     <!--begin::Card body-->
-                    <div class="card-body">
+                    <div class="card-body pt-10">
                         <form role="form" method="POST" id="paymentForm" action="{{ url('/payment')}}">
                             @csrf
                             <div class="form-group">
@@ -34,7 +34,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control g_input" name="cardNumber" placeholder="Card Number">
                                     <div class="input-group-append">
-                                        <span class="input-group-text text-muted">
+                                        <span class="input-group-text text-muted bg-main">
                                         <i class="fab fa-cc-visa fa-lg pr-1"></i>
                                         <i class="fab fa-cc-amex fa-lg pr-1"></i>
                                         <i class="fab fa-cc-mastercard fa-lg"></i>
