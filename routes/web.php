@@ -23,6 +23,16 @@ use App\Http\Controllers\Admin\UserManagementController;
 |
 */
 
+Route::get('/clear_all', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+	Artisan::call('route:cache');
+	
+    return "Cache Cleared..!";
+});
+
 require __DIR__.'/auth.php';
 
 // =========================================== USER =================================================
@@ -33,7 +43,7 @@ Route::get('/', function () {
 
 Route::group([], function () {
     // Home
-    Route::get('/home', [HallDataController::class, 'getRegionList']);
+    Route::get('/home', [HallDataController::class, 'getRegionList'])->name('home');
     // Hall
     Route::group(['prefix' => 'hall-data'], function () {
         // Store List
@@ -41,7 +51,7 @@ Route::group([], function () {
         Route::post('{region_id}', [HallDataController::class, 'getStoreList']);
         // Model List
         Route::get('{region_id}/{store_id}', [HallDataController::class, 'model']);
-        Route::post('model-list/{store_id}', [HallDataController::class, 'getModelList']);
+        Route::post('model-list/{store_id}', [HallDataController::class, 'getModelList'])->name('model.list');
         // Model Detail
         Route::get('{region_id}/{store_id}/{model_name}', [HallDataController::class, 'modelDetail'])->name('model.detail');
     })->middleware('auth');
