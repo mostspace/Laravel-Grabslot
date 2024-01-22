@@ -8,20 +8,20 @@
             <!--begin::Container-->
             <div class="container d-flex justify-content-center">
                  <!--begin::Card-->
-                 <div class="p-panel card card-custom w-475px">
+                 <div class="p-panel card card-custom w-500px">
                     <!--begin::Card header-->
-                    <div class="card-header">
+                    <div class="card-header min-h-50px justify-content-center">
                         <!--begin::Toolbar-->
-                        <h4 class="text-white mb-0 fw-bold">
-                            @if ($course == "light")
-                                ライトコース
-                            @else
-                                スタンダードコース
-                            @endif
-                        </h4>
+                        @if ($course == "light")
+                            <h1 class="text-white mb-0 font-weight-bolder w-100 text-center">ライトコース</h1>
+                            <p class="w-100 text-center text-white mt-3 mb-7 fs-8">1店舗のみ見放題</p>
+                        @else
+                            <h1 class="text-white mb-0 font-weight-bolder w-100 text-center">スタンダードコース</h1>
+                            <p class="w-100 text-center text-white mt-3 mb-7 fs-8">無制限見放題</p>
+                        @endif
                         <!--end::Toolbar-->
                     </div>
-                    <div class="card-body pt-10">
+                    <div class="card-body pt-15">
                         @if (Session::has('success'))
                             <div class="alert alert-success text-center mb-10">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="fa-solid fa-xmark"></i></a>
@@ -43,7 +43,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control card-number g_input" autocomplete='off'>
                                     <div class="input-group-append">
-                                        <span class="input-group-text text-muted bg-main">
+                                        <span class="input-group-text bg-main">
                                             <i class="fab fa-cc-visa fa-lg pr-1"></i>
                                             <i class="fab fa-cc-amex fa-lg pr-1"></i>
                                             <i class="fab fa-cc-mastercard fa-lg"></i>
@@ -74,19 +74,25 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label data-toggle="tooltip" title="カード裏面の3桁のコード">CVV <i class="fa fa-question-circle"></i></label>
-                                        <input type="number" class="form-control g_input card-cvc">
+                                        <label data-toggle="tooltip" title="カード裏面の3桁のコード">CVCコード<i class="fa fa-question-circle ml-2"></i></label>
+                                        <input type="text" class="form-control g_input card-cvc">
                                     </div>
                                 </div>
                             </div>
 
-                            <div class='form-group'>
-                                <div class='col-md-12 error form-group hide'>
+                            @if ($course == "light")
+                                <p class="text-white">合計料金：500円</p>
+                            @else
+                                <p class="text-white">合計料金：1000円</p>
+                            @endif
+
+                            <div class='form-group my-10'>
+                                <div class='error form-group hide'>
                                     <div class='alert-danger alert'>エラーを修正して再試行してください。</div>
                                 </div>
                             </div>
         
-                            <button class="subscribe btn btn-primary btn-block" type="submit">今払う</button>
+                            <button id="paySubmit" class="subscribe btn btn-primary btn-block spinner-white spinner-right" type="submit">今払う</button>
                         </form>
                     </div>
                     <!--begin::Card body-->
@@ -102,82 +108,20 @@
 @endsection
 
 @section('add_js')
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    
+
 <script type="text/javascript">
-    var course = @json($course);
+    var course = @json($course);   
 
-    $(function() {
-    
-        /* Stripe Payment Code */
-        var $form = $(".require-validation");
-        
-        $('form.require-validation').bind('submit', function(e) {
-            var $form = $(".require-validation"),
-            inputSelector = ['input[type=email]', 'input[type=password]',
-                            'input[type=text]', 'input[type=file]',
-                            'textarea'].join(', '),
-            $inputs = $form.find('.required').find(inputSelector),
-            $errorMessage = $form.find('div.error'),
-            valid = true;
-            $errorMessage.addClass('hide');
-        
-            $('.has-error').removeClass('has-error');
-            $inputs.each(function(i, el) {
-            var $input = $(el);
-            if ($input.val() === '') {
-                $input.parent().addClass('has-error');
-                $errorMessage.removeClass('hide');
-                e.preventDefault();
-            }
-            });
-        
-            if (!$form.data('cc-on-file')) {
-            e.preventDefault();
-            Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-            Stripe.createToken({
-                number: $('.card-number').val(),
-                cvc: $('.card-cvc').val(),
-                exp_month: $('.card-expiry-month').val(),
-                exp_year: $('.card-expiry-year').val()
-            }, stripeResponseHandler);
-            }
+    $(document).ready(function() {
+        $("#paySubmit").removeClass('spinner');
+        $("#paySubmit").click(function() {
+            $("#paySubmit").addClass('spinner');
         });
-        
-        /* Stripe Response Handler */
-        function stripeResponseHandler(status, response) {
-            if (response.error) {
-                var errorMessages = {
-                    'incorrect_number': 'カード番号が正しくありません。',
-                    'invalid_number': 'カード番号が無効です。',
-                    'invalid_expiry_month': '有効期限の月が無効です。',
-                    'invalid_expiry_year': '有効期限の年が無効です。',
-                    'invalid_cvc': 'CVCが無効です。',
-                    'expired_card': 'カードの有効期限が切れています。',
-                    'incorrect_cvc': 'CVCが正しくありません。',
-                    'card_declined': 'カードが拒否されました。',
-                    'missing': '必要なカード情報が提供されていません。',
-                    'processing_error': '処理中にエラーが発生しました。もう一度お試しください。'
-                    // Add more error messages as needed
-                };
-
-                var errorMessage = errorMessages[response.error.code] || 'エラーが発生しました。もう一度お試しください。';
-                
-                $('.error')
-                    .removeClass('hide')
-                    .find('.alert')
-                    .text(errorMessage);
-            } else {
-                /* token contains id, last4, and card type */
-                var token = response['id'];
-                    
-                $form.find('input[type=text]').empty();
-                $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-                $form.append("<input type='hidden' name='paymentCourse' value='" + course + "'/>");
-                $form.get(0).submit();
-            }
-        }
     });
+
 </script>
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript" src="{{ asset('assets/js/payment.js') }}"></script>
 
 @endsection
