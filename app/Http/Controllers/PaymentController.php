@@ -11,16 +11,16 @@ use Stripe\Exception\InvalidRequestException;
 use Stripe\Exception\AuthenticationException;
 use Stripe\Exception\ApiErrorException;
 
-class StripePaymentController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Show the payment form.
      *
      * @return \Illuminate\Http\Response
      */
-    public function stripe(Request $request, $course)
+    public function index(Request $request, $course)
     {
-        return view('stripe', compact('course'));
+        return view('billing', compact('course'));
     }
 
     /**

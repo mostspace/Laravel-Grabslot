@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 // User Controller
 use App\Http\Controllers\HallDataController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\PaymentController;
 
 // Admin Controller
 use App\Http\Controllers\Admin\AdminController;
@@ -70,9 +70,9 @@ Route::group([], function () {
     // Pricing
     Route::get('/pricing', [UserController::class, 'getPricingPage'])->name('pricing');
     // Payment
-    Route::get('/billing/{course}', [StripePaymentController::class, 'stripe'])->name('billing');
-    Route::post('/stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
-    Route::get('/payment_success', [StripePaymentController::class, 'paymentSuccess'])->name('payment.success');
+    Route::get('/billing/{course}', [PaymentController::class, 'index'])->name('billing');
+    Route::post('/stripe', [PaymentController::class, 'stripePost'])->name('stripe.post');
+    Route::get('/payment_success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
 
 })->middleware(['auth', 'verified']);
 

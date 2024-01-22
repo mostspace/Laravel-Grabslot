@@ -29,7 +29,6 @@
                             </div>
                             
                         @endif
-        
                         <form id="payment-form" role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
                             @csrf
 
@@ -118,7 +117,6 @@
             $("#paySubmit").addClass('spinner');
         });
     });
-
 </script>
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
