@@ -69,14 +69,13 @@ Route::group([], function () {
     Route::get('/user-profile', [UserController::class, 'index'])->name('user.profile');
     // Pricing
     Route::get('/pricing', [UserController::class, 'getPricingPage'])->name('pricing');
+    // Payment
+    Route::get('/billing/{course}', [StripePaymentController::class, 'stripe'])->name('billing');
+    Route::post('/stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
+    Route::get('/payment_success', [StripePaymentController::class, 'paymentSuccess'])->name('payment.success');
 
-})->middleware('auth');
-// ->middleware(['auth', 'verified']);
+})->middleware(['auth', 'verified']);
 
-// Payment
-Route::get('/billing', [StripePaymentController::class, 'stripe'])->name('billing');
-Route::post('/stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
-Route::get('/payment_success', [StripePaymentController::class, 'paymentSuccess'])->name('payment.success');
 
 // =========================================== ADMIN =================================================
 

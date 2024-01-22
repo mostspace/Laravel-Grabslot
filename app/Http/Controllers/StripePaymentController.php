@@ -18,9 +18,9 @@ class StripePaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function stripe()
+    public function stripe(Request $request, $course)
     {
-        return view('stripe');
+        return view('stripe', compact('course'));
     }
 
     /**
@@ -35,9 +35,15 @@ class StripePaymentController extends Controller
             // Set your Stripe API key
             Stripe::setApiKey(env('STRIPE_SECRET'));
 
+            if ($request->input('paymentCourse') === "light") {
+                $amount = 500;
+            } else {
+                $amount = 1000;
+            }
+
             // Create a charge
             $charge = Charge::create([
-                "amount" => 500,
+                "amount" => $amount,
                 "currency" => "jpy",
                 "source" => $request->stripeToken,
                 "description" => "Test payment from Grabslot.co.jp"
