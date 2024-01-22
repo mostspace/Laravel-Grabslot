@@ -10,6 +10,8 @@ use Stripe\Exception\CardException;
 use Stripe\Exception\InvalidRequestException;
 use Stripe\Exception\AuthenticationException;
 use Stripe\Exception\ApiErrorException;
+use App\Models\Payment;
+use Auth;
 
 class PaymentController extends Controller
 {
@@ -49,11 +51,18 @@ class PaymentController extends Controller
                 "description" => "Test payment from Grabslot.co.jp"
             ]);
 
+            // Register user payment info
+            $payment = new Payment;
+            $payment->user_id = Auth::user()->id;
+            $payment->course = $request->input('paymentCourse');
+            $payment->transaction_id = $charge->id;
+            $payment->save();           
+            
             // Flash success message
             Session::flash('success', $charge->id);
 
             // Redirect to the success route
-            return redirect()->route('payment.success'); // Replace 'payment.success' with your actual success route
+            return redirect()->route('payment.success');
 
         } catch (CardException $e) {
             // Handle card errors
