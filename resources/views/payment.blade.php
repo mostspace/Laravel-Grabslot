@@ -88,5 +88,4 @@
 
 @section('add_js')
 <script src="https://js.stripe.com/v3/"></script>
-
 @endsection
