@@ -34,12 +34,12 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="fullName">Full name (on the card)</label>
+                                <label for="fullName">フルネーム（カードに記載）</label>
                                 <input type="text" class="form-control g_input">
                             </div>
 
                             <div class="form-group">
-                                <label for="cardNumber">Card number</label>
+                                <label for="cardNumber">カード番号</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control card-number g_input" autocomplete='off'>
                                     <div class="input-group-append">
@@ -55,7 +55,7 @@
                             <div class="row">
                                 <div class="col-sm-8">
                                     <div class="form-group">
-                                        <label><span class="hidden-xs">Expiration</span></label>
+                                        <label><span class="hidden-xs">有効期限</span></label>
                                         <div class="input-group">
                                             <select class="form-control g_input card-expiry-month" name="month">
                                                 <option value="">MM</option>
@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label data-toggle="tooltip" title="3 digits code on the back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                                        <label data-toggle="tooltip" title="カード裏面の3桁のコード">CVV <i class="fa fa-question-circle"></i></label>
                                         <input type="number" class="form-control g_input card-cvc">
                                     </div>
                                 </div>
@@ -82,11 +82,11 @@
 
                             <div class='form-group'>
                                 <div class='col-md-12 error form-group hide'>
-                                    <div class='alert-danger alert'>Please correct the errors and try again.</div>
+                                    <div class='alert-danger alert'>エラーを修正して再試行してください。</div>
                                 </div>
                             </div>
         
-                            <button class="subscribe btn btn-primary btn-block" type="submit">Pay Now</button>
+                            <button class="subscribe btn btn-primary btn-block" type="submit">今払う</button>
                         </form>
                     </div>
                     <!--begin::Card body-->
@@ -147,10 +147,26 @@
         /* Stripe Response Handler */
         function stripeResponseHandler(status, response) {
             if (response.error) {
+                var errorMessages = {
+                    'incorrect_number': 'カード番号が正しくありません。',
+                    'invalid_number': 'カード番号が無効です。',
+                    'invalid_expiry_month': '有効期限の月が無効です。',
+                    'invalid_expiry_year': '有効期限の年が無効です。',
+                    'invalid_cvc': 'CVCが無効です。',
+                    'expired_card': 'カードの有効期限が切れています。',
+                    'incorrect_cvc': 'CVCが正しくありません。',
+                    'card_declined': 'カードが拒否されました。',
+                    'missing': '必要なカード情報が提供されていません。',
+                    'processing_error': '処理中にエラーが発生しました。もう一度お試しください。'
+                    // Add more error messages as needed
+                };
+
+                var errorMessage = errorMessages[response.error.code] || 'エラーが発生しました。もう一度お試しください。';
+                
                 $('.error')
                     .removeClass('hide')
                     .find('.alert')
-                    .text(response.error.message);
+                    .text(errorMessage);
             } else {
                 /* token contains id, last4, and card type */
                 var token = response['id'];
