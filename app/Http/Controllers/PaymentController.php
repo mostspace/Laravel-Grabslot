@@ -43,10 +43,11 @@ class PaymentController extends Controller
             return response()->redirectTo('/');
         }
         
-        // if (empty($token['id'])) {
-        //     $request->session()->flash('danger', 'Payment failed.');
-        //     return response()->redirectTo('/');
-        // }
+        if (empty($token['id'])) {
+            dd("123");
+            $request->session()->flash('danger', 'Payment failed.');
+            return response()->redirectTo('/');
+        }
 
         // Use the token to create a charge
         $charge = $this->createCharge($token['id'], 2000);
