@@ -45,7 +45,7 @@
                                     <p class="text-white mb-10 d-flex flex-column">
                                         <span>1店舗のみ見放題</span>
                                     </p>
-                                    <a href="/payment" class="btn btn-white text-uppercase font-weight-bolder px-15 py-3">購入</a>
+                                    <a href="/billing" class="btn btn-white text-uppercase font-weight-bolder px-15 py-3">購入</a>
                                 </div>
                             </div>
                             <!-- end: Pricing-->
