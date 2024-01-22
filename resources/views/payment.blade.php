@@ -8,7 +8,7 @@
             <!--begin::Container-->
             <div class="container d-flex justify-content-center">
                  <!--begin::Card-->
-                 <div class="p-panel card card-custom">
+                 <div class="p-panel card card-custom w-500px">
                     <!--begin::Card header-->
                     <div class="card-header">
                         <!--begin::Toolbar-->
