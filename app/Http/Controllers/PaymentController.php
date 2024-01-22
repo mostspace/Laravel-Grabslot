@@ -37,7 +37,7 @@ class PaymentController extends Controller
         }
 
         // Create a Stripe token using Stripe.js
-        $token = $this->createTokenStripeJS($request);
+        $token = $this->createTokenWithStripeJS($request);
         if (!empty($token['error'])) {
             $request->session()->flash('danger', $token['error']);
             return response()->redirectTo('/');
