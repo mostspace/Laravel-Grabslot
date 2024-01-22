@@ -765,3 +765,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 .fluid-btn:active {
     transform: scale(0.95);
 }
+
+.hide {
+    display: none;
+}
