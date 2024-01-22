@@ -48,7 +48,7 @@ Route::group([], function () {
     Route::group(['prefix' => 'hall-data'], function () {
         // Store List
         Route::get('{region_id}', [HallDataController::class, 'store']);
-        Route::post('{region_id}', [HallDataController::class, 'getStoreList']);
+        Route::post('{region_id}', [HallDataController::class, 'getStoreList'])->name('store.list');
         // Model List
         Route::get('{region_id}/{store_id}', [HallDataController::class, 'model']);
         Route::post('model-list/{store_id}', [HallDataController::class, 'getModelList'])->name('model.list');
@@ -59,16 +59,16 @@ Route::group([], function () {
     Route::post('/model-data', [HallDataController::class, 'getModelData'])->name('model.data');
 
     // Search Store
-    Route::post('/search-hall/{hall_name}', [HallDataController::class, 'searchHallDataList']);
+    Route::post('/search-hall/{hall_name}', [HallDataController::class, 'searchHallDataList'])->name('search.region');
     // Waiting
     Route::get('/waiting', function () {
         return view('waiting');
     });
 
     // User Profile
-    Route::get('/user-profile', [UserController::class, 'index']);
+    Route::get('/user-profile', [UserController::class, 'index'])->name('user.profile');
     // Pricing
-    Route::get('/pricing', [UserController::class, 'getPricingPage']);
+    Route::get('/pricing', [UserController::class, 'getPricingPage'])->name('pricing');
     // Payment
     // Route::get('/payment', [PaymentController::class, 'index']);
 
@@ -76,8 +76,8 @@ Route::group([], function () {
 // ->middleware(['auth', 'verified']);
 
 // Payment
-Route::get('/billing', [PaymentController::class, 'index']);
-Route::post('/payment', [PaymentController::class, 'payment'])->name('payment');
+Route::get('/billing', [PaymentController::class, 'index'])->name('billing');
+Route::post('/payment', [PaymentController::class, 'stripe'])->name('stripe');
 
 // =========================================== ADMIN =================================================
 

@@ -15,15 +15,15 @@
                         <h1 class="text-white py-2 mb-0">Payment</h1>
                         <!--end::Toolbar-->
                     </div>
-                    <!--end::Card header-->
-                    @foreach (['danger', 'success'] as $status)
-                        @if(Session::has($status))
-                            <p class="alert alert-{{$status}}">{{ Session::get($status) }}</p>
-                        @endif
-                    @endforeach
-                    <!--begin::Card body-->
                     <div class="card-body pt-10">
-                        <form role="form" method="POST" id="paymentForm" action="{{ url('/payment') }}">
+                        @if (Session::has('success'))
+                            <div class="alert alert-success text-center">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                <p>{{ Session::get('success') }}</p>
+                            </div>
+                        @endif
+
+                        <form role="form" method="POST" id="payment-form" action="{{ route('stripe') }}" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
                             @csrf
 
                             <div class="form-group">
@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 <label for="cardNumber">Card number</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control g_input" name="cardNumber" placeholder="Card Number">
+                                    <input type="text" class="form-control card-number g_input" name="cardNumber" placeholder="Card Number" autocomplete='off'>
                                     <div class="input-group-append">
                                         <span class="input-group-text text-muted bg-main">
                                             <i class="fab fa-cc-visa fa-lg pr-1"></i>
@@ -74,10 +74,12 @@
                                 </div>
                             </div>
 
-                            <div id="card-element"></div>
-
-                            <!-- Used to display form errors -->
-                            <div id="card-errors" role="alert"></div>
+                            <div class='form-row row'>
+                                <div class='col-md-12 error form-group hide'>
+                                    <div class='alert-danger alert'>Please correct the errors and try
+                                        again.</div>
+                                </div>
+                            </div>
 
                             <button class="subscribe btn btn-primary btn-block" type="submit"> Confirm </button>
                         </form>
@@ -96,49 +98,65 @@
 
 @section('add_js')
 <!-- Include Stripe.js -->
-<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 
-<script>
-  // Create a Stripe client
-  var stripe = Stripe('pk_test_51OZDVNH8r2pQXKiX103JhGqKp7wEMhBR6hC6M1MA70GWB7Cf8tSHdub84UeBA2KwaxGbznXNzDS2WvtP7PSM6a8o00mDw5IUPO');
+<script type="text/javascript">
+    $(function() {
 
-  // Create an instance of Elements
-  var elements = stripe.elements();
+        // Stripe Payment
+        var $form = $(".require-validation");
+        
+        $('form.require-validation').bind('submit', function(e) {
+            var $form = $(".require-validation"),
+            inputSelector = ['input[type=email]', 'input[type=password]',
+                            'input[type=text]', 'input[type=file]',
+                            'textarea'].join(', '),
+            $inputs = $form.find('.required').find(inputSelector),
+            $errorMessage = $form.find('div.error'),
+            valid = true;
+            $errorMessage.addClass('hide');
+        
+            $('.has-error').removeClass('has-error');
+            $inputs.each(function(i, el) {
+                var $input = $(el);
+                if ($input.val() === '') {
+                $input.parent().addClass('has-error');
+                $errorMessage.removeClass('hide');
+                e.preventDefault();
+                }
+            });
+        
+            if (!$form.data('cc-on-file')) {
+                e.preventDefault();
+                Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+                Stripe.createToken({
+                number: $('.card-number').val(),
+                cvc: $('.card-cvc').val(),
+                exp_month: $('.card-expiry-month').val(),
+                exp_year: $('.card-expiry-year').val()
+                }, stripeResponseHandler);
+            }
+        
+        });
 
-  // Create an instance of the card Element
-  var card = elements.create('card');
-
-  // Add an instance of the card Element into the `card-element` div
-  card.mount('#card-element');
-
-  // Handle form submission
-  var form = document.getElementById('paymentForm');
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    stripe.createToken(card).then(function(result) {
-      if (result.error) {
-        // Inform the user if there was an error
-        var errorElement = document.getElementById('card-errors');
-        errorElement.textContent = result.error.message;
-      } else {
-        // Send the token to your server
-        stripeTokenHandler(result.token);
-      }
+        // Stripe Response Handler
+        function stripeResponseHandler(status, response) {
+            if (response.error) {
+                $('.error')
+                    .removeClass('hide')
+                    .find('.alert')
+                    .text(response.error.message);
+            } else {
+                /* token contains id, last4, and card type */
+                var token = response['id'];
+                    
+                $form.find('input[type=text]').empty();
+                $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+                $form.get(0).submit();
+            }
+        }
+        
     });
-  });
-
-  function stripeTokenHandler(token) {
-    // Insert the token ID into the form so it gets submitted to the server
-    var hiddenInput = document.createElement('input');
-    hiddenInput.setAttribute('type', 'hidden');
-    hiddenInput.setAttribute('name', 'stripeToken');
-    hiddenInput.setAttribute('value', token.id);
-    form.appendChild(hiddenInput);
-
-    // Submit the form
-    form.submit();
-  }
 </script>
 
 
