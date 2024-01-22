@@ -44,7 +44,6 @@ class PaymentController extends Controller
         }
         
         if (empty($token['id'])) {
-            dd("123");
             $request->session()->flash('danger', 'Payment failed.');
             return response()->redirectTo('/');
         }
