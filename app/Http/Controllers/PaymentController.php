@@ -10,6 +10,7 @@ use Stripe\StripeClient;
 class PaymentController extends Controller
 {
     private $stripe;
+
     public function __construct()
     {
         $this->stripe = new StripeClient(config('stripe.api_keys.secret_key'));
@@ -24,38 +25,59 @@ class PaymentController extends Controller
     {
         // Validate the request
         $validator = Validator::make($request->all(), [
-            'fullName' => 'required',
-            'cardNumber' => 'required',
-            'month' => 'required',
-            'year' => 'required',
-            'cvv' => 'required'
+            'fullName' => 'required|string|max:255',
+            'cardNumber' => 'required|numeric|digits_between:12,19',
+            'month' => 'required|numeric|min:1|max:12',
+            'year' => 'required|numeric|min:' . date('Y') . '|max:' . (date('Y') + 10),
+            'cvv' => 'required|numeric|digits_between:3,4',
         ]);
 
         if ($validator->fails()) {
-            $request->session()->flash('danger', $validator->errors()->first());
-            return response()->redirectTo('/');
+            return $this->handleValidationFailure($validator, $request);
         }
 
         // Create a Stripe token using Stripe.js
         $token = $this->createTokenWithStripeJS($request);
+        dd($token);
         if (!empty($token['error'])) {
-            $request->session()->flash('danger', $token['error']);
-            return response()->redirectTo('/');
+            return $this->handleStripeError($token['error'], $request);
         }
-        
+
         if (empty($token['id'])) {
-            $request->session()->flash('danger', 'Payment failed.');
-            return response()->redirectTo('/');
+            return $this->handlePaymentFailure($request);
         }
 
         // Use the token to create a charge
         $charge = $this->createCharge($token['id'], 2000);
-        if (!empty($charge) && $charge['status'] == 'succeeded') {
-            $request->session()->flash('success', 'Payment completed.');
-        } else {
-            $request->session()->flash('danger', 'Payment failed.');
-        }
 
+        if (!empty($charge) && $charge['status'] == 'succeeded') {
+            return $this->handlePaymentSuccess($request);
+        } else {
+            return $this->handlePaymentFailure($request);
+        }
+    }
+
+    private function handleValidationFailure($validator, $request)
+    {
+        $request->session()->flash('danger', $validator->errors()->first());
+        return response()->redirectTo('/');
+    }
+
+    private function handleStripeError($error, $request)
+    {
+        $request->session()->flash('danger', $error);
+        return response()->redirectTo('/');
+    }
+
+    private function handlePaymentFailure($request)
+    {
+        $request->session()->flash('danger', 'Payment failed.');
+        return response()->redirectTo('/');
+    }
+
+    private function handlePaymentSuccess($request)
+    {
+        $request->session()->flash('success', 'Payment completed.');
         return response()->redirectTo('/');
     }
 
@@ -93,5 +115,4 @@ class PaymentController extends Controller
             return ['error' => $e->getMessage()];
         }
     }
-
 }
