@@ -22,6 +22,7 @@ class PaymentController extends Controller
 
     public function payment(Request $request)
     {
+        // Validate the request
         $validator = Validator::make($request->all(), [
             'fullName' => 'required',
             'cardNumber' => 'required',
@@ -35,30 +36,38 @@ class PaymentController extends Controller
             return response()->redirectTo('/');
         }
 
-        $token = $this->createToken($request);
+        // Create a Stripe token using Stripe.js
+        $token = $this->createTokenStripeJS($request);
         if (!empty($token['error'])) {
             $request->session()->flash('danger', $token['error']);
             return response()->redirectTo('/');
         }
-        if (empty($token['id'])) {
-            $request->session()->flash('danger', 'Payment failed.');
-            return response()->redirectTo('/');
-        }
+        
+        // if (empty($token['id'])) {
+        //     $request->session()->flash('danger', 'Payment failed.');
+        //     return response()->redirectTo('/');
+        // }
 
+        // Use the token to create a charge
         $charge = $this->createCharge($token['id'], 2000);
         if (!empty($charge) && $charge['status'] == 'succeeded') {
             $request->session()->flash('success', 'Payment completed.');
         } else {
             $request->session()->flash('danger', 'Payment failed.');
         }
+
         return response()->redirectTo('/');
     }
 
-    private function createToken($cardData)
+    private function createTokenWithStripeJS($cardData)
     {
         $token = null;
+
         try {
-            $token = $this->stripe->tokens->create([
+            $stripe = new StripeClient(config('stripe.api_keys.secret_key'));
+
+            // Use Stripe.js to create a token
+            $token = $stripe->tokens->create([
                 'card' => [
                     'number' => $cardData['cardNumber'],
                     'exp_month' => $cardData['month'],
@@ -71,12 +80,12 @@ class PaymentController extends Controller
         } catch (Exception $e) {
             $token['error'] = $e->getMessage();
         }
+        
         return $token;
     }
 
     private function createCharge($tokenId, $amount)
     {
-        $charge = null;
         try {
             $charge = $this->stripe->charges->create([
                 'amount' => $amount,
@@ -84,9 +93,10 @@ class PaymentController extends Controller
                 'source' => $tokenId,
                 'description' => 'My first payment'
             ]);
+
+            return $charge;
         } catch (Exception $e) {
-            $charge['error'] = $e->getMessage();
+            return ['error' => $e->getMessage()];
         }
-        return $charge;
     }
 }
