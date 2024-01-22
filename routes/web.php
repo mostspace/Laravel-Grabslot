@@ -77,7 +77,7 @@ Route::group([], function () {
 
 // Payment
 Route::get('/billing', [PaymentController::class, 'index']);
-Route::post('/payment', [PaymentController::class, 'payment']);
+Route::post('/payment', [PaymentController::class, 'payment'])->name('payment');
 
 // =========================================== ADMIN =================================================
 
