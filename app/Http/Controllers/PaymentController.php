@@ -62,42 +62,37 @@ class PaymentController extends Controller
 
     private function createTokenWithStripeJS($cardData)
     {
-        $token = null;
-
         try {
-            $stripe = new StripeClient(config('stripe.api_keys.secret_key'));
-
-            // Use Stripe.js to create a token
-            $token = $stripe->tokens->create([
+            $token = $this->stripe->tokens->create([
                 'card' => [
                     'number' => $cardData['cardNumber'],
                     'exp_month' => $cardData['month'],
                     'exp_year' => $cardData['year'],
-                    'cvc' => $cardData['cvv']
-                ]
+                    'cvc' => $cardData['cvv'],
+                ],
             ]);
-        } catch (CardException $e) {
-            $token['error'] = $e->getError()->message;
-        } catch (Exception $e) {
-            $token['error'] = $e->getMessage();
+
+            return $token;
+        } catch (\Exception $e) {
+            return ['error' => $e->getMessage()];
         }
-        
-        return $token;
     }
 
     private function createCharge($tokenId, $amount)
     {
         try {
-            $charge = $this->stripe->charges->create([
+            $charge = $this->stripe->paymentIntents->create([
                 'amount' => $amount,
                 'currency' => 'usd',
-                'source' => $tokenId,
-                'description' => 'My first payment'
+                'payment_method' => $tokenId,
+                'confirmation_method' => 'manual',
+                'confirm' => true,
             ]);
 
             return $charge;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
     }
+
 }
