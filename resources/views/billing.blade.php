@@ -109,7 +109,8 @@
 @section('add_js')
 
 <script type="text/javascript">
-    var course = @json($course);   
+    var course = @json($course); 
+    var store_id = @json($store_id);
 
     $(document).ready(function() {
         $("#paySubmit").removeClass('spinner');

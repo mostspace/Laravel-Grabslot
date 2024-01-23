@@ -20,9 +20,9 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $course)
+    public function index(Request $request, $course, $store_id)
     {
-        return view('billing', compact('course'));
+        return view('billing', compact('course', 'store_id'));
     }
 
     /**
@@ -55,6 +55,7 @@ class PaymentController extends Controller
             $payment = new Payment;
             $payment->user_id = Auth::user()->id;
             $payment->course = $request->input('paymentCourse');
+            $payment->store_id = $request->input('storeId');
             $payment->transaction_id = $charge->id;
             $payment->save();           
             

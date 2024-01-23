@@ -62,7 +62,7 @@
                                     <p class="mb-10 d-flex flex-column text-white">
                                         <span>無制限見放題</span>
                                     </p>
-                                    <a href="/billing/standard" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">購入</a>
+                                    <a href="/billing/standard/0" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">購入</a>
                                 </div>
                             </div>
                             <!-- end: Pricing-->

@@ -67,6 +67,7 @@ $(function() {
             $form.find('input[type=text]').empty();
             $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
             $form.append("<input type='hidden' name='paymentCourse' value='" + course + "'/>");
+            $form.append("<input type='hidden' name='storeId' value='" + store_id + "'/>");
             $form.get(0).submit();
         }
     }
