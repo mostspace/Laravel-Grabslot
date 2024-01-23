@@ -55,6 +55,7 @@
                                 <tr>
                                     <th>店舗</th>
                                     <th>市区郡</th>
+                                    <th>市区郡</th>
                                 </tr>
                             </thead>
                         </table>
@@ -76,7 +77,6 @@
     var region_id = @json($region->id);
     // var region_name = @json($region->name);
 </script>
-
 
 <!--begin::Page Scripts(used by this page)-->
 <script src="{{ asset('assets/js/ajax-tables/hall-data-list.js') }}"></script>

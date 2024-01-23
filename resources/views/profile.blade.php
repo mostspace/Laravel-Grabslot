@@ -192,7 +192,19 @@
                                 <!--end::Tab-->
                                 <!--begin::Tab-->
                                 <div class="tab-pane px-7" id="kt_user_edit_tab_3" role="tabpanel">
-                                    
+                                    <!--begin: Datatable-->
+                                    <table class="table table-checkable" id="kt_datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>店舗</th>
+                                                <th>コース</th>
+                                                <th>市区郡</th>
+                                                <th>市区郡</th>
+                                                <th>市区郡</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <!--end: Datatable-->
                                 </div>
                                 <!--end::Tab-->
                             </div>
@@ -211,5 +223,5 @@
 @endsection
 
 @section('add_js')
-    
+<script src="{{ asset('assets/js/profile-course.js') }}"></script>
 @endsection

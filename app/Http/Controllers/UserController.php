@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Utils\ServerSideTable;
 use Auth;
+use App\Models\Payment;
+use App\Models\Store;
 
 class UserController extends Controller
 {
@@ -14,4 +17,18 @@ class UserController extends Controller
     public function getPricingPage() {
         return view('pricing');
     }
+
+    public function userCourse(Request $request) {
+        $user = Auth::user();
+        $data = Payment::where('user_id', $user->id)->get();
+
+        $userPayments = Payment::select('payments.course', 'stores.name', 'payments.created_at')
+                                ->leftJoin('stores', 'payments.store_id', '=', 'stores.id')
+                                ->where('payments.user_id', $user->id)
+                                ->get();
+
+        $dataTable = new ServerSideTable($userPayments);
+        $dataTable->getAjaxTable();
+    }
+    
 }

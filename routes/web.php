@@ -67,6 +67,7 @@ Route::group([], function () {
 
     // User Profile
     Route::get('/user-profile', [UserController::class, 'index'])->name('user.profile');
+    Route::post('/user-profile/course', [UserController::class, 'userCourse'])->name('user.course');
     // Pricing
     Route::get('/pricing', [UserController::class, 'getPricingPage'])->name('pricing');
 
