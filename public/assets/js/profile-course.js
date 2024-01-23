@@ -10,25 +10,25 @@ var KTDatatablesDataSourceAjaxServer = function() {
 			searchDelay: 500,
 			processing: true,
 			serverSide: true,
+            info: true,
 			ajax: {
 				url: '/user-profile/course',
 				type: 'POST',
 				data: {
 					// parameters for custom backend script demo
 					columnsDef: [
-						'id', 'course', 'store_id', 'transaction_id', 'created_at'],
+						'course', 'name', 'transaction_id', 'created_at'],
 				},
 			},
 			columns: [
-				{data: 'id'},
 				{data: 'course'},
-				{data: 'store_id'},
+				{data: 'name'},
 				{data: 'transaction_id'},
 				{data: 'created_at'},
 			],
             columnDefs: [
 				{ 
-					targets: 1,
+					targets: 0,
 					data: "course",
 					render: function(data, type, row, meta) {
 						if(type === 'display') {
@@ -42,6 +42,27 @@ var KTDatatablesDataSourceAjaxServer = function() {
 						} else if (type === 'sort' || type === 'type') {
 							return row.course;
 						}
+					}
+				},
+                { 
+					targets: 3,
+					data: "created_at",
+					render: function(data, type, row, meta) {
+						if(type === 'display') {
+                            // Convert to Date object
+                            var date = new Date(row.created_at);
+                    
+                            // Add one month to the date
+                            date.setMonth(date.getMonth() + 1);
+                    
+                            // Format as Y-m-d
+                            var formattedDate = date.toISOString().split('T')[0];
+                            
+                            return formattedDate;
+                        } else if (type === 'sort' || type === 'type') {
+                            // Return the original data for sorting and type detection
+                            return row.created_at;
+                        }
 					}
 				}
 			],

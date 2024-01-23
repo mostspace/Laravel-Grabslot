@@ -196,11 +196,10 @@
                                     <table class="table table-checkable" id="kt_datatable">
                                         <thead>
                                             <tr>
-                                                <th>店舗</th>
                                                 <th>コース</th>
-                                                <th>市区郡</th>
-                                                <th>市区郡</th>
-                                                <th>市区郡</th>
+                                                <th>店舗</th>
+                                                <th>トランザクションID</th>
+                                                <th>使用期限</th>
                                             </tr>
                                         </thead>
                                     </table>

@@ -28,7 +28,7 @@
                                 <h4 class="text-white mb-2">ご注文は正常に完了しました。 私達を選んで頂き有難うございます。</h4>
                                 <!-- <h4 class="text-white">プロフィールの「すべての注文」タブから注文を追跡できます。</h4> -->
                             </div>
-                            <p class="text-white fs-7">注文番号:<a href="javascript:void(0)" class="p-link ml-5">{{ $transactionId }}</a></p>
+                            <p class="text-white fs-7">注文番号:<a href="/user-profile" class="p-link ml-5">{{ $transactionId }}</a></p>
                             <a href="/home" class="btn btn-success mt-10 fs-8 py-3 px-10"><i class="fa-solid fa-arrow-left fs-10 mr-3"></i>ホームページに戻る</a>
                         </div>
                     </div>

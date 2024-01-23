@@ -22,9 +22,9 @@ class UserController extends Controller
         $user = Auth::user();
         $data = Payment::where('user_id', $user->id)->get();
 
-        $userPayments = Payment::select('payments.course', 'stores.name', 'payments.created_at')
-                                ->leftJoin('stores', 'payments.store_id', '=', 'stores.id')
-                                ->where('payments.user_id', $user->id)
+        $userPayments = Payment::select('payment.course', 'tbl_store_list.name', 'payment.created_at', 'payment.transaction_id')
+                                ->leftJoin('tbl_store_list', 'payment.store_id', '=', 'tbl_store_list.id')
+                                ->where('payment.user_id', $user->id)
                                 ->get();
 
         $dataTable = new ServerSideTable($userPayments);

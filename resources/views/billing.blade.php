@@ -33,12 +33,12 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="fullName">フルネーム（カードに記載）</label>
+                                <label>フルネーム（カードに記載）</label>
                                 <input type="text" class="form-control g_input">
                             </div>
 
                             <div class="form-group">
-                                <label for="cardNumber">カード番号</label>
+                                <label>カード番号</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control card-number g_input" autocomplete='off'>
                                     <div class="input-group-append">
@@ -57,13 +57,13 @@
                                         <label><span class="hidden-xs">有効期限</span></label>
                                         <div class="input-group">
                                             <select class="form-control g_input card-expiry-month" name="month">
-                                                <option value="">MM</option>
+                                                <option value="">月</option>
                                                 @foreach(range(1, 12) as $month)
                                                     <option value="{{ $month }}">{{ $month }}</option>
                                                 @endforeach
                                             </select>
                                             <select class="form-control g_input card-expiry-year" name="year">
-                                                <option value="">YYYY</option>
+                                                <option value="">年</option>
                                                 @foreach(range(date('Y'), date('Y') + 10) as $year)
                                                     <option value="{{ $year }}">{{ $year }}</option>
                                                 @endforeach
