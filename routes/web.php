@@ -50,7 +50,7 @@ Route::group([], function () {
         Route::get('{region_id}', [HallDataController::class, 'store']);
         Route::post('{region_id}', [HallDataController::class, 'getStoreList'])->name('store.list');
         // Model List
-        Route::get('{region_id}/{store_id}', [HallDataController::class, 'model']);
+        Route::get('{region_id}/{store_id}', [HallDataController::class, 'model'])->middleware('checkCourse');
         Route::post('model-list/{store_id}', [HallDataController::class, 'getModelList'])->name('model.list');
         // Model Detail
         Route::get('{region_id}/{store_id}/{model_name}', [HallDataController::class, 'modelDetail'])->name('model.detail');

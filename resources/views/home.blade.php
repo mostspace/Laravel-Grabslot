@@ -66,7 +66,7 @@
     <!--begin::Modal-->
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-            <div class="modal-content">
+            <div class="modal-content g_modal">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">店舗検索リスト</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
