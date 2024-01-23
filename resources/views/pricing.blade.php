@@ -14,7 +14,7 @@
                             <span class="card-icon">
                                 <i class="flaticon2-chart text-primary"></i>
                             </span>
-                            <h4 class="card-label text-white">価格表</h4>
+                            <h4 class="card-label text-white">コース選択</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -22,13 +22,13 @@
                             <!-- begin: Pricing-->
                             <div class="col-md-4 col-xxl-3 p-bg-dark rounded-left shadow-sm">
                                 <div class="pt-25 pb-25 pb-md-10 px-4">
-                                    <h4 class="mb-15 text-white">基本</h4>
+                                    <h4 class="mb-15 text-white">お試しコース</h4>
                                     <span class="px-7 py-3 font-size-h1 font-weight-bold d-inline-flex flex-center bg-primary-o-10 rounded-lg mb-15 text-dark-25">無料</span>
                                     <br />
                                     <p class="mb-10 d-flex flex-column text-white">
-                                        <span>1ヶ月間1店舗のみ利用できます。</span>
+                                        <span>１週間、全店舗の情報を見放題！</span>
                                     </p>
-                                    <button type="button" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">無料で手に入れる</button>
+                                    <button type="button" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">お試しで登録</button>
                                 </div>
                             </div>
                             <!-- end: Pricing-->
@@ -43,7 +43,7 @@
                                     </span>
                                     <br />
                                     <p class="text-white mb-10 d-flex flex-column">
-                                        <span>1店舗のみ見放題</span>
+                                        <span>1店舗のみ見放題 !</span>
                                     </p>
                                     <a href="/course-store" class="btn btn-white text-uppercase font-weight-bolder px-15 py-3">購入</a>
                                 </div>
@@ -60,7 +60,7 @@
                                     </span>
                                     <br />
                                     <p class="mb-10 d-flex flex-column text-white">
-                                        <span>無制限見放題</span>
+                                        <span>全店舗の情報を見放題！</span>
                                     </p>
                                     <a href="/billing/standard/0" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">購入</a>
                                 </div>

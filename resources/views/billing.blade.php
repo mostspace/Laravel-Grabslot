@@ -14,10 +14,10 @@
                         <!--begin::Toolbar-->
                         @if ($course == "light")
                             <h1 class="text-white mb-0 font-weight-bolder w-100 text-center">ライトコース</h1>
-                            <p class="w-100 text-center text-white mt-3 mb-7 fs-8">1店舗のみ見放題</p>
+                            <p class="w-100 text-center text-white mt-3 mb-7 fs-8">1店舗のみ見放題 !</p>
                         @else
                             <h1 class="text-white mb-0 font-weight-bolder w-100 text-center">スタンダードコース</h1>
-                            <p class="w-100 text-center text-white mt-3 mb-7 fs-8">無制限見放題</p>
+                            <p class="w-100 text-center text-white mt-3 mb-7 fs-8">無制限見放題 !</p>
                         @endif
                         <!--end::Toolbar-->
                     </div>
@@ -33,7 +33,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <label>フルネーム（カードに記載）</label>
+                                <label>カード名義</label>
                                 <input type="text" class="form-control g_input">
                             </div>
 
@@ -54,7 +54,7 @@
                             <div class="row">
                                 <div class="col-sm-8">
                                     <div class="form-group">
-                                        <label><span class="hidden-xs">有効期限</span></label>
+                                        <label><span class="hidden-xs">合計金額</span></label>
                                         <div class="input-group">
                                             <select class="form-control g_input card-expiry-month" name="month">
                                                 <option value="">月</option>
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
         
-                            <button id="paySubmit" class="subscribe btn btn-primary btn-block spinner-white spinner-right" type="submit">今払う</button>
+                            <button id="paySubmit" class="subscribe btn btn-primary btn-block spinner-white spinner-right" type="submit">入力内容を確認する</button>
                         </form>
                     </div>
                     <!--begin::Card body-->
