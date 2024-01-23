@@ -48,7 +48,11 @@ class HallDataController extends Controller
     // Search Hall Data
     public function searchHallDataList(Request $request, $hall_name) {
 
-        $stores = StoreList::where('name', 'like', '%' . $hall_name . '%')->get();
+        if ($hall_name === "whole") {
+            $stores = StoreList::all();
+        } else {
+            $stores = StoreList::where('name', 'like', '%' . $hall_name . '%')->get();
+        }
 
         $dataTable = new ServerSideTable($stores);
         $dataTable->getAjaxTable();

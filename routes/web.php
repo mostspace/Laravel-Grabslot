@@ -69,8 +69,10 @@ Route::group([], function () {
     Route::get('/user-profile', [UserController::class, 'index'])->name('user.profile');
     // Pricing
     Route::get('/pricing', [UserController::class, 'getPricingPage'])->name('pricing');
+
     // Payment
-    Route::get('/billing/{course}', [PaymentController::class, 'index'])->name('billing');
+    Route::get('/billing/{course}/{store_id}', [PaymentController::class, 'index'])->name('billing');
+    Route::get('/course-store', [PaymentController::class, 'courseStore'])->name('course.store');
     Route::post('/stripe', [PaymentController::class, 'stripePost'])->name('stripe.post');
     Route::get('/payment_success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
 

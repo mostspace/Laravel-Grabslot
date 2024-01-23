@@ -42,7 +42,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control card-number g_input" autocomplete='off'>
                                     <div class="input-group-append">
-                                        <span class="input-group-text bg-main">
+                                        <span class="input-group-text bg-main border-main">
                                             <i class="fab fa-cc-visa fa-lg pr-1"></i>
                                             <i class="fab fa-cc-amex fa-lg pr-1"></i>
                                             <i class="fab fa-cc-mastercard fa-lg"></i>

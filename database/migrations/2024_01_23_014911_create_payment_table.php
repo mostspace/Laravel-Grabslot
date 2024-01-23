@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('course');
+            $table->string('store_id');
             $table->string('transaction_id');
             $table->timestamps();
         });

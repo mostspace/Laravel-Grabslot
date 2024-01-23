@@ -52,8 +52,7 @@
                                 @endforeach
                             </div>
                             
-                            <div id="filteredRegion" class="row">
-                            </div>
+                            <div id="filteredRegion" class="row"></div>
                         </div>
                     </div>
                 </div>

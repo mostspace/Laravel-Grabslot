@@ -96,4 +96,8 @@ class PaymentController extends Controller
         // Pass the transaction ID to the view
         return view('payment_success', compact('transactionId'));
     }
+
+    public function courseStore() {
+        return view('course-store');
+    }
 }

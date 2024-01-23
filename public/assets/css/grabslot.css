@@ -113,6 +113,7 @@
 .g_input, .g_input:focus {
     background-color: #1a1b23 !important;
     color: #fff !important;
+    border-color: #515361;
 }
 #kt_footer {
     background: #1A1B23 !important;
@@ -376,7 +377,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 
 /* Search Hall Modal Table */
-#searchModal .modal-content {
+.g_modal {
     background: #15161c;
     box-shadow: 2px 2px 33px 3px rgb(19 160 204);
 }
@@ -766,4 +767,19 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 .hide {
     display: none;
+}
+.border-main {
+    border-color: #515361 !important;
+}
+
+/* Sweet Alert */
+.swal2-popup {
+    background: #15161c !important;
+    box-shadow: 2px 2px 33px 3px rgb(19 160 204) !important;
+}
+.swal2-popup .swal2-title {
+    color: #ffffff !important;
+}
+.swal2-container .swal2-html-container {
+    color: #ffffff !important;
 }
