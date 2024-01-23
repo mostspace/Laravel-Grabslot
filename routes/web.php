@@ -64,7 +64,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
 
     // Waiting
     Route::get('/waiting', function () {
-        return view('waiting');
+        return view('errors.waiting');
     });
 
     // User Profile
@@ -85,10 +85,12 @@ Route::middleware(['auth', 'verified'])->group(function() {
 
 Route::middleware(['auth', 'verified', 'checkRole'])->namespace('Admin')->prefix('admin')->group(function() {
     Route::get('/', [AdminController::class, 'index']);
+
     // Promotion Printing
     Route::get('promotion-printing', [PromotionPrintingController::class, 'index'])->name('admin.promotion_printing');
     Route::post('promotion-printing/model', [PromotionPrintingController::class, 'updateTable']);
     Route::post('promotion-printing/promotion-table-validation', [PromotionPrintingController::class, 'validatePromotionTable']);
+
     // User Management
     Route::get('user-management', [UserManagementController::class, 'index'])->name('admin.user_management');
     Route::post('users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
