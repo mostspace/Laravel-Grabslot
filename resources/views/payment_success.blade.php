@@ -42,7 +42,7 @@
 
 @endsection
 
-@section('add_js')3
+@section('add_js')
 
 @endsection
 

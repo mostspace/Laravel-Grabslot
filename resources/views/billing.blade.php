@@ -30,6 +30,7 @@
                             
                         @endif
                         <form id="payment-form" role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
+                        <!-- <form id="payment-form" onsubmit="return false;" role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"> -->
                             @csrf
 
                             <div class="form-group">
@@ -80,9 +81,9 @@
                             </div>
 
                             @if ($course == "light")
-                                <p class="text-white">合計料金：500円</p>
+                                <p class="text-white">合計料金：<span class="course_pay_amount">500円</span></p>
                             @else
-                                <p class="text-white">合計料金：1000円</p>
+                                <p class="text-white">合計料金：<span class="course_pay_amount">1000円</span></p>
                             @endif
 
                             <div class='form-group my-10'>
@@ -91,7 +92,7 @@
                                 </div>
                             </div>
         
-                            <button id="paySubmit" class="subscribe btn btn-primary btn-block spinner-white spinner-right" type="submit">入力内容を確認する</button>
+                            <button id="paySubmit" class="subscribe btn btn-primary btn-block spinner-white spinner-right" type="submit" data-toggle="modal" data-target="#confirmPaymentModal">入力内容を確認する</button>
                         </form>
                     </div>
                     <!--begin::Card body-->
@@ -104,22 +105,77 @@
     </div>
     <!--end::Content-->
 
+    <!--begin::Modal-->
+    <div class="modal fade" id="confirmPaymentModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content g_modal">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">決済確認</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mt-10 mb-15 text-center">
+                        <i class="icon-xl far fa-check-circle text-white fa-4x mb-5"></i>
+                        <p class="text-white fs-7">内容をご確認ください</p>
+                    </div>
+                    <div class="px-15">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="text-white fs-8">支払方法</p>
+                            <p id="pay_method" class="text-white fs-8"></p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="text-white fs-8">お支払い総額</p>
+                            <p id="pay_amount" class="text-white fs-8"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="confirmPayBtn" class="btn btn-primary font-weight-bold px-7">支払う</button>
+                    <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">キャンセル</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Modal-->
 @endsection
 
 @section('add_js')
-
 <script type="text/javascript">
     var course = @json($course); 
     var store_id = @json($store_id);
 
     $(document).ready(function() {
         $("#paySubmit").removeClass('spinner');
-        $("#paySubmit").click(function() {
+        
+        $("#payment-form").on("click", "#paySubmit", function(e) {
+            e.preventDefault();
+
+            // Assuming cardNumber is the variable containing the card number
+            var cardNumber = $(".card-number").val();  // Replace with your actual card number
+            // Use validateCreditCard method on the input field
+            var cardInfo = $(".card-number").validateCreditCard();
+            // Check if the card is valid
+            if (cardInfo.valid) {
+                // You can also use the card type for further processing
+                var cardType = cardInfo.card_type.name;
+
+                $("#pay_method").text(cardType + " ****" + cardNumber.slice(-4));
+                $("#pay_amount").text($(".course_pay_amount").text());
+            } else {
+                $("#pay_method").text("無効なカード番号");
+            }
+        });
+
+        $("#confirmPayBtn").click(function() {
+            $('#confirmPaymentModal').modal('hide');
             $("#paySubmit").addClass('spinner');
+            $("#payment-form").submit();
         });
     });
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-creditcardvalidator/1.0.0/jquery.creditCardValidator.js"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript" src="{{ asset('assets/js/payment.js') }}"></script>
 

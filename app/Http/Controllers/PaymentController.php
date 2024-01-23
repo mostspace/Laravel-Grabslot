@@ -57,7 +57,7 @@ class PaymentController extends Controller
             $payment->course = $request->input('paymentCourse');
             $payment->store_id = $request->input('storeId');
             $payment->transaction_id = $charge->id;
-            $payment->save();           
+            $payment->save();   
             
             // Flash success message
             Session::flash('success', $charge->id);

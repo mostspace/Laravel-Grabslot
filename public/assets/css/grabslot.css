@@ -381,6 +381,9 @@ div.dataTables_wrapper div.dataTables_filter input {
     background: #15161c;
     box-shadow: 2px 2px 33px 3px rgb(19 160 204);
 }
+.g_modal .modal-header, .g_modal .modal-footer {
+    border-color: #27282e !important;
+}
 #searchModal .modal-title {
     color: #fff !important;
 }
