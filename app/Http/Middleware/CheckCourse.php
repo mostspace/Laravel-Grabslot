@@ -28,7 +28,7 @@ class CheckCourse
             if ($store_id == $user->store_id || $user->store_id == '0') {
                 return $next($request);
             }
-        } 
+        }
 
         return redirect('/pricing');
     }

@@ -35,15 +35,16 @@ Route::get('/clear_all', function() {
 
 require __DIR__.'/auth.php';
 
-// =========================================== USER =================================================
+// ========================================================== USER =================================================================
 
 Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::group([], function () {
+Route::middleware(['auth', 'verified'])->group(function() {
     // Home
     Route::get('/home', [HallDataController::class, 'getRegionList'])->name('home');
+
     // Hall
     Route::group(['prefix' => 'hall-data'], function () {
         // Store List
@@ -60,6 +61,7 @@ Route::group([], function () {
 
     // Search Store
     Route::post('/search-hall/{hall_name}', [HallDataController::class, 'searchHallDataList'])->name('search.region');
+
     // Waiting
     Route::get('/waiting', function () {
         return view('waiting');
@@ -68,6 +70,7 @@ Route::group([], function () {
     // User Profile
     Route::get('/user-profile', [UserController::class, 'index'])->name('user.profile');
     Route::post('/user-profile/course', [UserController::class, 'userCourse'])->name('user.course');
+
     // Pricing
     Route::get('/pricing', [UserController::class, 'getPricingPage'])->name('pricing');
 
@@ -76,14 +79,11 @@ Route::group([], function () {
     Route::get('/course-store', [PaymentController::class, 'courseStore'])->name('course.store');
     Route::post('/stripe', [PaymentController::class, 'stripePost'])->name('stripe.post');
     Route::get('/payment_success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+});
 
-})->middleware(['auth', 'verified']);
+// ========================================================== ADMIN ================================================================
 
-
-// =========================================== ADMIN =================================================
-
-// Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function () {
-Route::group(['prefix' => 'admin'], function() {
+Route::middleware(['auth', 'verified', 'checkRole'])->namespace('Admin')->prefix('admin')->group(function() {
     Route::get('/', [AdminController::class, 'index']);
     // Promotion Printing
     Route::get('promotion-printing', [PromotionPrintingController::class, 'index'])->name('admin.promotion_printing');
@@ -92,5 +92,5 @@ Route::group(['prefix' => 'admin'], function() {
     // User Management
     Route::get('user-management', [UserManagementController::class, 'index'])->name('admin.user_management');
     Route::post('users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
-})->middleware(['auth', 'verified']);
+});
 
