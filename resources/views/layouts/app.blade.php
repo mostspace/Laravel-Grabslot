@@ -250,7 +250,7 @@
 						<div class="container">
                             <!--begin::Copyright-->
                             <div class="text-dark order-2 order-md-1 text-center mt-20">
-                                <span class="text-muted me-1">Copyright&copy Grab. </span>
+                                <span class="text-muted me-1">Copyright&copy Grabslot. </span>
                                 <span class="text-muted me-1">2023 All Rights Reserved.</span>
                             </div>
                             <!--end::Copyright-->
