@@ -100,80 +100,70 @@
                     <!--end::Card header-->
                     <!--begin::Card body-->
                     <div class="card-body px-0">
-                        <form class="form" id="kt_form">
-                            <div class="tab-content pt-10">
-                                <!--begin::Tab-->
-                                <div class="tab-pane show active px-lg-7" id="profile_tab_1" role="tabpanel">
-                                    <!--begin::Row-->
-                                    <div class="row">
-                                        <div class="col-xl-2"></div>
-                                        <div class="col-xl-7 my-2">
-                                            <!--begin::Row-->
-                                            <div class="row">
-                                                <label class="col-md-3"></label>
-                                                <div class="col-md-9 col-sm-12">
-                                                    <h6 class="text-white font-weight-bold mb-10">アカウント情報:</h6>
-                                                </div>
-                                            </div>
-                                            <!--end::Row-->
-                                            <form action="" id="userAccount" onsubmit="return false;">
-                                                <!--begin::Group-->
-                                                <div class="form-group row">
-                                                    <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">メールアドレス</label>
-                                                    <div class="col-md-9 col-sm-12">
-                                                        <input class="g_input form-control form-control-lg form-control-solid" type="text" value="{{ Auth::user()->email }}" name="user_email"/>
-                                                        <!-- <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span> -->
-                                                    </div>
-                                                </div>
-                                                <!--end::Group-->   
-                                                <!--begin::Group-->
-                                                <div class="form-group row">
-                                                    <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">Name</label>
-                                                    <div class="col-md-9 col-sm-12">
-                                                        <input class="g_input form-control form-control-lg form-control-solid" type="text" value="" name="user_name"/>
-                                                        <!-- <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span> -->
-                                                    </div>
-                                                </div>
-                                                <!--end::Group-->   
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <!--end::Row-->
-                                    <!--begin::Footer-->
-                                    <div class="row">
-                                        <div class="col-xl-2 col-md-2"></div>
-                                        <div class="col-xl-7 col-md-7">
-                                            <div class="row">
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-9 col-sm-12">
-                                                    <button id="updateEmail" class="btn btn-primary font-weight-bold">変更内容を保存</button>
-                                                    <a href="/" class="btn btn-clean font-weight-bold">キャンセル</a>
-                                                </div>
+                        <div class="tab-content pt-10">
+                            <!--begin::Tab-->
+                            <div class="tab-pane show active px-lg-7" id="profile_tab_1" role="tabpanel">
+                                <!--begin::Row-->
+                                <div class="row">
+                                    <div class="col-xl-2"></div>
+                                    <div class="col-xl-7 my-2">
+                                        <!--begin::Row-->
+                                        <div class="row">
+                                            <label class="col-md-3"></label>
+                                            <div class="col-md-9 col-sm-12">
+                                                <h6 class="text-white font-weight-bold mb-10">アカウント情報:</h6>
                                             </div>
                                         </div>
+                                        <!--end::Row-->
+                                        <form id="userAccountForm">
+                                            <!--begin::Group-->
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">メールアドレス</label>
+                                                <div class="col-md-9 col-sm-12">
+                                                    <input class="g_input form-control form-control-lg form-control-solid" type="email" value="{{ Auth::user()->email }}" name="user_email"/>
+                                                </div>
+                                            </div>
+                                            <!--end::Group-->  
+                                        </form>
                                     </div>
-                                    <!--end::Footer-->
                                 </div>
-                                <!--end::Tab-->
-                                <!--begin::Tab-->
-                                <div class="tab-pane px-lg-7" id="profile_tab_2" role="tabpanel">
-                                    <!--begin::Row-->
-                                    <div class="row">
-                                        <div class="col-xl-2"></div>
-                                        <div class="col-xl-7 col-sm-12">
-                                            <!--begin::Row-->
-                                            <div class="row">
-                                                <label class="col-md-3 col-sm-12"></label>
-                                                <div class="col-md-9 col-sm-12">
-                                                    <h6 class="text-white font-weight-bold mb-10">パスワードを変更する:</h6>
-                                                </div>
+                                <!--end::Row-->
+                                <!--begin::Footer-->
+                                <div class="row">
+                                    <div class="col-xl-2 col-md-2"></div>
+                                    <div class="col-xl-7 col-md-7">
+                                        <div class="row">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-9 col-sm-12">
+                                                <button id="updateEmailBtn" class="btn btn-primary font-weight-bold">変更内容を保存</button>
+                                                <a href="/" class="btn btn-clean font-weight-bold">キャンセル</a>
                                             </div>
-                                            <!--end::Row-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::Footer-->
+                            </div>
+                            <!--end::Tab-->
+                            <!--begin::Tab-->
+                            <div class="tab-pane px-lg-7" id="profile_tab_2" role="tabpanel">
+                                <!--begin::Row-->
+                                <div class="row">
+                                    <div class="col-xl-2"></div>
+                                    <div class="col-xl-7 col-sm-12">
+                                        <!--begin::Row-->
+                                        <div class="row">
+                                            <label class="col-md-3 col-sm-12"></label>
+                                            <div class="col-md-9 col-sm-12">
+                                                <h6 class="text-white font-weight-bold mb-10">パスワードを変更する:</h6>
+                                            </div>
+                                        </div>
+                                        <!--end::Row-->
+                                        <form id="userPasswordChangeForm">
                                             <!--begin::Group-->
                                             <div class="form-group row">
                                                 <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">現在のパスワード</label>
                                                 <div class="col-md-9 col-sm-12">
-                                                    <input class="g_input form-control form-control-lg form-control-solid mb-1" type="text" value="" />
+                                                    <input class="g_input form-control form-control-lg form-control-solid mb-1" type="text" value="" name="old_pwd"/>
                                                     <!-- <a href="#" class="font-weight-bold font-size-sm">パスワードを忘れましたか ?</a> -->
                                                 </div>
                                             </div>
@@ -182,7 +172,7 @@
                                             <div class="form-group row">
                                                 <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">パスワード</label>
                                                 <div class="col-md-9 col-sm-12">
-                                                    <input class="g_input form-control form-control-lg form-control-solid" type="text" value="" placeholder="８文字以上で入力"/>
+                                                    <input class="g_input form-control form-control-lg form-control-solid" type="text" name="new_pwd" value="" placeholder="８文字以上で入力"/>
                                                 </div>
                                             </div>
                                             <!--end::Group-->
@@ -190,103 +180,103 @@
                                             <div class="form-group row">
                                                 <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">確認のため再入力</label>
                                                 <div class="col-md-9 col-sm-12">
-                                                    <input class="g_input form-control form-control-lg form-control-solid" type="text" value="" />
+                                                    <input class="g_input form-control form-control-lg form-control-solid" type="text" name="confirm_pwd" value="" />
                                                 </div>
                                             </div>
                                             <!--end::Group-->
-                                        </div>
+                                        </form>
                                     </div>
-                                    <!--end::Row-->
-                                    <!--begin::Footer-->
-                                    <div class="card-footer pb-0">
-                                        <div class="row">
-                                            <div class="col-xl-2"></div>
-                                            <div class="col-xl-7 col-sm-12 col-md-7">
-                                                <div class="row">
-                                                    <div class="col-3"></div>
-                                                    <div class="col-9">
-                                                        <a href="#" class="btn btn-primary font-weight-bold">変更内容を保存</a>
-                                                        <a href="/user-profile" class="btn btn-clean font-weight-bold">キャンセル</a>
-                                                    </div>
+                                </div>
+                                <!--end::Row-->
+                                <!--begin::Footer-->
+                                <div class="card-footer pb-0">
+                                    <div class="row">
+                                        <div class="col-xl-2"></div>
+                                        <div class="col-xl-7 col-sm-12 col-md-7">
+                                            <div class="row">
+                                                <div class="col-3"></div>
+                                                <div class="col-9">
+                                                    <button id="changePwdBtn" class="btn btn-primary font-weight-bold">変更内容を保存</button>
+                                                    <a href="/user-profile" class="btn btn-clean font-weight-bold">キャンセル</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--end::Footer-->
                                 </div>
-                                <!--end::Tab-->
-                                <!--begin::Tab-->
-                                <div class="tab-pane px-lg-7" id="profile_tab_3" role="tabpanel">
-                                    <!--begin: Datatable-->
-                                    <div class="table-responsive">
-                                        <table class="table table-checkable" id="kt_datatable">
-                                            <thead>
-                                                <tr>
-                                                    <th>コース</th>
-                                                    <th>店舗</th>
-                                                    <th>使用期限</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                    <!--end: Datatable-->
-                                </div>
-                                <!--end::Tab-->
-                                <!--begin::Tab-->
-                                <div class="tab-pane px-lg-7" id="pricing" role="tabpanel">
-                                    <div class="row justify-content-center text-center my-0 my-md-25">
-                                        <!-- begin: Free-->
-                                        <div class="col-md-4 col-xxl-3 p-bg-dark rounded-left shadow-sm">
-                                            <div class="pt-25 pb-25 pb-md-10 px-4">
-                                                <h4 class="mb-15 text-white">お試しコース</h4>
-                                                <span class="px-7 py-3 font-size-h1 font-weight-bold d-inline-flex flex-center bg-primary-o-10 rounded-lg mb-15 text-dark-25">無料</span>
-                                                <br />
-                                                <p class="mb-10 d-flex flex-column text-white">
-                                                    <span>１週間、全店舗の情報を見放題！</span>
-                                                </p>
-                                                <!-- <a href="" type="button" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">お試しで登録</a> -->
-                                            </div>
-                                        </div>
-                                        <!-- end: Free-->
-                                        <!-- begin: Light-->
-                                        <div class="col-md-4 col-xxl-3 bg-primary my-md-n15 rounded shadow-sm">
-                                            <div class="pt-25 pt-md-37 pb-25 pb-md-10 py-md-28 px-4">
-                                                <h4 class="text-white mb-15">ライトコース</h4>
-                                                <span class="px-7 py-3 bg-white d-inline-flex flex-center rounded-lg mb-15 bg-white">
-                                                    <span class="pr-2 font-size-h1 font-weight-bold text-dark">500</span>
-                                                    <span class="pr-2 text-dark opacity-70">円</span>
-                                                    <span class="text-dark opacity-70">/&#160;&#160;月あたり</span>
-                                                </span>
-                                                <br />
-                                                <p class="text-white mb-10 d-flex flex-column">
-                                                    <span>1店舗のみ見放題 !</span>
-                                                </p>
-                                                <a href="{{ route('course.store') }}" class="btn btn-white text-uppercase font-weight-bolder px-15 py-3">購入</a>
-                                            </div>
-                                        </div>
-                                        <!-- end: Light-->
-                                        <!-- begin: Standard-->
-                                        <div class="col-md-4 col-xxl-3 p-bg-dark rounded-right shadow-sm">
-                                            <div class="pt-25 pb-25 pb-md-10 px-4">
-                                                <h4 class="mb-15 text-white">スタンダードコース</h4>
-                                                <span class="px-7 py-3 d-inline-flex flex-center rounded-lg mb-15 bg-primary-o-10 text-dark-25">
-                                                    <span class="pr-2 font-size-h1 font-weight-bold">1000</span>
-                                                    <span class="pr-2 opacity-70">円</span>
-                                                    <span class="opacity-70">/&#160;&#160;月あたり</span>
-                                                </span>
-                                                <br />
-                                                <p class="mb-10 d-flex flex-column text-white">
-                                                    <span>全店舗の情報を見放題！</span>
-                                                </p>
-                                                <a href="/billing/standard/0" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">購入</a>
-                                            </div>
-                                        </div>
-                                        <!-- end: Standard-->
-                                    </div>
-                                </div>
-                                <!--end::Tab-->
+                                <!--end::Footer-->
                             </div>
-                        </form>
+                            <!--end::Tab-->
+                            <!--begin::Tab-->
+                            <div class="tab-pane px-lg-7" id="profile_tab_3" role="tabpanel">
+                                <!--begin: Datatable-->
+                                <div class="table-responsive">
+                                    <table class="table table-checkable" id="kt_datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>コース</th>
+                                                <th>店舗</th>
+                                                <th>使用期限</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!--end: Datatable-->
+                            </div>
+                            <!--end::Tab-->
+                            <!--begin::Tab-->
+                            <div class="tab-pane px-lg-7" id="pricing" role="tabpanel">
+                                <div class="row justify-content-center text-center my-0 my-md-25">
+                                    <!-- begin: Free-->
+                                    <div class="col-md-4 col-xxl-3 p-bg-dark rounded-left shadow-sm">
+                                        <div class="pt-25 pb-25 pb-md-10 px-4">
+                                            <h4 class="mb-15 text-white">お試しコース</h4>
+                                            <span class="px-7 py-3 font-size-h1 font-weight-bold d-inline-flex flex-center bg-primary-o-10 rounded-lg mb-15 text-dark-25">無料</span>
+                                            <br />
+                                            <p class="mb-10 d-flex flex-column text-white">
+                                                <span>１週間、全店舗の情報を見放題！</span>
+                                            </p>
+                                            <!-- <a href="" type="button" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">お試しで登録</a> -->
+                                        </div>
+                                    </div>
+                                    <!-- end: Free-->
+                                    <!-- begin: Light-->
+                                    <div class="col-md-4 col-xxl-3 bg-primary my-md-n15 rounded shadow-sm">
+                                        <div class="pt-25 pt-md-37 pb-25 pb-md-10 py-md-28 px-4">
+                                            <h4 class="text-white mb-15">ライトコース</h4>
+                                            <span class="px-7 py-3 bg-white d-inline-flex flex-center rounded-lg mb-15 bg-white">
+                                                <span class="pr-2 font-size-h1 font-weight-bold text-dark">500</span>
+                                                <span class="pr-2 text-dark opacity-70">円</span>
+                                                <span class="text-dark opacity-70">/&#160;&#160;月あたり</span>
+                                            </span>
+                                            <br />
+                                            <p class="text-white mb-10 d-flex flex-column">
+                                                <span>1店舗のみ見放題 !</span>
+                                            </p>
+                                            <a href="{{ route('course.store') }}" class="btn btn-white text-uppercase font-weight-bolder px-15 py-3">購入</a>
+                                        </div>
+                                    </div>
+                                    <!-- end: Light-->
+                                    <!-- begin: Standard-->
+                                    <div class="col-md-4 col-xxl-3 p-bg-dark rounded-right shadow-sm">
+                                        <div class="pt-25 pb-25 pb-md-10 px-4">
+                                            <h4 class="mb-15 text-white">スタンダードコース</h4>
+                                            <span class="px-7 py-3 d-inline-flex flex-center rounded-lg mb-15 bg-primary-o-10 text-dark-25">
+                                                <span class="pr-2 font-size-h1 font-weight-bold">1000</span>
+                                                <span class="pr-2 opacity-70">円</span>
+                                                <span class="opacity-70">/&#160;&#160;月あたり</span>
+                                            </span>
+                                            <br />
+                                            <p class="mb-10 d-flex flex-column text-white">
+                                                <span>全店舗の情報を見放題！</span>
+                                            </p>
+                                            <a href="/billing/standard/0" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">購入</a>
+                                        </div>
+                                    </div>
+                                    <!-- end: Standard-->
+                                </div>
+                            </div>
+                            <!--end::Tab-->
+                        </div>
                     </div>
                     <!--begin::Card body-->
                 </div>
@@ -302,11 +292,11 @@
 
 @section('add_js')
 <script src="{{ asset('assets/js/profile-course.js') }}"></script>
+<script src="{{ asset('assets/js/pages/features/bootstrap-notify.js') }}"></script>
 
 <script>
     $(document).ready(function () {
-    
-        /* Opening specified tab when redirected */
+        var content = {};
 
         // Function to open the specified tab
         function openPricingTab(tabId) {
@@ -316,30 +306,116 @@
         // Check if there is a 'tab' query parameter in the URL
         var urlParams = new URLSearchParams(window.location.search);
         var tabToOpen = urlParams.get('tab');
-        
+
         if (tabToOpen) {
             // Open the specified tab
             openPricingTab(tabToOpen);
         }
 
         /* Update user email */
-        $("#updateEmail").click(function(e) {
-            e.preventDefault();
-
-            console.log($("userAccount").serialize());
-
+        $("#updateEmailBtn").click(function () {
             $.ajax({
-                url: '/user-account',
-                type: 'POST',
-                data: $("#userAccount").serialize(),
-                success: function(response) {
-                    console.log(response);
+                type: "POST",
+                url: "{{ route('user.account') }}",
+                data: $("#userAccountForm").serializeJSON(),
+                success: function (response) {
+                    handleResponse(response);
                 },
-                error: function(xhr) {
-                    console.log(xhr.responseText);
+                error: function (error) {
+                    handleAjaxError('メールの更新に失敗しました. もう一度試してください.');
                 }
             });
         });
+
+        /* Change user password */
+        $("#changePwdBtn").click(function () {
+            var formData = $("#userPasswordChangeForm").serializeJSON();
+            var oldPwd = formData.old_pwd;
+            var newPwd = formData.new_pwd;
+            var confirmPwd = formData.confirm_pwd;
+
+            // Client-side validation
+            if (newPwd !== confirmPwd) {
+                handleValidationError('新しいパスワードが一致しません.');
+                return;
+            }
+
+            // AJAX request to the server for password change
+            $.ajax({
+                type: "POST",
+                url: "{{ route('user.password') }}",
+                data: formData,
+                success: function (response) {
+                    handleResponse(response);
+                    $("#userPasswordChangeForm input").val('');
+                },
+                error: function (error) {
+                    handleAjaxError('パスワードの変更に失敗しました. 古いパスワードを確認してください.');
+                }
+            });
+        });
+
+        // Notification
+        function notification() {
+            $.notify(content, {
+                type: content.type,
+                allow_dismiss: false,
+                newest_on_top: true,
+                mouse_over: true,
+                showProgressbar: false,
+                spacing: 10,
+                timer: 2000,
+                placement: {
+                    from: 'top',
+                    align: 'right'
+                },
+                offset: {
+                    x: 50,
+                    y: 100
+                },
+                delay: 1000,
+                z_index: 10000,
+                animate: {
+                    enter: 'animate__animated animate__' + content.animation_enter,
+                    exit: 'animate__animated animate__' + content.animation_exit
+                }
+            });
+        }
+
+        // Handle AJAX response
+        function handleResponse(response) {
+            if (response.result === "success") {
+                content.message = '';
+                content.title = response.message;
+                content.type = 'success';
+                content.animation_enter = 'bounceInDown';
+                content.animation_exit = 'bounceOutUp';
+                notification(content);
+            } else {
+                handleAjaxError(response.message);
+            }
+        }
+
+        // Handle AJAX error
+        function handleAjaxError(errorMessage) {
+            content.message = '';
+            content.title = errorMessage;
+            content.type = 'warning';
+            content.animation_enter = 'wobble';
+            content.animation_exit = 'bounceOutRight';
+            notification(content);
+        }
+
+        // Handle client-side validation error
+        function handleValidationError(errorMessage) {
+            content.message = '';
+            content.title = errorMessage;
+            content.type = 'warning';
+            content.animation_enter = 'wobble';
+            content.animation_exit = 'bounceOutRight';
+            notification(content);
+        }
     });
+
 </script>
 @endsection

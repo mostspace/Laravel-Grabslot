@@ -38,7 +38,12 @@
     border-color: #18c8ff !important;
 }
 
-.btn.btn-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-primary:focus:not(.btn-text), .btn.btn-primary.focus:not(.btn-text) {
+.btn.btn-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background: #0cafe047 !important;
+    border-color: #0cafe0 !important;
+    color: #ffffff !important;
+}
+.btn.btn-primary:focus:not(.btn-text), .btn.btn-primary.focus:not(.btn-text) {
     background: #0cafe0 !important;
     border-color: #0cafe0 !important;
     color: #ffffff !important;
@@ -248,7 +253,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     border-right: 1px solid #27282e;
     border-bottom: 1px solid #27282e;
     box-sizing: border-box;
-    height: 29px;
+    height: 26px;
     width: 100%;
     font-size: 11px;
     display: flex;
@@ -289,7 +294,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     border-right: 2px solid #27282e;
 }
 .model-table-row > .td-block:nth-child(2), .divide-cell {
-    flex: 1.5 !important;
+    flex: 1 !important;
     border-right: 2px solid #27282e !important;
 }
 #modelDetailTable > .model-table-row:first-child {
