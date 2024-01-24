@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row justify-content-center text-center my-0 my-md-25">
-                            <!-- begin: Pricing-->
+                            <!-- begin: Free-->
                             <div class="col-md-4 col-xxl-3 p-bg-dark rounded-left shadow-sm">
                                 <div class="pt-25 pb-25 pb-md-10 px-4">
                                     <h4 class="mb-15 text-white">お試しコース</h4>
@@ -28,11 +28,11 @@
                                     <p class="mb-10 d-flex flex-column text-white">
                                         <span>１週間、全店舗の情報を見放題！</span>
                                     </p>
-                                    <button type="button" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">お試しで登録</button>
+                                    <!-- <a href="" type="button" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">お試しで登録</a> -->
                                 </div>
                             </div>
-                            <!-- end: Pricing-->
-                            <!-- begin: Pricing-->
+                            <!-- end: Free-->
+                            <!-- begin: Light-->
                             <div class="col-md-4 col-xxl-3 bg-primary my-md-n15 rounded shadow-sm">
                                 <div class="pt-25 pt-md-37 pb-25 pb-md-10 py-md-28 px-4">
                                     <h4 class="text-white mb-15">ライトコース</h4>
@@ -48,8 +48,8 @@
                                     <a href="{{ route('course.store') }}" class="btn btn-white text-uppercase font-weight-bolder px-15 py-3">購入</a>
                                 </div>
                             </div>
-                            <!-- end: Pricing-->
-                            <!-- begin: Pricing-->
+                            <!-- end: Light-->
+                            <!-- begin: Standard-->
                             <div class="col-md-4 col-xxl-3 p-bg-dark rounded-right shadow-sm">
                                 <div class="pt-25 pb-25 pb-md-10 px-4">
                                     <h4 class="mb-15 text-white">スタンダードコース</h4>
@@ -65,7 +65,7 @@
                                     <a href="/billing/standard/0" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">購入</a>
                                 </div>
                             </div>
-                            <!-- end: Pricing-->
+                            <!-- end: Standard-->
                         </div>
                     </div>
                 </div>

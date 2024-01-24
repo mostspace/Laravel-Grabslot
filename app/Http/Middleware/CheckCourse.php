@@ -20,12 +20,22 @@ class CheckCourse
     {
         $store_id = $request->route('store_id');
         $oneMonthAgo = Carbon::now()->subMonth();
-        $user = Payment::where('user_id', Auth::user()->id)->latest()->first();
+        $oneWeekAgo = Carbon::now()->subWeek();
 
-        // Check if the created_at date is within one month before the current date
-        if ($user->created_at->greaterThanOrEqualTo($oneMonthAgo)) {
-            // Check if the user has a corresponding payment record for the specified store
-            if ($store_id == $user->store_id || $user->store_id == '0') {
+        $user_course = Payment::where('user_id', Auth::user()->id)->latest()->first();
+
+        if ($user_course != null) {
+            // Check if the created_at date is within one month before the current date
+            if ($user_course->created_at->greaterThanOrEqualTo($oneMonthAgo)) {
+                // Check if the user has a corresponding payment record for the specified store
+                if ($store_id == $user_course->store_id || $user_course->store_id == '0') {
+                    return $next($request);
+                }
+            }
+        } else {
+            session()->flash('alert', 'You need to make a payment first!');
+            
+            if (Auth::user()->created_at->greaterThanOrEqualTo($oneWeekAgo)) {
                 return $next($request);
             }
         }
