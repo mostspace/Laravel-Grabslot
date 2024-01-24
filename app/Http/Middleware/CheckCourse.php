@@ -33,8 +33,6 @@ class CheckCourse
                 }
             }
         } else {
-            session()->flash('alert', 'You need to make a payment first!');
-            
             if (Auth::user()->created_at->greaterThanOrEqualTo($oneWeekAgo)) {
                 return $next($request);
             }
