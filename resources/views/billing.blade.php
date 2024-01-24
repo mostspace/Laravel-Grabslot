@@ -30,9 +30,7 @@
                             
                         @endif
                         <form id="payment-form" role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
-                        <!-- <form id="payment-form" onsubmit="return false;" role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"> -->
                             @csrf
-
                             <div class="form-group">
                                 <label>カード名義</label>
                                 <input type="text" class="form-control g_input">
@@ -143,40 +141,9 @@
 
 @section('add_js')
 <script type="text/javascript">
-    var course = @json($course); 
-    var store_id = @json($store_id);
-
-    $(document).ready(function() {
-        $("#paySubmit").removeClass('spinner');
-        
-        $("#payment-form").on("click", "#paySubmit", function(e) {
-            e.preventDefault();
-
-            // Assuming cardNumber is the variable containing the card number
-            var cardNumber = $(".card-number").val();  // Replace with your actual card number
-            // Use validateCreditCard method on the input field
-            var cardInfo = $(".card-number").validateCreditCard();
-            // Check if the card is valid
-            if (cardInfo.valid) {
-                // You can also use the card type for further processing
-                var cardType = cardInfo.card_type.name;
-
-                $("#pay_method").text(cardType + " ****" + cardNumber.slice(-4));
-                $("#pay_amount").text($(".course_pay_amount").text());
-            } else {
-                $("#pay_method").text("無効なカード番号");
-            }
-        });
-
-        $("#confirmPayBtn").click(function() {
-            $('#confirmPaymentModal').modal('hide');
-            $("#paySubmit").addClass('spinner');
-            $("#payment-form").submit();
-        });
-    });
+    var course = @json($course), store_id = @json($store_id);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-creditcardvalidator/1.0.0/jquery.creditCardValidator.js"></script>
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript" src="{{ asset('assets/js/payment.js') }}"></script>
-
 @endsection

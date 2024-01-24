@@ -99,7 +99,7 @@ var ProfileCourse = (function () {
 
             $.ajax({
                 type: "POST",
-                url: "/user-profile/password", // Make sure this URL is processed correctly on the server
+                url: "/user-profile/password",
                 data: formData,
                 success: function (response) {
                     handleResponse(response);
