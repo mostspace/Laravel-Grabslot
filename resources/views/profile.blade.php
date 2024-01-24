@@ -16,7 +16,7 @@
                             <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
                                 <!--begin::Item-->
                                 <li class="nav-item mr-3">
-                                    <a class="nav-link active" data-toggle="tab" href="#kt_user_edit_tab_1">
+                                    <a class="nav-link active" data-toggle="tab" href="#profile_tab_1">
                                         <span class="nav-icon">
                                             <span class="svg-icon">
                                                 <!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
@@ -36,7 +36,7 @@
                                 <!--end::Item-->
                                 <!--begin::Item-->
                                 <li class="nav-item mr-6">
-                                    <a class="nav-link mx-0" data-toggle="tab" href="#kt_user_edit_tab_2">
+                                    <a class="nav-link mx-0" data-toggle="tab" href="#profile_tab_2">
                                         <span class="nav-icon">
                                             <span class="svg-icon">
                                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Shield-user.svg-->
@@ -57,7 +57,7 @@
                                 <!--end::Item-->
                                 <!--begin::Item-->
                                 <li class="nav-item mr-6">
-                                    <a class="nav-link mx-0" data-toggle="tab" href="#kt_user_edit_tab_3">
+                                    <a class="nav-link mx-0" data-toggle="tab" href="#profile_tab_3">
                                         <span class="nav-icon">
                                             <span class="svg-icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -75,7 +75,7 @@
                                 <!--end::Item-->
                                 <!--begin::Item-->
                                 <li class="nav-item mr-3">
-                                    <a class="nav-link mx-0" data-toggle="tab" href="#kt_user_edit_tab_4">
+                                    <a class="nav-link mx-0" data-toggle="tab" href="#pricing">
                                         <span class="nav-icon">
                                             <span class="svg-icon">
                                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -103,7 +103,7 @@
                         <form class="form" id="kt_form">
                             <div class="tab-content pt-10">
                                 <!--begin::Tab-->
-                                <div class="tab-pane show active px-lg-7" id="kt_user_edit_tab_1" role="tabpanel">
+                                <div class="tab-pane show active px-lg-7" id="profile_tab_1" role="tabpanel">
                                     <!--begin::Row-->
                                     <div class="row">
                                         <div class="col-xl-2"></div>
@@ -145,7 +145,7 @@
                                 </div>
                                 <!--end::Tab-->
                                 <!--begin::Tab-->
-                                <div class="tab-pane px-lg-7" id="kt_user_edit_tab_2" role="tabpanel">
+                                <div class="tab-pane px-lg-7" id="profile_tab_2" role="tabpanel">
                                     <!--begin::Row-->
                                     <div class="row">
                                         <div class="col-xl-2"></div>
@@ -205,7 +205,7 @@
                                 </div>
                                 <!--end::Tab-->
                                 <!--begin::Tab-->
-                                <div class="tab-pane px-lg-7" id="kt_user_edit_tab_3" role="tabpanel">
+                                <div class="tab-pane px-lg-7" id="profile_tab_3" role="tabpanel">
                                     <!--begin: Datatable-->
                                     <div class="table-responsive">
                                         <table class="table table-checkable" id="kt_datatable">
@@ -223,7 +223,7 @@
                                 </div>
                                 <!--end::Tab-->
                                 <!--begin::Tab-->
-                                <div class="tab-pane px-lg-7" id="kt_user_edit_tab_4" role="tabpanel">
+                                <div class="tab-pane px-lg-7" id="pricing" role="tabpanel">
                                     <div class="row justify-content-center text-center my-0 my-md-25">
                                         <!-- begin: Free-->
                                         <div class="col-md-4 col-xxl-3 p-bg-dark rounded-left shadow-sm">
@@ -292,4 +292,22 @@
 
 @section('add_js')
 <script src="{{ asset('assets/js/profile-course.js') }}"></script>
+
+<script>
+    $(document).ready(function () {
+        // Function to open the specified tab
+        function openPricingTab(tabId) {
+            $('[data-toggle="tab"][href="#' + tabId + '"]').tab('show');
+        }
+
+        // Check if there is a 'tab' query parameter in the URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var tabToOpen = urlParams.get('tab');
+        
+        if (tabToOpen) {
+            // Open the specified tab
+            openPricingTab(tabToOpen);
+        }
+    });
+</script>
 @endsection

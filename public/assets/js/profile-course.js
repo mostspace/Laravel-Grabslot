@@ -23,7 +23,6 @@ var KTDatatablesDataSourceAjaxServer = function() {
 			columns: [
 				{data: 'course'},
 				{data: 'name'},
-				// {data: 'transaction_id'},
 				{data: 'created_at'},
 			],
             columnDefs: [
@@ -40,6 +39,22 @@ var KTDatatablesDataSourceAjaxServer = function() {
 							
 						} else if (type === 'sort' || type === 'type') {
 							return row.course;
+						}
+					}
+				},
+				{ 
+					targets: 1,
+					data: "name",
+					render: function(data, type, row, meta) {
+						if(type === 'display') {
+                            if (row.name === null) {
+                                return "全店舗";
+                            } else {
+                                return row.name;
+                            }
+							
+						} else if (type === 'sort' || type === 'type') {
+							return row.name;
 						}
 					}
 				},

@@ -94,7 +94,7 @@
             }
         }).then(function (result) {
             if (result.value) {
-                window.location.href = '/user-profile';
+                window.location.href = '/user-profile?tab=pricing';
             }
         });
     </script>
