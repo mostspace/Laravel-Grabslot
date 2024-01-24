@@ -116,15 +116,26 @@
                                                 </div>
                                             </div>
                                             <!--end::Row-->
-                                            <!--begin::Group-->
-                                            <div class="form-group row">
-                                                <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">メールアドレス</label>
-                                                <div class="col-md-9 col-sm-12">
-                                                    <input class="g_input form-control form-control-lg form-control-solid" type="text" value="{{ Auth::user()->email }}" />
-                                                    <!-- <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span> -->
+                                            <form action="" id="userAccount" onsubmit="return false;">
+                                                <!--begin::Group-->
+                                                <div class="form-group row">
+                                                    <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">メールアドレス</label>
+                                                    <div class="col-md-9 col-sm-12">
+                                                        <input class="g_input form-control form-control-lg form-control-solid" type="text" value="{{ Auth::user()->email }}" name="user_email"/>
+                                                        <!-- <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span> -->
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!--end::Group-->                                           
+                                                <!--end::Group-->   
+                                                <!--begin::Group-->
+                                                <div class="form-group row">
+                                                    <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">Name</label>
+                                                    <div class="col-md-9 col-sm-12">
+                                                        <input class="g_input form-control form-control-lg form-control-solid" type="text" value="" name="user_name"/>
+                                                        <!-- <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span> -->
+                                                    </div>
+                                                </div>
+                                                <!--end::Group-->   
+                                            </form>
                                         </div>
                                     </div>
                                     <!--end::Row-->
@@ -135,7 +146,7 @@
                                             <div class="row">
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-9 col-sm-12">
-                                                    <a href="#" class="btn btn-primary font-weight-bold">変更内容を保存</a>
+                                                    <button id="updateEmail" class="btn btn-primary font-weight-bold">変更内容を保存</button>
                                                     <a href="/" class="btn btn-clean font-weight-bold">キャンセル</a>
                                                 </div>
                                             </div>
@@ -213,7 +224,6 @@
                                                 <tr>
                                                     <th>コース</th>
                                                     <th>店舗</th>
-                                                    <!-- <th>トランザクションID</th> -->
                                                     <th>使用期限</th>
                                                 </tr>
                                             </thead>
@@ -295,6 +305,9 @@
 
 <script>
     $(document).ready(function () {
+    
+        /* Opening specified tab when redirected */
+
         // Function to open the specified tab
         function openPricingTab(tabId) {
             $('[data-toggle="tab"][href="#' + tabId + '"]').tab('show');
@@ -308,6 +321,25 @@
             // Open the specified tab
             openPricingTab(tabToOpen);
         }
+
+        /* Update user email */
+        $("#updateEmail").click(function(e) {
+            e.preventDefault();
+
+            console.log($("userAccount").serialize());
+
+            $.ajax({
+                url: '/user-account',
+                type: 'POST',
+                data: $("#userAccount").serialize(),
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
     });
 </script>
 @endsection

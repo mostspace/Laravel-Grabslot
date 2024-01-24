@@ -69,6 +69,8 @@ Route::middleware(['auth', 'verified'])->group(function() {
     // User Profile
     Route::get('/user-profile', [UserController::class, 'index'])->name('user.profile');
     Route::post('/user-profile/course', [UserController::class, 'userCourse'])->name('user.course');
+    Route::post('/user-account', [UserController::class, 'userAccount'])->name('user.account');
+
 
     // Pricing
     Route::get('/pricing', [UserController::class, 'getPricingPage'])->name('pricing');

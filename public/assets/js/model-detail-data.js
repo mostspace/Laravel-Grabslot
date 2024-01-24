@@ -54,8 +54,6 @@ var modelDetailDataWidget = function () {
 
         // Open the modal
         $('#dataModal').modal('show');
-        
-
     }
 
     var getModelData = function(model_id) {
@@ -224,7 +222,7 @@ var modelDetailDataWidget = function () {
                     // Custom content for the tooltip
                     var content = "<div class='apexcharts-tooltip-content fs-7 pl-3 pb-3'>" +
                                     "<span>差枚: " + extraSheet + "</span>" +
-                                "</div>";
+                                  "</div>";
 
                     return title + content;
                 },
@@ -254,22 +252,10 @@ var modelDetailDataWidget = function () {
                             strokeColor: '#ffffff',
                             radius: 2,
                             cssClass: 'apexcharts-custom-hover',
-                        },
-                        // label: {
-                        //     text: selected_model.date + " :  " + selected_model.extra_sheet, // The label text here is just a placeholder. You can customize it as needed.
-                        //     borderColor: '#000',
-                        //     style: {
-                        //         background: '#000',
-                        //         color: '#fff',
-                        //         fontSize: 15,
-                        //     },
-                        //     offsetY: -3,
-                        //     offsetX: 20,
-                        // }
+                        }
                     },
                 ],
             },
-            
         };
 
         var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
@@ -293,9 +279,6 @@ var modelDetailDataWidget = function () {
 
             links[0].dispatchEvent(mouseoverEvent);
         }, 1000);
-
-        // document.getElementById("SvgjsRect9629").dispatchEvent(new Event('mouseover'))
-
     }
 
     // Public methods

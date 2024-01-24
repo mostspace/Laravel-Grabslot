@@ -30,5 +30,9 @@ class UserController extends Controller
         $dataTable = new ServerSideTable($userPayments);
         $dataTable->getAjaxTable();
     }
+
+    public function userAccount(Request $request) {
+        dd($request->input('user_email'));
+    }
     
 }
