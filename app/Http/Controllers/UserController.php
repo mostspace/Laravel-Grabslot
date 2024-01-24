@@ -74,8 +74,5 @@ class UserController extends Controller
             return response()->json(['result' => 'danger', 'message' => 'リクエストの処理中にエラーが発生しました.'], 500);
         }
     }
-    
-    
-
-    
+        
 }

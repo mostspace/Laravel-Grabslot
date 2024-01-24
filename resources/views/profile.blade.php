@@ -340,6 +340,12 @@
                 return;
             }
 
+            // Check if the new password meets the minimum length requirement
+            if (newPwd.length < 8) {
+                handleValidationError('新しいパスワードは少なくとも8文字以上である必要があります。');
+                return;
+            }
+
             // AJAX request to the server for password change
             $.ajax({
                 type: "POST",
