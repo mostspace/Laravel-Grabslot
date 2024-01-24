@@ -33,7 +33,6 @@ var KTDatatablesDataSourceAjaxServer = function() {
 					render: function(data, type, row, meta) {
 						if(type === 'display') {
                             if (row.course == "light") {
-                                console.log("light");
                                 return "ライト";
                             } else {
                                 return "スタンダード";

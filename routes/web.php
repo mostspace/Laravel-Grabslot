@@ -8,7 +8,6 @@ use App\Http\Controllers\PaymentController;
 
 // Admin Controller
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AccessAnalyzeController;
 use App\Http\Controllers\Admin\PromotionPrintingController;
 use App\Http\Controllers\Admin\UserManagementController;
 
