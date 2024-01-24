@@ -1,99 +1,140 @@
 "use strict";
-var KTDatatablesDataSourceAjaxServer = function() {
 
-	var initTable1 = function() {
-		var table = $('#kt_datatable');
+var ProfileCourse = (function () {
 
-		// begin first table
-		table.DataTable({
-			responsive: true,
-			searchDelay: 500,
-			processing: true,
-			serverSide: true,
+    var initDataTable = function () {
+        var table = $('#kt_datatable');
+
+        table.DataTable({
+            responsive: true,
+            searchDelay: 500,
+            processing: true,
+            serverSide: true,
             info: true,
-			ajax: {
-				url: '/user-profile/course',
-				type: 'POST',
-				data: {
-					// parameters for custom backend script demo
-					columnsDef: [
-						'course', 'name', 'transaction_id', 'created_at'],
-				},
-			},
-			columns: [
-				{data: 'course'},
-				{data: 'name'},
-				{data: 'created_at'},
-			],
+            ajax: {
+                url: '/user-profile/course',
+                type: 'POST',
+                data: {
+                    columnsDef: ['course', 'name', 'transaction_id', 'created_at'],
+                },
+            },
+            columns: [
+                { data: 'course' },
+                { data: 'name' },
+                { data: 'created_at' },
+            ],
             columnDefs: [
-				{ 
-					targets: 0,
-					data: "course",
-					render: function(data, type, row, meta) {
-						if(type === 'display') {
-                            if (row.course == "light") {
-                                return "ライト";
-                            } else {
-                                return "スタンダード";
-                            }
-							
-						} else if (type === 'sort' || type === 'type') {
-							return row.course;
-						}
-					}
-				},
-				{ 
-					targets: 1,
-					data: "name",
-					render: function(data, type, row, meta) {
-						if(type === 'display') {
-                            if (row.name === null) {
-                                return "全店舗";
-                            } else {
-                                return row.name;
-                            }
-							
-						} else if (type === 'sort' || type === 'type') {
-							return row.name;
-						}
-					}
-				},
-                { 
-					targets: 2,
-					data: "created_at",
-					render: function(data, type, row, meta) {
-						if(type === 'display') {
-                            // Convert to Date object
+                {
+                    targets: 0,
+                    data: "course",
+                    render: function (data, type, row, meta) {
+                        if (type === 'display') {
+                            return row.course === "light" ? "ライト" : "スタンダード";
+                        } else {
+                            return row.course;
+                        }
+                    }
+                },
+                {
+                    targets: 1,
+                    data: "name",
+                    render: function (data, type, row, meta) {
+                        if (type === 'display') {
+                            return row.name === null ? "全店舗" : row.name;
+                        } else {
+                            return row.name;
+                        }
+                    }
+                },
+                {
+                    targets: 2,
+                    data: "created_at",
+                    render: function (data, type, row, meta) {
+                        if (type === 'display') {
                             var date = new Date(row.created_at);
-                    
-                            // Add one month to the date
                             date.setMonth(date.getMonth() + 1);
-                    
-                            // Format as Y-m-d
                             var formattedDate = date.toISOString().split('T')[0];
-                            
                             return formattedDate;
-                        } else if (type === 'sort' || type === 'type') {
-                            // Return the original data for sorting and type detection
+                        } else {
                             return row.created_at;
                         }
-					}
-				}
-			],
-		});
-	};
+                    }
+                }
+            ],
+        });
+    };
 
+    var initUserAccount = function () {
+        $("#updateEmailBtn").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/user-profile/account",
+                data: $("#userAccountForm").serializeJSON(),
+                success: function (response) {
+                    handleResponse(response);
+                },
+                error: function (error) {
+                    handleAjaxError('メールの更新に失敗しました. もう一度試してください.');
+                }
+            });
+        });
+    };
 
-	return {
-		//main function to initiate the module
-		init: function() {
-			initTable1();
-		},
+    var initUserPasswordChange = function () {
+        $("#changePwdBtn").click(function () {
+            var formData = $("#userPasswordChangeForm").serializeJSON();
+            var oldPwd = formData.old_pwd;
+            var newPwd = formData.new_pwd;
+            var confirmPwd = formData.confirm_pwd;
 
-	};
+            if (newPwd !== confirmPwd) {
+                handleValidationError('新しいパスワードが一致しません.');
+                return;
+            }
 
-}();
+            if (newPwd.length < 8) {
+                handleValidationError('新しいパスワードは少なくとも8文字以上である必要があります。');
+                return;
+            }
 
-jQuery(document).ready(function() {
-	KTDatatablesDataSourceAjaxServer.init();
+            $.ajax({
+                type: "POST",
+                url: "/user-profile/password", // Make sure this URL is processed correctly on the server
+                data: formData,
+                success: function (response) {
+                    handleResponse(response);
+                    $("#userPasswordChangeForm input").val('');
+                },
+                error: function (error) {
+                    handleAjaxError('パスワードの変更に失敗しました. 古いパスワードを確認してください.');
+                }
+            });
+        });
+    };
+
+    var handleRedirectionTab = function () {
+        function openPricingTab(tabId) {
+            $('[data-toggle="tab"][href="#' + tabId + '"]').tab('show');
+        }
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var tabToOpen = urlParams.get('tab');
+
+        if (tabToOpen) {
+            openPricingTab(tabToOpen);
+        }
+    };
+
+    return {
+        init: function () {
+            initUserAccount();
+            initUserPasswordChange();
+            initDataTable();
+            handleRedirectionTab();
+        },
+    };
+})();
+
+jQuery(document).ready(function () {
+    ProfileCourse.init();
 });
