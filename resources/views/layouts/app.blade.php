@@ -179,13 +179,6 @@
 											<!--end::Item-->
 											<!--begin::Item-->
 											<li class="navi-item">
-												<a href="{{ route('pricing') }}" class="navi-link">
-													<span class="navi-text text-white">私のコース</span>
-												</a>
-											</li>
-											<!--end::Item-->
-											<!--begin::Item-->
-											<li class="navi-item">
 												<form method="POST" action="{{ route('logout') }}" class="navi-text text-white">
 													@csrf
 													<a href="route('logout')" class="navi-link" onclick="event.preventDefault(); this.closest('form').submit();">

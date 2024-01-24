@@ -70,7 +70,6 @@
 <script>
     $(document).ready(function() {
         $("#modelTable").on("click", ".store-model", function() {
-            console.log($(this).text());
             window.location.href = '/hall-data/' + region.id + '/' + store.id + '/' + encodeURIComponent($(this).text());
         });
     });

@@ -21,23 +21,20 @@ class CheckCourse
         $store_id = $request->route('store_id');
         $oneMonthAgo = Carbon::now()->subMonth();
         $oneWeekAgo = Carbon::now()->subWeek();
+        $user_id = Auth::id();
 
-        $user_course = Payment::where('user_id', Auth::user()->id)->latest()->first();
+        $latest_payment = Payment::where('user_id', $user_id)->latest()->first();
 
-        if ($user_course != null) {
-            // Check if the created_at date is within one month before the current date
-            if ($user_course->created_at->greaterThanOrEqualTo($oneMonthAgo)) {
-                // Check if the user has a corresponding payment record for the specified store
-                if ($store_id == $user_course->store_id || $user_course->store_id == '0') {
-                    return $next($request);
-                }
-            }
-        } else {
-            if (Auth::user()->created_at->greaterThanOrEqualTo($oneWeekAgo)) {
+        if ($latest_payment && $latest_payment->created_at->greaterThanOrEqualTo($oneMonthAgo)) {
+            // Check if the user has a corresponding payment record for the specified store or store_id is '0'
+            if ($store_id == $latest_payment->store_id || $latest_payment->store_id == '0') {
                 return $next($request);
             }
+        } elseif (Auth::user()->created_at->greaterThanOrEqualTo($oneWeekAgo)) {
+            return $next($request);
         }
 
-        return redirect('/pricing');
+        // Redirect back to the previous URL
+        return redirect()->back()->with('error', 'You do not have access to this store.');
     }
 }

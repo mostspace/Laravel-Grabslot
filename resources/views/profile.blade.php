@@ -69,7 +69,7 @@
                                                 </svg><!--end::Svg Icon-->
                                             </span>
                                         </span>
-                                        <span class="nav-text font-size-lg">契約されたコース</span>
+                                        <span class="nav-text font-size-lg">購入履歴</span>
                                     </a>
                                 </li>
                                 <!--end::Item-->
