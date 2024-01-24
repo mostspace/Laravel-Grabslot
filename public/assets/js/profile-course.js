@@ -23,7 +23,7 @@ var KTDatatablesDataSourceAjaxServer = function() {
 			columns: [
 				{data: 'course'},
 				{data: 'name'},
-				{data: 'transaction_id'},
+				// {data: 'transaction_id'},
 				{data: 'created_at'},
 			],
             columnDefs: [
@@ -45,7 +45,7 @@ var KTDatatablesDataSourceAjaxServer = function() {
 					}
 				},
                 { 
-					targets: 3,
+					targets: 2,
 					data: "created_at",
 					render: function(data, type, row, meta) {
 						if(type === 'display') {

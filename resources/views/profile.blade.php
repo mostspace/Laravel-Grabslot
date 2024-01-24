@@ -10,7 +10,7 @@
                 <!--begin::Card-->
                 <div class="p-panel card card-custom">
                     <!--begin::Card header-->
-                    <div class="card-header card-header-tabs-line nav-tabs-line-3x">
+                    <div class="card-header card-header-tabs-line nav-tabs-line-3x px-0">
                         <!--begin::Toolbar-->
                         <div class="card-toolbar">
                             <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
@@ -35,8 +35,8 @@
                                 </li>
                                 <!--end::Item-->
                                 <!--begin::Item-->
-                                <li class="nav-item mr-3">
-                                    <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_2">
+                                <li class="nav-item mr-6">
+                                    <a class="nav-link mx-0" data-toggle="tab" href="#kt_user_edit_tab_2">
                                         <span class="nav-icon">
                                             <span class="svg-icon">
                                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Shield-user.svg-->
@@ -57,7 +57,7 @@
                                 <!--end::Item-->
                                 <!--begin::Item-->
                                 <li class="nav-item mr-3">
-                                    <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_3">
+                                    <a class="nav-link mx-0" data-toggle="tab" href="#kt_user_edit_tab_3">
                                         <span class="nav-icon">
                                             <span class="svg-icon">
                                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -81,27 +81,27 @@
                     </div>
                     <!--end::Card header-->
                     <!--begin::Card body-->
-                    <div class="card-body">
+                    <div class="card-body px-0">
                         <form class="form" id="kt_form">
-                            <div class="tab-content">
+                            <div class="tab-content pt-10">
                                 <!--begin::Tab-->
-                                <div class="tab-pane show active px-7" id="kt_user_edit_tab_1" role="tabpanel">
+                                <div class="tab-pane show active px-lg-7" id="kt_user_edit_tab_1" role="tabpanel">
                                     <!--begin::Row-->
                                     <div class="row">
                                         <div class="col-xl-2"></div>
                                         <div class="col-xl-7 my-2">
                                             <!--begin::Row-->
                                             <div class="row">
-                                                <label class="col-3"></label>
-                                                <div class="col-9">
+                                                <label class="col-md-3"></label>
+                                                <div class="col-md-9 col-sm-12">
                                                     <h6 class="text-white font-weight-bold mb-10">アカウント情報:</h6>
                                                 </div>
                                             </div>
                                             <!--end::Row-->
                                             <!--begin::Group-->
                                             <div class="form-group row">
-                                                <label class="col-form-label col-3 text-lg-right text-left">メールアドレス</label>
-                                                <div class="col-9">
+                                                <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">メールアドレス</label>
+                                                <div class="col-md-9 col-sm-12">
                                                     <input class="g_input form-control form-control-lg form-control-solid" type="text" value="{{ Auth::user()->email }}" />
                                                     <!-- <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span> -->
                                                 </div>
@@ -112,11 +112,11 @@
                                     <!--end::Row-->
                                     <!--begin::Footer-->
                                     <div class="row">
-                                        <div class="col-xl-2"></div>
-                                        <div class="col-xl-7">
+                                        <div class="col-xl-2 col-md-2"></div>
+                                        <div class="col-xl-7 col-md-7">
                                             <div class="row">
-                                                <div class="col-3"></div>
-                                                <div class="col-9">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-9 col-sm-12">
                                                     <a href="#" class="btn btn-primary font-weight-bold">変更内容を保存</a>
                                                     <a href="/" class="btn btn-clean font-weight-bold">キャンセル</a>
                                                 </div>
@@ -127,56 +127,52 @@
                                 </div>
                                 <!--end::Tab-->
                                 <!--begin::Tab-->
-                                <div class="tab-pane px-7" id="kt_user_edit_tab_2" role="tabpanel">
-                                    <!--begin::Body-->
-                                    <div class="card-body">
-                                        <!--begin::Row-->
-                                        <div class="row">
-                                            <div class="col-xl-2"></div>
-                                            <div class="col-xl-7">
-                                                <!--begin::Row-->
-                                                <div class="row">
-                                                    <label class="col-3"></label>
-                                                    <div class="col-9">
-                                                        <h6 class="text-white font-weight-bold mb-10">パスワードを変更する:</h6>
-                                                    </div>
+                                <div class="tab-pane px-lg-7" id="kt_user_edit_tab_2" role="tabpanel">
+                                    <!--begin::Row-->
+                                    <div class="row">
+                                        <div class="col-xl-2"></div>
+                                        <div class="col-xl-7 col-sm-12">
+                                            <!--begin::Row-->
+                                            <div class="row">
+                                                <label class="col-md-3 col-sm-12"></label>
+                                                <div class="col-md-9 col-sm-12">
+                                                    <h6 class="text-white font-weight-bold mb-10">パスワードを変更する:</h6>
                                                 </div>
-                                                <!--end::Row-->
-                                                <!--begin::Group-->
-                                                <div class="form-group row">
-                                                    <label class="col-form-label col-3 text-lg-right text-left">現在のパスワード</label>
-                                                    <div class="col-9">
-                                                        <input class="g_input form-control form-control-lg form-control-solid mb-1" type="text" value="" />
-                                                        <!-- <a href="#" class="font-weight-bold font-size-sm">パスワードを忘れましたか ?</a> -->
-                                                    </div>
-                                                </div>
-                                                <!--end::Group-->
-                                                <!--begin::Group-->
-                                                <div class="form-group row">
-                                                    <label class="col-form-label col-3 text-lg-right text-left">パスワード</label>
-                                                    <div class="col-9">
-                                                        <input class="g_input form-control form-control-lg form-control-solid" type="text" value="" placeholder="８文字以上で入力"/>
-                                                    </div>
-                                                </div>
-                                                <!--end::Group-->
-                                                <!--begin::Group-->
-                                                <div class="form-group row">
-                                                    <label class="col-form-label col-3 text-lg-right text-left">確認のため再入力</label>
-                                                    <div class="col-9">
-                                                        <input class="g_input form-control form-control-lg form-control-solid" type="text" value="" />
-                                                    </div>
-                                                </div>
-                                                <!--end::Group-->
                                             </div>
+                                            <!--end::Row-->
+                                            <!--begin::Group-->
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">現在のパスワード</label>
+                                                <div class="col-md-9 col-sm-12">
+                                                    <input class="g_input form-control form-control-lg form-control-solid mb-1" type="text" value="" />
+                                                    <!-- <a href="#" class="font-weight-bold font-size-sm">パスワードを忘れましたか ?</a> -->
+                                                </div>
+                                            </div>
+                                            <!--end::Group-->
+                                            <!--begin::Group-->
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">パスワード</label>
+                                                <div class="col-md-9 col-sm-12">
+                                                    <input class="g_input form-control form-control-lg form-control-solid" type="text" value="" placeholder="８文字以上で入力"/>
+                                                </div>
+                                            </div>
+                                            <!--end::Group-->
+                                            <!--begin::Group-->
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">確認のため再入力</label>
+                                                <div class="col-md-9 col-sm-12">
+                                                    <input class="g_input form-control form-control-lg form-control-solid" type="text" value="" />
+                                                </div>
+                                            </div>
+                                            <!--end::Group-->
                                         </div>
-                                        <!--end::Row-->
                                     </div>
-                                    <!--end::Body-->
+                                    <!--end::Row-->
                                     <!--begin::Footer-->
                                     <div class="card-footer pb-0">
                                         <div class="row">
                                             <div class="col-xl-2"></div>
-                                            <div class="col-xl-7">
+                                            <div class="col-xl-7 col-sm-12 col-md-7">
                                                 <div class="row">
                                                     <div class="col-3"></div>
                                                     <div class="col-9">
@@ -191,19 +187,21 @@
                                 </div>
                                 <!--end::Tab-->
                                 <!--begin::Tab-->
-                                <div class="tab-pane px-7" id="kt_user_edit_tab_3" role="tabpanel">
+                                <div class="tab-pane px-lg-7" id="kt_user_edit_tab_3" role="tabpanel">
                                     <!--begin: Datatable-->
-                                    <table class="table table-checkable" id="kt_datatable">
-                                        <thead>
-                                            <tr>
-                                                <th>コース</th>
-                                                <th>店舗</th>
-                                                <th>トランザクションID</th>
-                                                <th>使用期限</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                    <!--end: Datatable-->
+                                    <div class="table-responsive">
+                                        <table class="table table-checkable" id="kt_datatable">
+                                            <thead>
+                                                <tr>
+                                                    <th>コース</th>
+                                                    <th>店舗</th>
+                                                    <!-- <th>トランザクションID</th> -->
+                                                    <th>使用期限</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <!--end: Datatable-->
+                                    </div>
                                 </div>
                                 <!--end::Tab-->
                             </div>

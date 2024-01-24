@@ -36,14 +36,16 @@
 
                     <div class="p-panel mt-10" id="modelTable">
                         <!--begin: Datatable-->
-                        <table class="table table-checkable" id="kt_datatables">
-                            <thead>
-                                <tr>
-                                    <th>設置機種一覧</th>
-                                </tr>
-                            </thead>
-                        </table>
-                        <!--end: Datatable-->
+                        <div class="table-responsive">
+                            <table class="table table-checkable" id="kt_datatables">
+                                <thead>
+                                    <tr>
+                                        <th>設置機種一覧</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <!--end: Datatable-->
+                        </div>
                     </div>
                 </div>              
             </div>

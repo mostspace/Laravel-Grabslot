@@ -57,15 +57,17 @@
                 <div class="modal-body">
                     <div class="search-hall-table w-100">
                         <!--begin: Datatable-->
-                        <table class="table table-checkable" id="kt_datatable">
-                            <thead>
-                                <tr>
-                                    <th>店舗</th>
-                                    <th>市区郡</th>
-                                </tr>
-                            </thead>
-                        </table>
-                        <!--end: Datatable-->
+                        <div class="table-responsive">
+                            <table class="table table-checkable" id="kt_datatable">
+                                <thead>
+                                    <tr>
+                                        <th>店舗</th>
+                                        <th>市区郡</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <!--end: Datatable-->
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -179,7 +179,7 @@
 											<!--end::Item-->
 											<!--begin::Item-->
 											<li class="navi-item">
-												<a href="/pricing" class="navi-link">
+												<a href="{{ route('pricing') }}" class="navi-link">
 													<span class="navi-text text-white">私のコース</span>
 												</a>
 											</li>

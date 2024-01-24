@@ -50,15 +50,16 @@
                 <div class="row">
                     <div class="p-panel mt-10 w-100">
                         <!--begin: Datatable-->
-                        <table class="table table-checkable" id="kt_datatable">
-                            <thead>
-                                <tr>
-                                    <th>店舗</th>
-                                    <th>市区郡</th>
-                                    <th>市区郡</th>
-                                </tr>
-                            </thead>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-checkable" id="kt_datatable">
+                                <thead>
+                                    <tr>
+                                        <th>店舗</th>
+                                        <th>市区郡</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                         <!--end: Datatable-->
                     </div>
                 </div>

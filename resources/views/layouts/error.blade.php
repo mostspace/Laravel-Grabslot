@@ -7,7 +7,6 @@
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-		<!--end::Global Theme Styles-->
 		<!--begin::Layout Themes(used by all pages)-->
 		<link href="assets/css/grabslot.css" rel="stylesheet" type="text/css" />
 		<!--end::Layout Themes-->

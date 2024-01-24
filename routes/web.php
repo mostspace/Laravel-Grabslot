@@ -78,21 +78,21 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/billing/{course}/{store_id}', [PaymentController::class, 'index'])->name('billing');
     Route::get('/course-store', [PaymentController::class, 'courseStore'])->name('course.store');
     Route::post('/stripe', [PaymentController::class, 'stripePost'])->name('stripe.post');
-    Route::get('/payment_success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+    Route::get('/payment-success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
 });
 
 // ========================================================== ADMIN ================================================================
 
-Route::middleware(['auth', 'verified', 'checkRole'])->namespace('Admin')->prefix('admin')->group(function() {
-    Route::get('/', [AdminController::class, 'index']);
+Route::middleware(['auth', 'verified', 'checkRole'])->prefix('admin')->group(function() {
+    Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
 
     // Promotion Printing
-    Route::get('promotion-printing', [PromotionPrintingController::class, 'index'])->name('admin.promotion_printing');
+    Route::get('promotion-printing', [PromotionPrintingController::class, 'index'])->name('admin.promotion.printing');
     Route::post('promotion-printing/model', [PromotionPrintingController::class, 'updateTable']);
-    Route::post('promotion-printing/promotion-table-validation', [PromotionPrintingController::class, 'validatePromotionTable']);
+    Route::post('promotion-printing/promotion-table-validation', [PromotionPrintingController::class, 'admin.validatePromotionTable']);
 
     // User Management
-    Route::get('user-management', [UserManagementController::class, 'index'])->name('admin.user_management');
-    Route::post('users-list', [UserManagementController::class, 'getUsersList'])->name('users.list');
+    Route::get('users-management', [UserManagementController::class, 'index'])->name('admin.users.management');
+    Route::post('users-list', [UserManagementController::class, 'getUsersList'])->name('admin.users.list');
 });
 
