@@ -73,7 +73,7 @@
 
     <!--begin::Page Scripts(used by this page)-->
     <script src="{{ asset('assets/js/hall-data-list.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/features/sweetalert2.js') }}"></script>
+    <script src="{{ asset('assets/js/features/sweetalert2.js') }}"></script>
     <!--end::Page Scripts-->
 
     @if(session('error'))

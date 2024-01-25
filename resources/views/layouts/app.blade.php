@@ -286,7 +286,7 @@
 		<!--end::Page Vendors-->
 		<script src="{{ asset('assets/js/global.js') }}"></script>
 		<!--begin::Page Scripts(used by this page)-->
-		<script src="{{ asset('assets/js/pages/widgets.js') }}"></script>
+		<script src="{{ asset('assets/js/features/widgets.js') }}"></script>
         <!--begin::Page Vendors(used by this page)-->
 		<script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 		<!--end::Page Vendors-->

@@ -450,5 +450,5 @@
 </script>
 
 <script src="{{ asset('assets/js/model-detail-data.js') }}"></script>
-<script src="{{ asset('assets/admin/js/image-input.js') }}"></script>
+<script src="{{ asset('assets/js/features/image-input.js') }}"></script>
 @endsection

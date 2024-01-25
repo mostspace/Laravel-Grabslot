@@ -80,6 +80,6 @@
 @endsection
 
 @section('add_js')
-    <script src="{{ asset('assets/js/pages/features/sweetalert2.js') }}"></script>
+    <script src="{{ asset('assets/js/features/sweetalert2.js') }}"></script>
     <script src="{{ asset('assets/js/course-store.js') }}"></script>
 @endsection
