@@ -1,37 +1,38 @@
 "use strict";
-var KTDatatablesDataSourceAjaxServer = function() {
+var HallDataList = function() {
 
-	var initTable1 = function() {
-		var table = $('#kt_datatables');
+	var initHallDataListTable = function() {
+		var table = $('#kt_datatable');
 
 		// begin first table
 		table.DataTable({
 			responsive: true,
-			searchDelay: 200,
+			searchDelay: 500,
 			processing: true,
 			serverSide: true,
 			paging: false,
 			info: false,
 			ajax: {
-				url: '/hall-data/model-list/' + store.id,
+				url: '/hall-data/' + region_id,
 				type: 'POST',
 				data: {
 					// parameters for custom backend script demo
-					columnsDef: ['model_name'],
+					columnsDef: ['id', 'name', 'city'],
 				},
 			},
 			columns: [
-				{ data: 'model_name' },
+				{ data: 'name' },
+				{ data: 'city' }
 			],
 			columnDefs: [
-				{ 
+				{
 					targets: 0,
-					data: "model_name",
+					data: "name",
 					render: function(data, type, row, meta) {
 						if(type === 'display') {
-							return '<a class="p-link store-model">' + row.model_name + '</a>';
+							return '<a href="/hall-data/' + region_id + '/' + row.id + '" class="p-link">' + row.name + '</a>';
 						} else if (type === 'sort' || type === 'type') {
-							return row.model_name;
+							return row.name;
 						}
 					}
 				}
@@ -42,12 +43,12 @@ var KTDatatablesDataSourceAjaxServer = function() {
 	return {
 		//main function to initiate the module
 		init: function() {
-			initTable1();
+			initHallDataListTable();
 		},
 	};
+
 }();
 
 jQuery(document).ready(function() {
-	KTDatatablesDataSourceAjaxServer.init();
-	
+	HallDataList.init();
 });

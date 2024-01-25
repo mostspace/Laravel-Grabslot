@@ -39,10 +39,3 @@
     </div>
     <!--end::Content-->
 @endsection
-
-@section('add_js')
-
-@endsection
-
-
-

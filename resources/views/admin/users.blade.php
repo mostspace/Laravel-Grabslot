@@ -52,6 +52,6 @@
 
 @section('add_js')
 <!--begin::Page Scripts(used by this page)-->
-<script src="{{ asset('assets/js/ajax-tables/admin-users-list.js') }}"></script>
+<script src="{{ asset('assets/js/admin/users-list.js') }}"></script>
 <!--end::Page Scripts-->
 @endsection

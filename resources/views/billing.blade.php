@@ -140,10 +140,10 @@
 @endsection
 
 @section('add_js')
-<script type="text/javascript">
-    var course = @json($course), store_id = @json($store_id);
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-creditcardvalidator/1.0.0/jquery.creditCardValidator.js"></script>
-<script src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript" src="{{ asset('assets/js/payment.js') }}"></script>
+    <script type="text/javascript">
+        var course = @json($course), store_id = @json($store_id);
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-creditcardvalidator/1.0.0/jquery.creditCardValidator.js"></script>
+    <script src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/payment.js') }}"></script>
 @endsection

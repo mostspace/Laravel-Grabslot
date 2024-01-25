@@ -1,27 +1,57 @@
-"use strict"
+"use strict";
 
-// Class definition
-var modelDetailDataWidget = function () {
+var modelDetailData = (function () {
+    var modelDetailDataController = function () {
+        $('#modelDetailTable').on('click', '.model-table-row .td-block .dailyModelBlue', function () {
+            $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
+
+            var columnNumber = $(this).parent('.td-block').index() + 1;
+
+            $('#modelDetailTable .model-table-row .td-block.td-light-blue:nth-child(' + columnNumber + '), ' +
+                '#modelDetailTable .model-table-row .td-blue:nth-child(' + columnNumber + '), ' +
+                '#modelDetailTable .model-table-row .td-dark-blue:nth-child(' + columnNumber + ')').each(function () {
+                $(this).addClass('active_blink');
+            });
+        });
+
+        $('#modelDetailTable').on('click', '.td-block.td-sheet, .dailyModelRed', function () {
+            $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
+        });
+
+        $('#modelDetailTable').on('click', '.left-cnt-block .dailyModelBlue', function () {
+            $("#modelDetailTable").find(".active_blink").removeClass('active_blink');
+            $(this).closest('.model-table-row').find(".td-light-blue, .td-blue, .td-dark-blue").addClass('active_blink');
+        });
+
+        $('.td-date').each(function () {
+            var dateText = $(this).text();
+            if (dateText.includes('土')) {
+                $(this).addClass('td-date-sat');
+            } else if (dateText.includes('日')) {
+                $(this).addClass('td-red');
+            }
+        });
+    };
 
     var modelDetailModal = function () {
-        $("#modelDetailTable").on("click", ".td-sheet", function() {
+        $("#modelDetailTable").on("click", ".td-sheet", function () {
             var model_id = $(this).data('id');
             var model_machine_number = $(this).data('machine_number');
-            var selected_model =  getSelectedModel(model_id, model_machine_number, modelMonthData);
+            var selected_model = getSelectedModel(model_id, model_machine_number, modelMonthData);
 
             getModelData(model_id);
             modelChart(model_id, model_machine_number, selected_model);
         });
-    }
+    };
 
-    var getSelectedModel = function(model_id, model_machine_number, data) {
+    var getSelectedModel = function (model_id, model_machine_number, data) {
         var temp_obj = {};
         var cnt = 0;
 
         for (var date in data) {
             var items = data[date];
             for (var i = 0; i < items.length; i++) {
-                if(items[i].machine_number == model_machine_number) {
+                if (items[i].machine_number == model_machine_number) {
                     cnt++;
                     if (items[i].id == model_id) {
                         temp_obj['extra_sheet'] = items[i].extra_sheet;
@@ -35,9 +65,9 @@ var modelDetailDataWidget = function () {
         }
 
         return temp_obj;
-    }
+    };
 
-    var updateTable = function(modelData) {
+    var updateTable = function (modelData) {
         var tbody = $("#modalTableBody");
 
         tbody.empty();
@@ -52,52 +82,45 @@ var modelDetailDataWidget = function () {
             "<td>" + modelData.rb_probability + "</td>" +
             "</tr>");
 
-        // Open the modal
         $('#dataModal').modal('show');
-    }
+    };
 
-    var getModelData = function(model_id) {
+    var getModelData = function (model_id) {
         $.ajax({
             url: "/model-data",
             type: "POST",
             data: {
                 model_id: model_id,
             },
-            success: function(response) {
+            success: function (response) {
                 var modelData = response['model'][0];
                 updateTable(modelData);
             },
-            error: function(error) {
+            error: function (error) {
                 console.error('Ajax request failed: ', error);
             }
         });
-    }
+    };
 
-    // Function to find data by model_id
-    var getCurrentModelData = function(model_id, model_machine_number, data) {
+    var getCurrentModelData = function (model_id, model_machine_number, data) {
         var temp_obj = [];
 
         for (var date in data) {
             var items = data[date];
-
             for (var i = 0; i < items.length; i++) {
                 if (items[i].machine_number == model_machine_number) {
                     temp_obj.push(items[i]);
                 }
             }
         }
-        
-        return temp_obj;
-    }
 
-    // Charts widgets
+        return temp_obj;
+    };
+
     var modelChart = function (model_id, model_machine_number, selected_model) {
-        
         var element = document.getElementById("model-chart");
 
-        if (!element) {
-            return;
-        }
+        if (!element) { return; }
 
         var options = {
             series: [{
@@ -114,9 +137,7 @@ var modelDetailDataWidget = function () {
                     show: false
                 }
             },
-            plotOptions: {
-
-            },
+            plotOptions: {},
             legend: {
                 show: false
             },
@@ -203,7 +224,7 @@ var modelDetailDataWidget = function () {
                     fontSize: '12px',
                     fontFamily: KTApp.getSettings()['font-family'],
                 },
-                custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                custom: function ({ series, seriesIndex, dataPointIndex, w }) {
                     var model_data = getCurrentModelData(model_id, model_machine_number, modelMonthData);
                     var date = model_data[dataPointIndex].date;
                     var extraSheet = model_data[dataPointIndex].extra_sheet;
@@ -216,13 +237,10 @@ var modelDetailDataWidget = function () {
                         $('.apexcharts-tooltip').addClass('opacity-disable');
                     }
 
-                    // Custom title for the tooltip
                     var title = "<div class='apexcharts-tooltip-title fs-7'>" + date.replace(/\/(\d{1})\//, '/$1/').replace(/\/0(\d{1})/, '/$1') + "</div>";
-
-                    // Custom content for the tooltip
                     var content = "<div class='apexcharts-tooltip-content fs-7 pl-3 pb-3'>" +
-                                    "<span>差枚: " + extraSheet + "</span>" +
-                                  "</div>";
+                        "<span>差枚: " + extraSheet + "</span>" +
+                        "</div>";
 
                     return title + content;
                 },
@@ -267,7 +285,6 @@ var modelDetailDataWidget = function () {
             });
         }
 
-        // Update the xaxis categories with model_date_obj
         options.xaxis.categories = model_data.map(item => item.date);
 
         var chart = new ApexCharts(element, options);
@@ -276,24 +293,23 @@ var modelDetailDataWidget = function () {
         setTimeout(() => {
             var links = document.getElementsByClassName('apexcharts-grid');
             var mouseoverEvent = new Event('mouseover');
-
             links[0].dispatchEvent(mouseoverEvent);
         }, 1000);
-    }
+    };
 
-    // Public methods
     return {
         init: function () {
+            modelDetailDataController();
             modelDetailModal();
         }
-    }
-}();
+    };
+})();
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = modelDetailDataWidget;
+    module.exports = modelDetailData;
 }
 
 jQuery(document).ready(function () {
-    modelDetailDataWidget.init();
+    modelDetailData.init();
 });

@@ -290,7 +290,7 @@
 @endsection
 
 @section('add_js')
-<script src="{{ asset('assets/js/pages/features/bootstrap-notify.js') }}"></script>
-<script src="{{ asset('assets/js/notification.js') }}"></script>
-<script src="{{ asset('assets/js/profile-course.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/features/bootstrap-notify.js') }}"></script>
+    <script src="{{ asset('assets/js/notification.js') }}"></script>
+    <script src="{{ asset('assets/js/profile-course.js') }}"></script>
 @endsection

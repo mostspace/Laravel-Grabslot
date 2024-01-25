@@ -229,9 +229,6 @@ div.dataTables_wrapper div.dataTables_filter input {
 #kt_datatable_next a:hover, #kt_datatable_previous a:hover  {
     border: none;
 }
-#kt_header_menu_wrapper {
-    /* visibility: hidden; */
-}
 .text-dark {
     color: black !important;
 }

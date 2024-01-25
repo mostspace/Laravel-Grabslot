@@ -97,38 +97,9 @@
 @endsection
 
 @section('add_js')
-    <script src="{{ asset('assets/js/ajax-tables/search-hall-table.js') }}"></script>
+    <script src="{{ asset('assets/js/search-hall-table.js') }}"></script>
     <script>
         $(document).ready(function() {
-
-            // Header Active Menu
-            const url = window.location.href;
-            const pathSegments = url.split('/');
-            const secondPathSegment = pathSegments[3];
-
-            switch (secondPathSegment) {
-                case "":
-                    $("#PHeader").children().eq(0).addClass("menu-item-here");
-                    break;
-                case "hall-data":
-                    $("#PHeader").children().eq(1).addClass("menu-item-here");
-                    break;
-                case "store":
-                    $("#PHeader").children().eq(2).addClass("menu-item-here");
-                    break;
-                case "all-systems":
-                    $("#PHeader").children().eq(3).addClass("menu-item-here");
-                    break;
-                case "old-event-date":
-                    $("#PHeader").children().eq(4).addClass("menu-item-here");
-                    break;
-                case "anniversary":
-                    $("#PHeader").children().eq(5).addClass("menu-item-here");
-                    break;
-                default:
-                    $("#PHeader").children().find("menu-item").removeClass("menu-item-here");
-            };
-
             // Visit Region
             $("#regionList").on("click", ".region-btn", function() {
                 window.location.href = "/hall-data/" + $(this).data('region_id');

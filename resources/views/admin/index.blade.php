@@ -141,7 +141,7 @@
 @endsection
 
 @section('add_js')
-<script src="{{ asset('assets/js/ajax-tables/access-analyze-table.js') }}"></script>
+<script src="{{ asset('assets/js/admin/dashboard.js') }}"></script>
 
 <script>
     "use strict";

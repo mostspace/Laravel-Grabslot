@@ -1,6 +1,6 @@
 "use strict";
 
-var searchModalWidget = function() {
+var SearchStore = function() {
 
 	var searchedHallModal = function () {
         // Search Region
@@ -93,5 +93,5 @@ var searchModalWidget = function() {
 }();
 
 jQuery(document).ready(function() {
-	searchModalWidget.init();
+	SearchStore.init();
 });

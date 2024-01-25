@@ -1,38 +1,41 @@
 "use strict";
-var KTDatatablesDataSourceAjaxServer = function() {
+var ModelList = function() {
 
-	var initTable1 = function() {
-		var table = $('#kt_datatable');
+	var initModelList = function() {
+		$("#modelTable").on("click", ".store-model", function() {
+            window.location.href = '/hall-data/' + region.id + '/' + store.id + '/' + encodeURIComponent($(this).text());
+        });
+
+		var table = $('#kt_datatables');
 
 		// begin first table
 		table.DataTable({
 			responsive: true,
-			searchDelay: 500,
+			searchDelay: 200,
 			processing: true,
 			serverSide: true,
 			paging: false,
 			info: false,
 			ajax: {
-				url: '/hall-data/' + region_id,
+				url: '/hall-data/model-list/' + store.id,
 				type: 'POST',
 				data: {
 					// parameters for custom backend script demo
-					columnsDef: ['id', 'name', 'city'],
+					columnsDef: ['model_name'],
 				},
 			},
 			columns: [
-				{ data: 'name' },
-				{ data: 'city' }
+				{ data: 'model_name' },
 			],
 			columnDefs: [
-				{
+				{ 
 					targets: 0,
-					data: "name",
+					data: "model_name",
 					render: function(data, type, row, meta) {
 						if(type === 'display') {
-							return '<a href="/hall-data/' + region_id + '/' + row.id + '" class="p-link">' + row.name + '</a>';
+							return '<a class="p-link store-model">' + row.model_name + '</a>';
 						} else if (type === 'sort' || type === 'type') {
-							return row.name;
+							return row.model_name;
 						}
 					}
 				}
@@ -43,13 +46,11 @@ var KTDatatablesDataSourceAjaxServer = function() {
 	return {
 		//main function to initiate the module
 		init: function() {
-			initTable1();
+			initModelList();
 		},
 	};
-
 }();
 
 jQuery(document).ready(function() {
-	KTDatatablesDataSourceAjaxServer.init();
-	
+	ModelList.init();
 });

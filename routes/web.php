@@ -96,4 +96,3 @@ Route::middleware(['auth', 'verified', 'checkRole'])->prefix('admin')->group(fun
     Route::get('users-management', [UserManagementController::class, 'index'])->name('admin.users.management');
     Route::post('users-list', [UserManagementController::class, 'getUsersList'])->name('admin.users.list');
 });
-
