@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function index() {
-        $modelMonthData = [];
-
         return view('admin/index');
     }
 }
