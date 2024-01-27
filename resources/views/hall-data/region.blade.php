@@ -44,18 +44,18 @@
                     <div class="row">
                         <div class="p-panel mt-10 w-100">
                             <!--begin: Datatable-->
-                            <div class="scroll scroll-pull" data-scroll="true" data-height="550" data-mobile-height="350">
-                                <div class="table-responsive">
-                                    <table class="table table-checkable" id="kt_datatable">
-                                        <thead>
-                                            <tr>
-                                                <th>店舗</th>
-                                                <th>市区郡</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
+                            <!-- <div class="scroll scroll-pull" data-scroll="true" data-height="550" data-mobile-height="350"> -->
+                            <div class="table-responsive">
+                                <table class="table table-checkable" id="kt_datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>店舗</th>
+                                            <th>市区郡</th>
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
+                            <!-- </div> -->
                             <!--end: Datatable-->
                         </div>
                     </div>

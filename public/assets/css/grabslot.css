@@ -39,7 +39,7 @@
 }
 
 .btn.btn-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
-    background: #0cafe047 !important;
+    background: #15b4e3 !important;
     border-color: #0cafe0 !important;
     color: #ffffff !important;
 }
