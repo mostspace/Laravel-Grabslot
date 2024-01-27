@@ -74,17 +74,19 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="search-hall-table w-100">
-                        <!--begin: Datatable-->
-                        <table class="table table-checkable" id="kt_datatable">
-                            <thead>
-                                <tr>
-                                    <th>店舗</th>
-                                    <th>市区郡</th>
-                                </tr>
-                            </thead>
-                        </table>
-                        <!--end: Datatable-->
+                    <div class="scroll scroll-pull" data-scroll="true" data-height="500" data-mobile-height="350">
+                        <div class="search-hall-table w-100">
+                            <!--begin: Datatable-->
+                            <table class="table table-checkable" id="kt_datatable">
+                                <thead>
+                                    <tr>
+                                        <th>店舗</th>
+                                        <th>市区郡</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <!--end: Datatable-->
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -94,6 +96,55 @@
         </div>
     </div>
     <!--end::Modal-->
+
+    <div class="modal fade" id="kt_scrollable_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Scrollable Modal Content</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="scroll scroll-pull" data-scroll="true" data-height="300">
+                        <form>
+                            <div class="form-group">
+                                <label class="form-control-label">Name:</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Email:</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Groups:</label>
+                                <div class="checkbox-list">
+                                    <label class="checkbox">
+                                    <input type="checkbox" checked="checked" />Management
+                                    <span></span></label>
+                                    <label class="checkbox">
+                                    <input type="checkbox" />Finance
+                                    <span></span></label>
+                                    <label class="checkbox">
+                                    <input type="checkbox" />IT Department
+                                    <span></span></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Message:</label>
+                                <textarea class="form-control" rows="6"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="kt_blockui_4_1">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('add_js')

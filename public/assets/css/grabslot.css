@@ -245,13 +245,13 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 .model-table .td-block {
     background-color: #ffffff;
-    flex: 1;
+    flex: 1.35;
     min-width: 30px; /* Allow blocks to shrink if needed */
     border-right: 1px solid #27282e;
     border-bottom: 1px solid #27282e;
     box-sizing: border-box;
     height: 26px;
-    width: 100%;
+    width: 57px;
     font-size: 11px;
     display: flex;
     align-items: center;
@@ -788,3 +788,37 @@ div.dataTables_wrapper div.dataTables_filter input {
 .swal2-container .swal2-html-container {
     color: #ffffff !important;
 }
+
+/* Scroll */
+.scroll.ps > .ps__rail-x {
+    height: 6px !important;
+}
+.scroll.ps > .ps__rail-x > .ps__thumb-x {
+    background: #18C8FF;
+    height: 6px !important;
+}
+
+
+/* Customize the scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 7px;
+    
+}
+::-webkit-scrollbar-thumb {
+    background: #727070; /* color of the scrollbar thumb */
+    border-radius: 0.42rem !important;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #18C8FF; /* color of the scrollbar thumb */
+}
+html {
+    scroll-behavior: smooth;
+}
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  

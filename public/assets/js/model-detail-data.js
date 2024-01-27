@@ -70,6 +70,8 @@ var modelDetailData = (function () {
     var updateTable = function (modelData) {
         var tbody = $("#modalTableBody");
 
+        console.log(modelData);
+
         tbody.empty();
         tbody.append("<tr>" +
             "<td>" + modelData.machine_number + "</td>" +
@@ -93,7 +95,7 @@ var modelDetailData = (function () {
                 model_id: model_id,
             },
             success: function (response) {
-                var modelData = response['model'][0];
+                var modelData = response.model;
                 updateTable(modelData);
             },
             error: function (error) {
