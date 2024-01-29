@@ -172,6 +172,7 @@ var modelDetailData = (function () {
                     }
                 },
                 crosshairs: {
+                    show: false,
                     position: 'front',
                     stroke: {
                         color: KTApp.getSettings()['colors']['theme']['base']['primary'],
@@ -253,13 +254,31 @@ var modelDetailData = (function () {
                 strokeDashArray: 4,
                 yaxis: {
                     lines: {
-                        show: true
+                        show: true,
                     }
                 }
             },
             markers: {
-                strokeColor: KTApp.getSettings()['colors']['theme']['base']['primary'],
-                strokeWidth: 3
+                // strokeColor: KTApp.getSettings()['colors']['theme']['base']['primary'],
+                size: 0,
+                colors: undefined,
+                strokeColors: '#fff',
+                strokeWidth: 2,
+                strokeOpacity: 0.9,
+                strokeDashArray: 0,
+                fillOpacity: 0,
+                discrete: [],
+                shape: "circle",
+                radius: 0,
+                offsetX: 0,
+                offsetY: 0,
+                onClick: undefined,
+                onDblClick: undefined,
+                showNullDataPoints: true,
+                hover: {
+                  size: undefined,
+                  sizeOffset: 0
+                }
             },
             annotations: {
                 points: [
