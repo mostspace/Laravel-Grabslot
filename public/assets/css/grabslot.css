@@ -304,7 +304,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: #FFFFF0 !important;
 }
 .td-date-sat {
-    background-color: #0000FF !important;
+    background-color: #4689FF !important;
     color: #fff !important;
 }
 .td-model-name {
@@ -316,21 +316,21 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: #ffffff !important;
 }
 .td-light-blue {
-    background-color: #87CEEB  !important;
+    background-color: #BAD3FF  !important;
 }
 .td-blue {
-    background-color: #0000FF !important;
+    background-color: #4689FF !important;
     color: #fff !important;
 }
 .td-dark-blue {
-    background-color: #00008B !important;
+    background-color: #0000CC !important;
     color: #fff !important;
 }
 .td-pink {
-    background-color: #EE82EE!important;
+    background-color: #FF97C2!important;
 }
 .td-red {
-    background-color: #FF1493 !important;
+    background-color: #FF367F !important;
 }
 .td-gray {
     background-color: #D3D3D3 !important;

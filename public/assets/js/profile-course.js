@@ -74,7 +74,7 @@ var ProfileCourse = (function () {
                     handleResponse(response);
                 },
                 error: function (error) {
-                    handleAjaxError('メールの更新に失敗しました. もう一度試してください.');
+                    handleAjaxError('メールアドレスが間違っています。再度ご確認ください。');
                 }
             });
         });

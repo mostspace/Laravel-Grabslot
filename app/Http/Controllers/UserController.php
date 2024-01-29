@@ -75,12 +75,12 @@ class UserController extends Controller
                 $user->email = $request->input('user_email');
                 $user->save();
     
-                return response()->json(['result' => 'success', 'message' => 'あなたのメールが更新されました.']);
+                return response()->json(['result' => 'success', 'message' => 'メールアドレスが更新されました']);
             }
     
-            return response()->json(['result' => 'warning', 'message' => 'メールの更新に失敗しました.'], 404);
+            return response()->json(['result' => 'warning', 'message' => 'メールの更新に失敗しました'], 404);
         } catch (\Exception $e) {
-            return response()->json(['result' => 'danger', 'message' => 'リクエストの処理中にエラーが発生しました.'], 500);
+            return response()->json(['result' => 'danger', 'message' => 'リクエストの処理中にエラーが発生しました'], 500);
         }
     }
     
@@ -96,12 +96,12 @@ class UserController extends Controller
     
                 Auth::user()->update(['password' => $newPasswordHash]);
     
-                return response()->json(['result' => 'success', 'message' => 'パスワードは正常に変更されました.']);
+                return response()->json(['result' => 'success', 'message' => '新しくパスワードが変更されました。']);
             } else {
-                return response()->json(['result' => 'warning', 'message' => '古いパスワードが正しくありません. パスワードの変更に失敗しました.'], 422);
+                return response()->json(['result' => 'warning', 'message' => '古いパスワードが正しくありません。 パスワードの変更に失敗しました。'], 422);
             }
         } catch (\Exception $e) {
-            return response()->json(['result' => 'danger', 'message' => 'リクエストの処理中にエラーが発生しました.'], 500);
+            return response()->json(['result' => 'danger', 'message' => 'リクエストの処理中にエラーが発生しました'], 500);
         }
     }
         

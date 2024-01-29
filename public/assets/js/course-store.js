@@ -7,6 +7,11 @@ var searchModalWidget = function() {
 		$("#searchStore").val('');
         var store_id = "";
 
+		$("#searchStore").click(function() {
+			$('#searchModal').modal('show');
+            modalTable("whole");
+		});
+
 		$("#searchStoreBtn").click(function() {
             $('#searchModal').modal('show');
             modalTable("whole");
@@ -22,10 +27,10 @@ var searchModalWidget = function() {
             if ($("#searchStore").val()) {
                 Swal.fire({
                     title: $("#searchStore").val(),
-                    text: "この店舗の支払いを正確に進めますか？",
+                    text: "こちらの店舗情報を購読しますか？",
                     icon: "success",
                     buttonsStyling: false,
-                    confirmButtonText: "わかりました",
+                    confirmButtonText: "購読する",
                     showCancelButton: true,
                     cancelButtonText: "キャンセル",
                     customClass: {
@@ -42,7 +47,7 @@ var searchModalWidget = function() {
                     title: "店舗を選択してください",
                     icon: "warning",
                     buttonsStyling: false,
-                    confirmButtonText: "わかった",
+                    confirmButtonText: "閉じる",
                     customClass: {
                         confirmButton: "btn btn-primary",
                     }

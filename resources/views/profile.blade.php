@@ -170,7 +170,7 @@
                                             <!--end::Group-->
                                             <!--begin::Group-->
                                             <div class="form-group row">
-                                                <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">パスワード</label>
+                                                <label class="col-form-label col-md-3 col-sm-12 text-lg-right text-left">新しいパスワード</label>
                                                 <div class="col-md-9 col-sm-12">
                                                     <input class="g_input form-control form-control-lg form-control-solid" type="text" name="new_pwd" value="" placeholder="８文字以上で入力"/>
                                                 </div>
