@@ -269,7 +269,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 .dailyModelBlue {
     border-right: 1px solid #3c3939;
-    background-color: #87CEEB !important;
+    background-color: #BAD3FF !important;
     color: black;
     width: 50%;
     height: 100%;
@@ -279,7 +279,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     justify-content: center;
 }
 .dailyModelRed {
-    background-color: #EE82EE!important;
+    background-color: #FF97C2 !important;
     color: black;
     width: 50%;
     height: 100%;
@@ -341,6 +341,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     font-weight: 700;
     font-size: 0.92rem !important;
     transition: 0.2s;
+    border-top: 1px solid #484c58;
 }
 /* End::Model One Month Table */
 
@@ -803,7 +804,6 @@ div.dataTables_wrapper div.dataTables_filter input {
 ::-webkit-scrollbar {
     width: 12px;
     height: 7px;
-    
 }
 ::-webkit-scrollbar-thumb {
     background: #727070; /* color of the scrollbar thumb */
