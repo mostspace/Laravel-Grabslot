@@ -137,7 +137,6 @@ class HallDataController extends Controller
                     $result = ["color" => "td-white", "red" => 0, "blue" => 0];
                 }
             }
-
             return $result;
         }
 

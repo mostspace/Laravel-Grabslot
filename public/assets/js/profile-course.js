@@ -125,11 +125,22 @@ var ProfileCourse = (function () {
         }
     };
 
+    var initUserCourse = function () {
+        if (course == "light") {
+            $(".course-card").eq(1).addClass('bg-primary').parent().addClass('my-md-n10');
+        } else if (course == "standard") {
+            $(".course-card").eq(2).addClass('bg-primary').parent().addClass('my-md-n10');
+        } else {
+            $(".course-card").eq(0).addClass('bg-primary').parent().addClass('my-md-n10');
+        }
+    };
+
     return {
         init: function () {
             initUserAccount();
             initUserPasswordChange();
             initDataTable();
+            initUserCourse();
             handleRedirectionTab();
         },
     };

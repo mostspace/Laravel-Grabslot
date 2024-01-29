@@ -38,7 +38,7 @@
 						<!--begin::Login Header-->
 						<div class="d-flex flex-center mb-15">
 							<a href="/">
-								<img src="assets/media/logos/logo.png" class="max-h-100px" alt="" />
+								<img src="assets/media/logos/logo.svg" class="max-h-100px" alt="" />
 							</a>
 						</div>
 						<!--end::Login Header-->

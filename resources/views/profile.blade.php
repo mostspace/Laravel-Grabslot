@@ -225,23 +225,25 @@
                             <!--end::Tab-->
                             <!--begin::Tab-->
                             <div class="tab-pane px-lg-7" id="pricing" role="tabpanel">
-                                <div class="row justify-content-center text-center my-0 my-md-25">
+                                <div class="row justify-content-center text-center py-15">
                                     <!-- begin: Free-->
-                                    <div class="col-md-4 col-xxl-3 p-bg-dark rounded-left shadow-sm">
-                                        <div class="pt-25 pb-25 pb-md-10 px-4">
-                                            <h4 class="mb-15 text-white">お試しコース</h4>
-                                            <span class="px-7 py-3 font-size-h1 font-weight-bold d-inline-flex flex-center bg-primary-o-10 rounded-lg mb-15 text-dark-25">無料</span>
+                                    <div class="col-md-4 col-xxl-3 mb-3">
+                                        <div class="pt-25 pt-md-37 pb-25 pb-md-10 py-md-28 px-4 p-bg-dark rounded shadow-sm h-100 course-card">
+                                            <h4 class="text-white mb-15">お試しコース</h4>
+                                            <span class="px-7 py-3 bg-white d-inline-flex flex-center rounded-lg mb-15 bg-white">
+                                                <span class="pr-2 font-size-h1 font-weight-bold text-dark">無料</span>
+                                            </span>
                                             <br />
-                                            <p class="mb-10 d-flex flex-column text-white">
+                                            <p class="text-white mb-10 d-flex flex-column">
                                                 <span>１週間、全店舗の情報を見放題！</span>
                                             </p>
-                                            <!-- <a href="" type="button" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">お試しで登録</a> -->
                                         </div>
                                     </div>
                                     <!-- end: Free-->
                                     <!-- begin: Light-->
-                                    <div class="col-md-4 col-xxl-3 bg-primary my-md-n15 rounded shadow-sm">
-                                        <div class="pt-25 pt-md-37 pb-25 pb-md-10 py-md-28 px-4">
+                                    <!-- <div class="col-md-4 col-xxl-3 p-bg-dark bg-primary my-md-n15 rounded shadow-sm"> -->
+                                    <div class="col-md-4 col-xxl-3 mb-3">
+                                        <div class="pt-25 pt-md-37 pb-25 pb-md-10 py-md-28 px-4 p-bg-dark rounded shadow-sm h-100 course-card">
                                             <h4 class="text-white mb-15">ライトコース</h4>
                                             <span class="px-7 py-3 bg-white d-inline-flex flex-center rounded-lg mb-15 bg-white">
                                                 <span class="pr-2 font-size-h1 font-weight-bold text-dark">500</span>
@@ -257,19 +259,19 @@
                                     </div>
                                     <!-- end: Light-->
                                     <!-- begin: Standard-->
-                                    <div class="col-md-4 col-xxl-3 p-bg-dark rounded-right shadow-sm">
-                                        <div class="pt-25 pb-25 pb-md-10 px-4">
-                                            <h4 class="mb-15 text-white">スタンダードコース</h4>
-                                            <span class="px-7 py-3 d-inline-flex flex-center rounded-lg mb-15 bg-primary-o-10 text-dark-25">
-                                                <span class="pr-2 font-size-h1 font-weight-bold">1000</span>
-                                                <span class="pr-2 opacity-70">円</span>
-                                                <span class="opacity-70">/&#160;&#160;月あたり</span>
+                                    <div class="col-md-4 col-xxl-3">
+                                        <div class="pt-25 pt-md-37 pb-25 pb-md-10 py-md-28 px-4 p-bg-dark rounded shadow-sm h-100 course-card">
+                                            <h4 class="text-white mb-15">スタンダードコース</h4>
+                                            <span class="px-7 py-3 bg-white d-inline-flex flex-center rounded-lg mb-15 bg-white">
+                                                <span class="pr-2 font-size-h1 font-weight-bold text-dark">1000</span>
+                                                <span class="pr-2 text-dark opacity-70">円</span>
+                                                <span class="text-dark opacity-70">/&#160;&#160;月あたり</span>
                                             </span>
                                             <br />
-                                            <p class="mb-10 d-flex flex-column text-white">
+                                            <p class="text-white mb-10 d-flex flex-column">
                                                 <span>全店舗の情報を見放題！</span>
                                             </p>
-                                            <a href="/billing/standard/0" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">購入</a>
+                                            <a href="/billing/standard/0" class="btn btn-white text-uppercase font-weight-bolder px-15 py-3">購入</a>
                                         </div>
                                     </div>
                                     <!-- end: Standard-->
@@ -290,6 +292,9 @@
 @endsection
 
 @section('add_js')
+    <script type="text/javascript">
+        var course = @json($course);
+    </script>
     <script src="{{ asset('assets/js/features/bootstrap-notify.js') }}"></script>
     <script src="{{ asset('assets/js/notification.js') }}"></script>
     <script src="{{ asset('assets/js/profile-course.js') }}"></script>

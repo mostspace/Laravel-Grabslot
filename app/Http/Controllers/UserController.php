@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 use App\Utils\ServerSideTable;
 use App\Models\Payment;
 use App\Models\Store;
@@ -13,12 +14,41 @@ use Auth;
 class UserController extends Controller
 {
     public function index() {
-        return view('profile');
+        $oneMonthAgo = Carbon::now()->subMonth();
+        $oneWeekAgo = Carbon::now()->subWeek();
+        $user_id = Auth::id();
+
+        $latest_payment = Payment::where('user_id', $user_id)->latest()->first();
+
+        if ($latest_payment) {
+            if ($latest_payment->course == "light") {
+                $course = "light";
+            } else {
+                $course = "standard";
+            }
+        } else {
+            $course = "free";
+        }
+
+        // dd($latest_payment);
+        // if ($latest_payment && $latest_payment->created_at->greaterThanOrEqualTo($oneMonthAgo)) {
+        //     // Check if the user has a corresponding payment record for the specified store or store_id is '0'
+        //     if ($store_id == $latest_payment->store_id || $latest_payment->store_id == '0') {
+        //         return $next($request);
+        //     }
+        // } elseif (Auth::user()->created_at->greaterThanOrEqualTo($oneWeekAgo)) {
+        //     return $next($request);
+        // }
+
+        // // Redirect back to the previous URL
+        // return redirect()->back()->with('error', 'You do not have access to this store.');
+
+        return view('profile', compact('course'));
     }
 
-    public function getPricingPage() {
-        return view('pricing');
-    }
+    // public function getPricingPage() {
+    //     return view('pricing');
+    // }
 
     public function userCourse(Request $request) {
         $user = Auth::user();

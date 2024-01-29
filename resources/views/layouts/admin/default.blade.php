@@ -39,7 +39,7 @@
 		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 			<!--begin::Logo-->
 			<a href="/">
-				<img class="w-50" alt="Logo" src="{{ asset('assets/media/logos/logo.png') }}" />
+				<img class="w-50" alt="Logo" src="{{ asset('assets/media/logos/logo.svg') }}" />
 			</a>
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
@@ -82,7 +82,7 @@
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
 						<a href="/" class="brand-logo">
-							<img alt="Logo" src="{{ asset('assets/media/logos/logo.png') }}" />
+							<img alt="Logo" src="{{ asset('assets/media/logos/logo.svg') }}" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Toggle-->

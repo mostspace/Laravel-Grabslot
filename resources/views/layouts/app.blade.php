@@ -33,7 +33,7 @@
 		<div id="kt_header_mobile" class="header-mobile">
 			<!--begin::Logo-->
 			<a href="/">
-				<img alt="Logo" src="{{ asset('assets/media/logos/logo.png') }}" class="logo-default max-h-30px" />
+				<img alt="Logo" src="{{ asset('assets/media/logos/logo.svg') }}" class="logo-default max-h-30px" />
 			</a>
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
@@ -81,7 +81,7 @@
 								<!--begin::Header Logo-->
 								<div class="header-logo">
 									<a href="/">
-										<img alt="Logo" src="{{ asset('assets/media/logos/logo.png') }}" class="logo-default max-h-40px" />
+										<img alt="Logo" src="{{ asset('assets/media/logos/logo.svg') }}" class="logo-default max-h-40px" />
 									</a>
 								</div>
 								<!--end::Header Logo-->
@@ -210,7 +210,7 @@
 						<div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
 							<div>
                                 <div class="logo">
-                                    <a href="/"><img src="{{ asset('assets/media/logos/logo.png') }}" alt=""></a>
+                                    <a href="/"><img src="{{ asset('assets/media/logos/logo.svg') }}" alt=""></a>
                                 </div>
                                 <div class="social-link-list mt-7">
                                     <a href="#" class="btn btn-icon btn-outline-white btn-circle mr-2">
