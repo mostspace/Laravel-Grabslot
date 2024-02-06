@@ -3,9 +3,55 @@
     font-size: 32px;
     font-weight: bold;
 }
+/* Login */
 .login.login-3 .login-form {
     max-width: 563px !important;
 }
+
+
+.area {
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: -2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    animation: blur 1s ease-out infinite;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 7px #fff;
+}
+.area:hover {
+    color: #fff;
+}
+  
+@keyframes blur {
+    from {
+        text-shadow:0px 0px 10px #15b4e3,
+        0px 0px 10px #15b4e3, 
+        0px 0px 25px #15b4e3,
+        /* 0px 0px 25px #fff,
+        0px 0px 25px #fff,
+        0px 0px 25px #fff,
+        0px 0px 25px #fff,
+        0px 0px 25px #fff,
+        0px 0px 50px #fff,
+        0px 0px 50px #fff,
+        0px 0px 50px #7B96B8,
+        0px 0px 150px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8, */
+        0px 10px 100px #15b4e3;
+    }
+}
+  
+  
+  
+
+
+
 .p-form-control {
     border-radius: 50px !important;
     border: 1px solid var(--white, #FFF) !important;
