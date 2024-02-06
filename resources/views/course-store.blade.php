@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row px-3">
-                            <p class="text-white fs-7 my-5 font-weight-bold">※購読したい店舗を１店舗のみお選びください。(※<span class="text-danger font-weight-bolder">店舗の変更ができません</span>のでご注意ください。)</p>
+                            <p class="text-white fs-7 my-5 font-weight-bold">※購読したい店舗を１店舗のみお選びください。(※<span class="text-danger font-weight-bolder blinking-text">店舗の変更ができません</span>のでご注意ください。)</p>
                             <div class="col-sm-12 col-md-6 col-lg-6 p-0 mt-5">
                                 <h6 class="text-white mb-5">ホール名から検索</h6>
                                 <div class="form-group">
