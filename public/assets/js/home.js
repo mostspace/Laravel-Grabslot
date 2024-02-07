@@ -1,8 +1,8 @@
 "use strict";
 
-var SearchStore = function() {
+var Home = function() {
 
-	var searchedHallModal = function () {
+	var initSearchedHallModal = function () {
         // Search Region
 		$("#searchRegion").val('');
 		var keyword = "";
@@ -83,15 +83,76 @@ var SearchStore = function() {
 		});
 	};
 
+	var initMain = function () {
+		// Visit Region
+		$("#regionList").on("click", ".region-btn", function() {
+			window.location.href = "/hall-data/" + $(this).data('region_id');
+		});
+		
+		// Check if the alert has been shown previously for this user
+		var userId = user_id;
+		var alertShown = localStorage.getItem('alertShown_' + userId);
+
+		if (!alertShown) {
+			$.ajax({
+				url: "/avail-days",
+				type: "get",
+				data: {},
+				success: function (response) {
+					if (response.result >= 7) {
+						Swal.fire({
+							title: $("#searchStore").val(),
+							text: response.message,
+							icon: "warning",
+							buttonsStyling: false,
+							confirmButtonText: "はい",
+							showCancelButton: true,
+							cancelButtonText: "いいえ",
+							customClass: {
+								confirmButton: "btn btn-primary",
+								cancelButton: "btn btn-outline btn-outline-danger"
+							}
+						}).then(function (result) {
+							if (result.value) {
+								window.location.href = '/user-profile?tab=pricing';
+							}
+						});
+					} else {
+						Swal.fire({
+							title: $("#searchStore").val(),
+							text: response.message,
+							icon: "warning",
+							buttonsStyling: false,
+							confirmButtonText: "購読する",
+							showCancelButton: false,
+							cancelButtonText: "キャンセル",
+							customClass: {
+								confirmButton: "btn btn-primary",
+								cancelButton: "btn btn-outline btn-outline-danger"
+							}
+						});
+					}
+					
+					// Set a flag in local storage to indicate that the alert has been shown for this user
+					localStorage.setItem('alertShown_' + userId, 'true');
+				},
+				error: function (error) {
+					console.error('Ajax request failed: ', error);
+				}
+			});
+		}
+	};
+
 	return {
 		//main function to initiate the module
 		init: function() {
-			searchedHallModal();
+			initMain();
+			initSearchedHallModal();
 		},
 	};
 
 }();
 
 jQuery(document).ready(function() {
-	SearchStore.init();
+	Home.init();
 });

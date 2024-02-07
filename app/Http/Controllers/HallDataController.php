@@ -18,8 +18,9 @@ class HallDataController extends Controller
     public function getRegionList() {
         $areas = RegionArea::all();
         $regions = Region::all();
+        $user_id = Auth::id();
 
-        return view('home', compact('areas', 'regions'));
+        return view('home', compact('areas', 'regions', 'user_id'));
     }
 
     // Get Hall
