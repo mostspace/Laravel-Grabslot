@@ -30,25 +30,29 @@ class UserController extends Controller
             $course = "free";
         }
 
-        // dd($latest_payment);
-        // if ($latest_payment && $latest_payment->created_at->greaterThanOrEqualTo($oneMonthAgo)) {
-        //     // Check if the user has a corresponding payment record for the specified store or store_id is '0'
-        //     if ($store_id == $latest_payment->store_id || $latest_payment->store_id == '0') {
-        //         return $next($request);
-        //     }
-        // } elseif (Auth::user()->created_at->greaterThanOrEqualTo($oneWeekAgo)) {
-        //     return $next($request);
-        // }
-
-        // // Redirect back to the previous URL
-        // return redirect()->back()->with('error', 'You do not have access to this store.');
-
         return view('profile', compact('course'));
     }
 
-    // public function getPricingPage() {
-    //     return view('pricing');
-    // }
+    public function availableDays(Request $request) {
+        $user_id = Auth::id();
+
+        $latest_payment = Payment::where('user_id', $user_id)->latest()->first();
+
+        if ($latest_payment == null) {
+            // Calculate the difference in seconds between current time and creation time of the latest payment
+            $time_diff_seconds = abs(strtotime(Auth::user()->created_at) - time());
+    
+            // Convert seconds to days
+            $remaining_days = ceil($time_diff_seconds / (60 * 60 * 24)); // 60 seconds * 60 minutes * 24 hours = 1 day
+            if ($remaining_days >= 0 && $remaining_days <= 7) {
+                $message = "無料期間　あと" . 8 - $remaining_days . "日！";
+            } else {
+                $message = "無料期間が終了しました！ 有料コースのご登録はこちら！";
+            }
+        }
+
+        return response()->json(['result' => $remaining_days, 'message' => $message]);
+    }
 
     public function userCourse(Request $request) {
         $user = Auth::user();

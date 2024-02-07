@@ -155,6 +155,51 @@
             $("#regionList").on("click", ".region-btn", function() {
                 window.location.href = "/hall-data/" + $(this).data('region_id');
             });
+            
+            $.ajax({
+                url: "/avail-days",
+                type: "get",
+                data: {
+                },
+                success: function (response) {
+                    if (response.result >= 7) {
+                        Swal.fire({
+                            title: $("#searchStore").val(),
+                            text: response.message,
+                            icon: "warning",
+                            buttonsStyling: false,
+                            confirmButtonText: "はい",
+                            showCancelButton: true,
+                            cancelButtonText: "いいえ",
+                            customClass: {
+                                confirmButton: "btn btn-primary",
+                                cancelButton: "btn btn-outline btn-outline-danger"
+                            }
+                        }).then(function (result) {
+                            if (result.value) {
+                                window.location.href = '/user-profile?tab=pricing';
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: $("#searchStore").val(),
+                            text: response.message,
+                            icon: "warning",
+                            buttonsStyling: false,
+                            confirmButtonText: "購読する",
+                            showCancelButton: false,
+                            cancelButtonText: "キャンセル",
+                            customClass: {
+                                confirmButton: "btn btn-primary",
+                                cancelButton: "btn btn-outline btn-outline-danger"
+                            }
+                        });
+                    }
+                },
+                error: function (error) {
+                    console.error('Ajax request failed: ', error);
+                }
+            });
         });
     </script>
 @endsection
